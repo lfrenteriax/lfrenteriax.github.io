@@ -1,0 +1,271 @@
+#EXTM3U
+#EXTINF:0,Channel 1
+https://0054-jbc.dtvott.com/dash_live_0054/manifest.mpd?ck=bd1af42db82f5a17a0d75246f25f5201&2d104170d5617556b16484d2c44b0036
+#EXTINF:0,Channel 2
+https://0012-vos.dtvott.com/DASH/manifest.mpd?ck=f042bd0dcb4d3f59b51a570ad46be1bc&ab51feaa722b49fe95b9e958bccd57b4
+#EXTINF:0,Channel 3
+https://dtvott-abc.akamaized.net/dash_live_1066/manifest.mpd?ck=7ac8dd7d48545bc881091ee1bbecaf42&9787ea06df2f063245bbda4a738e51cc
+#EXTINF:0,Channel 4
+https://dtvott-cbc.akamaized.net/dash_live_1070/manifest.mpd?ck=eed64e0b13bc5a65b789997ec22a23d0&10d1e87f6e75c3633ffc7b7d2eccd5fa
+#EXTINF:0,Channel 5
+https://1061-vos.dtvott.com/DASH/manifest.mpd?ck=5fb64d11355338b3bdf8b182d28eba1f&bfc4e9f3e355b82e11fc5ddfd313c3f2
+#EXTINF:0,Channel 6
+https://dtvott-cbc.akamaized.net/dash_live_1069/manifest.mpd?ck=a8cf52be0eb358c9a8bfcd1fc94d7cb5&834c7082d28d85f5da38dde949b66c9a
+#EXTINF:0,Channel 7
+https://1109-vos.dtvott.com/DASH/manifest.mpd?ck=534d488852b3330284307d1a3ca0fd3b&2d1d2a12454b682df197ff26ff5253a5
+#EXTINF:0,Channel 8
+https://1063-vos.dtvott.com/DASH/manifest.mpd?ck=ab020a1710d630168de21698375a439c&235898cdb10b0cdba35ea2ce94fbb1fb
+#EXTINF:0,Channel 9
+https://dtvott-abc.akamaized.net/dash_live_1064/manifest.mpd?ck=ab020a1710d630168de21698375a439c&235898cdb10b0cdba35ea2ce94fbb1fb
+#EXTINF:0,Channel 10
+https://dtvott-abc.akamaized.net/dash_live_1065/manifest.mpd?ck=d677a19db3a05a019d8683b9250cbc0f&e2756e96d7d9d63729b645a6139cb513
+#EXTINF:0,Channel 11
+https://dtvott-abc.akamaized.net/dash_live_1071/manifest.mpd?ck=f19c3a8c638d52c2ab77b9566bcb2996&e4fabf39d23cd6557fa71b6e754ef1e7
+#EXTINF:0,Channel 12
+https://dtvott-abc.akamaized.net/dash_live_1233/manifest.mpd?ck=c4697bf458da52f8b96b36cce761d571&a4dee77615279c858b19e5bb69ab6755
+#EXTINF:0,Channel 13
+https://dtvott-abc.akamaized.net/dash_live_1105/manifest.mpd?ck=e97438334f9259b5879ffff21631f2c4&20a2c7f102fd3e96bacda90c24df3e95
+#EXTINF:0,Channel 14
+https://1059-vos.dtvott.com/DASH/manifest.mpd?ck=2fa59463176f3dc2964b91b4f7ae1d7c&81d5b95cc9057d6b0f85c78e6f0e41e7
+#EXTINF:0,Channel 15
+https://1245-vos.dtvott.com/DASH/manifest.mpd?ck=06997340922035bf8bbdb05ccad59aac&e54951d9df22a73a8ab2d951c67ca260
+#EXTINF:0,Channel 16
+https:///dtvott-akaws.akamaized.net/live_1251/DASH/manifest.mpd?ck=34d62b22efc63f659eac5ba82289882d&696de7a82257ddb51ed3fdec04b6ec8b
+#EXTINF:0,Channel 17
+https://1106-vos.dtvott.com/DASH/manifest.mpd?ck=2444f7f19b29352eb6d1c7f9d8f71d59&027fc4f3b6275111c0c8b5ae84933ea8
+#EXTINF:0,Channel 18
+https://0108-vos.dtvott.com/DASH/manifest.mpd?ck=34dc14b5497f3a0faca742240cac20c8&0a6e1d0ba9f6b467f39cc51ba4cc9794
+#EXTINF:0,Channel 19
+https://dtvott-jbc.akamaized.net/dash_live_0035/manifest.mpd?ck=3ad3dca103185934acff7a0e9000c112&de7c7930aa85049f7cb7befdbcdc54dd
+#EXTINF:0,Channel 20
+https://dtvott-abc.akamaized.net/dash_live_1216/manifest.mpd?ck=d83e2e0cb9735bea9fc9f0b90cea1e14&4125e40800a08bbc66cf27756a5ab283
+#EXTINF:0,Channel 21
+https://1117-vos.dtvott.com/DASH/manifest.mpd?ck=5804b7a24ca1303d8511b6d49278610c&fc0a63fd4fb80fd67ad25646857082f5
+#EXTINF:0,Channel 22
+https://1125-vos.dtvott.com/DASH/manifest.mpd?ck=4cb49df341423cb597bf3e79b78f2a52&11ad69d2c84f41dbb520abfe38b19fe7
+#EXTINF:0,Channel 23
+https://1240-vos.dtvott.com/DASH/manifest.mpd?ck=4d45b79d4487343589058ab49ddf8cf0&aa7f95f71a3cfe40aa59904f9285af72
+#EXTINF:0,Channel 24
+https://1118-vos.dtvott.com/DASH/manifest.mpd?ck=76be81041e7133a38457f097d2b0041c&8ced846c9effd56d7e2a9276224bb3c5
+#EXTINF:0,Channel 25
+https://dtvott-cbc.akamaized.net/dash_live_1122/manifest.mpd?ck=08c3e6540dcf56ba99c1286065fc0d14&e8c55a55bf97e39d2238056cf368573b
+#EXTINF:0,Channel 26
+https://dtvott-cbc.akamaized.net/dash_live_1120/manifest.mpd?ck=4b569e9f8266542fa3f402c3057cb98c&c68d69eda82003d095d466a2492b7d0e
+#EXTINF:0,Channel 27
+https://dtvott-cbc.akamaized.net/dash_live_1123/manifest.mpd?ck=2901c41dbfc85aa6a26db29cc56bc2c6&9e1d0809b5e966987deaed55fd2631ad
+#EXTINF:0,Channel 28
+https://dtvott-abc.akamaized.net/dash_live_1232/manifest.mpd?ck=1b9984dc66b259fe8ae597cb4fc1f4c3&fdbbf5a39109349d7b6a997e83fb9e4b
+#EXTINF:0,Channel 29
+https://1157-vos.dtvott.com/DASH/manifest.mpd?ck=174f5f2ee8193624bec9dd8e5d507a64&8ea131613f968b9c2b07d2d08ce5ef44
+#EXTINF:0,Channel 30
+https://dtvott-abc.akamaized.net/dash_live_1099/manifest.mpd?ck=933de8e915535ae18c2558a5a76318c9&e1fc1eed4eae83e0dc1b3705cb62ca64
+#EXTINF:0,Channel 31
+https://1103-vos.dtvott.com/DASH/manifest.mpd?ck=f91c485f605b337cab75d446604d5dfc&933c006497039ce8b345d53a1131d8c4
+#EXTINF:0,Channel 32
+https://1246-vos.dtvott.com/DASH/manifest.mpd?ck=0b23302438ff324dab2eeaca5ea9f554&cd59eb711c8ac4ee0bf0c66f3e967a9c
+#EXTINF:0,Channel 33
+https://dtvott-abc.akamaized.net/dash_live_1156/manifest.mpd?ck=5f789ebbb6495578b42267b650574f62&0b37b263a0aca7b08f12014b2b7b9248
+#EXTINF:0,Channel 34
+https://dtvott-abc.akamaized.net/dash_live_1056/manifest.mpd?ck=00a775d1b96b5951b3c3ab5799f9868e&3a56df0047dd709388c606f9ff2fbadd
+#EXTINF:0,Channel 35
+https://1098-vos.dtvott.com/DASH/manifest.mpd?ck=bfe0b4ea79d63f3ca8370f9465ad853a&6bf0a6db3672e1d1ebe22e494156ff5d
+#EXTINF:0,Channel 36
+https://dtvott-abc.akamaized.net/dash_live_1102/manifest.mpd?ck=bf68b40ab9c258598b73204509ab860d&f12a67c00d4ef28955072aec316a26f0
+#EXTINF:0,Channel 37
+https://dtvott-abc.akamaized.net/dash_live_1010/manifest.mpd?ck=d14fca550adb5b75bb34f0c42aa281dd&6f76634b14e243f1bcee1c5fcd8a393c
+#EXTINF:0,Channel 38
+https://1095-abc.dtvott.com/dash_live_1095/manifest.mpd?ck=27965a5e47515c52af970def8230142c&b2f163b93028a4c325c0d8f7f1b29e25
+#EXTINF:0,Channel 39
+https://dtvott-abc.akamaized.net/dash_live_1009/manifest.mpd?ck=40aa8a3467fc5790a5779a21908b4a75&f41dcd5bb111b6ebc9559741d98b7b81
+#EXTINF:0,Channel 40
+https://1217-vos.dtvott.com/DASH/manifest.mpd?ck=576b5361b6273d2fbb14aae6e8eb646a&1e0c5591f570116dbf9f22da26d17226
+#EXTINF:0,Channel 41
+https://1017-vos.dtvott.com/DASH/manifest.mpd?ck=a85710136cd7392dabdaf4e2d7169b5f&dae80dc1e63aff5975cce0f302870b79
+#EXTINF:0,Channel 42
+https://dtvott-cbc.akamaized.net/dash_live_1124/manifest.mpd?ck=165f0bfa5239548081e4e27f8410d6e6&9a7f5e8618468a045494cbb875287464
+#EXTINF:0,Channel 43
+https://dtvott-cbc.akamaized.net/dash_live_1027/manifest.mpd?ck=6d842222f1715a59ad24623c21745344&87061469dad96757078704a03ee3c67f
+#EXTINF:0,Channel 44
+https://dtvott-abc.akamaized.net/dash_live_1099/manifest.mpd?ck=933de8e915535ae18c2558a5a76318c9&e1fc1eed4eae83e0dc1b3705cb62ca64
+#EXTINF:0,Channel 45
+https://dtvott-abc.akamaized.net/dash_live_1033/manifest.mpd?ck=ee2c412551525952804c0a9acbaddd53&bbd0a11709bcc3accf5f8fb85881cfc6
+#EXTINF:0,Channel 46
+https://1264-abc.dtvott.com/dash_live_1264/manifest.mpd?ck=fe49940345dd5e40be8f6c163a088aff&464172bbc422938df76633bf3a8a2b54
+#EXTINF:0,Channel 47
+https://1187-vos.dtvott.com/DASH/manifest.mpd?ck=dfd472261dcf350594173e8acf5f97ad&313d66dcc3202f8cb471c51b864d3917
+#EXTINF:0,Channel 48
+https://dtvott-abc.akamaized.net/dash_live_1154/manifest.mpd?ck=40b7d6c428f453498bb8efd1ea9f4b87&9410baaf249ff8f0cd6dced01ecf2f5d
+#EXTINF:0,Channel 49
+https://dtvott-abc.akamaized.net/dash_live_1225/manifest.mpd?ck=b363e35a5075589983fec4e2f74f90b9&8f7c53bfe02df34d253eb61e7d01ae79
+#EXTINF:0,Channel 50
+https://dtvott-cbc.akamaized.net/dash_live_1211/manifest.mpd?ck=3f90aafd0ab85c6d92e93114e278917b&9b1e41e8a55a182f69000bdc9304e3cc
+#EXTINF:0,Channel 51
+https://1016-vos.dtvott.com/DASH/manifest.mpd?ck=bd16d3dc021e31369f1df0ce68f0a4f3&3b872c2fbf3c4c7e6a77f126b8ebdc92
+#EXTINF:0,Channel 52
+https://dtvott-abc.akamaized.net/dash_live_1236/manifest.mpd?ck=61cfa2802e325638b4f41f3fa3bdfdef&39084184ebf86749b3a77bc4bef30926
+#EXTINF:0,Channel 53
+https://1103-vos.dtvott.com/DASH/manifest.mpd?ck=f91c485f605b337cab75d446604d5dfc&933c006497039ce8b345d53a1131d8c4
+#EXTINF:0,Channel 54
+https://1104-vos.dtvott.com/DASH/manifest.mpd?ck=da387c2d89b637b7b861244e64a98d47&aa3fa06bc364309b671f3218b800adff
+#EXTINF:0,Channel 55
+https://dtvott-abc.akamaized.net/dash_live_1032/manifest.mpd?ck=78a2c02489da5d5aa2c5254dc8357690&2d26cfbc205d6be3c810039868f41ae6
+#EXTINF:0,Channel 56
+https://dtvott-abc.akamaized.net/dash_live_1110/manifest.mpd?ck=eec60466074155c0b124e1121890bae2&00d7b5c38f7a9e196768ac6f4583eb45
+#EXTINF:0,Channel 57
+https://dtvott-abc.akamaized.net/dash_live_1079/manifest.mpd?ck=a3b91f95dc9152ce8fa34a7fed103b70&694eb12c6ca401b454bd742c374a50c0
+#EXTINF:0,Channel 58
+https://dtvott-cbc.akamaized.net/dash_live_1053/manifest.mpd?ck=cef48e7cfdbd570187a39bff3e433f05&83fbc8198927fdc469e7968d7503c4f6
+#EXTINF:0,Channel 59
+https://dtvott-cbc.akamaized.net/dash_live_1091/manifest.mpd?ck=b567e74bf1bf590a8fdb8ddfd5dc6f32&17d3197e960bcb02234e70866bdb0703
+#EXTINF:0,Channel 60
+https://dtvott-cbc.akamaized.net/dash_live_1223/manifest.mpd?ck=636d0261f1e750868791e4262c83f448&2158dcf8bee037a4be7bebd5be2f3e9a
+#EXTINF:0,Channel 61
+https://dtvott-cbc.akamaized.net/dash_live_1144/manifest.mpd?ck=bdfac486d5255d2396945102d1d3884f&8c46e4e0890780d7816e3888b7c738c7
+#EXTINF:0,Channel 62
+https://dtvott-cbc.akamaized.net/dash_live_1190/manifest.mpd?ck=1010b99fb124540aaa475a41259751eb&1975c6bcc9566a6e94ab263dc8f04b57
+#EXTINF:0,Channel 63
+https://dtvott-abc.akamaized.net/dash_live_1087/manifest.mpd?ck=a07d8bfe2f9956f28ca11466b4f520d5&11fdd8900d1eba9a6c95551f418dbf07
+#EXTINF:0,Channel 64
+https://dtvott-abc.akamaized.net/dash_live_1084/manifest.mpd?ck=7d0c49778bc451d2b5ea44346e72a85d&d5d5ed40788e07eaf3b0616b6abc9e1e
+#EXTINF:0,Channel 65
+https://dtvott-cbc.akamaized.net/dash_live_1081/manifest.mpd?ck=d32d815d1f7f5325ba73562534662c92&75e66a4ed7880c71655d24e52cad3bd3
+#EXTINF:0,Channel 66
+https://dtvott-abc.akamaized.net/dash_live_1175/manifest.mpd?ck=cfcaedf675745b9c81e5a55bde8f530b&240ec219dd71670750f37afe83fead16
+#EXTINF:0,Channel 67
+https://dtvott-abc.akamaized.net/dash_live_1243/manifest.mpd?ck=3a2cfe6f84f5573c82277af6ceb23c51&6f72430eef6b803f2b266da1f4eadc9a
+#EXTINF:0,Channel 68
+https://dtvott-abc.akamaized.net/dash_live_1160/manifest.mpd?ck=5f65c4f0c8235c57a46085cc7a779432&8f1f2a95762a3025a30bd14a53d742cb
+#EXTINF:0,Channel 69
+https://dtvott-cbc.akamaized.net/dash_live_1147/manifest.mpd?ck=98bf1d510cb45145942e5d4c1d5f211d&d6d518949cf734c3e03328dda5b45966
+#EXTINF:0,Channel 70
+https://dtvott-abc.akamaized.net/dash_live_1196/manifest.mpd?ck=7c38d9310d3c5b46a37a39bbec6dd68a&f4333dfb0e708ec9865b9a6ff2a8e068
+#EXTINF:0,Channel 71
+https://dtvott-cbc.akamaized.net/dash_live_1012/manifest.mpd?ck=149c371df27a56a18805272041381592&618b752d33c3e44420219b5c18b0f748
+#EXTINF:0,Channel 72
+https://dtvott-cbc.akamaized.net/dash_live_1181/manifest.mpd?ck=68188b3bb79453cab7b26ee929a25ed4&610c951737cb9e221f07c986b6c66f7d
+#EXTINF:0,Channel 73
+https://1093-vos.dtvott.com/DASH/manifest.mpd?ck=afb378efc4c937999a9237a734f9a67a&3b6ca02e5b0589cab0dd32db45308884
+#EXTINF:0,Channel 74
+https://dtvott-abc.akamaized.net/dash_live_1113/manifest.mpd?ck=756032fd73ed536f93a6d187a7956999&d1ab5f25f977c0dc01785b44d91cdb9c
+#EXTINF:0,Channel 75
+https://dtvott-cbc.akamaized.net/dash_live_1076/manifest.mpd?ck=aab6b4fdb2e15bef8ef07c397b057e60&e42c375f8304be0563aea9b38eda1f76
+#EXTINF:0,Channel 76
+https://dtvott-cbc.akamaized.net/dash_live_1074/manifest.mpd?ck=cba19074379a5b3c875cd1ace01b6cbe&d9549830c29d5ff0c5c701036eb9cba4
+#EXTINF:0,Channel 77
+https://dtvott-cbc.akamaized.net/dash_live_1148/manifest.mpd?ck=0dc64f9b19ab51ae88959afec96e7631&ef1d0894a936f7393ec7bfa38ff618cb
+#EXTINF:0,Channel 78
+https://dtvott-abc.akamaized.net/dash_live_1169/manifest.mpd?ck=8e3ed8800f9058b5af7483081e7f7f55&58ac794f6eaa45fbf3197871f4b33aea
+#EXTINF:0,Channel 79
+https://dtvott-abc.akamaized.net/dash_live_1028/manifest.mpd?ck=63bb90afe7a55cabb01fcac205353b25&26c36505b2a3454201dcc8370de0ee07
+#EXTINF:0,Channel 80
+https://dtvott-cbc.akamaized.net/dash_live_1248/manifest.mpd?ck=56a24732c7c558a0b244dc9d5f910f87&61dfef81cee11cb419a6120270b9587b
+#EXTINF:0,Channel 81
+https://1111-vos.dtvott.com/DASH/manifest.mpd?ck=bcae817ff7873a70b2fccd25b733db42&0f1f51febbf4eaafd859fab66e441715
+#EXTINF:0,Channel 82
+https://dtvott-abc.akamaized.net/dash_live_1055/manifest.mpd?ck=58708981c1c25ae9b5febda16ec39c5b&8b3855c63f8567b9d3f5465dc0ad6056
+#EXTINF:0,Channel 83
+https://dtvott-abc.akamaized.net/dash_live_1172/manifest.mpd?ck=8068d32952ca54aeaa9790d313e3e84c&c9e3b5f04de092fa0ae29137f0e92e3c
+#EXTINF:0,Channel 84
+https://dtvott-abc.akamaized.net/dash_live_1096/manifest.mpd?ck=9b6e2119fa3a548da0bc8a7b206f5174&53981eea62b6a6da1a3a4958dc57436c
+#EXTINF:0,Channel 85
+https://dtvott-abc.akamaized.net/dash_live_1221/manifest.mpd?ck=e1de580fc43359de9ac86a01917886a6&29d423551a394919fe5117dad76ec4b2
+#EXTINF:0,Channel 86
+https://dtvott-abc.akamaized.net/dash_live_1001/manifest.mpd?ck=d156b089a39b5e81be1ea8a6d1c9fc4e&015d0fec74f71ff77114bb439ef07a8b
+#EXTINF:0,Channel 87
+https://1162-vos.dtvott.com/DASH/manifest.mpd?ck=6a8f63dac3923823a6fdfac3ce7f2a21&45be5c78b14caf1fa16535950d765b76
+#EXTINF:0,Channel 88
+https://1030-vos.dtvott.com/DASH/manifest.mpd?ck=d0141f7c4c5b3b9fb023c229aa78f66e&fbb6d022cde627f2ebc3891735af5dd5
+#EXTINF:0,Channel 89
+https://dtvott-abc.akamaized.net/dash_live_1155/manifest.mpd?ck=d9a485859ad05b75b017882bec2540e0&7e3b3108a1663b46e87b2affe1cd23a4
+#EXTINF:0,Channel 90
+https://1249-vos.dtvott.com/DASH/manifest.mpd?ck=e0140e8c60d2362a9982f97276d0e1a4&f682dcb20c7068275840411916b79d85
+#EXTINF:0,Channel 91
+https://dtvott-cbc.akamaized.net/dash_live_1045/manifest.mpd?ck=14c6468aad565259a32023577ac79a39&f31842f9921a41263e5e66fd4e00cc71
+#EXTINF:0,Channel 92
+https://1134-vos.dtvott.com/DASH/manifest.mpd?ck=3303b4c6982f381ea9e309009fbb3f27&a7fd49808f890c2500bf2180aaf42307
+#EXTINF:0,Channel 93
+https://dtvott-cbc.akamaized.net/dash_live_1101/manifest.mpd?ck=820258e364e15701b133359cf86303af&9dcedc4b45654cb8aba48e415959063f
+#EXTINF:0,Channel 94
+https://dtvott-abc.akamaized.net/dash_live_1038/manifest.mpd?ck=6575e2cb849b581480ab260b70ccfab6&0b6b8622989104f69b2db91630ed0eaf
+#EXTINF:0,Channel 95
+https://dtvott-cbc.akamaized.net/dash_live_1107/manifest.mpd?ck=66da31070eac58fcadb911804917ea28&886d612fb16aceb172db68fd3016a737
+#EXTINF:0,Channel 96
+https:///dtvott-akaws.akamaized.net/live_1040/DASH/manifest.mpd?ck=b9870e2924a93afba14c1bcd2f02c6b2&f98bda8234d3f2397cc1e5ca35c2c34c
+#EXTINF:0,Channel 97
+https://0070-vos.dtvott.com/DASH/manifest.mpd?ck=08a4277424073a15badafef701a42b8b&030601e605c2896a442c73d575a323a8
+#EXTINF:0,Channel 98
+https:///dtvott-akaws.akamaized.net/live_1035/DASH/manifest.mpd?ck=590eab6833d435ff94cc9a5af93a4319&5e73fb08358db634dfb919d853cec46f
+#EXTINF:0,Channel 99
+https://dtvott-cbc.akamaized.net/dash_live_1100/manifest.mpd?ck=06b3adfba9845c7c924704fd8b8dcd64&dccb2ff104df0bbc54de06b3c2786f5c
+#EXTINF:0,Channel 100
+https://1108-vos.dtvott.com/DASH/manifest.mpd?ck=591cdbc97034330b849614a6efbfdfd4&d664407707d260f93908121d84df4eba
+#EXTINF:0,Channel 101
+https://dtvott-abc.akamaized.net/dash_live_1227/manifest.mpd?ck=591cdbc97034330b849614a6efbfdfd4&d664407707d260f93908121d84df4eba
+#EXTINF:0,Channel 102
+https://dtvott-cbc.akamaized.net/dash_live_1115/manifest.mpd?ck=eede13105e775cf18e7ad20578ab701c&806f181c545dcc9b2e8295866d7fcb58
+#EXTINF:0,Channel 103
+https://1231-vos.dtvott.com/DASH/manifest.mpd?ck=1743cd7101c73e2983ba928fbfcec307&cf38d2027de3affce951afcbd583458d
+#EXTINF:0,Channel 104
+https://dtvott-abc.akamaized.net/dash_live_1230/manifest.mpd?ck=b94af7e787a95bf0b7d838fb34f27842&32076e8f489d72ae0847eb3256cead1d
+#EXTINF:0,Channel 105
+https://1250-vos.dtvott.com/DASH/manifest.mpd?ck=f195c02916303b2691090ca545933afb&774d7a8fae5e6bde902c5b33bc33ce01
+#EXTINF:0,Channel 106
+https://dtvott-abc.akamaized.net/dash_live_1049/manifest.mpd?ck=f195c02916303b2691090ca545933afb&774d7a8fae5e6bde902c5b33bc33ce01
+#EXTINF:0,Channel 107
+https://1058-vos.dtvott.com/DASH/manifest.mpd?ck=fa8796510bf0357d9fc39bd81bbfca18&ea7138d07009dff7ebe6e2fedcebf660
+#EXTINF:0,Channel 108
+https://1060-vos.dtvott.com/DASH/manifest.mpd?ck=7bdf77d921713bf492db95af8f97d291&f22b62635a18b9f678514cf18c77fd37
+#EXTINF:0,Channel 109
+https://1062-vos.dtvott.com/DASH/manifest.mpd?ck=409459dd892532a0ae99947bd46b4e48&9e5a06e2803b02a6006d8c19d4738a35
+#EXTINF:0,Channel 110
+https://dtvott-abc.akamaized.net/dash_live_1067/manifest.mpd?ck=8f80dcd366285395b267c7ecbe7ad4b5&654f9c425fd363496b1e6bc97bd4444e
+#EXTINF:0,Channel 111
+https://dtvott-jbc.akamaized.net/dash_live_79/manifest.mpd?ck=50653a20839a57c8b2d3cde6ddc46cdb&892cc6b38a57fc61c20a1b48592a7412
+#EXTINF:0,Channel 112
+https://dtvott-jbc.akamaized.net/dash_live_80/manifest.mpd?ck=9fc08bc02c90500ba511d93a54d261c4&184832a5c70ebffcbc42c0243df398f3
+#EXTINF:0,Channel 113
+https://dtvott-jbc.akamaized.net/dash_live_95/manifest.mpd?ck=32a2a478899c5b04984f7dd6a10245c5&cd2c3f7c62d326c07ab0c93da5b56809
+#EXTINF:0,Channel 114
+https://1214-vos.dtvott.com/DASH/manifest.mpd?ck=806e76a83b73357a96e1446ad152ff71&002babbb1c5869a0f2f8f34b711700c6
+#EXTINF:0,Channel 115
+https://1185-vos.dtvott.com/DASH/manifest.mpd?ck=fad9eaf7a980300686af7809c0377a00&0d270d4c1ef2a319aeaf2f424e9b1442
+#EXTINF:0,Channel 116
+https://1187-vos.dtvott.com/DASH/manifest.mpd?ck=dfd472261dcf350594173e8acf5f97ad&313d66dcc3202f8cb471c51b864d3917
+#EXTINF:0,Channel 117
+https://dtvott-abc.akamaized.net/dash_live_1215/manifest.mpd?ck=f4c55ed8f82e5924b22d00ce154ae849&fdea8ee702bd5262cb6a2901dc37e7b0
+#EXTINF:0,Channel 118
+https://68-vos.dtvott.com/DASH/manifest.mpd?ck=4f62db627bd93b718154cc8629e92976&09e37739a090140734904513ee2f4ce3
+#EXTINF:0,Channel 119
+https://69-vos.dtvott.com/DASH/manifest.mpd?ck=f2d6a8c7c95b376db64b06896d730a2f&66e956cb531a00d163da476535b90339
+#EXTINF:0,Channel 120
+https://dtvott-abc.akamaized.net/dash_live_1272/manifest.mpd?ck=4faf318fc60255f1811ffb9659408ee1&e7bbfe8f88b3601a06413733112120d7
+#EXTINF:0,Channel 121
+https://1261-vos.dtvott.com/DASH/manifest.mpd?ck=457942dd5b773c8cafad4f486867cde4&d5a09694df94467f59aa46e24537d216
+#EXTINF:0,Channel 122
+https://dtvott-jbc.akamaized.net/dash_live_0016/manifest.mpd?ck=84ccdd14d6335a09bc4541e485a56fb7&980a21b0b42d6a36bc1c9a1bc643a174
+#EXTINF:0,Channel 123
+https://dtvott-cbc.akamaized.net/dash_live_1119/manifest.mpd?ck=5222bd8c2898593982fc2550e493aa69&59b269b80becd036307a605d9938160f
+#EXTINF:0,Channel 124
+https://0040-vos.dtvott.com/DASH/manifest.mpd?ck=7dcb66746b803c7e9cf9b1a0b97fc308&6f1d49a343be947ad732553bf7ff052c
+#EXTINF:0,Channel 125
+https://1011-vos.dtvott.com/DASH/manifest.mpd?ck=b9fc5a15382b35818904ecbeed545fd0&8b4d83e2c382780ca615ce6cd6754d79
+#EXTINF:0,Channel 126
+https://dtvott-jbc.akamaized.net/dash_live_159/manifest.mpd?ck=b3b4d4724638592688df0d639c8a83fa&98f7cd519d08a69c227d6ba7e8d51808
+#EXTINF:0,Channel 127
+https://dtvott-jbc.akamaized.net/dash_live_0091/manifest.mpd?ck=d0652911b7015750aa0571fc60d8d875&be5ab7662bf62a47fd68a229ff5985d1
+#EXTINF:0,Channel 128
+https://1260-vos.dtvott.com/DASH/manifest.mpd?ck=b195be74361834d9aff2e13ac0260a36&a6af584b36df51fba33b3e8661f5505a
+#EXTINF:0,Channel 129
+https://0011-vos.dtvott.com/DASH/manifest.mpd?ck=a4ae4d7e9e953094ac4ae86d910452e1&87865659c6bab96a2d4912572fb4007b
+#EXTINF:0,Channel 130
+https://dtvott-jbc.akamaized.net/dash_live_0010/manifest.mpd?ck=9fc09333ecd6540483702523e2a8bd22&02df321b1d3aabcaf602fb1429c707eb
+#EXTINF:0,Channel 131
+https://0007-vos.dtvott.com/DASH/manifest.mpd?ck=8bdb6cb2ba893f839e639d6d7f16438e&08e5aae2472443e1dab5414445bedc36
+#EXTINF:0,Channel 132
+https://1116-vos.dtvott.com/DASH/manifest.mpd?ck=120a14e524f637d4b897c0b70a52d91f&5c78b4010783b638eac8bc2e852858ac
+#EXTINF:0,Channel 133
+https://1222-vos.dtvott.com/DASH/manifest.mpd?ck=f19ba54f0b1638578211d1a1acf29e84&c7a0476d0396644ba4b6076f4de88fc8
+#EXTINF:0,Channel 134
+https://dtvott-cbc.akamaized.net/dash_live_1068/manifest.mpd?ck=2c1b10362c89516590a6601a3cc6f27b&b326284f3ddbd70fcb4cc9df4239c22c
+#EXTINF:0,Channel 135
+https://dtvott-abc.akamaized.net/dash_live_1271/manifest.mpd?ck=022d63431e1a5221997dc9ce74c91e4f&363d2c58216f24b932662a943230136a

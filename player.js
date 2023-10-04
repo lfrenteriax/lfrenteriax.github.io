@@ -19,7 +19,9 @@ var myplaylist="";
 function parse () {
    
    myplaylist = M3U.parse(this.response);
-
+    cch=getParameter("ch");
+	if(cch!=null)
+		play(cch);
   // loadChannel(myplaylist[0].file);
   };
 
@@ -51,3 +53,17 @@ if(url.search("https")==0){
 }
 
 }
+getParameter = (key) => {
+  
+    // Address of the current window
+    address = window.location.search
+  
+    // Returns a URLSearchParams object instance
+    parameterList = new URLSearchParams(address)
+  
+    // Returning the respected value associated
+    // with the provided key
+    return parameterList.get(key)
+}
+  
+

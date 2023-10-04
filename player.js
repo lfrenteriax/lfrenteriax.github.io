@@ -30,7 +30,7 @@ function parse () {
 
 function inicio(){
   
-getCanales(document.location.href+"lista.m3u");
+getCanales(document.location.host+"/lista.m3u");
 
 }
 

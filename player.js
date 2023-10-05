@@ -19,10 +19,11 @@ var myplaylist="";
 function parse () {
    
    myplaylist = M3U.parse(this.response);
+   listaDeCanales();
     cch=getParameter("ch");
 	if(cch!=null)
 		play(cch);
-   listaDeCanales();
+   
   // loadChannel(myplaylist[0].file);
   };
 
@@ -55,7 +56,7 @@ function GetIndex(sender)
         if (aElements[i] == sender) //this condition is never true
         {
             index = i;
-            alert("found match at "+i );
+           // alert("found match at "+i );
             play(index);
 		return index;
 		

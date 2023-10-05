@@ -56,8 +56,9 @@ function GetIndex(sender)
         {
             index = i;
             alert("found match at "+i );
-            return index;
-		play(index)
+            play(index);
+		return index;
+		
         }
     }
 }

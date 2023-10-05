@@ -14,20 +14,7 @@ function getCanales(url){
   xhr.send();
 }
 
-// Parse it
-var myplaylist="";
-function parse () {
-   
-   myplaylist = M3U.parse(this.response);
-   listaDeCanales();
-    cch=getParameter("ch");
-	if(cch!=null)
-		play(cch);
-   
-  // loadChannel(myplaylist[0].file);
-  };
 
-   
 function listaDecanales(){
 listaCnt=document.getElementsByClassName("modal-body")[0];
 listaCnt.innerHTML="";
@@ -63,6 +50,24 @@ function GetIndex(sender)
         }
     }
 }
+
+
+
+
+// Parse it
+var myplaylist="";
+function parse () {
+   
+   myplaylist = M3U.parse(this.response);
+   listaDeCanales();
+    cch=getParameter("ch");
+	if(cch!=null)
+		play(cch);
+   
+  // loadChannel(myplaylist[0].file);
+  };
+
+   
 function inicio(){
   
 getCanales(document.location.origin+"/lista.m3u");

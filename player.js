@@ -22,12 +22,45 @@ function parse () {
     cch=getParameter("ch");
 	if(cch!=null)
 		play(cch);
+   listaDeCanales();
   // loadChannel(myplaylist[0].file);
   };
 
    
+function listaDecanales(){
+listaCnt=document.getElementsByClassName("modal-body")[0];
+listaCnt.innerHTML="";
+listaCnt.innerHTML="<ol id='thelist'></ol>"
+var completelist= document.getElementById("thelist");
+for (i=1;i<myplaylist.length;i++){try {
+ //completelist.innerHTML += "<li>" + myplaylist[i-1].title.split(",")[1] + "</li>";
+completelist.innerHTML += "<li><a href='#' onclick='GetIndex(this)'>"+myplaylist[i-1].title.split(",")[1] +"</a></li>"	
+} catch (error) {
+  console.error(error);
+  // Expected output: ReferenceError: nonExistentFunction is not defined
+  // (Note: the exact output may be browser-dependent)
+}
+                                 }
+}
 
 
+function GetIndex(sender)
+{
+    var aElements = sender.parentNode.parentNode.getElementsByTagName("a");
+    var aElementsLength = aElements.length;
+
+    var index;
+    for (var i = 0; i < aElementsLength; i++)
+    {
+        if (aElements[i] == sender) //this condition is never true
+        {
+            index = i;
+            alert("found match at "+i );
+            return index;
+		play(index)
+        }
+    }
+}
 function inicio(){
   
 getCanales(document.location.origin+"/lista.m3u");

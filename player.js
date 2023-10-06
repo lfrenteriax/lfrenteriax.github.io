@@ -60,11 +60,11 @@ var myplaylist="";
 function parse () {
    
    myplaylist = M3U.parse(this.response);
-   listaDeCanales();
+   
     cch=getParameter("ch");
 	if(cch!=null)
 		play(cch);
-   
+   listaDeCanales();
   // loadChannel(myplaylist[0].file);
   };
 

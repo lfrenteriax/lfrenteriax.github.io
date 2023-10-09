@@ -185,9 +185,10 @@ function showTime(){
     document.getElementById("MyClockDisplay").textContent = time;
     
     setTimeout(showTime, 1000);
+	accion();
     
 }
-
+mdTimer=0;
 showTime();
 // Get the modal
 var modal = document.getElementById("myModal");
@@ -215,7 +216,17 @@ window.onclick = function(event) {
   }
 }
 
+function accion(){
 
+    if(modal.style.display=='block'){
+      console.log(mdTimer);
+       mdTimer++;   
+    }else{
+        mdTimer=0;
+    }
+    if(mdTimer==5)
+        span.click()
+}
 </script>
 
 </body>

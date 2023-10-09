@@ -142,7 +142,7 @@ background: rgba(0, 0, 0, 0.5);
       <span class="close">&times;</span>
       <h2>Modal Header</h2>
     </div>
-    <div class="modal-body">
+    <div  onmousemove="mdBodyFcn()" class="modal-body">
       <p>Some text in the Modal Body</p>
       <p>Some other text...</p>
       <p>Some text in the Modal Body</p>
@@ -202,6 +202,7 @@ var span = document.getElementsByClassName("close")[0];
 // When the user clicks the button, open the modal 
 btn.onclick = function() {
   modal.style.display = "block";
+  mdTimer=0;
 }
 
 // When the user clicks on <span> (x), close the modal
@@ -227,6 +228,10 @@ function accion(){
     if(mdTimer==5)
         span.click()
 }
+	function mdBodyFcn(){
+
+		btn.click();
+	}
 </script>
 
 </body>

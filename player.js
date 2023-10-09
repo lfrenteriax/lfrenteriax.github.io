@@ -77,6 +77,8 @@ getCanales(document.location.origin+"/lista.m3u");
 
 var frame=top.document.getElementById("frame");
 function play(ch) {
+mdBodyFcn();
+	
 url=myplaylist[ch].file;
 console.log(url)
 cnt=document.getElementById("cnt");

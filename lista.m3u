@@ -1,8 +1,8 @@
 #EXTM3U
 #EXTINF:0,eventos start +
-https://live-ftc-na-south-2.media.starott.com/gru1/qb01/starplus/event/2023/10/06/Palmeiras_BRA_vs_Boca_Jun_20231006_1696545014017/ctr-all-complete.m3u8?ck=d77bf8aff8eb445a8ba805e0668cc563&776a72cae8ab8dd5d72040ba9d514614
 https://dtvott-abc.akamaized.net/dash_live_1038/manifest.mpd?ck=6575e2cb849b581480ab260b70ccfab6&0b6b8622989104f69b2db91630ed0eaf
-
+#EXTINF:0,eventos FIFA+
+https://d1a1o18xxn53kr.cloudfront.net/out/v1/e237c9a94efa4c4ebfaf38f763e2d209/index.mpd?aws.manifestfilter=audio_language:spa?ck=86f360df076c40569b8b977ee7b7b975&b07e8bfb33376a33ce11a14a1d68ebd2
 #EXTINF:0,CANAL DEL FUTBOL
 https://dtvott-abc.akamaized.net/dash_live_1038/manifest.mpd?ck=6575e2cb849b581480ab260b70ccfab6&0b6b8622989104f69b2db91630ed0eaf
 #EXTINF:0,Channel 1

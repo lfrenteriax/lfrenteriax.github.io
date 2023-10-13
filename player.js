@@ -25,7 +25,7 @@ function listaDeCanales(){
 		 //completelist.innerHTML += "<li>" + myplaylist[i-1].title.split(",")[1] + "</li>";
 		completelist.innerHTML += "<li><a href='#' onclick='GetIndex(this)'>"+myplaylist[i-1].title.split(",")[1] +"</a></li>"	
 		} catch (error) {
-		  console.error(error);
+		 // console.error(error);
 		  // Expected output: ReferenceError: nonExistentFunction is not defined
 		  // (Note: the exact output may be browser-dependent)
 		}

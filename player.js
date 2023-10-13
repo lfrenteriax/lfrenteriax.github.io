@@ -63,7 +63,7 @@ function parse () {
    
     cch=getParameter("ch");
 	if(cch!=null)
-		play(cch);
+		play(cch-1);
    listaDeCanales();
   // loadChannel(myplaylist[0].file);
   };

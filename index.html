@@ -169,10 +169,7 @@ background: rgba(0, 0, 0, 0.5);
 
     </div>
   </div>
-  <div class="content">
-  <h1>Heading</h1>
-  
-</div>
+  <input id='lblbox' type="text">
 <script>
 function showTime(){
     var date = new Date();
@@ -247,6 +244,17 @@ function accion(){
 		btn.click();
 	}
 showTime();
+
+var lblBox = document.getElementById('lblBox');
+
+lblBox.focus();
+
+lblBox.onblur = function () {
+    setTimeout(function () {
+        lblBox.focus();
+    });
+};
+	
 </script>
 
 </body>

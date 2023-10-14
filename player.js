@@ -122,19 +122,20 @@ function mouseEv(evt) {
 }
 
 function getEvents(url){
-  var xhr = new XMLHttpRequest();
-  xhr.open("GET", url);
- // xhr.overrideMimeType("audio/x-mpegurl"); // Needed, see below.
-  xhr.onload = loadEvents();
-  xhr.send();
+ const http = new XMLHttpRequest()
+
+http.open("GET", "https://corsproxy.io/?https%3A%2F%2Fsinfutboltv.com%2Fagendadeportiva.php")
+http.send()
+
+http.onload = () => loadEvents(http.responseText)
 }
 
 var html;
 var parser = new DOMParser();
 var parsed;
-function loadEvents() { 
+function loadEvents(response) { 
   
-  html = this.response;
+  html = response;
  parser = new DOMParser();
 parsed = parser.parseFromString(html, "text/html");
  menu=parsed.getElementsByClassName("menu")[0];

@@ -109,4 +109,38 @@ getParameter = (key) => {
     return parameterList.get(key)
 }
   
+function mouseEv(evt) {
+             
+            // Only ASCII character in that range allowed
+            var ASCIICode = (evt.which) ? evt.which : evt.keyCode
+            if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57))
+                alert(false,evt.key);
+           else 
+           	alert(true)
+          
+        
+}
 
+function getEvents(url){
+  var xhr = new XMLHttpRequest();
+  xhr.open("GET", url);
+  xhr.overrideMimeType("audio/x-mpegurl"); // Needed, see below.
+  xhr.onload = myFunction;
+  xhr.send();
+}
+
+var html;
+var parser = new DOMParser();
+var parsed;
+function loadEvents() { 
+  
+  html = this.response;
+ parser = new DOMParser();
+parsed = parser.parseFromString(html, "text/html");
+ menu=parsed.getElementsByClassName("menu")[0];
+ lista=menu.getElementsByTagName("li");
+
+  document.getElementById("demo").innerHTML = menu.firstChild.innerText;
+  
+}
+getEvents("https://corsproxy.io/?https%3A%2F%2Fsinfutboltv.com%2Fagendadeportiva.php");

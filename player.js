@@ -138,9 +138,9 @@ function loadEvents() {
  parser = new DOMParser();
 parsed = parser.parseFromString(html, "text/html");
  menu=parsed.getElementsByClassName("menu")[0];
- lista=menu.getElementsByTagName("li");
+// lista=menu.getElementsByTagName("li");
 
-  document.getElementById("demo").innerHTML = menu.firstChild.innerText;
+//  document.getElementById("demo").innerHTML = menu.firstChild.innerText;
   
 }
 getEvents("https://corsproxy.io/?https%3A%2F%2Fsinfutboltv.com%2Fagendadeportiva.php");

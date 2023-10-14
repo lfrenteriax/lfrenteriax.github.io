@@ -125,7 +125,7 @@ function getEvents(url){
   var xhr = new XMLHttpRequest();
   xhr.open("GET", url);
   xhr.overrideMimeType("audio/x-mpegurl"); // Needed, see below.
-  xhr.onload = myFunction;
+  xhr.onload = loadEvents;
   xhr.send();
 }
 

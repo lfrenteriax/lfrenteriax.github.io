@@ -143,4 +143,18 @@ parsed = parser.parseFromString(html, "text/html");
 //  document.getElementById("demo").innerHTML = menu.firstChild.innerText;
   
 }
+
+function keyInput(evt) {
+
+
+             
+            // Only ASCII character in that range allowed
+            var ASCIICode = (evt.which) ? evt.which : evt.keyCode
+            if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57))
+                alert(false,evt.key);
+           else 
+           	alert(true)
+          
+        
+}
 getEvents("https://corsproxy.io/?https%3A%2F%2Fsinfutboltv.com%2Fagendadeportiva.php");

@@ -170,6 +170,7 @@ function keyInput(evt) {
 }
 function labelAction(){
 	lblTimer=0;
+	play(parseInt(lblBox.innerHTML));
 	lblBox.innerHTML="";
 	console.log("labelAction");
 }

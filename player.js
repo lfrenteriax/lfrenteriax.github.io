@@ -159,6 +159,7 @@ function keyInput(evt) {
            else{
 		   lblBox.innerHTML=lblBox.innerHTML+evt.key;   
 		    auxlblBox.value="";
+		   lblTimer=0;
 	   }
            	
           

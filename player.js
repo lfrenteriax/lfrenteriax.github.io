@@ -168,4 +168,7 @@ function keyInput(evt) {
           
         
 }
+function labelAction(){
+	console.log("labelAction");
+}
 getEvents("https://corsproxy.io/?https%3A%2F%2Fsinfutboltv.com%2Fagendadeportiva.php");

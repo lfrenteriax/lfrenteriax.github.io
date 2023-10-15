@@ -157,7 +157,7 @@ function keyInput(evt) {
             if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57))
                 alert(false,evt.key);
            else{
-		   lblBox.innerHTML=lblBox.innerHTML+auxlblBox.value;   
+		   lblBox.innerHTML=lblBox.innerHTML+evt.key;   
 		    auxlblBox.value="";
 	   }
            	

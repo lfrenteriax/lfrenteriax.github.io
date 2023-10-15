@@ -201,6 +201,7 @@ function showTime(){
     
 }
 mdTimer=0;
+lblTimer=0;
 
 // Get the modal
 var modal = document.getElementById("myModal");
@@ -239,6 +240,15 @@ function accion(){
     }
     if(mdTimer==5)
         span.click()
+if(lblBox.innerHTML!=""){
+	lblTimer++;
+ 	if (lblTimer==5){
+	 	console.log('lblAction')
+		lblTimer=0;
+		lblBox.innerHTML="";
+	 	
+ 	}
+}	
 }
 	function mdBodyFcn(){
 

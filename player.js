@@ -151,7 +151,7 @@ parsed = parser.parseFromString(html, "text/html");
 function keyInput(evt) {
 
 
-             
+             console.log(evt.keyCode);
             // Only ASCII character in that range allowed
             var ASCIICode = (evt.which) ? evt.which : evt.keyCode
             if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57))

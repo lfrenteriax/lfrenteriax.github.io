@@ -115,8 +115,11 @@ function mouseEv(evt) {
             var ASCIICode = (evt.which) ? evt.which : evt.keyCode
             if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57))
                 alert(false,evt.key);
-           else 
-           	alert(true)
+           else{
+		   lblBox.innerHTML=lblBox.innerHTML+auxlblBox.value;   
+		    auxlblBox.value="";
+	   } 
+           	
           
         
 }

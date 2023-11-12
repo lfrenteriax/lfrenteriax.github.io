@@ -50,7 +50,8 @@ function playM3u8(url, license, clearkeys) {
 
     document.title = url; //.split('/')[url.split('/').length - 1];
 }
-var url = window.location.href.split("#")[1];
+/*
+  var url = window.location.href.split("#")[1];
 
 ck1='{"'
 ck2='":"'
@@ -64,6 +65,20 @@ try {
 }
 try {
   license =  url.split("?l=")[1];    
+} catch {
+  license = '';
+}
+playM3u8(url, license, ck);
+*/
+
+  var url = window.location.href.split("#")[1];
+try {
+   ck = window.atob(window.location.href.split("&ck=")[1]);
+} catch{
+  ck = '{"":""}';
+}
+try {
+  license = window.atob(window.location.href.split("&l=")[1]);    
 } catch {
   license = '';
 }

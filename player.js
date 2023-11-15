@@ -92,7 +92,7 @@ if(url.search("https")==0){
       cnt.innerHTML='<iframe src="'+nurl+'"' + 'title="description"> </iframe> ';
 
 }else{
-	window.open("http://yielding-meeting.surge.sh/?url="+url);
+	window.open(url);
 }
 
 }

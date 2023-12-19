@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body {
+  font-family: Arial;
+  color: white;
+}
+
+.split {
+  width: 100%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+.left {
+  top: 0;
+  height: 70%;
+}
+
+.right {
+  top: 70%;
+ 
+ 
+  height: 30%;
+ 
+}
+
+
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+    </style>
+  </head>
+  <body>
+    <div class="split left">
+      
+               <iframe frameborder="0" allowfullscreen
+      style="width:100%;height:100%;" class="media" src="https://lfrenteriax.github.io/player.html#https://playout.cdn.cartoonnetwork.com.br/playout_04/playlist-720p.m3u8"></iframe>
+      
+    </div>
+    <div class="split right">
+      
+        <img src="URL">
+     
+    </div>
+  </body>
+</html>

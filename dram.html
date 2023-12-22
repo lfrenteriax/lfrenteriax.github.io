@@ -35,8 +35,36 @@ body {
     background-position: center;
     width: 100%;
     height: 100%;
+    opacity:1;
+    display:none
+    
+    
+    
 }
 
+
+
+ .scroll-left{
+font-size: 200%;
+ width: 100%;
+ height: 100%;
+ margin: 0;
+ line-height: 50px;
+ text-align: left;
+ /* Starting position */
+ transform:translateX(100%);
+ /* Apply animation to this element */
+ animation: scroll-left 20s linear infinite;
+}
+/* Move it (define the animation) */
+@keyframes scroll-left {
+ 0%   {
+ transform: translateX(100%); 		
+ }
+ 100% {
+ transform: translateX(-100%); 
+ }
+}
 </style>
 </head>
 <body>
@@ -46,9 +74,12 @@ body {
 </iframe>
 
 <div class="content">
-    <img class="fill" src="https://lfrenteriax.github.io/DrAM.png" alt="centered image">
 
+	<img class="fill" src="https://lfrenteriax.github.io/DrAM.png" alt="centered image">
+    <p class="scroll-left">Bienvenidos</p>  
+     
 </div>
+
 
 <script>
 
@@ -56,3 +87,7 @@ body {
 
 </body>
 </html>
+
+
+
+

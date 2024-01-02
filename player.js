@@ -38,7 +38,7 @@ function listaDeCanales(){
 	  listaCnt.innerHTML=localStorage.getItem("lista");
   	}
 	if(localStorage.getItem("ultimoCanal")!=null)
-		loa
+		play(parseInt(localStorage.getItem("ultimoCanal")));
 }
 
 

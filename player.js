@@ -122,12 +122,24 @@ function mouseEv(evt) {
              
             // Only ASCII character in that range allowed
             var ASCIICode = (evt.which) ? evt.which : evt.keyCode
-            if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57))
-                alert(false,evt.key);
+            if (ASCIICode==13){
+		 labelAction();
+	   }else if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57))
+                 if (ASCIICode==38){
+		  	lblBox.innerHTML=ultimoCanal+1;
+			labelAction(); 
+		 }
+		if (ASCIICode==40){
+		  	lblBox.innerHTML=ultimoCanal-1;
+			labelAction(); 
+		 }
+		 
+		    //alert(false,evt.key);
            else{
-		   lblBox.innerHTML=lblBox.innerHTML+auxlblBox.value;   
+		   lblBox.innerHTML=lblBox.innerHTML+evt.key;   
 		    auxlblBox.value="";
-	   } 
+		   lblTimer=0;
+	   }
            	
           
         

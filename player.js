@@ -30,6 +30,7 @@ function listaDeCanales(){
 		  // (Note: the exact output may be browser-dependent)
 		}
 	}
+	localStorage.setItem("lista",listaCnt.innerHTML);
 }
 
 
@@ -57,6 +58,7 @@ function GetIndex(sender)
 
 // Parse it
 var myplaylist="";
+var listaCnt;
 function parse () {
    
    myplaylist = M3U.parse(this.response);
@@ -70,9 +72,14 @@ function parse () {
 
    
 function inicio(){
-  
-getCanales(document.location.origin+"/lista.m3u");
-
+  listaCnt=document.getElementById("thelist");	
+  if(localStorage.getItem("lista")==null){
+	alert("Presione ok para cargar los canales por primera vez...");
+	getCanales(document.location.origin+"/lista.m3u");
+  }else{
+	  	
+	  listaCnt.innerHTML=localStorage.getItem("lista");
+  }
 }
 
 var frame=top.document.getElementById("frame");

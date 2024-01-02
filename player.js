@@ -20,17 +20,24 @@ function listaDeCanales(){
 	listaCnt.innerHTML="";
 	listaCnt.innerHTML="<ol id='thelist'></ol>"
 	var completelist= document.getElementById("thelist");
-	for (i=1;i<myplaylist.length;i++){
-		try {
-		 //completelist.innerHTML += "<li>" + myplaylist[i-1].title.split(",")[1] + "</li>";
-		completelist.innerHTML += "<li><a href='#' onclick='GetIndex(this)'>"+myplaylist[i-1].title.split(",")[1] +"</a></li>"	
-		} catch (error) {
-		 // console.error(error);
-		  // Expected output: ReferenceError: nonExistentFunction is not defined
-		  // (Note: the exact output may be browser-dependent)
+	if(localStorage.getItem("lista")==null){
+		alert("Presione ok para cargar los canales por primera vez...");
+		for (i=1;i<myplaylist.length;i++){
+			try {
+			 //completelist.innerHTML += "<li>" + myplaylist[i-1].title.split(",")[1] + "</li>";
+				completelist.innerHTML += "<li><a href='#' onclick='GetIndex(this)'>"+myplaylist[i-1].title.split(",")[1] +"</a></li>"	
+			} catch (error) {
+			 // console.error(error);
+			  // Expected output: ReferenceError: nonExistentFunction is not defined
+			  // (Note: the exact output may be browser-dependent)
+			}
 		}
-	}
-	localStorage.setItem("lista",listaCnt.innerHTML);
+		localStorage.setItem("lista",listaCnt.innerHTML);
+	 }else{
+	  	
+	  listaCnt.innerHTML=localStorage.getItem("lista");
+  	}
+	
 }
 
 
@@ -72,14 +79,7 @@ function parse () {
 
    
 function inicio(){
-  listaCnt=document.getElementById("thelist");	
-  if(localStorage.getItem("lista")==null){
-	alert("Presione ok para cargar los canales por primera vez...");
 	getCanales(document.location.origin+"/lista.m3u");
-  }else{
-	  	
-	  listaCnt.innerHTML=localStorage.getItem("lista");
-  }
 }
 
 var frame=top.document.getElementById("frame");

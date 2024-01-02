@@ -169,7 +169,7 @@ parsed = parser.parseFromString(html, "text/html");
   
 }
 
-function keyInput(evt) {
+function myKeyPress(evt) {
 
 
              
@@ -188,6 +188,29 @@ function keyInput(evt) {
            	
           
         
+}
+
+function myKeyDown(e){
+  var keynum;
+
+  if(window.event) { // IE                  
+    keynum = e.keyCode;
+  } else if(e.which){ // Netscape/Firefox/Opera                 
+    keynum = e.which;
+  }
+  if(keynum==38){
+	  lblBox.innerHTML=ultimoCanal+1;
+	  play(ultimoCanal+1);
+	  
+	  labelAction()
+  }
+	if(keynum==40){
+	  lblBox.innerHTML=ultimoCanal+-;
+	  play(ultimoCanal+-);
+	  
+	  labelAction()
+  }
+  alert(keynum);
 }
 function labelAction(){
 	lblTimer=0;

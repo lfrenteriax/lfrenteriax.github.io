@@ -37,7 +37,8 @@ function listaDeCanales(){
 	  	
 	  listaCnt.innerHTML=localStorage.getItem("lista");
   	}
-	
+	if(localStorage.getItem("ultimoCanal")!=null)
+		loa
 }
 
 
@@ -84,7 +85,8 @@ function inicio(){
 
 var frame=top.document.getElementById("frame");
 function play(ch) {
-mdBodyFcn();
+localStorage.setItem("ultimoCanal",ch);
+
 	
 url=myplaylist[ch].file;
 console.log(url)

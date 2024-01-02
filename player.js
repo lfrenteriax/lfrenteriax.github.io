@@ -14,7 +14,7 @@ function getCanales(url){
   xhr.send();
 }
 
-
+var ultimoCanal;
 function listaDeCanales(){
 	listaCnt=document.getElementsByClassName("modal-body")[0];
 	listaCnt.innerHTML="";
@@ -86,7 +86,7 @@ function inicio(){
 var frame=top.document.getElementById("frame");
 function play(ch) {
 localStorage.setItem("ultimoCanal",ch);
-
+ultimoCanal=ch;
 	
 url=myplaylist[ch].file;
 console.log(url)
@@ -164,7 +164,15 @@ function keyInput(evt) {
             // Only ASCII character in that range allowed
             var ASCIICode = (evt.which) ? evt.which : evt.keyCode
 	    console.log(ASCIICode);
-           if (ASCIICode==13){
+           if (ASCIICode==38){
+	  	ultimoCanal=ultimoCanal+1;
+		lblBox.innerHTML=ultimoCanal;
+		labelAction();
+	   }else if (ASCIICode==40){
+	  	ultimoCanal=ultimoCanal-1;
+		lblBox.innerHTML=ultimoCanal;
+		labelAction();
+	   }else if (ASCIICode==13){
 		 labelAction();
 	   }else if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57))
                 alert(false,evt.key);

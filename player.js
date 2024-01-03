@@ -198,6 +198,7 @@ function myKeyDown(e){
   } else if(e.which){ // Netscape/Firefox/Opera                 
     keynum = e.which;
   }
+	console.log(ultimoCanal);
   if(keynum==38){
 	  lblBox.innerHTML=ultimoCanal+1;
 	  play(ultimoCanal+1);
@@ -217,7 +218,7 @@ if(keynum==40){
 	  labelAction()
 	}, 1000);
   }
-  console.log(keynum);
+  
 }
 function labelAction(){
 	lblTimer=0;

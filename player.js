@@ -179,7 +179,7 @@ function myKeyPress(evt) {
             if (ASCIICode==13){
 		 labelAction();
 	   }else if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57))
-                alert(false,evt.key);
+                //alert(false,evt.key);
            else{
 		   lblBox.innerHTML=lblBox.innerHTML+evt.key;   
 		    auxlblBox.value="";
@@ -209,7 +209,7 @@ function myKeyDown(e){
 	  play(ultimoCanal-1);
 	  labelAction()
   }
-  alert(keynum);
+  console.log(keynum);
 }
 function labelAction(){
 	lblTimer=0;

@@ -200,14 +200,20 @@ function myKeyDown(e){
   }
   if(keynum==38){
 	  lblBox.innerHTML=ultimoCanal+1;
-	  play(ultimoCanal+1);
+	  setTimeout(function(){
+	     play(ultimoCanal+1);
 	  
 	  labelAction()
+	}, 1000);
+	 
   }
-	if(keynum==40){
+if(keynum==40){
 	  lblBox.innerHTML=ultimoCanal-1;
-	  play(ultimoCanal-1);
+	setTimeout(function(){
+	     play(ultimoCanal-1);
+	  
 	  labelAction()
+	}, 1000);
   }
   console.log(keynum);
 }

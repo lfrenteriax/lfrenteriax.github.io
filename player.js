@@ -85,25 +85,26 @@ function inicio(){
 
 var frame=top.document.getElementById("frame");
 function play(ch) {
-localStorage.setItem("ultimoCanal",ch);
-ultimoCanal=ch;
-	
-url=myplaylist[ch].file;
-console.log(url)
-cnt=document.getElementById("cnt");
-cnt.innerHTML="";
-//frame=document.createElement("frame");
-//frame.id="frame";
-//cnt.appendChild(frame);
-
-if(url.search("https")==0){
-      nurl="/player.html#"+url;
-      cnt.innerHTML='<iframe src="'+nurl+'"' + 'title="description"> </iframe> ';
-
-}else{
-	window.open(url);
-}
-
+	if(!isNaN(chn)){
+		localStorage.setItem("ultimoCanal",ch);
+		ultimoCanal=ch;
+			
+		url=myplaylist[ch].file;
+		console.log(url)
+		cnt=document.getElementById("cnt");
+		cnt.innerHTML="";
+		//frame=document.createElement("frame");
+		//frame.id="frame";
+		//cnt.appendChild(frame);
+		
+		if(url.search("https")==0){
+		      nurl="/player.html#"+url;
+		      cnt.innerHTML='<iframe src="'+nurl+'"' + 'title="description"> </iframe> ';
+		
+		}else{
+			window.open(url);
+		}
+	}
 }
 getParameter = (key) => {
   

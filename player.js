@@ -178,9 +178,9 @@ function myKeyPress(evt) {
 	    console.log(ASCIICode);
             if (ASCIICode==13){
 		 labelAction();
-	   }else if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57))
+	   }else if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57)){
                 //alert(false,evt.key);
-           else{
+		    } else{
 		   lblBox.innerHTML=lblBox.innerHTML+evt.key;   
 		    auxlblBox.value="";
 		   lblTimer=0;

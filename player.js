@@ -201,7 +201,7 @@ function myKeyDown(e){
 	console.log(ultimoCanal);
   if(keynum==38){
 	  lblBox.innerHTML=ultimoCanal+1;
-	  play(ultimoCanal+1);
+	
 	  setTimeout(function(){
 	     
 	  
@@ -211,7 +211,7 @@ function myKeyDown(e){
   }
 if(keynum==40){
 	  lblBox.innerHTML=ultimoCanal-1;
-	  play(ultimoCanal-1);
+	 
 	setTimeout(function(){
 	    
 	  

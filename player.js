@@ -205,7 +205,7 @@ function myKeyDown(e){
 	  labelAction()
   }
 	if(keynum==40){
-	  lblBox.innerHTML=ultimoCanal-;
+	  lblBox.innerHTML=ultimoCanal-1;
 	  play(ultimoCanal-1);
 	  labelAction()
   }

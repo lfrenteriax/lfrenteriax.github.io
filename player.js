@@ -85,7 +85,7 @@ function inicio(){
 
 var frame=top.document.getElementById("frame");
 function play(ch) {
-	if(!isNaN(chn)){
+	if(!isNaN(ch)){
 		localStorage.setItem("ultimoCanal",ch);
 		ultimoCanal=ch;
 			

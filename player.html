@@ -25,7 +25,7 @@ body {
 
 <div id="player"></div>
 <script>
-
+//
 function playM3u8(url, license, clearkeys) {
     var player = new Clappr.Player({
         source: url,
@@ -42,7 +42,7 @@ function playM3u8(url, license, clearkeys) {
                 servers: {
                     'com.widevine.alpha': license
                 },
-                clearKeys: JSON.parse(clearkeys)
+                clearKeys: {getKEY:getKEY2}//JSON.parse(clearkeys)
             },
         },
 
@@ -70,7 +70,7 @@ try {
 }
 playM3u8(url, license, ck);
 */
-
+/*
   var url = window.location.href.split("#")[1];
 try {
    ck = window.atob(window.location.href.split("&ck=")[1]);
@@ -82,7 +82,23 @@ try {
 } catch {
   license = '';
 }
-playM3u8(url, license, ck);
+  */
+   function getParameterByName(name) {
+        name = name.replace(/[\[]/, "\[").replace(/[\]]/, "\]");
+        var regex = new RegExp("[\?&]" + name + "=([^&#]*)")
+          , results = regex.exec(location.search);
+        return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+    }
+
+    var getURL = getParameterByName('get');
+    var getIMG = getParameterByName('img');
+    var getKEY = getParameterByName('key');
+    var getKEY2 = getParameterByName('key2');
+    var getlLicense= getParameterByName('license');
+    if (getURL == "#") {
+        alert('Vuelve a la página anterior');
+    }
+playM3u8(getURL);
 
 </script>
 </body>

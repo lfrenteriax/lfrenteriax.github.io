@@ -98,7 +98,7 @@ function play(ch) {
 		//cnt.appendChild(frame);
 		
 		if(url.search("https")==0){
-		      nurl="/player.html#"+url;
+		      nurl="/player.html?get="+url;
 		      cnt.innerHTML='<iframe src="'+nurl+'"' + 'title="description"> </iframe> ';
 		
 		}else{

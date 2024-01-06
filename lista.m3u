@@ -1,5 +1,6 @@
 #EXTM3U
-https://cd-stream-live.telenorcdn.net/cdgo/cdgo_viasat_fotboll_live/cdgo_viasat_fotboll_live.isml/playlist.mpd?&ck=eyJhMTQ0N2NlY2VmM2E0ZTgzOWQ1OWMxZjk5NGVhZjJjNiI6Ijg2YTM3NjI4ODQ5NmEwYzMyZTExNzhlNDIxMzljZTY2In0=
+#EXTINF:-1 group-title="HD" ,START +
+https://live-ftc-na-south-2.media.starott.com/clt2/va01/starplus/event/2024/01/06/AFC_Wimbledon_vs_Ipswich__20240106_1704538230075/ctr-all-complete.m3u8&img=https://prod-ripcut-delivery.disney-plus.net/v1/variant/star/E288E48558A9F65F999D1F1299E4931A17EC143F0AECB1FEFA90DD5B185798A9/scale?width=1920&aspectRatio=1.78&format=jpeg&key=2798d077e19f4aa98d0edc04a84db677&key2=d4a48696518c0dd30623e2e08f5654a5
 #EXTINF:-1 group-title="HD" ,Directv sports (62)
 https://1062-vos.dtvott.com/DASH/manifest.mpd?&ck=eyI0MDk0NTlkZDg5MjUzMmEwYWU5OTk0N2JkNDZiNGU0OCI6IjllNWEwNmUyODAzYjAyYTYwMDZkOGMxOWQ0NzM4YTM1In0=
 #EXTINF:-1 group-title="HD" ,Directv sports (57)

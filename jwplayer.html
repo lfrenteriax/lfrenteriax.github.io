@@ -49,6 +49,7 @@ body {
     var getIMG = getParameterByName('img');
     var getKEY = getParameterByName('key');
     var getKEY2 = getParameterByName('key2');
+    var getTYPE = getParameterByName('type');
     if (getURL == "#") {
         alert('Vuelve a la página anterior');
     }
@@ -71,7 +72,7 @@ body {
             "image": getIMG,
             "sources": [{
                 "default": false,
-                "type": "dash",
+                "type": getTYPE,
                 "file": getURL,
                 "drm": {
                     "clearkey": {

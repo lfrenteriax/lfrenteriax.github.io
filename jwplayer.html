@@ -63,7 +63,7 @@ body {
 <div id="player"></div>
 <script type="text/javascript">
     var playerInstance = jwplayer("player");
-
+    
     playerInstance.setup({
 
         playlist: [{
@@ -72,7 +72,7 @@ body {
             "image": getIMG,
             "sources": [{
                 "default": false,
-                "type": getTYPE,
+               // "type": getTYPE,
                 "file": getURL,
                 "drm": {
                     "clearkey": {

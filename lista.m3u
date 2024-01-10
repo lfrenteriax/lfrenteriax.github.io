@@ -1,30 +1,28 @@
 #EXTM3U
 #EXTINF:-1 group-title="HD" ,START +
-https://live-ftc-na-south-2.media.starott.com/clt2/va01/starplus/event/2024/01/06/AFC_Wimbledon_vs_Ipswich__20240106_1704538230075/ctr-all-complete.m3u8&img=https://prod-ripcut-delivery.disney-plus.net/v1/variant/star/E288E48558A9F65F999D1F1299E4931A17EC143F0AECB1FEFA90DD5B185798A9/scale?width=1920&aspectRatio=1.78&format=jpeg&key=2798d077e19f4aa98d0edc04a84db677&key2=d4a48696518c0dd30623e2e08f5654a5
+https://cd-stream-live.telenorcdn.net/cdgo/cdgo_viasat_fotboll_live/cdgo_viasat_fotboll_live.isml/playlist.mpd&key2=86a376288496a0c32e1178e42139ce66&key=a1447cecef3a4e839d59c1f994eaf2c6
 #EXTINF:-1 group-title="HD" ,Directv sports (62)
-https://1062-vos.dtvott.com/DASH/manifest.mpd?&ck=eyI0MDk0NTlkZDg5MjUzMmEwYWU5OTk0N2JkNDZiNGU0OCI6IjllNWEwNmUyODAzYjAyYTYwMDZkOGMxOWQ0NzM4YTM1In0=
+https://1062-vos.dtvott.com/DASH/manifest.mpd&key2=9e5a06e2803b02a6006d8c19d4738a35&key=409459dd892532a0ae99947bd46b4e48
 #EXTINF:-1 group-title="HD" ,Directv sports (57)
-https://1057-vos.dtvott.com/DASH/manifest.mpd?&ck=eyJiYjBlY2FhNmFlNjIzMzYxOTdjNjRkNDEyOWM2YTA5ZCI6ImNiMGJiYTQ1MjJmZmNkOTBhOGI1MTU0MWEwZmNmYWUwIn0=
+https://1057-vos.dtvott.com/DASH/manifest.mpd&key2=cb0bba4522ffcd90a8b51541a0fcfae0&key=bb0ecaa6ae62336197c64d4129c6a09d
 #EXTINF:-1 group-title="HD" ,Directv sports (59)
-https://1059-vos.dtvott.com/DASH/manifest.mpd?&ck=eyIyZmE1OTQ2MzE3NmYzZGMyOTY0YjkxYjRmN2FlMWQ3YyI6IjgxZDViOTVjYzkwNTdkNmIwZjg1Yzc4ZTZmMGU0MWU3In0=
+https://1059-vos.dtvott.com/DASH/manifest.mpd&key2=81d5b95cc9057d6b0f85c78e6f0e41e7&key=2fa59463176f3dc2964b91b4f7ae1d7c
 #EXTINF:-1 group-title="HD" ,Directv sports (58)
-https://1058-vos.dtvott.com/DASH/manifest.mpd?&ck=eyJmYTg3OTY1MTBiZjAzNTdkOWZjMzliZDgxYmJmY2ExOCI6ImVhNzEzOGQwNzAwOWRmZjdlYmU2ZTJmZWRjZWJmNjYwIn0=
+https://1058-vos.dtvott.com/DASH/manifest.mpd&key2=ea7138d07009dff7ebe6e2fedcebf660&key=fa8796510bf0357d9fc39bd81bbfca18
 #EXTINF:-1 group-title="DEPORTES" tvg-logo="https://i.imgur.com/7bJVo9V.png",DSports 2
-https://1063-vos.dtvott.com/DASH/manifest.mpd?&ck=eyJhYjAyMGExNzEwZDYzMDE2OGRlMjE2OTgzNzVhNDM5YyI6IjIzNTg5OGNkYjEwYjBjZGJhMzVlYTJjZTk0ZmJiMWZiICJ9
+https://1063-vos.dtvott.com/DASH/manifest.mpd&key2=235898cdb10b0cdba35ea2ce94fbb1fb &key=ab020a1710d630168de21698375a439c
 #EXTINF:-1 group-title="DEPORTES" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/DAZN_LaLiga_2023_Logo.svg/1024px-DAZN_LaLiga_2023_Logo.svg.png" ,DAZN LA LIGA
-https://dce-ak-livewwdazn.akamaized.net/dashdrm/dazn-linear-043/stream.mpd?&ck=eyI4MmY4ZTJhMTdkYWM0NGMwYTE4ZjY2MDQ3OTM0OWM1OSI6IjFiMTQ0ZjczZTZmZWZlOTFjZDA1Zjg1MGUyYjU4OWQwIn0=
-
+https://dce-ak-livewwdazn.akamaized.net/dashdrm/dazn-linear-043/stream.mpd&key2=1b144f73e6fefe91cd05f850e2b589d0&key=82f8e2a17dac44c0a18f660479349c59
 #EXTINF:-1 group-title="LIGAS EUROPEAS" tvg-logo="https://upload.wikimedia.org/wikipedia/en/thumb/f/f2/Premier_League_Logo.svg/560px-Premier_League_Logo.svg.png" ,PREMIER LEAGUE (4)
-https://ottb.live.cf.ww.aiv-cdn.net/dub-nitro/live/clients/dash/enc/bmnelo5c7a/out/v1/3ce2cdc4589f46189322bd3717c77957/cenc.mpd?&ck=eyI0NGRkOWNkMzcwYjA4YTg2OGVhZDExNWZlODRlY2ZkZSI6ImJmZjE5YWIwYTUxY2YxNGU4NDgzODliMTUyOTEzZmQwIn0=
+https://ottb.live.cf.ww.aiv-cdn.net/dub-nitro/live/clients/dash/enc/bmnelo5c7a/out/v1/3ce2cdc4589f46189322bd3717c77957/cenc.mpd&key2=bff19ab0a51cf14e848389b152913fd0&key=44dd9cd370b08a868ead115fe84ecfde
 #EXTINF:-1 group-title="LIGAS EUROPEAS" tvg-logo="https://m.media-amazon.com/images/M/MV5BM2ViMzUzZjctZTIxNi00M2MxLWJkMmYtYzcyNzU2ZWU4Y2QzXkEyXkFqcGdeQXVyNDg4MjkzNDk@._V1_FMjpg_UX1000_.jpg" ,CHAMPIONS LEAGUE (2)
-https://arlocallivechannelsdash.lcdn.clarotv.com.ar/Content/DASH_DASH_FK/Live/channel(ESPN)/master.mpd?&ck=eyJlMjcwMTE5NGE1NTFkMzBiMzVhN2Q0OTM5MzdlNTBmMSI6IjM4MmZmMDE1MjI3OGQ4YmE5NDZkNGZkODJhMDliMjEyICJ9
-
+https://arlocallivechannelsdash.lcdn.clarotv.com.ar/Content/DASH_DASH_FK/Live/channel(ESPN)/master.mpd&key2=382ff0152278d8ba946d4fd82a09b212 &key=e2701194a551d30b35a7d493937e50f1
 #EXTINF:-1 group-title="INFANTILES" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Nickelodeon_2023_logo_%28outline%29.svg/1024px-Nickelodeon_2023_logo_%28outline%29.svg.png",Nickelodeon
-https://latamvosliveclarovideo.akamaized.net/Content/DASH_DASH_FK/Live/Channel(NICKELODEON_HD)/manifest.mpd?&ck=eyJlNjVmZjI4OGIwMzJlYzVlYTcwZGVlNDIzMGJhMDQ4MCI6IjkwMmVmMmRlMmY5OWY4ZGRmYzBkOGQ1ZWIyNjFlOGVhICJ9
+https://latamvosliveclarovideo.akamaized.net/Content/DASH_DASH_FK/Live/Channel(NICKELODEON_HD)/manifest.mpd&key2=902ef2de2f99f8ddfc0d8d5eb261e8ea &key=e65ff288b032ec5ea70dee4230ba0480
 #EXTINF:-1 group-title="SPORTS" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Eredivisie_nieuw_logo_2017-.svg/400px-Eredivisie_nieuw_logo_2017-.svg.png" , SPORTS BEL 
-https://dce-ak-livewwdazn.akamaized.net/dashdrm/dazn-linear-051/stream.mpd?&ck=eyI4MmY4ZTJhMTdkYWM0NGMwYTE4ZjY2MDQ3OTM0OWM1OSI6IjFiMTQ0ZjczZTZmZWZlOTFjZDA1Zjg1MGUyYjU4OWQwIn0=
+https://dce-ak-livewwdazn.akamaized.net/dashdrm/dazn-linear-051/stream.mpd&key2=1b144f73e6fefe91cd05f850e2b589d0&key=82f8e2a17dac44c0a18f660479349c59
 #EXTINF:-1 group-title="LIGAS EUROPEAS" tvg-logo="https://upload.wikimedia.org/wikipedia/en/thumb/f/f2/Premier_League_Logo.svg/560px-Premier_League_Logo.svg.png" ,PREMIER LEAGUE (2)
-https://latamvosliveclarovideo.akamaized.net/Content/DASH_DASH_FK/Live/Channel(ESPN_2_HD)/manifest.mpd?&ck=eyI4ZDdjYjhmYmM4MWNmM2VkZGY4ZWJiNWRiNWUxMTI4MiI6ImI3YTk4ODEyYWI4ZDg5NzQ2NDlhNmVjNDIwYzAxM2UxICJ9
+https://latamvosliveclarovideo.akamaized.net/Content/DASH_DASH_FK/Live/Channel(ESPN_2_HD)/manifest.mpd&key2=b7a98812ab8d8974649a6ec420c013e1 &key=8d7cb8fbc81cf3eddf8ebb5db5e11282
 #EXTINF:-1 tvg-logo="https://upload.wikimedia.org/wikipedia/commons/7/79/Canal_2_TCS.png" group-title="EL SALVADOR", 2 | CANAL 2
 https://telecorporacion-es.cdn.vustreams.com:443/live/af9473b9-191c-456a-b714-57eace94e2fe/live.isml/live-audio_0=64000-video=2000000.m3u8
 #EXTINF:-1 tvg-logo="https://upload.wikimedia.org/wikipedia/commons/e/e8/Canal_6_TCS.png" group-title="EL SALVADOR",CANAL 6

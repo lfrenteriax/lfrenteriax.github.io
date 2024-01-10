@@ -1,4 +1,14 @@
 #EXTM3U
+#EXTINF:-1 tvg-logo="https://i.imgur.com/iojehzx.png" group-title="PREMIUM",TVP AR
+https://arlocallivechannelsdash.lcdn.clarotv.com.ar/Content/DASH_DASH_FK/Live/channel(TV_PUBLICA)/master.mpd&key2=8183007932359a3cf145198b5129119c&key=f887375d1c7f007fb10447e84581be70
+#EXTINF:-1 tvg-logo="https://i.imgur.com/iojehzx.png" group-title="PREMIUM",TYC SPORTS
+https://arlocallivechannelsdash.lcdn.clarotv.com.ar/Content/DASH_DASH_FK/Live/channel(TYC_SPORTS)/master.mpd&key2=b2466bb519b759ae3de1818988532453&key=f7dcab829caeffb612740a1c51f0478d
+#EXTINF:-1 tvg-logo="https://i.imgur.com/iojehzx.png" group-title="PREMIUM",ESPN 3
+https://arlocallivechannelsdash.lcdn.clarotv.com.ar/Content/DASH_DASH_FK/Live/channel(ESPN3)/master.mpd&key2=e5f759e256c768c6349deb9cc446cabe&key=1b645185cd62d881fa91fd92170690ea
+#EXTINF:-1 tvg-logo="https://i.imgur.com/iojehzx.png" group-title="PREMIUM",ESPN 2
+https://arlocallivechannelsdash.lcdn.clarotv.com.ar/Content/DASH_DASH_FK/Live/channel(ESPN2)/master.mpd&key2=bf54d928e27061a13fafdde934146472&key=579fc0cd11842bce9c045a0d55aa4872
+#EXTINF:-1 tvg-logo="https://i.imgur.com/iojehzx.png" group-title="PREMIUM",ESPN
+https://arlocallivechannelsdash.lcdn.clarotv.com.ar/Content/DASH_DASH_FK/Live/channel(ESPN)/master.mpd&key2=382ff0152278d8ba946d4fd82a09b212&key=e2701194a551d30b35a7d493937e50f1
 #EXTINF:-1 tvg-logo="https://i.imgur.com/iojehzx.png" group-title="PREMIUM",FOX SPORTS 3
 https://arlocallivechannelsdash.lcdn.clarotv.com.ar/Content/DASH_DASH_FK/Live/channel(FOX_SPORTS_3)/master.mpd&key2=214f8c082dfb8ba30c28d1034f5c1eb2&key=07d6de0963faf991eadde57c90605350
 #EXTINF:-1 tvg-logo="https://i.imgur.com/iojehzx.png" group-title="PREMIUM",FOX SPORTS 2
@@ -11,6 +21,130 @@ https://1059-vos.dtvott.com/DASH/manifest.mpd&key2=978f073eee32606a3f2544306fb1a
 https://1063-vos-da-mt.dtvott.com/DASH/manifest.mpd&key2=af4ba31c1324eb92ac88463f7bd941d5&key=c44d52b11dce3875ad2765c9d469075b
 #EXTINF:-1 tvg-logo="https://i.imgur.com/iojehzx.png" group-title="PREMIUM",DSPORTS +
 https://1071-abc-da-bpk.dtvott.com/dash_live_1071/manifest.mpd&key2=7400a9f905f172d5d74d7dc440724c8e&key=f19c3a8c638d52c2ab77b9566bcb2996
+#EXTINF:-1 tvg-id="ATV.pe",ATV (720p) [Not 24/7]
+https://d3krdjs7is1y42.cloudfront.net/ATVpe/df13ed57843877b21ad969184ab6888f.sdp/playlist.m3u8
+#EXTINF:-1 tvg-id="ATVSur.pe",ATV Sur (720p) [Not 24/7]
+https://d3krdjs7is1y42.cloudfront.net/ATVSur/f05b236d4a4d43b3987d6f5ed5686d6e.sdp/playlist.m3u8
+#EXTINF:-1 tvg-id="ATVPlus.pe",ATV+
+https://linear-258.frequency.stream/dist/vix/258/hls/master/playlist.m3u8
+#EXTINF:-1 tvg-id="ATVPlus.pe",ATV+ Noticias (720p) [Not 24/7]
+https://d3krdjs7is1y42.cloudfront.net/ATVmas/74ee4169b59e6f987ae3d77317309109.sdp/playlist.m3u8
+#EXTINF:-1 tvg-id="AmericaEstereoGuayaquil.ec",América Estéreo Guayaquil (360p)
+https://video.makrodigital.com/americaestereoguayaquil/americaestereoguayaquil/playlist.m3u8
+#EXTINF:-1 tvg-id="AmericaEstereoIbarra.ec",América Estéreo Ibarra (720p)
+https://video.makrodigital.com/americaestereoibarra/americaestereoibarra/playlist.m3u8
+#EXTINF:-1 tvg-id="AmericaEstereoQuito.ec",América Estéreo Quito (1080p)
+https://video.makrodigital.com/americaestereoquito/americaestereoquito/playlist.m3u8
+#EXTINF:-1 tvg-id="AmericaEstereoTulcan.ec",América Estéreo Tulcán (614p)
+https://video.makrodigital.com/americaestereotulcan/americaestereotulcan/playlist.m3u8
+#EXTINF:-1 tvg-id="AntenaUnoRadiovideo.ec",Antena Uno RadioVideo (360p)
+https://tvdatta.com:3578/live/antenaunolive.m3u8
+#EXTINF:-1 tvg-id="Asomavision.ec",Asomavisión (614p)
+https://asomatv.duckdns.org/livestream/stream.m3u8
+#EXTINF:-1 tvg-id="AustralTV.ec",Austral TV (1080p)
+https://stmv3.voxtvhd.com.br/australtv/australtv/playlist.m3u8
+#EXTINF:-1 tvg-id="BacanTeVeo.ec",Bacán Te Veo (540p)
+https://cloudvideo.servers10.com:8081/8064/index.m3u8
+#EXTINF:-1 tvg-id="CanalUno.ec",Canal Uno (720p)
+https://cp.panelchs.com:1936/8034/8034/playlist.m3u8
+#EXTINF:-1 tvg-id="DuranTV.ec",Durán TV (480p) [Not 24/7]
+https://cloudvideo.servers10.com:8081/8074/index.m3u8
+#EXTINF:-1 tvg-id="EcotelTV.ec",Ecotel (720p) [Not 24/7]
+https://ecotel.streamseguro.com/hls/ecoteltv.m3u8
+#EXTINF:-1 tvg-id="EcuadorTV.ec",Ecuador TV (720p)
+https://samson.streamerr.co:8081/akira/index.m3u8
+#EXTINF:-1 tvg-id="EcuaMundoRadioTV.ec",EcuaMundo Radio TV (720p)
+https://pacific.direcnode.com:3353/live/ecuamundotvlive.m3u8
+#EXTINF:-1 tvg-id="Ecuavisa.ec",Ecuavisa (1080p) [Not 24/7]
+https://redirector.rudo.video/hls-video/c54ac2799874375c81c1672abb700870537c5223/ecuavisaqo/ecuavisaqo/.m3u8
+#EXTINF:-1 tvg-id="EducaTV.ec",EducaTV (720p) [Not 24/7]
+https://vid2.ecuamedia.net/educatv/live/playlist.m3u8
+#EXTINF:-1 tvg-id="ElSolNetworkTV.ec",El Sol Network TV (1080p)
+https://server40.servistreaming.com:3174/live/elsolnetworklive.m3u8
+#EXTINF:-1 tvg-id="ElSolTV.ec",El Sol Radio y Televisión (404p) [Not 24/7]
+http://streaming5.globalhostla.com/rtplive/elsolrad/playlist.m3u8
+#EXTINF:-1 tvg-id="FMMundo.ec",FM Mundo (1080p)
+https://video2.makrodigital.com/fmmundo/fmmundo/playlist.m3u8
+#EXTINF:-1 tvg-id="HechosEcuador.ec",Hechos Ecuador (480p) [Not 24/7]
+https://stmv.streamingvip.click/hechosecuador/hechosecuador/playlist.m3u8
+#EXTINF:-1 tvg-id="IeanJesusEcuador.ec",IeanJesus Ecuador (720p)
+https://cloud37.ecuatel.com/iglesia2020/Stream1/playlist.m3u8
+#EXTINF:-1 tvg-id="IntiTV.ec",Inti TV (1080p)
+https://5e2f36bc1c433.streamlock.net/inti/inti-network.stream/.m3u8
+#EXTINF:-1 tvg-id="LaNuevaRadioTV977.ec",La Nueva Radio TV 97.7 (720p)
+https://cp.panelchs.com:1936/8112/8112/playlist.m3u8
+#EXTINF:-1 tvg-id="LaPipolTv.ec",La Pipol Tv Sangolquí (360p) [Not 24/7]
+https://cp.panelchs.com:1936/8004/8004/playlist.m3u8
+#EXTINF:-1 tvg-id="LaRedondaTV.ec",La Redonda TV (1080p) [Not 24/7]
+https://ythls.armelin.one/channel/UCG_S--F4wcdre2-8PG9YlhA.m3u8
+#EXTINF:-1 tvg-id="LatacungaTV.ec",LatacungaTV (720p)
+https://ssh101.bozztv.com/ssh101/streamlatacungatv/playlist.m3u8
+#EXTINF:-1 tvg-id="LoretoTV.ec",Loreto TV (720p)
+https://stmv1.voxplayer.com.br/vidieg12/vidieg12/playlist.m3u8
+#EXTINF:-1 tvg-id="MajestadTelevision.ec",Majestad Televisión (720p)
+https://go.majestadtv.ec/hls/stream.m3u8
+#EXTINF:-1 tvg-id="Manavision.ec",Manavisión (480p)
+https://play.once.net.ec/play/Ily2oYdd3E1fi9wK2zORoRovFU9P5xM0g3CNVK2MT0M/.m3u8
+#EXTINF:-1 tvg-id="MarcaTV.ec",Marca TV (1080p)
+https://eu1.servers10.com:8081/8030/index.m3u8
+#EXTINF:-1 tvg-id="MarioPintoTV.ec",Mario Pinto TV (720p) [Not 24/7]
+https://eu1.servers10.com:8081/8028/index.m3u8
+#EXTINF:-1 tvg-id="MetropoliMediosTV.ec",Metropoli Medios TV (720p)
+https://eu1.servers10.com:8081/8214/index.m3u8
+#EXTINF:-1 tvg-id="MulticanalCatamayo.ec",Multicanal Catamayo (720p) [Not 24/7]
+https://multicanal.streamseguro.com/hls/streaming.m3u8
+#EXTINF:-1 tvg-id="Nortvision.ec",Nortvisión (720p)
+https://plataformavideo.com/live/nortvision.m3u8
+#EXTINF:-1 tvg-id="NukaTV.ec",Ñuka TV (720p)
+https://cloudvideo.servers10.com:8081/8118/index.m3u8
+#EXTINF:-1 tvg-id="OromarTV.ec",Oromar TV (720p)
+https://stream.oromartv.com:8082/hls/oromartv_hi/index.m3u8
+#EXTINF:-1 tvg-id="PantallaClasicaEC.ec",Pantalla Clásica EC (512p)
+https://rpn3.bozztv.com/ssh101/ssh101/ecuadoralmundo/playlist.m3u8
+#EXTINF:-1 tvg-id="PasajeTV.ec",Pasaje TV (1080p)
+https://canal.pasajetv.com/PasajeTV.m3u8
+#EXTINF:-1 tvg-id="PrensaEc.ec",PrensaEc (720p) [Not 24/7]
+https://rpn3.bozztv.com/ssh101/ssh101/prensaec/playlist.m3u8
+#EXTINF:-1 tvg-id="PrincesaEstereoTV.ec",Princesa Estéreo TV (720p)
+https://cp.panelchs.com:1936/8006/8006/playlist.m3u8
+#EXTINF:-1 tvg-id="PuruwaTV.ec",Puruwa TV (720p)
+https://live.tvcontrolcp.com:1936/puruwatv/puruwatv/playlist.m3u8
+#EXTINF:-1 tvg-id="RadioAlegria985FM.ec",Radio Alegria 98.5 FM (720p)
+https://video.compuwebecuador.com:3880/stream/play.m3u8
+#EXTINF:-1 tvg-id="RadioBonita1067.ec",Radio Bonita 106.7 (720p)
+https://cloudvideo.servers10.com:8081/8154/index.m3u8
+#EXTINF:-1 tvg-id="RadioCuencaEstereo.ec",Radio Cuenca Estéreo (720p)
+https://eu1.servers10.com:8081/8074/index.m3u8
+#EXTINF:-1 tvg-id="RadioFantastica989FM.ec",Radio Fantástica 98.9 FM (1080p)
+http://190.107.232.9:8082/livestream/stream.m3u8
+#EXTINF:-1 tvg-id="RadioImpacto2.ec",Radio Impacto 2 (1080p) [Not 24/7]
+https://inliveserver.com:1936/17518/17518/playlist.m3u8
+#EXTINF:-1 tvg-id="RadioLaOriginalTV.ec",Radio La Original TV (1080p)
+https://cloudvideo.servers10.com:8081/8216/index.m3u8
+#EXTINF:-1 tvg-id="RTS.ec",RTS (480p)
+https://d2vb5iv6i34lh5.cloudfront.net/RTSEC/93fc3c04cedad73f1f80aebf11451d53.sdp/playlist.m3u8
+#EXTINF:-1 tvg-id="RTU.ec",RTU (1080p) [Not 24/7]
+https://video1.makrodigital.com/rtu/rtu/chunks.m3u8?nimblesessionid=
+#EXTINF:-1 tvg-id="RTVNaranjal.ec",RTV Naranjal (720p)
+https://cp.panelchs.com:1936/rtsgctweku/rtsgctweku/playlist.m3u8
+#EXTINF:-1 tvg-id="SenalPositivaTV.ec",Señal Positiva TV (1080p)
+https://eu1.servers10.com:8081/8108/index.m3u8
+#EXTINF:-1 tvg-id="SonoOndaTV.ec",Sono Onda TV (720p)
+https://live.obslivestream.com/sonoondatv/index.m3u8
+#EXTINF:-1 tvg-id="Teleamazonas.ec",Teleamazonas (1080p) [Geo-blocked]
+https://teleamazonas-live.cdn.vustreams.com/live/0fc97608-6057-4db8-9af7-102c21ac18af/live.isml/0fc97608-6057-4db8-9af7-102c21ac18af.m3u8
+#EXTINF:-1 tvg-id="Telerama.ec",Telerama (240p) [Not 24/7]
+https://envivo.telerama.ec/stream.m3u8
+#EXTINF:-1 tvg-id="TVAustro.ec",TV Austro (720p)
+https://cp.panelchs.com:1936/8148/8148/playlist.m3u8
+#EXTINF:-1 tvg-id="TVLegislativa.ec",TV Legislativa (1080p)
+http://181.198.32.153:8080/hls/stream.m3u8
+#EXTINF:-1 tvg-id="TVC.ec",TVC (480p)
+https://d2vb5iv6i34lh5.cloudfront.net/TVCEC/d58f5eb5cbb9ad9c56649a0083de7c8b.sdp/playlist.m3u8
+#EXTINF:-1 tvg-id="WuanPlus.ec",Wuan+ (1080p)
+https://video2.makrodigital.com/wuanplus/wuanplus/playlist.m3u8
+#EXTINF:-1 tvg-id="ZaracayTV.ec",Zaracay TV (1080p) [Not 24/7]
+https://video2.makrodigital.com/zaracay/zaracay/playlist.m3u8
 #EXTINF:-1 tvg-logo="https://i.imgur.com/iojehzx.png" group-title="PREMIUM",A&E
 https://1003-vos.dtvott.com/DASH/manifest.mpd&key=5ac2542522593abf9ffc745787cd9398&key2=7c6e95f4161f919167ca87006c361a34
 #EXTINF:-1 group-title="DEPORTES" tvg-logo="https://i.imgur.com/DnlZuB9.png" ,ESPN Deportes

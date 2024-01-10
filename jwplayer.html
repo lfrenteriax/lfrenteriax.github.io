@@ -72,16 +72,22 @@ body {
             "image": getIMG,
             "sources": [{
                 "default": false,
-               // "type": getTYPE,
+                "type": "dash",
                 "file": getURL,
-               "drm": {},/*
+               "drm": {
                     "clearkey": {
                         "keyId": getKEY,
                         "key": getKEY2
                     }
-                },*/
+                },
                 "label": "0"
-            }]
+            },
+            {
+                "default": false,
+                "file": getURL,
+                "label": "0"
+            }
+            ]
         }],
         width: "100%",
         height: "100%",

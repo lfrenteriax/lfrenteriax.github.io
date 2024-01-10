@@ -58,6 +58,16 @@ body {
                 "file": getURL,
                 "label": "0"
             }
+    
+    if(getKey){
+        source.type="dash";
+        source.drm={
+                    "clearkey": {
+                        "keyId": getKEY,
+                        "key": getKEY2
+                    }
+                }
+    }
     /*
     {
                 "default": false,

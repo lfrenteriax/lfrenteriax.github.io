@@ -223,7 +223,13 @@ if(keynum==40){
 }
 function labelAction(){
 	lblTimer=0;
-	play(parseInt(lblBox.innerHTML));
+	if(lblBox.innerHTML=="0000"){
+		localStorage.clear();
+		location.reload();
+		
+	}else{
+		play(parseInt(lblBox.innerHTML));
+	}
 	lblBox.innerHTML="";
 	console.log("labelAction");
 }

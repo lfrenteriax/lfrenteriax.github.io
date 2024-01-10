@@ -53,8 +53,26 @@ body {
     if (getURL == "#") {
         alert('Vuelve a la página anterior');
     }
-
-   
+    var source={
+                "default": false,
+                "file": getURL,
+                "label": "0"
+            }
+    /*
+    {
+                "default": false,
+                "type": "dash",
+                "file": getURL,
+               "drm": {
+                    "clearkey": {
+                        "keyId": getKEY,
+                        "key": getKEY2
+                    }
+                },
+                "label": "0"
+            }
+            
+   */
 </script>
 <script src='https://content.jwplatform.com/libraries/KB5zFt7A.js'></script>
 <script>
@@ -70,24 +88,7 @@ body {
             "title": "Fútbol Libre | Star+",
             "description": "Mirar Star+ de manera gratuita",
             "image": getIMG,
-            "sources": [{
-                "default": false,
-                "type": "dash",
-                "file": getURL,
-               "drm": {
-                    "clearkey": {
-                        "keyId": getKEY,
-                        "key": getKEY2
-                    }
-                },
-                "label": "0"
-            },
-            {
-                "default": false,
-                "file": getURL,
-                "label": "0"
-            }
-            ]
+            "sources": [source]
         }],
         width: "100%",
         height: "100%",

@@ -1,4 +1,16 @@
 #EXTM3U
+#EXTINF:-1 tvg-logo="https://i.imgur.com/iojehzx.png" group-title="PREMIUM",FOX SPORTS 3
+https://arlocallivechannelsdash.lcdn.clarotv.com.ar/Content/DASH_DASH_FK/Live/channel(FOX_SPORTS_3)/master.mpd&key2=214f8c082dfb8ba30c28d1034f5c1eb2&key=07d6de0963faf991eadde57c90605350
+#EXTINF:-1 tvg-logo="https://i.imgur.com/iojehzx.png" group-title="PREMIUM",FOX SPORTS 2
+https://arlocallivechannelsdash.lcdn.clarotv.com.ar/Content/DASH_DASH_FK/Live/channel(FOX_SPORTS_2)/master.mpd&key2=ccc0df4145157aa753e61a3940603d0b&key=d6e347e55f793df11e4ed7fc4ca397dd
+#EXTINF:-1 tvg-logo="https://i.imgur.com/iojehzx.png" group-title="PREMIUM",FOX SPORTS
+https://arlocallivechannelsdash.lcdn.clarotv.com.ar/Content/DASH_DASH_FK/Live/channel(FOX_SPORTS)/master.mpd&key2=a273d74c9c9269c0793862da41cf41b9&key=6a5ee0465846b56021136c6c69741375
+#EXTINF:-1 tvg-logo="https://i.imgur.com/iojehzx.png" group-title="PREMIUM",DSPORTS 2
+https://1059-vos.dtvott.com/DASH/manifest.mpd&key2=978f073eee32606a3f2544306fb1a7b3&key=3e1c0dd8d951335d9d8c534d29277c91
+#EXTINF:-1 tvg-logo="https://i.imgur.com/iojehzx.png" group-title="PREMIUM",DSPORTS 2
+https://1063-vos-da-mt.dtvott.com/DASH/manifest.mpd&key2=af4ba31c1324eb92ac88463f7bd941d5&key=c44d52b11dce3875ad2765c9d469075b
+#EXTINF:-1 tvg-logo="https://i.imgur.com/iojehzx.png" group-title="PREMIUM",DSPORTS +
+https://1071-abc-da-bpk.dtvott.com/dash_live_1071/manifest.mpd&key2=7400a9f905f172d5d74d7dc440724c8e&key=f19c3a8c638d52c2ab77b9566bcb2996
 #EXTINF:-1 tvg-logo="https://i.imgur.com/iojehzx.png" group-title="PREMIUM",A&E
 https://1003-vos.dtvott.com/DASH/manifest.mpd&key=5ac2542522593abf9ffc745787cd9398&key2=7c6e95f4161f919167ca87006c361a34
 #EXTINF:-1 group-title="DEPORTES" tvg-logo="https://i.imgur.com/DnlZuB9.png" ,ESPN Deportes

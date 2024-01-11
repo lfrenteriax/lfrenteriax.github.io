@@ -211,7 +211,7 @@ function myKeyPress(evt) {
             var ASCIICode = (evt.which) ? evt.which : evt.keyCode
 	    console.log(ASCIICode);
            
-            kpAction(ASCII);
+            kpAction(ASCIICode);
           
         
 }

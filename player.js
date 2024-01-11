@@ -237,6 +237,11 @@ getEvents("https://corsproxy.io/?https%3A%2F%2Fsinfutboltv.com%2Fagendadeportiva
 
  window.addEventListener('message', function(event) {
     console.log("Message received from the child: " + event.data); // Message received from child
+    if(event.data[0]=="kd")
+	    myKeyDown(event.data[1]);
+    else
+	   myKeyPress(event.data[1])  ;
+	    
   });
 
 

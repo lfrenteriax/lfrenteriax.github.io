@@ -170,14 +170,8 @@ parsed = parser.parseFromString(html, "text/html");
   
 }
 
-function myKeyPress(evt) {
-
-
-             
-            // Only ASCII character in that range allowed
-            var ASCIICode = (evt.which) ? evt.which : evt.keyCode
-	    console.log(ASCIICode);
-            if (ASCIICode==13){
+function kpAction(ASCII){
+	 if (ASCIICode==13){
 		 labelAction();
 	   }else if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57)){
                 console.log(evt.key);
@@ -186,21 +180,9 @@ function myKeyPress(evt) {
 		    auxlblBox.value="";
 		   lblTimer=0;
 	   }
-           	
-          
-        
 }
-
-function myKeyDown(e){
-  var keynum;
-
-  if(window.event) { // IE                  
-    keynum = e.keyCode;
-  } else if(e.which){ // Netscape/Firefox/Opera                 
-    keynum = e.which;
-  }
-	console.log(ultimoCanal);
-  if(keynum==38 || keynum==33){
+function kdAction(keynum){
+	 if(keynum==38 || keynum==33){
 	  lblBox.innerHTML=ultimoCanal+1;
 	
 	  setTimeout(function(){
@@ -219,6 +201,31 @@ if(keynum==40||keynum==34){
 	  labelAction()
 	}, 1000);
   }
+}
+
+function myKeyPress(evt) {
+
+
+             
+            // Only ASCII character in that range allowed
+            var ASCIICode = (evt.which) ? evt.which : evt.keyCode
+	    console.log(ASCIICode);
+           
+            kpAction(ASCII);
+          
+        
+}
+
+function myKeyDown(e){
+  var keynum;
+
+  if(window.event) { // IE                  
+    keynum = e.keyCode;
+  } else if(e.which){ // Netscape/Firefox/Opera                 
+    keynum = e.which;
+  }
+	
+ kdAction(keynum);
   
 }
 function labelAction(){

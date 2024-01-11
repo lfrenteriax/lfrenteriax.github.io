@@ -100,7 +100,7 @@ function myKeyPress(evt) {
             // Only ASCII character in that range allowed
             var ASCIICode = (evt.which) ? evt.which : evt.keyCode
 	    console.log(ASCIICode);  
-	    window.parent.postMessage(["kp",e], "*");
+	    window.parent.postMessage(["kp",ASCIICode], "*");
 }
 
 function myKeyDown(e){
@@ -113,7 +113,7 @@ function myKeyDown(e){
   }
 	console.log(keynum);
  
-       window.parent.postMessage(["kd",e], "*");
+       window.parent.postMessage(["kd",keynum], "*");
 }
     
     var playerInstance = jwplayer("player");

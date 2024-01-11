@@ -90,6 +90,28 @@ body {
 </script>
 <div id="player"></div>
 <script type="text/javascript">
+function myKeyPress(evt) {
+
+
+             
+            // Only ASCII character in that range allowed
+            var ASCIICode = (evt.which) ? evt.which : evt.keyCode
+	    console.log(ASCIICode);        	
+}
+
+function myKeyDown(e){
+  var keynum;
+
+  if(window.event) { // IE                  
+    keynum = e.keyCode;
+  } else if(e.which){ // Netscape/Firefox/Opera                 
+    keynum = e.which;
+  }
+	console.log(keynum);
+ 
+  
+}
+    
     var playerInstance = jwplayer("player");
     
     playerInstance.setup({
@@ -107,5 +129,7 @@ body {
         cast: {},
         sharing: {}
     });
+
+    
 </script>
 </html>

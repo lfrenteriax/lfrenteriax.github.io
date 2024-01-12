@@ -149,7 +149,7 @@ function mouseEv(evt) {
 function getEvents(url){
  const http = new XMLHttpRequest()
 
-http.open("GET", "https://corsproxy.io/?https%3A%2F%2Fsinfutboltv.com%2Fagendadeportiva.php")
+http.open("GET", url)
 http.send()
 
 http.onload = () => loadEvents(http.responseText)

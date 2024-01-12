@@ -251,5 +251,5 @@ function labelAction(){
   });
 
 
-getEvents("https://corsproxy.io/?https%3A%2F%2Fsinfutboltv.com%2Fagendadeportiva.php");
+getEvents("https://librefutboltv.net/star-plus/eventos.json","start");
 

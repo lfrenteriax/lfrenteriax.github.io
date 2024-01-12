@@ -152,13 +152,13 @@ function getEvents(url){
 http.open("GET", url)
 http.send()
 
-http.onload = () => loadEvents(http.responseText)
+http.onload = () => loadEvents(http.responseText,"")
 }
 
 var html;
 var parser = new DOMParser();
 var parsed;
-function loadEvents(response) { 
+function loadEvents(response,type) { 
   
   html = response;
  parser = new DOMParser();
@@ -240,7 +240,6 @@ function labelAction(){
 	lblBox.innerHTML="";
 	console.log("labelAction");
 }
-getEvents("https://corsproxy.io/?https%3A%2F%2Fsinfutboltv.com%2Fagendadeportiva.php");
 
  window.addEventListener('message', function(event) {
     console.log("Message received from the child: " + event.data); // Message received from child
@@ -252,4 +251,5 @@ getEvents("https://corsproxy.io/?https%3A%2F%2Fsinfutboltv.com%2Fagendadeportiva
   });
 
 
+getEvents("https://corsproxy.io/?https%3A%2F%2Fsinfutboltv.com%2Fagendadeportiva.php");
 

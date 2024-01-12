@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+	 <style type="text/css">
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial;
+  font-size: 17px;
+}
+.content {
+  position: fixed;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  color: #f1f1f1;
+  width: 100%;
+  padding: 20px;
+  display:none
+}
+
+
+
+
+#cnt {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%; 
+  min-height: 100%;
+}
+		 iframe{      
+        display: block;  /* iframes are inline by default */   
+        height: 100vh;  /* Set height to 100% of the viewport height */   
+        width: 100vw;  /* Set width to 100% of the viewport width */     
+        border: none; /* Remove default border */
+        background: lightyellow; /* Just for styling */
+    }
+
+
+
+		
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 70%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0;
+  border: 1px solid #888;
+  width: 70%;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 0.4s
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+  from {top:-300px; opacity:0} 
+  to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+  from {top:-300px; opacity:0}
+  to {top:0; opacity:1}
+}
+
+/* The Close Button */
+.close {
+  color: white;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-header {
+  padding: 2px 16px;
+  background-color: #5cb85c;
+  color: white;
+}
+
+.modal-body {
+padding: 2px 16px;
+ height:300px; 
+overflow-y:auto;
+}
+.modal-body p{
+	text-decoration: none;
+}
+.modal-footer {
+  padding: 2px 16px;
+  background-color: #5cb85c;
+  color: white;
+}
+#menuBtn{
+ border: 2px none black;
+
+	position: absolute; top:0; left:0;
+	
+	 width: 30px;
+	background: rgba(0, 0, 0, 0.01);
+    color: #c9c9c96e;
+    height: 30px;
+}
+#menuBtn:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+#auxlblBox{
+}
+#lblBox{
+background: rgba(0, 0, 0, 0.0);
+	position: absolute; top:0; left:70%;
+	
+	 width: 30px;
+	background: rgba(0, 0, 0, 0.0);
+    color: #c9c9c96e;
+    height: 30px;
+}
+.menuUl{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menuLs {
+  display: inline;
+}
+.menuA{
+	font-size: 120%;
+	text-decoration: none;
+
+}
+        </style>
+<body  onkeyPress="return myKeyPress(event)"  onkeyDown="return myKeyDown(event)">
+	 
+	<script src="parser.min.js"></script>
+<div id="cnt">
+<iframe id="frame"  src="https://www.youtube.com/embed/NsO5oFUZnHc?si=St9sSOI9IdePYfwt" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
+<button id="menuBtn">≡</button>
+
+	<h2 id="lblBox"></h2>
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <ul class="menuUl">
+  		<li class="menuLs"><a class="menuA" href="#">TV en vivo</a></li>
+  		<li class="menuLs"><a class="menuA" href="#">Ayuda</a></li>
+	</ul>
+    </div>
+    <div   onscroll="mdBodyFcn()" onmousemove="mdBodyFcn()" class="modal-body">
+      <p>Some text in the Modal Body</p>
+      <p>Some other text...</p>a
+      <p>Some text in the Modal Body</p>
+      <p>Some other text...</p>
+      <p>Some text in the Modal Body</p>
+      <p>Some other text...</p>
+      <p>Some text in the Modal Body</p>
+      <p>Some other text...</p>
+      <p>Some text in the Modal Body</p>
+      <p>Some other text...</p>
+    </div>
+    <div class="modal-footer">
+		<div id="MyClockDisplay" class="clock" onload="showTime()"></div>
+
+    </div>
+  </div>
+ 
+<script>
+function showTime(){
+    var date = new Date();
+    var h = date.getHours(); // 0 - 23
+    var m = date.getMinutes(); // 0 - 59
+    var s = date.getSeconds(); // 0 - 59
+    var session = "AM";
+    
+    if(h == 0){
+        h = 12;
+    }
+    
+    if(h > 12){
+        h = h - 12;
+        session = "PM";
+    }
+    
+    h = (h < 10) ? "0" + h : h;
+    m = (m < 10) ? "0" + m : m;
+    s = (s < 10) ? "0" + s : s;
+    
+    var time = h + ":" + m + ":" + s + " " + session;
+    document.getElementById("MyClockDisplay").innerText = time;
+    document.getElementById("MyClockDisplay").textContent = time;
+    
+    setTimeout(showTime, 1000);
+	accion();
+    
+}
+mdTimer=0;
+lblTimer=0;
+
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("menuBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+  modal.style.display = "block";
+  mdTimer=0;
+}
+btn.focus();
+function setFocus(){ 
+	btn.focus()
+}
+btn.onblur=setFocus;
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+function accion(){
+
+    if(modal.style.display=='block'){
+      console.log(mdTimer);
+       mdTimer++;   
+    }else{
+        mdTimer=0;
+    }
+    if(mdTimer==5)
+        span.click()
+if(lblBox.innerHTML!=""){
+	lblTimer++;
+ 	if (lblTimer==5){
+	 	labelAction();
+		
+	 	
+ 	}
+}	
+}
+	function mdBodyFcn(){
+
+		btn.click();
+	}
+
+
+var lblBox = document.getElementById('lblBox');
+
+
+showTime();	
+</script>
+<script src="player.js"></script>
+</body>
+</html>

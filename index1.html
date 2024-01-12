@@ -338,7 +338,11 @@ if(lblBox.innerHTML!=""){
 var lblBox = document.getElementById('lblBox');
 
 
-showTime();	
+showTime();
+
+function  menuFunction (this) {
+    console.log(this.innertHTML);
+}
 </script>
 <script src="player.js"></script>
 </body>

@@ -170,7 +170,7 @@ parsed = parser.parseFromString(html, "text/html");
   
 }
 
-function kpAction(ASCII){
+function kpAction(ASCIICode){
 	 if (ASCIICode==13){
 		 labelAction();
 	   }else if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57)){

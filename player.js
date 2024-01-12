@@ -146,13 +146,13 @@ function mouseEv(evt) {
         
 }
 
-function getEvents(url){
+function getEvents(event){
  const http = new XMLHttpRequest()
 
-http.open("GET", url)
+http.open("GET", event.url)
 http.send()
 
-http.onload = () => loadEvents(http.responseText,"")
+http.onload = () => loadEvents(http.responseText,event);
 }
 
 var html;
@@ -249,7 +249,11 @@ function labelAction(){
 	   kpAction(event.data[1])  ;
 	    
   });
-
-
-getEvents("https://librefutboltv.net/star-plus/eventos.json","start");
+function cargarStar(data){
+	console.log(data);
+}
+eventosStar=Object();	
+eventosStar.url="https://librefutboltv.net/star-plus/eventos.json","start";
+eventosStar.cargar=cargarStar;
+getEvents(eventosStar);
 

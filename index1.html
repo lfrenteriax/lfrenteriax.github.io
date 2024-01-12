@@ -335,12 +335,13 @@ if(lblBox.innerHTML!=""){
 
 
 var lblBox = document.getElementById('lblBox');
-
+var menuTitle= document.getElementById('menuTitle');
 
 showTime();
 
 function  menuFunction (obj) {
-    console.log(obj.innertHTML);
+    console.log(obj.innerHTML);
+    menuTitle.innerHTML=obj.innerHTML;
 }
 </script>
 <script src="player.js"></script>

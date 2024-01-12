@@ -174,9 +174,9 @@ function kpAction(ASCIICode){
 	 if (ASCIICode==13){
 		 labelAction();
 	   }else if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57)){
-                console.log(evt.key);
+                console.log(ASCIICode);
 		    } else{
-		   lblBox.innerHTML=lblBox.innerHTML+evt.key;   
+		   lblBox.innerHTML=lblBox.innerHTML+String.fromCharCode(ASCIICode);   
 		    auxlblBox.value="";
 		   lblTimer=0;
 	   }

@@ -200,12 +200,11 @@ background: rgba(0, 0, 0, 0.0);
 	<h2 id="lblBox"></h2>
 <!-- The Modal -->
 <div id="myModal1" class="modal1">
-<div class="vertical-menu">
-  <a href="#" onclick="menuFunction(this)" class="active">Home</a>
-  <a href="#" onclick="menuFunction(this)" >Link 1</a>
-  <a href="#" onclick="menuFunction(this)">Link 2</a>
-  <a href="#" onclick="menuFunction(this)">Link 3</a>
-  <a href="#" onclick="menuFunction(this)">Link 4</a>
+<div id="vertical-menu" class="vertical-menu">
+  <a href="#" onclick="menuFunction(this)">Canales</a>
+  <a href="#" onclick="menuFunction(this)">Eventos</a>
+  <a href="#" onclick="menuFunction(this)">Ayuda</a>
+
 </div>
 </div>
 <div id="myModal" class="modal">
@@ -214,7 +213,7 @@ background: rgba(0, 0, 0, 0.0);
  
     <div class="modal-header">
       <span class="close">&times;</span>
-       <h1>Canales</h1>
+       <h1 id="menuTitle">Canales</h1>
     </div>
     <div   onscroll="mdBodyFcn()" onmousemove="mdBodyFcn()" class="modal-body">
       <p>Some text in the Modal Body</p>

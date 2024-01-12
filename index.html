@@ -139,6 +139,15 @@ background: rgba(0, 0, 0, 0.0);
     color: #c9c9c96e;
     height: 30px;
 }
+.menuUl{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menuLs {
+  display: inline;
+}
         </style>
 <body  onkeyPress="return myKeyPress(event)"  onkeyDown="return myKeyDown(event)">
 	 
@@ -156,7 +165,10 @@ background: rgba(0, 0, 0, 0.0);
   <div class="modal-content">
     <div class="modal-header">
       <span class="close">&times;</span>
-      <h2>Modal Header</h2>
+      <ul class="menuUl">
+  		<li class="menuLs"><a href="#home">TV en vivo</a></li>
+  		<li class="menuLs"><a href="#news">Ayuda</a></li>
+	</ul>
     </div>
     <div   onscroll="mdBodyFcn()" onmousemove="mdBodyFcn()" class="modal-body">
       <p>Some text in the Modal Body</p>

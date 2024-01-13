@@ -250,6 +250,7 @@ function labelAction(){
 	   kpAction(event.data[1])  ;
 	    
   });
+var arr;
 function cargarStar(data){
 	arr=JSON.parse(data);
 
@@ -258,9 +259,8 @@ function cargarStar(data){
 	var completelist= document.getElementById("thelist");
 	for (i=1;i<arr.length;i++){
 			try {
-			 //completelist.innerHTML += "<li>" + myplaylist[i-1].title.split(",")[1] + "</li>";
-				urlP=atob(arr[i-1]['url'].split("?r=")[1]).split("?get=")[1]
-				completelist.innerHTML += "<li><a  href='#' onclick='playEvent('"+urlP+"')'>"+arr[i-1].title+"</a></li>"	
+				//atob(arr[i-1]['url'].split("?r=")[1]).split("?get=")[1]
+			  completelist.innerHTML += '<li><a  href="#" onclick="playEvent("'+arr[i-1]['url']+'")">'+arr[i-1].title+'</a></li>'	
 			} catch (error) {
 			 // console.error(error);
 			  // Expected output: ReferenceError: nonExistentFunction is not defined

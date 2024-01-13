@@ -276,7 +276,7 @@ function cargarStar(data){
 				li.appendChild(a);
 			}else{
 			    span.innerHTML=arr[i-1]['status'];
-				span.class="t";
+				span.className="t";
 				li.appendChild(a);
 				li.appendChild(span);
 			}

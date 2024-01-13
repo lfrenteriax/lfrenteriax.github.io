@@ -259,8 +259,8 @@ function cargarStar(data){
 	for (i=1;i<arr.length;i++){
 			try {
 			 //completelist.innerHTML += "<li>" + myplaylist[i-1].title.split(",")[1] + "</li>";
-				arr[i-1]['url']=atob(arr[i-1]['url'].split("?r=")[1]).split("?get=")[1]
-				completelist.innerHTML += "<li><a href='#' onclick='playEvent(this)'>"+arr[i-1].title+"</a></li>"	
+				urlP=atob(arr[i-1]['url'].split("?r=")[1]).split("?get=")[1]
+				completelist.innerHTML += "<li><a url='"+ urlP+"' href='#' onclick='playEvent(this)'>"+arr[i-1].title+"</a></li>"	
 			} catch (error) {
 			 // console.error(error);
 			  // Expected output: ReferenceError: nonExistentFunction is not defined

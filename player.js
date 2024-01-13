@@ -320,7 +320,7 @@ function cargarStar(data){
 eventosStar=Object();	
 eventosStar.url="https://librefutboltv.net/star-plus/eventos.json","start";
 eventosStar.cargar=cargarStar;
-getEvents(eventosStar);
+//getEvents(eventosStar);
 function playEvent(url){
 	console.log(url);
 	cnt.innerHTML="";

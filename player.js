@@ -266,18 +266,18 @@ function cargarStar(data){
 			a=document.createElement("a");
 			span=document.createElement("span");
 			a.href="#";
-			a.innerHTML=arr[i-1].title;
+			a.innerHTML=arr[i-1].title+" | ";
 			
 			if (arr['status'] == "FINALIZADO" ){}
 				
 			else if(arr['status'] == "EN VIVO"){
 				urlToP=atob(arr[i-1]['url'].split("?r=")[1]).split("?get=")[1]
 				a.onclick = function() { playEvent(urlToP); };
-				span.innerHTML=" | LIVE";
-			    	span.classList.add("live");;
+				span.innerHTML="LIVE";
+			    	span.classList.add("live");
 			}else{
-			    span.innerHTML=" | "+arr[i-1]['status'];
-			    span.classList.add("t");;
+			    span.innerHTML=arr[i-1]['status'];
+			    span.classList.add("t");
 				
 			}
 			li.appendChild(a);

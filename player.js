@@ -314,6 +314,7 @@ function cargarStar(data){
 			}
 	console.log("fin");
 */
+	guardaHorario();
 }
 eventosStar=Object();	
 eventosStar.url="https://librefutboltv.net/star-plus/eventos.json","start";

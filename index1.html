@@ -326,6 +326,11 @@ showTime();
 function  menuFunction (obj) {
     console.log(obj.innerHTML);
     menuTitle.innerHTML=obj.innerHTML;
+    if(obj.innerHTML=="Canales")
+	    getCanales("lista.m3u");
+    if(obj.innerHTML=="Eventos")
+	    getEvents(eventosStar);
+		
 }
 </script>
 <script src="horario.js"></script>

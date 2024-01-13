@@ -264,18 +264,24 @@ function cargarStar(data){
 			 
 			 li=document.createElement("li");
 			a=document.createElement("a");
+			span=document.createElement("span");
 			a.href="#";
-			a.innerHTML=i+" "+arr[i-1].title;
+			a.innerHTML=arr[i-1].title;
+			
 			if (arr['status'] == "FINALIZADO" ){}
 				
 			else if(arr['status'] == "EN VIVO"){
 				urlToP=atob(arr[i-1]['url'].split("?r=")[1]).split("?get=")[1]
 				a.onclick = function() { playEvent(urlToP); };
-			}else
-			    a.innerHTML=a.innerHTML+" | "+arr[i-1]['status'];
+				li.appendChild(a);
+			}else{
+			    span.innerHTML=arr[i-1]['status'];
+				span.class="t";
+				li.appendChild(a);
+				li.appendChild(span);
+			}
 			
-			li.appendChild(a);
-			  completelist.appendChild(li);	
+			completelist.appendChild(li);	
 			} catch (error) {
 			 // console.error(error);
 			  // Expected output: ReferenceError: nonExistentFunction is not defined

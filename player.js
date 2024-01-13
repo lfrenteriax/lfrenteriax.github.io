@@ -299,6 +299,6 @@ eventosStar.url="https://librefutboltv.net/star-plus/eventos.json","start";
 eventosStar.cargar=cargarStar;
 getEvents(eventosStar);
 function playEvent(event){
-	
+	console.log(event.url);
 }
 

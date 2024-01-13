@@ -85,6 +85,7 @@ function inicio(){
 }
 
 var frame=top.document.getElementById("frame");
+var cnt=document.getElementById("cnt");
 function play(ch) {
 	if(!isNaN(ch)){
 		localStorage.setItem("ultimoCanal",ch);
@@ -92,7 +93,7 @@ function play(ch) {
 			
 		url=myplaylist[ch].file;
 		console.log(url)
-		cnt=document.getElementById("cnt");
+		
 		cnt.innerHTML="";
 		//frame=document.createElement("frame");
 		//frame.id="frame";
@@ -307,5 +308,8 @@ eventosStar.cargar=cargarStar;
 getEvents(eventosStar);
 function playEvent(url){
 	console.log(url);
+	cnt.innerHTML="";
+	nurl="/jwplayer.html?get="+url;
+	cnt.innerHTML='<iframe src="'+nurl+'"' + 'title="description"> </iframe> ';
 }
 

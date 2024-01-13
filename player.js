@@ -15,10 +15,11 @@ function getCanales(url){
 }
 
 var ultimoCanal;
+var listaCnt=document.getElementsByClassName("modal-body")[0];
 function listaDeCanales(){
-	listaCnt=document.getElementsByClassName("modal-body")[0];
-	//listaCnt.innerHTML="";
-	//listaCnt.innerHTML="<ol id='thelist'></ol>"
+	
+	listaCnt.innerHTML="";
+	listaCnt.innerHTML="<ol id='thelist'></ol>"
 	var completelist= document.getElementById("thelist");
 	if(localStorage.getItem("lista")==null){
 		alert("Presione ok para cargar los canales por primera vez...");
@@ -251,21 +252,31 @@ function labelAction(){
   });
 function cargarStar(data){
 	arr=JSON.parse(data);
+
+    listaCnt.innerHTML="";
+	listaCnt.innerHTML="<ol id='thelist'></ol>"
+	var completelist= document.getElementById("thelist");
+	for (i=1;i<arr.length;i++){
+			try {
+			 //completelist.innerHTML += "<li>" + myplaylist[i-1].title.split(",")[1] + "</li>";
+				arr[i-1]['url']=atob(arr[i-1]['url'].split("?r=")[1]).split("?get=")[1]
+				completelist.innerHTML += "<li><a href='#' onclick='playEvent(this)'>"+arr[i-1].title+"</a></li>"	
+			} catch (error) {
+			 // console.error(error);
+			  // Expected output: ReferenceError: nonExistentFunction is not defined
+			  // (Note: the exact output may be browser-dependent)
+			}
+	}
+	/*
     var content = '';
 			
 			for (var i = 0; i < arr.length; i++)
 			{
-				if (i%4==0)
-				{
-					if (i != 0)
-						content += '</div>';
-					
-					content += '<div class="w3-row-padding w3-padding-16 w3-center" id="copa">';
-				}
-					
+							
 				var obj = arr[i];
-		
-				if (obj['status'] == "FINALIZADO" || obj['status'] == "EN VIVO")
+				if (obj['status'] == "FINALIZADO" ){}
+				
+				else if ( obj['status'] == "EN VIVO")
 					status = obj['status'];
 				else
 					status = 'HOY | <span class="t">' + obj['status'] + '</span> hs';
@@ -281,9 +292,13 @@ function cargarStar(data){
 					content += '</div>';
 			}
 	console.log("fin");
+*/
 }
 eventosStar=Object();	
 eventosStar.url="https://librefutboltv.net/star-plus/eventos.json","start";
 eventosStar.cargar=cargarStar;
 getEvents(eventosStar);
+function playEvent(event){
+	
+}
 

@@ -272,7 +272,7 @@ function cargarStar(data){
 				urlToP=atob(arr[i-1]['url'].split("?r=")[1]).split("?get=")[1]
 				a.onclick = function() { playEvent(urlToP); };
 			}else
-			    a.innerHTML=a.innerHTML+" | "+arr['status'];
+			    a.innerHTML=a.innerHTML+" | "+arr[i-1]['status'];
 			
 			li.appendChild(a);
 			  completelist.appendChild(li);	

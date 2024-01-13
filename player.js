@@ -261,13 +261,20 @@ function cargarStar(data){
 	for (i=1;i<arr.length;i++){
 			try {
 				//atob(arr[i-1]['url'].split("?r=")[1]).split("?get=")[1]
-			 urlToP=atob(arr[i-1]['url'].split("?r=")[1]).split("?get=")[1]
+			 
 			 li=document.createElement("li");
 			a=document.createElement("a");
 			a.href="#";
 			a.innerHTML=i+" "+arr[i-1].title;
-			a.onclick = function() { playEvent(urlToP); };
-				li.appendChild(a);
+			if (arr['status'] == "FINALIZADO" ){}
+				
+			else if(arr['status'] == "EN VIVO"){
+				urlToP=atob(arr[i-1]['url'].split("?r=")[1]).split("?get=")[1]
+				a.onclick = function() { playEvent(urlToP); };
+			}else
+			    a.innerHTML=a.innerHTML+" | "+arr['status'];
+			
+			li.appendChild(a);
 			  completelist.appendChild(li);	
 			} catch (error) {
 			 // console.error(error);

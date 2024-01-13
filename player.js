@@ -158,12 +158,12 @@ http.onload = () => loadEvents(http.responseText,event);
 var html;
 var parser = new DOMParser();
 var parsed;
-function loadEvents(response,type) { 
-  
-  html = response;
+function loadEvents(response,event) { 
+  event.cargar(response);
+ /* html = response;
  parser = new DOMParser();
 parsed = parser.parseFromString(html, "text/html");
- menu=parsed.getElementsByClassName("menu")[0];
+ menu=parsed.getElementsByClassName("menu")[0];*/
 // lista=menu.getElementsByTagName("li");
 
 //  document.getElementById("demo").innerHTML = menu.firstChild.innerText;

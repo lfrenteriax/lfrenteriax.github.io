@@ -273,14 +273,15 @@ function cargarStar(data){
 			else if(arr['status'] == "EN VIVO"){
 				urlToP=atob(arr[i-1]['url'].split("?r=")[1]).split("?get=")[1]
 				a.onclick = function() { playEvent(urlToP); };
-				li.appendChild(a);
+				span.innerHTML=" | LIVE";
+			    	span.classList.add("live");;
 			}else{
-			    span.innerHTML=arr[i-1]['status'];
-				span.classList.add("t");;
-				li.appendChild(a);
-				li.appendChild(span);
+			    span.innerHTML=" | "+arr[i-1]['status'];
+			    span.classList.add("t");;
+				
 			}
-			
+			li.appendChild(a);
+			li.appendChild(span);
 			completelist.appendChild(li);	
 			} catch (error) {
 			 // console.error(error);

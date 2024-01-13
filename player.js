@@ -260,7 +260,7 @@ function cargarStar(data){
 			try {
 			 //completelist.innerHTML += "<li>" + myplaylist[i-1].title.split(",")[1] + "</li>";
 				urlP=atob(arr[i-1]['url'].split("?r=")[1]).split("?get=")[1]
-				completelist.innerHTML += "<li><a url='"+ urlP+"' href='#' onclick='playEvent(this)'>"+arr[i-1].title+"</a></li>"	
+				completelist.innerHTML += "<li><a url='"+ urlP+"' href='#' onclick='playEvent("+urlP+")'>"+arr[i-1].title+"</a></li>"	
 			} catch (error) {
 			 // console.error(error);
 			  // Expected output: ReferenceError: nonExistentFunction is not defined
@@ -298,7 +298,7 @@ eventosStar=Object();
 eventosStar.url="https://librefutboltv.net/star-plus/eventos.json","start";
 eventosStar.cargar=cargarStar;
 getEvents(eventosStar);
-function playEvent(event){
-	console.log(event.url);
+function playEvent(url){
+	console.log(url);
 }
 

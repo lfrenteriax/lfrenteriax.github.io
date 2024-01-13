@@ -250,7 +250,37 @@ function labelAction(){
 	    
   });
 function cargarStar(data){
-	console.log(data);
+	arr=JSON.parse(data);
+    var content = '';
+			
+			for (var i = 0; i < arr.length; i++)
+			{
+				if (i%4==0)
+				{
+					if (i != 0)
+						content += '</div>';
+					
+					content += '<div class="w3-row-padding w3-padding-16 w3-center" id="copa">';
+				}
+					
+				var obj = arr[i];
+		
+				if (obj['status'] == "FINALIZADO" || obj['status'] == "EN VIVO")
+					status = obj['status'];
+				else
+					status = 'HOY | <span class="t">' + obj['status'] + '</span> hs';
+			
+				if (status == "EN VIVO")
+					color = "danger";
+				else
+					color = "dark";
+					
+				content += '<div class="w3-quarter"><a href="' + obj['url'] + '"><img src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/star/' + obj['img'] + '/scale?width=500&aspectRatio=1.78&format=jpeg" alt="Star+" style="width:100%" class="w3-hover-opacity"></a><a class="btn btn-block btn-' + color + '" href="' + obj['url'] + '">' + status + '</a> <div class="w3-card-4"><p><b>' + obj['league'] + '</b></p><p>' + obj['title'] + '</p></div></div>';
+				
+				if (i == arr.length-1)
+					content += '</div>';
+			}
+	console.log("fin");
 }
 eventosStar=Object();	
 eventosStar.url="https://librefutboltv.net/star-plus/eventos.json","start";

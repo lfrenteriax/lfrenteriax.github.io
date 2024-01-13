@@ -17,8 +17,8 @@ function getCanales(url){
 var ultimoCanal;
 function listaDeCanales(){
 	listaCnt=document.getElementsByClassName("modal-body")[0];
-	listaCnt.innerHTML="";
-	listaCnt.innerHTML="<ol id='thelist'></ol>"
+	//listaCnt.innerHTML="";
+	//listaCnt.innerHTML="<ol id='thelist'></ol>"
 	var completelist= document.getElementById("thelist");
 	if(localStorage.getItem("lista")==null){
 		alert("Presione ok para cargar los canales por primera vez...");

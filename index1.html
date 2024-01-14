@@ -128,8 +128,15 @@ overflow-y:auto;
   font-size: 1.2em;
 }
 .live(
- color:green;		 
+ color:green;
+ animation: blink 1s linear infinite;
 )
+
+@keyframes blink{
+0%{opacity: 0;}
+50%{opacity: .5;}
+100%{opacity: 1;}
+}
 .modal-footer {
  
   background-color: #5cb85c;

@@ -268,8 +268,8 @@ function cargarStar(data){
 			a.href="#";
 			a.innerHTML=arr[i-1].title+" | ";
 			
-			if (arr['status'] != "FINALIZADO" ){
-				if(arr['status'] == "EN VIVO"){
+			if (arr[i-1]['status'] != "FINALIZADO" ){
+				if(arr[i-1]['status'] == "EN VIVO"){
 					urlToP=atob(arr[i-1]['url'].split("?r=")[1]).split("?get=")[1]
 					a.onclick = function() { playEvent(urlToP); };
 					span.innerHTML="LIVE";

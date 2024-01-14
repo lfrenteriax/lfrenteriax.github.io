@@ -268,21 +268,24 @@ function cargarStar(data){
 			a.href="#";
 			a.innerHTML=arr[i-1].title+" | ";
 			
-			if (arr['status'] == "FINALIZADO" ){}
-				
-			else if(arr['status'] == "EN VIVO"){
-				urlToP=atob(arr[i-1]['url'].split("?r=")[1]).split("?get=")[1]
-				a.onclick = function() { playEvent(urlToP); };
-				span.innerHTML="LIVE";
-			    	span.classList.add("live");
-			}else{
-			    span.innerHTML=arr[i-1]['status'];
-			    span.classList.add("t");
-				
+			if (arr['status'] != "FINALIZADO" ){
+				if(arr['status'] == "EN VIVO"){
+					urlToP=atob(arr[i-1]['url'].split("?r=")[1]).split("?get=")[1]
+					a.onclick = function() { playEvent(urlToP); };
+					span.innerHTML="LIVE";
+				    	span.classList.add("live");
+				}else{
+				    span.innerHTML=arr[i-1]['status'];
+				    span.classList.add("t");
+					
+				}	
+				li.appendChild(a);
+				li.appendChild(span);
+				completelist.appendChild(li);
 			}
-			li.appendChild(a);
-			li.appendChild(span);
-			completelist.appendChild(li);	
+				
+			
+				
 			} catch (error) {
 			 // console.error(error);
 			  // Expected output: ReferenceError: nonExistentFunction is not defined

@@ -252,6 +252,7 @@ function labelAction(){
 	    
   });
 var arr;
+var eventList={};
 function cargarStar(data){
 	arr=JSON.parse(data);
 
@@ -267,13 +268,13 @@ function cargarStar(data){
 			span=document.createElement("span");
 			a.href="#";
 			a.innerHTML=arr[i-1].league+" | "+arr[i-1].title+" | ";
-			
+			a.id="ev"+i;
 			if (arr[i-1]['status'] != "FINALIZADO" ){
 				if(arr[i-1]['status'] == "EN VIVO"){
 					urlToP=atob(arr[i-1]['url'].split("?r=")[1]);
 					if(urlToP.search("get=")>0)
 						urlToP=urlToP.split("?get=")[1]
-					a.onclick = function() { playEvent(urlToP); };
+					a.onclick = function() { playEvent(this); };
 					span.innerHTML="LIVE";
 				    	span.classList.add("live");
 				}else{
@@ -326,10 +327,10 @@ eventosStar=Object();
 eventosStar.url="https://corsproxy.io/?url=https://deportestvhd.com/star.json?vhavvw","start";
 eventosStar.cargar=cargarStar;
 //getEvents(eventosStar);
-function playEvent(url){
-	console.log(url);
+function playEvent(evt){
+	console.log(evt.id);
 	cnt.innerHTML="";
-	nurl="/jwplayer.html?get="+url;
+	nurl="/jwplayer.html?get="+eventList[evt.id];
 	cnt.innerHTML='<iframe src="'+nurl+'"' + 'title="description"> </iframe> ';
 }
 

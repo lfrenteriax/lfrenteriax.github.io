@@ -274,6 +274,7 @@ function cargarStar(data){
 					urlToP=atob(arr[i-1]['url'].split("?r=")[1]);
 					if(urlToP.search("get=")>0)
 						urlToP=urlToP.split("?get=")[1]
+					eventList["ev"+i]=urlToP;
 					a.onclick = function() { playEvent(this); };
 					span.innerHTML="LIVE";
 				    	span.classList.add("live");

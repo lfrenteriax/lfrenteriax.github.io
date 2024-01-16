@@ -335,3 +335,4 @@ function playEvent(evt){
 	cnt.innerHTML='<iframe src="'+nurl+'"' + 'title="description"> </iframe> ';
 }
 
+//https://www.tvspacehd.com/feeds/posts/summary/-/Canales+Latinos?alt=json-in-script&callback=tv&max-results=50

@@ -266,12 +266,12 @@ function cargarStar(data){
 			a=document.createElement("a");
 			span=document.createElement("span");
 			a.href="#";
-			a.innerHTML=arr[i-1].title+" | ";
+			a.innerHTML=arr[i-1].league+" | "+arr[i-1].title+" | ";
 			
 			if (arr[i-1]['status'] != "FINALIZADO" ){
 				if(arr[i-1]['status'] == "EN VIVO"){
-					urlToP=atob(arr[i-1]['url'].split("?r=")[1])
-					if(urlToP.search("?get=")
+					urlToP=atob(arr[i-1]['url'].split("?r=")[1]);
+					if(urlToP.search("?get=")>0)
 						urlToP=urlToP.split("?get=")[1]
 					a.onclick = function() { playEvent(urlToP); };
 					span.innerHTML="LIVE";

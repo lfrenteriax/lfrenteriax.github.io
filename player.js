@@ -321,7 +321,7 @@ function cargarStar(data){
 	guardaHorario();
 }
 eventosStar=Object();	
-eventosStar.url="https://librefutboltv.net/star-plus/eventos.json","start";
+eventosStar.url="https://corsproxy.io/?url=https://deportestvhd.com/star.json?vhavvw","start";
 eventosStar.cargar=cargarStar;
 //getEvents(eventosStar);
 function playEvent(url){

@@ -270,7 +270,9 @@ function cargarStar(data){
 			
 			if (arr[i-1]['status'] != "FINALIZADO" ){
 				if(arr[i-1]['status'] == "EN VIVO"){
-					urlToP=atob(arr[i-1]['url'].split("?r=")[1]).split("?get=")[1]
+					urlToP=atob(arr[i-1]['url'].split("?r=")[1])
+					if(urlToP.search("?get=")
+						urlToP=urlToP.split("?get=")[1]
 					a.onclick = function() { playEvent(urlToP); };
 					span.innerHTML="LIVE";
 				    	span.classList.add("live");

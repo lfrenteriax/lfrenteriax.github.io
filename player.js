@@ -6,22 +6,23 @@ var canalesJson="";
  
 document.addEventListener('DOMContentLoaded', inicio);
 
-function getCanales(url){
+function getCanales(lst,url){
   var xhr = new XMLHttpRequest();
   xhr.open("GET", url);
   xhr.overrideMimeType("audio/x-mpegurl"); // Needed, see below.
   xhr.onload = parse;
   xhr.send();
+  xht.lista=lst
 }
 
 var ultimoCanal;
 var listaCnt=document.getElementsByClassName("modal-body")[0];
-function listaDeCanales(){
+function listaDeCanales(lst){
 	
 	listaCnt.innerHTML="";
 	listaCnt.innerHTML="<ol id='thelist'></ol>"
 	var completelist= document.getElementById("thelist");
-	if(localStorage.getItem("lista")==null){
+	if(localStorage.getItem(lst)==null){
 		alert("Presione ok para cargar los canales por primera vez...");
 		for (i=1;i<myplaylist.length;i++){
 			try {
@@ -33,10 +34,10 @@ function listaDeCanales(){
 			  // (Note: the exact output may be browser-dependent)
 			}
 		}
-		localStorage.setItem("lista",listaCnt.innerHTML);
+		localStorage.setItem(lst,listaCnt.innerHTML);
 	 }else{
 	  	
-	  listaCnt.innerHTML=localStorage.getItem("lista");
+	  listaCnt.innerHTML=localStorage.getItem(lst);
   	}
 	if(localStorage.getItem("ultimoCanal")!=null)
 		play(parseInt(localStorage.getItem("ultimoCanal")));
@@ -75,13 +76,13 @@ function parse () {
     cch=getParameter("ch");
 	if(cch!=null)
 		play(cch-1);
-   listaDeCanales();
+   listaDeCanales(this.lista);
   // loadChannel(myplaylist[0].file);
   };
 
    
 function inicio(){
-	getCanales(document.location.origin+"/lista.m3u");
+	getCanales("lista",document.location.origin+"/lista.m3u");
 }
 
 var frame=top.document.getElementById("frame");
@@ -327,6 +328,13 @@ function cargarStar(data){
 eventosStar=Object();	
 eventosStar.url="https://corsproxy.io/?url=https://deportestvhd.com/star.json?vhavvw","start";
 eventosStar.cargar=cargarStar;
+
+plutoTv=Object();	
+plutoTv.url="https://i.mjh.nz/PlutoTV/mx.m3u8","pluto";
+eventosStar.cargar=cargarPluto;
+function cargarPluto (){
+	getCanales("pluto",plutoTv.url)
+}
 //getEvents(eventosStar);
 function playEvent(evt){
 	console.log(evt.id);

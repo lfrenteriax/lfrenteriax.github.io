@@ -329,10 +329,13 @@ eventosStar.url="https://corsproxy.io/?url=https://deportestvhd.com/star.json?vh
 eventosStar.cargar=cargarStar;
 
 plutoTv=Object();	
-plutoTv.url="https://i.mjh.nz/PlutoTV/mx.m3u8","pluto";
+plutoTv.url="https://pluto.tv/es/live-tv/5e793a7cfbdf780007f7eb75";
 eventosStar.cargar=cargarPluto;
 function cargarPluto (){
-	getCanales("pluto",plutoTv.url)
+	console.log("pluto");
+	cnt.innerHTML="";
+	nurl="/jwplayer.html?get="+eventList[evt.id];
+	cnt.innerHTML='<iframe src="'+plutoTv.url+'"' + 'title="description"> </iframe> ';	
 }
 //getEvents(eventosStar);
 function playEvent(evt){

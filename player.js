@@ -6,23 +6,22 @@ var canalesJson="";
  
 document.addEventListener('DOMContentLoaded', inicio);
 
-function getCanales(lst,url){
+function getCanales(url){
   var xhr = new XMLHttpRequest();
   xhr.open("GET", url);
   xhr.overrideMimeType("audio/x-mpegurl"); // Needed, see below.
   xhr.onload = parse;
   xhr.send();
-  xhr.lista=lst
 }
 
 var ultimoCanal;
 var listaCnt=document.getElementsByClassName("modal-body")[0];
-function listaDeCanales(lst){
+function listaDeCanales(){
 	
 	listaCnt.innerHTML="";
 	listaCnt.innerHTML="<ol id='thelist'></ol>"
 	var completelist= document.getElementById("thelist");
-	if(localStorage.getItem(lst)==null){
+	if(localStorage.getItem("lista")==null){
 		alert("Presione ok para cargar los canales por primera vez...");
 		for (i=1;i<myplaylist.length;i++){
 			try {
@@ -34,10 +33,10 @@ function listaDeCanales(lst){
 			  // (Note: the exact output may be browser-dependent)
 			}
 		}
-		localStorage.setItem(lst,listaCnt.innerHTML);
+		localStorage.setItem("lista",listaCnt.innerHTML);
 	 }else{
 	  	
-	  listaCnt.innerHTML=localStorage.getItem(lst);
+	  listaCnt.innerHTML=localStorage.getItem("lista");
   	}
 	if(localStorage.getItem("ultimoCanal")!=null)
 		play(parseInt(localStorage.getItem("ultimoCanal")));
@@ -76,13 +75,13 @@ function parse () {
     cch=getParameter("ch");
 	if(cch!=null)
 		play(cch-1);
-   listaDeCanales(this.lista);
+   listaDeCanales();
   // loadChannel(myplaylist[0].file);
   };
 
    
 function inicio(){
-	getCanales("lista",document.location.origin+"/lista.m3u");
+	getCanales(document.location.origin+"/lista.m3u");
 }
 
 var frame=top.document.getElementById("frame");

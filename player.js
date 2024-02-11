@@ -334,7 +334,7 @@ eventosStar.cargar=cargarPluto;
 function cargarPluto (){
 	console.log("pluto");
 	cnt.innerHTML="";
-	nurl="/jwplayer.html?get="+eventList[evt.id];
+	
 	cnt.innerHTML='<iframe src="'+plutoTv.url+'"' + 'title="description"> </iframe> ';	
 }
 //getEvents(eventosStar);

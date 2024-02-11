@@ -12,7 +12,7 @@ function getCanales(lst,url){
   xhr.overrideMimeType("audio/x-mpegurl"); // Needed, see below.
   xhr.onload = parse;
   xhr.send();
-  xht.lista=lst
+  xhr.lista=lst
 }
 
 var ultimoCanal;

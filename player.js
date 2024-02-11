@@ -1,4 +1,5 @@
-	
+
+
 
 var canalesJson="";
 
@@ -104,7 +105,12 @@ function play(ch) {
 		      cnt.innerHTML='<iframe src="'+nurl+'"' + 'title="description"> </iframe> ';
 		
 		}else{
-			window.open(url);
+			if(url.search("twitch")==0){
+				nurl="/twplayer.html?get="+url.split("/")[1];
+		      		cnt.innerHTML='<iframe src="'+nurl+'"' + 'title="description"> </iframe> ';
+			}else{
+				window.open(url);
+			}
 		}
 	}
 }

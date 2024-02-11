@@ -222,7 +222,7 @@ background: rgba(0, 0, 0, 0.0);
 <div id="vertical-menu" class="vertical-menu">
   <a href="#" onclick="menuFunction(this)">Canales</a>
   <a href="#" onclick="menuFunction(this)">Eventos</a>
-  <a href="#" onclick="menuFunction(this)">Ayuda</a>
+  <a href="#" onclick="menuFunction(this)">Pluto Tv</a>
 
 </div>
 </div>
@@ -348,7 +348,8 @@ function  menuFunction (obj) {
 	    getCanales("lista.m3u");
     if(obj.innerHTML=="Eventos")
 	    getEvents(eventosStar);
-		
+    if(obj.innerHTML=="Pluto Tv")
+	    cargarPluto();	
 }
 </script>
 <script src="horario.js"></script>

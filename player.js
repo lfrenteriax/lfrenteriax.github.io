@@ -101,7 +101,7 @@ function play(ch) {
 		//cnt.appendChild(frame);
 		
 		if(url.search("https")==0){
-		      if(url.search("twitch")==0){
+		      if(url.search("twitch")>0){
 				nurl="/twplayer.html?get="+url.split("twitch.tv/")[1];
 		      		cnt.innerHTML='<iframe src="'+nurl+'"' + 'title="description"> </iframe> ';
 			}else{

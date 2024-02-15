@@ -338,7 +338,7 @@ eventosStar.cargar=cargarStar;
 
 plutoTv=Object();	
 plutoTv.url="https://pluto.tv/es/live-tv/5e793a7cfbdf780007f7eb75";
-eventosStar.cargar=cargarPluto;
+plutoTv.cargar=cargarPluto;
 function cargarPluto (){
 	console.log("pluto");
 	cnt.innerHTML="";

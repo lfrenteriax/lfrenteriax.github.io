@@ -333,7 +333,7 @@ function cargarStar(data){
 	guardaHorario();
 }
 eventosStar=Object();	
-eventosStar.url="https://corsproxy.io/?url=https://deportestvhd.com/star.json?vhavvw","start";
+eventosStar.url="https://corsproxy.io/?url=https://deportestvhd2.com/star.json?vhavvw","start";
 eventosStar.cargar=cargarStar;
 
 plutoTv=Object();	

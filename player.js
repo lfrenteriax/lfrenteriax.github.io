@@ -14,7 +14,7 @@ function getCanales(url){
   xhr.onload = parse;
   xhr.send();
 }
-
+var opciones="<li><a href='#' onclick='GetIndex(this)'>Recargar</a></li>"
 var ultimoCanal;
 var listaCnt=document.getElementsByClassName("modal-body")[0];
 function listaDeCanales(){
@@ -344,6 +344,11 @@ function cargarPluto (){
 	cnt.innerHTML="";
 	
 	cnt.innerHTML='<iframe src="'+plutoTv.url+'"' + 'title="description"> </iframe> ';	
+}
+function cargarMenu(){
+	listaCnt.innerHTML="";
+	listaCnt.innerHTML="<ol id='thelist'></ol>"
+	var completelist= document.getElementById("thelist");
 }
 //getEvents(eventosStar);
 function playEvent(evt){

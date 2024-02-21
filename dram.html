@@ -117,7 +117,7 @@ function play(ch) {
 
 
 	<script>
-		var client = new Paho.MQTT.Client("test.mosquitto.org", 8081, "clientId");
+		var client = new Paho.MQTT.Client("https://www.mqtt-dashboard.com/", 8884, "clientId");
 
 // set callback handlers
 client.onConnectionLost = onConnectionLost;

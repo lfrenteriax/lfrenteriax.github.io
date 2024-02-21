@@ -116,15 +116,16 @@ function play(ch) {
 </script>
 
 
-	<script>
-		var client = new Paho.MQTT.Client("https://www.mqtt-dashboard.com/", 8884, "clientId");
+<script>
+// Create a client instance
+var client = new Paho.MQTT.Client("mqtt-dashboard.com", 8884, "clientId");
 
 // set callback handlers
 client.onConnectionLost = onConnectionLost;
 client.onMessageArrived = onMessageArrived;
 
 // connect the client
-client.connect({onSuccess:onConnect});
+client.connect({onSuccess:onConnect,useSSL:true});
 
 
 // called when the client connects
@@ -148,7 +149,7 @@ function onConnectionLost(responseObject) {
 function onMessageArrived(message) {
   console.log("onMessageArrived:"+message.payloadString);
 }
-	</script>
+</script>
 </body>
 </html>
 

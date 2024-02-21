@@ -117,7 +117,7 @@ function play(ch) {
 
 
 	<script>
-		var client = new Paho.MQTT.Client("broker.hivemq.com", 8000, "clientId");
+		var client = new Paho.MQTT.Client("broker.hivemq.com", 8883, "clientId");
 
 // set callback handlers
 client.onConnectionLost = onConnectionLost;

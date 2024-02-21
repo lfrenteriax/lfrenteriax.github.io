@@ -68,11 +68,11 @@ font-size: 200%;
 </style>
 </head>
 <body>
-
-<iframe id="myVideo" src="https://lfrenteriax.github.io/player.html#https://playout.cdn.cartoonnetwork.com.br/playout_04/playlist-720p.m3u8" type="video/mp4">
+<div id="cnt">
+<iframe id="myVideo" src="https://lfrenteriax.github.io/twplayer.html?get=teen53oo">
  
 </iframe>
-
+<div/>
 <div class="content">
 
 	<img class="fill" src="https://lfrenteriax.github.io/DrAM.png" alt="centered image">
@@ -82,7 +82,36 @@ font-size: 200%;
 
 
 <script>
-
+var cnt=document.getElementById("cnt");
+function play(ch) {
+	if(!isNaN(ch)){
+		localStorage.setItem("ultimoCanal",ch);
+		ultimoCanal=ch;
+			
+		url=myplaylist[ch].file;
+		console.log(url)
+		
+		cnt.innerHTML="";
+		//frame=document.createElement("frame");
+		//frame.id="frame";
+		//cnt.appendChild(frame);
+		
+		if(url.search("https")==0){
+		      if(url.search("twitch")>0){
+				nurl="/twplayer.html?get="+url.split("twitch.tv/")[1];
+		      		cnt.innerHTML='<iframe id="myVideo" src="'+nurl+'"' + 'title="description"> </iframe> ';
+			}else{
+		      		nurl="/jwplayer.html?get="+url;
+		      		cnt.innerHTML='<iframe src="'+nurl+'"' + 'title="description"> </iframe> ';
+		      }
+		     
+		}else{
+			
+				window.open(url);
+			
+		}
+	}
+}
 </script>
 
 </body>

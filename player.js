@@ -20,14 +20,15 @@ var listaCnt=document.getElementsByClassName("modal-body")[0];
 function listaDeCanales(){
 	
 	listaCnt.innerHTML="";
-	listaCnt.innerHTML="<ol id='thelist'></ol>"
+	//listaCnt.innerHTML="<ol id='thelist'></ol>"
 	var completelist= document.getElementById("thelist");
 	if(localStorage.getItem("lista")==null){
 		alert("Presione ok para cargar los canales por primera vez...");
 		for (i=1;i<myplaylist.length;i++){
 			try {
 			 //completelist.innerHTML += "<li>" + myplaylist[i-1].title.split(",")[1] + "</li>";
-				completelist.innerHTML += "<li><a href='#' onclick='GetIndex(this)'>"+myplaylist[i-1].title.split(",")[1] +"</a></li>"	
+				//completelist.innerHTML += "<li><a href='#' onclick='GetIndex(this)'>"+myplaylist[i-1].title.split(",")[1] +"</a></li>"
+				 listaCnt.innerHTM += "<a href='#' onclick='GetIndex(this)'>"+myplaylist[i-1].title.split(",")[1] +"</a>"
 			} catch (error) {
 			 // console.error(error);
 			  // Expected output: ReferenceError: nonExistentFunction is not defined

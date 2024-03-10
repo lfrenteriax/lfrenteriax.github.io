@@ -113,11 +113,12 @@ var options = {
     width: "100%",
     height: vid.offsetHeight,
     channel: getURL,
+    muted:false;
     // Only needed if this page is going to be embedded on other websites
     parent: ["embed.example.com", "othersite.example.com"]
   };
   var player = new Twitch.Player("SamplePlayerDivID", options);
-  player.setVolume(0.5);
+  player.setVolume(1);
 </script>
 </body>
 </html>

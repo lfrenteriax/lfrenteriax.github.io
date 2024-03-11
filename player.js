@@ -89,7 +89,9 @@ function parse () {
     cch=getParameter("ch");
 	if(cch!=null)
 		play(cch-1);
+   localStorage.setItem("myplaylist",myplaylist);
    listaDeCanales();
+	
   // loadChannel(myplaylist[0].file);
   };
 
@@ -101,6 +103,7 @@ function cargarCanales(){
 	 }else{
 	  	
 	  listaCnt.innerHTML=localStorage.getItem("lista");
+	  myplaylist=localStorage.getItem("myplaylist");
   	}
 	
 }

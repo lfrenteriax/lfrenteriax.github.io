@@ -89,7 +89,7 @@ function parse () {
     cch=getParameter("ch");
 	if(cch!=null)
 		play(cch-1);
-   localStorage.setItem("myplaylist",myplaylist);
+   localStorage.setItem("myplaylist",JSON.stringify(myplaylist));
    listaDeCanales();
 	
   // loadChannel(myplaylist[0].file);
@@ -103,7 +103,7 @@ function cargarCanales(){
 	 }else{
 	  	
 	  listaCnt.innerHTML=localStorage.getItem("lista");
-	  myplaylist=localStorage.getItem("myplaylist");
+	  myplaylist=JSON.parse(localStorage.getItem("myplaylist"));
   	}
 	
 }
@@ -305,7 +305,7 @@ function cargarStar(data){
 			// li=document.createElement("li");
 			a=document.createElement("a");
 			a.href="#";
-			a.id="ev"+i;
+			a.id="ev"+ii;
 			if (arr[ii-1]['status'] != "FINALIZADO" ){
 				span.classList="";
 				if(arr[ii-1]['status'] == "EN VIVO"){

@@ -286,7 +286,7 @@ function cargarStar(data){
 
   //  listaCnt.innerHTML="";
 //	listaCnt.innerHTML="<ol id='thelist'></ol>"
-**	var completelist= document.getElementById("thelist");
+	var completelist= document.getElementById("thelist");
 	for (i=1;i<arr.length;i++){
 			try {
 				//atob(arr[i-1]['url'].split("?r=")[1]).split("?get=")[1]

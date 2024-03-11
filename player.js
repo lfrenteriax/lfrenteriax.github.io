@@ -19,7 +19,7 @@ var ultimoCanal;
 var listaCnt=document.getElementsByClassName("modal-body")[0];
 function listaDeCanales(){
 	
-	listaCnt.innerHTML="";
+listaCnt.innerHTML="";
 	//listaCnt.innerHTML="<ol id='thelist'></ol>"
 	//var completelist= document.getElementById("thelist");
 	if(localStorage.getItem("lista")==null){
@@ -284,14 +284,14 @@ var eventList={};
 function cargarStar(data){
 	arr=JSON.parse(data);
 
-    listaCnt.innerHTML="";
-	listaCnt.innerHTML="<ol id='thelist'></ol>"
+  //  listaCnt.innerHTML="";
+//	listaCnt.innerHTML="<ol id='thelist'></ol>"
 	var completelist= document.getElementById("thelist");
 	for (i=1;i<arr.length;i++){
 			try {
 				//atob(arr[i-1]['url'].split("?r=")[1]).split("?get=")[1]
 			 
-			 li=document.createElement("li");
+			// li=document.createElement("li");
 			a=document.createElement("a");
 			span=document.createElement("span");
 			a.href="#";
@@ -311,9 +311,9 @@ function cargarStar(data){
 				    span.classList.add("t");
 					
 				}	
-				li.appendChild(a);
-				li.appendChild(span);
-				completelist.appendChild(li);
+				//li.appendChild(a);
+				//li.appendChild(span);
+				completelist.appendChild(a);
 			}
 				
 			

@@ -44,7 +44,26 @@ function listaDeCanales(){
 		play(parseInt(localStorage.getItem("ultimoCanal")));
 }
 
+let nav = document.getElementById("modal-body");
+let left = document.getElementById("menuTitle");
+let right = document.getElementById("MyClockDisplay");
+let idx;
 
+left.addEventListener("mouseenter", function(){
+  idx = setInterval(() => nav.scrollTop -= 1, 10);
+});
+
+left.addEventListener("mouseleave", function(){
+  clearInterval(idx);
+});
+
+right.addEventListener("mouseenter", function(){
+  idx = setInterval(() => nav.scrollTop += 1, 10);
+});
+
+right.addEventListener("mouseleave", function(){
+  clearInterval(idx);
+});
 function GetIndex(sender)
 {
     var aElements = sender.parentNode.parentNode.getElementsByTagName("a");

@@ -21,7 +21,7 @@ function listaDeCanales(){
 	
 	listaCnt.innerHTML="";
 	//listaCnt.innerHTML="<ol id='thelist'></ol>"
-	var completelist= document.getElementById("thelist");
+	//var completelist= document.getElementById("thelist");
 	if(localStorage.getItem("lista")==null){
 		alert("Presione ok para cargar los canales por primera vez...");
 		for (i=1;i<myplaylist.length;i++){

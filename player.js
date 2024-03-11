@@ -290,7 +290,7 @@ var eventList={};
 function cargarStar(data){
 	arr=JSON.parse(data);
 
-  //  listaCnt.innerHTML="";
+    listaCnt.innerHTML="";
 //	listaCnt.innerHTML="<ol id='thelist'></ol>"
 	var completelist= document.getElementById("thelist");
 	for (i=1;i<arr.length;i++){
@@ -301,7 +301,6 @@ function cargarStar(data){
 			a=document.createElement("a");
 			span=document.createElement("span");
 			a.href="#";
-			a.innerHTML=arr[i-1].league+" | "+arr[i-1].title+" | ";
 			a.id="ev"+i;
 			if (arr[i-1]['status'] != "FINALIZADO" ){
 				if(arr[i-1]['status'] == "EN VIVO"){
@@ -310,9 +309,11 @@ function cargarStar(data){
 						urlToP=urlToP.split("?get=")[1]
 					eventList["ev"+i]=urlToP;
 					a.onclick = function() { playEvent(this); };
-					span.innerHTML="LIVE";
-				    	span.classList.add("live");
+					a.innerHTML=i+". "+arr[i-1].league+" | "+arr[i-1].title+" |LIVE ";
+					//span.innerHTML="LIVE";
+				   // 	span.classList.add("live");
 				}else{
+				    a.innerHTML=i+". "+arr[i-1].league+" | "+arr[i-1].title+" |"+arr[i-1]['status'];
 				    span.innerHTML=arr[i-1]['status'];
 				    span.classList.add("t");
 					

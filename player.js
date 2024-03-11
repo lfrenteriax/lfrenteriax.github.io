@@ -292,15 +292,15 @@ function cargarStar(data){
 
     listaCnt.innerHTML="";
 //	listaCnt.innerHTML="<ol id='thelist'></ol>"
-	var completelist= document.getElementById("thelist");
+//	var completelist= document.getElementById("thelist");
+	span=document.createElement("span");
+	listaCnt.appendChild(span);
 	for (i=1;i<arr.length;i++){
 			try {
 				//atob(arr[i-1]['url'].split("?r=")[1]).split("?get=")[1]
 			 
 			// li=document.createElement("li");
 			a=document.createElement("a");
-			span=document.createElement("span");
-			listaCnt.appendChild(sapan);
 			a.href="#";
 			a.id="ev"+i;
 			if (arr[i-1]['status'] != "FINALIZADO" ){

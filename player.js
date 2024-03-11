@@ -34,6 +34,7 @@ listaCnt.innerHTML="";
 			}
 		}
 		localStorage.setItem("lista",listaCnt.innerHTML);
+
 }
 
 let nav = document.getElementById("modal-body");
@@ -92,8 +93,7 @@ function parse () {
   // loadChannel(myplaylist[0].file);
   };
 
-   
-function inicio(){
+function cargarCanales(){
 	if(localStorage.getItem("lista")==null){
 		getCanales(document.location.origin+"/lista.m3u");
 		alert("Presione ok para cargar los canales por primera vez...");
@@ -102,6 +102,10 @@ function inicio(){
 	  	
 	  listaCnt.innerHTML=localStorage.getItem("lista");
   	}
+	
+}
+function inicio(){
+	cargarCanales();
 	if(localStorage.getItem("ultimoCanal")!=null)
 		play(parseInt(localStorage.getItem("ultimoCanal")));
 }

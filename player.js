@@ -22,8 +22,6 @@ function listaDeCanales(){
 listaCnt.innerHTML="";
 	//listaCnt.innerHTML="<ol id='thelist'></ol>"
 	//var completelist= document.getElementById("thelist");
-	if(localStorage.getItem("lista")==null){
-		alert("Presione ok para cargar los canales por primera vez...");
 		for (i=1;i<myplaylist.length;i++){
 			try {
 			 //completelist.innerHTML += "<li>" + myplaylist[i-1].title.split(",")[1] + "</li>";
@@ -36,12 +34,6 @@ listaCnt.innerHTML="";
 			}
 		}
 		localStorage.setItem("lista",listaCnt.innerHTML);
-	 }else{
-	  	
-	  listaCnt.innerHTML=localStorage.getItem("lista");
-  	}
-	if(localStorage.getItem("ultimoCanal")!=null)
-		play(parseInt(localStorage.getItem("ultimoCanal")));
 }
 
 let nav = document.getElementById("modal-body");
@@ -102,8 +94,18 @@ function parse () {
 
    
 function inicio(){
-	getCanales(document.location.origin+"/lista.m3u");
+	if(localStorage.getItem("lista")==null){
+		getCanales(document.location.origin+"/lista.m3u");
+		alert("Presione ok para cargar los canales por primera vez...");
+		
+	 }else{
+	  	
+	  listaCnt.innerHTML=localStorage.getItem("lista");
+  	}
+	if(localStorage.getItem("ultimoCanal")!=null)
+		play(parseInt(localStorage.getItem("ultimoCanal")));
 }
+	
 
 var frame=top.document.getElementById("frame");
 var cnt=document.getElementById("cnt");

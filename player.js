@@ -393,7 +393,7 @@ function playEvent(evt){
 
 //https://www.tvspacehd.com/feeds/posts/summary/-/Canales+Latinos?alt=json-in-script&callback=tv&max-results=50
 
-var opciones="<li><a href='#' onclick='cargarOpciones()'>Recargar Canales</a></li>"
+var opciones="<li><a href='#' onclick='recargarCanales()'>Recargar Canales</a></li>"
 function recargarCanales(){
 	lblBox.innerHTML="0000"
 }

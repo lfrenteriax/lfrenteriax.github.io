@@ -298,7 +298,7 @@ function cargarStar(data){
 //	var completelist= document.getElementById("thelist");
 	span=document.createElement("span");
 	listaCnt.appendChild(span);
-	for (i=1;i<arr.length;i++){
+	for (ii=1;ii<arr.length;ii++){
 			try {
 				//atob(arr[i-1]['url'].split("?r=")[1]).split("?get=")[1]
 			 
@@ -306,23 +306,23 @@ function cargarStar(data){
 			a=document.createElement("a");
 			a.href="#";
 			a.id="ev"+i;
-			if (arr[i-1]['status'] != "FINALIZADO" ){
+			if (arr[ii-1]['status'] != "FINALIZADO" ){
 				span.classList="";
-				if(arr[i-1]['status'] == "EN VIVO"){
-					urlToP=atob(arr[i-1]['url'].split("?r=")[1]);
+				if(arr[ii-1]['status'] == "EN VIVO"){
+					urlToP=atob(arr[ii-1]['url'].split("?r=")[1]);
 					if(urlToP.search("get=")>0)
 						urlToP=urlToP.split("?get=")[1]
-					eventList["ev"+i]=urlToP;
+					eventList["ev"+ii]=urlToP;
 					a.onclick = function() { playEvent(this); };
-					a.innerHTML=i+". "+arr[i-1].league+" | "+arr[i-1].title+" |LIVE ";
+					a.innerHTML=i+". "+arr[ii-1].league+" | "+arr[ii-1].title+" |LIVE ";
 					//span.innerHTML="LIVE";
 				   // 	span.classList.add("live");
 				}else{
 				    
-				    span.innerHTML=arr[i-1]['status'];
+				    span.innerHTML=arr[ii-1]['status'];
 				    span.classList.add("t");
 				    guardaHorario();
-				   a.innerHTML=i+". "+arr[i-1].league+" | "+arr[i-1].title+" | "+span.innerHTML;
+				   a.innerHTML=ii+". "+arr[ii-1].league+" | "+arr[ii-1].title+" | "+span.innerHTML;
 					
 				}	
 				//li.appendChild(a);

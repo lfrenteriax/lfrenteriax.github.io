@@ -14,7 +14,7 @@ function getCanales(url){
   xhr.onload = parse;
   xhr.send();
 }
-var opciones="<li><a href='#' onclick='GetIndex(this)'>Recargar</a></li>"
+
 var ultimoCanal;
 var listaCnt=document.getElementsByClassName("modal-body")[0];
 function listaDeCanales(){
@@ -392,3 +392,12 @@ function playEvent(evt){
 }
 
 //https://www.tvspacehd.com/feeds/posts/summary/-/Canales+Latinos?alt=json-in-script&callback=tv&max-results=50
+
+var opciones="<li><a href='#' onclick='cargarOpciones()'>Recargar Canales</a></li>"
+function recargarCanales(){
+	lblBox.innerHTML="0000"
+}
+function cargarOpciones(){
+	listaCnt.innerHTML=opciones;
+	
+}

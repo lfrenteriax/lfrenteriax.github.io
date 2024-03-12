@@ -129,20 +129,29 @@ function play(ch) {
 		//frame.id="frame";
 		//cnt.appendChild(frame);
 		
-		if(url.search("https")==0){
-		      if(url.search("twitch")>0){
-				nurl="/twplayer.html?get="+url.split("twitch.tv/")[1];
-		      		cnt.innerHTML='<iframe src="'+nurl+'"' + 'title="description"> </iframe> ';
-			}else{
-		      		nurl="/jwplayer.html?get="+url;
-		      		cnt.innerHTML='<iframe src="'+nurl+'"' + 'title="description"> </iframe> ';
-		      }
+		try {
+			 if(url.search("https")==0){
+			      if(url.search("twitch")>0){
+					nurl="/twplayer.html?get="+url.split("twitch.tv/")[1];
+			      		cnt.innerHTML='<iframe src="'+nurl+'"' + 'title="description"> </iframe> ';
+				}else{
+			      		nurl="/jwplayer.html?get="+url;
+			      		cnt.innerHTML='<iframe src="'+nurl+'"' + 'title="description"> </iframe> ';
+			      }
 		     
-		}else{
-			
-				window.open(url);
-			
+			}else{
+				
+					window.open(url);
+				
+			}
+		} catch (error) {
+			  console.error(error);
+
+			  alert(error);
+			  // Expected output: ReferenceError: nonExistentFunction is not defined
+			  // (Note: the exact output may be browser-dependent)
 		}
+		
 	}
 }
 getParameter = (key) => {

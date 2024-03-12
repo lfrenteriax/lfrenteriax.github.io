@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+  <style>
+body {
+  margin: 0;
+  padding: 0;
+}
+.wrapper {
+  min-width: 320px;
+  max-width: 1200px;
+/*   width: 520px; */
+  display: block;
+  margin: 0 auto;
+}
+/* Телевизор START */
+/* Не рабочие кнопки */
+.dwork {
+  position: relative;
+}
+.wrapper .dwork.dwork-cons:after {
+  content: 'Я пока не работаю :(';
+  line-height: 10px;
+  font-size: 11px;
+  padding: 10px;
+  width: 130px;
+  height: 10px;
+  color: #2874A6;
+  background-color: #fff;
+  border: 1px solid #2874A6;
+  top: 5px;
+  left: 41px;
+  border-radius: 4px;
+  position: absolute;
+  z-index: 1000;
+  box-shadow:  5px 5px 20px rgba(0,0,0,.7);
+}
+.dwork-cons:before {
+  content: '';
+  position: absolute;
+  height: 1px;
+  border: 7px solid transparent;
+  border-right: 8px solid #2874A6;
+  top: 12px;
+  left: 26px;
+  
+}
+.tv-space {
+  float: left;
+  position: relative;
+  padding: 10px;
+  height: auto;
+  width: 500px;
+  display: inline-block;
+}
+.tv-border {
+  float: left;
+  border-radius: 3px;
+  background: rgb(100,100,100) radial-gradient(circle at 50% 0, rgba(255,255,255,.65), rgba(255,255,255,.35));
+  box-shadow:
+  inset rgba(0,0,0,.6) 0 -1px 7px,
+  inset rgba(252,255,255,.3) 0px 1px 8px,
+  rgba(0,0,0,.8) 0 3px 8px 0px;
+  position: relative;
+  z-index: 100;
+}
+button {
+  cursor: pointer;
+}
+.tv-container {
+  margin: 7px;
+  margin-bottom: 0px;
+  background-color: #000;
+  width: 480px;
+  height: 320px;
+  box-shadow: inset  0 5px 5px rgba(0,0,0,.9);
+  overflow: hidden;
+}
+.tv-nav {
+  position: relative;
+/*   background-image: url(); */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 0px 0px;
+  width: 75px;
+  height: 30px;
+  margin: 0 auto;
+}
+.tv-leg,
+.tv-step {
+  background-color: #000;
+  overflow: hidden;
+  position: relative;
+  border-radius: 3px;
+  background: rgb(100,100,100) radial-gradient(circle at 50% 0, rgba(255,255,255,.65), rgba(255,255,255,.35));
+  box-shadow:
+  inset rgba(0,0,0,.6) 0 -1px 7px,
+  inset rgba(252,255,255,.3) 0px 1px 8px,
+  rgba(0,0,0,.8) 0 3px 8px 0px;
+  transition: all 1s ease-in 0.3s;
+}
+.tv-leg {
+  width: 30px;
+  height: 75px;
+  left: 50%;
+  bottom: 15px;
+  transform: translateX(-50%);
+  z-index: 10;
+}
+.tv-step {
+  height: 15px;
+  width: 120px;
+  left: 50%;
+  bottom: 20px;
+  transform: translateX(-50%);
+  z-index: 11;
+}
+.tv-step.mob-size {
+  bottom: 120px;
+}
+.tv-leg.mob-size {
+  bottom: 115px;
+}
+.text.mobile {
+  color: #884EA0;
+}
+iframe {
+  opacity: 1;
+  transition: all 0.5s ease-in 0.3s;
+}
+.tv-container .screen-off {
+  background-color: #000;
+  height: 320px;
+  width: 480px;
+  opacity: 0;
+}
+/* Телевизор EDN */
+/* Пульт START */
+.pult {
+  display: inline-block;
+  background-color: #eee;
+  width: 213px;
+  margin: 10px auto;
+  font-family: 'console', 'PT Sans';
+  padding: 10px 10px 20px 10px;
+  border-radius: 10px;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;  
+  background: rgb(100,100,100) radial-gradient(circle at 50% 0, rgba(255,255,255,.65), rgba(255,255,255,.35));
+  box-shadow:
+  inset rgba(0,0,0,.6) 0 -3px 8px,
+  inset rgba(252,255,255,.7) 0 3px 8px,
+  rgba(0,0,0,.8) 0 3px 8px -3px;
+}
+.title {
+  position: relative;
+  background-image: url(http://www.uplab.ru/schetina-birthday/images/7561547f-9bbe-4c24-b447-d1eed58c2312__uplab_logo.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 0px 0px;
+  width: 75px;
+  height: 30px;
+}
+.block.title:before,
+.tv-nav:before {
+  content: '';
+  position: absolute;
+  height: 7px;
+  width: 7px;
+  background-color: #B03A2E;
+  border-radius: 100%;
+  box-shadow: 0 0 10px 0px rgba(0,0,0,0.5);
+}
+.block.title:before,
+.obazhure:after {
+  top: 0;
+  left: -50px;
+}
+.obazhure.bright:before
+{
+  background-color: #E74C3C;
+}
+.tv-nav:before {
+  top: 40%;
+  left: -10%;
+}
+.btn {
+  box-sizing: border-box;
+  display: inline-block;
+  border: 0;
+  text-align: center;
+  vertical-align: top;
+  width: 40px;
+  height: 40px;
+  line-height: 30px;
+  margin: 5px;
+  box-shadow: 0 0 10px 0px rgba(0,0,0,0.5);
+}
+.btn:active {
+  box-shadow: inset 0 0 10px 0px rgba(0,0,0,0.5);
+}
+.btn-big-inner:focus,
+.btn:focus {
+  outline: none;
+}
+.block {
+  display: inline-block;
+  vertical-align: top;
+}
+.block-channel {
+  width: 159px;
+}
+.block-navigate,
+block-round {
+  width: 213px;
+}
+.pult .btn.text {
+  font-size: 15px;
+  padding: 0;
+}
+.top-navigate,
+.channel,
+.vol_ch,
+.round {
+  background-color: #1c1c1c;
+  color: #eee;
+  font-size: 35px;
+  font-weight: bold;
+  border-radius: 4px;
+}
+.active-channel {
+  color: #239B56;
+}
+.power-off {
+  background-color: #B03A2E;
+  position: relative;
+}
+.power-off:after {
+  content: '\f011';
+  font-family: FontAwesome;
+  position: absolute;
+  font-style: normal;
+  font-weight: normal;
+  text-decoration: inherit;
+  position: absolute;
+  font-size: 20px;
+  top: 5px;
+  left: 11.5px;
+}
+/* Канал/громкость START*/
+.block-vol_ch {
+  width: 49px;
+}
+.btn.vol_ch.text{
+  font-size: 10px; 
+  padding: 0px;
+}
+/* Канал/громкость END*/
+/* Круги START */
+.btn.round {
+  border-radius: 100%;
+  position: relative;
+}
+.btn.round:after {
+  position: absolute;
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  text-decoration: inherit;
+  font-size: 16px;
+}
+.backward:after {
+  content: '\f04a';
+  top: 5px;
+  left: 12px;
+}
+.play:after {
+  content: '\f04b';
+  top: 5px;
+  left: 16px;
+  color: #239B56;
+}
+.forward:after {
+  content: '\f04e';
+  top: 5px;
+  left: 14px;
+}
+.pause:after {
+  content: '\f04c';
+  top: 5px;
+  left: 13px;
+  color: #2874A6;
+}
+.stop:after {
+  content: '\f04d';
+  top: 5px;
+  left: 13px;
+  color: #B03A2E;
+}
+.btn.round.btn-big {
+  width: 80px;
+  height: 80px;
+  position: relative;
+}
+.btn.round.btn-big .btn-big-inner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #1c1c1c;
+  box-sizing: content-box;
+  display: inline-block;
+  border: 0;
+  text-align: center;
+  vertical-align: top;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  padding: 5px;
+  margin: 0px;
+  border: 1px solid #fff;
+  border-radius: 50%;
+  color: #eee;
+  font-size: 10px;
+  font-weight: bold;
+  box-shadow: inset 0 0 10px 0px rgba(0,0,0,0.5);
+}
+.btn-big:before,
+.btn-big-inner:before,
+.btn-big:after,
+.btn-big-inner:after {
+  position: absolute;
+  font-family: FontAwesome;
+  position: absolute;
+  font-style: normal;
+  font-weight: normal;
+  text-decoration: inherit;
+  font-size: 16px;
+  padding: 15px;
+  line-height: 10px;
+  cursor: pointer;
+}
+.btn-big:before {
+  content: '\f0d8';
+  top: -12%;
+  left: 25%;
+}
+.btn-big:after {
+  content: '\f0d7';
+  bottom: -10%;
+  left: 25%;
+}
+.btn-big-inner:before {
+  content: '\f0d9';
+  left: -75%;
+  top: -1px;
+}
+.btn-big-inner:after {
+  content: '\f0da';
+  right: -75%;
+  top: -1px;
+}
+.btn.round.stop {
+  float: right;
+}
+
+/* Круги END */
+/* Пульт END */
+
+</style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+</script>
+</head>
+<body>
+<div class="wrapper">
+  <div class="tv-space">
+    <div class="tv-border">
+      <div class="tv-container">
+        <iframe id="video" width="480" height="320" src="https://www.youtube.com/embed/RcUjwuQKEFg?enablejsapi=1&html5=1?&showinfo=0&controls=0" frameborder="0" allowfullscreen></iframe>
+      </div>
+      <div class="tv-nav obazhure"></div>
+    </div>
+    <div class="tv-leg"></div>
+    <div class="tv-step"></div>
+  </div>
+  
+  
+  <div class="pult">
+    <div class="block title obazhure"></div>
+    <div class="block block-navigate">
+      <button type="button" class="btn top-navigate text dwork">TV</button>
+      <button type="button" class="btn top-navigate text dwork">VCR</button>
+      <button type="button" class="btn top-navigate text dwork">DVD</button>
+      <button type="button" class="btn top-navigate power-off" id="power-off"></button>
+      <button type="button" class="btn top-navigate text dwork">AUD</button>
+      <button type="button" class="btn top-navigate text dwork">CAB</button>
+      <button type="button" class="btn top-navigate text dwork">SAT</button>
+      <button type="button" id="mute" class="btn top-navigate text">MUT</button>
+    </div>
+    <div class="block block-channel">
+      <button type="button" data-item="RcUjwuQKEFg" class="btn channel cnl-namber active-channel">1</button>
+      <button type="button" data-item="9S5XTN6vgDg" class="btn channel cnl-namber">2</button>
+      <button type="button" data-item="MsVriDLmDyI" class="btn channel cnl-namber">3</button>
+      <button type="button" data-item="FJ2aNEwlC7I" class="btn channel cnl-namber">4</button>
+      <button type="button" data-item="O-Vb08vyvpE" class="btn channel cnl-namber">5</button>
+      <button type="button" data-item="slO8lwP6nuQ" class="btn channel cnl-namber">6</button>
+      <button type="button" data-item="wq4gti-zVes" class="btn channel cnl-namber">7</button>
+      <button type="button" data-item="C8QxjB8mV4o" class="btn channel cnl-namber">8</button>
+      <button type="button" data-item="CWF64XhiXGg" class="btn channel cnl-namber">9</button>
+      <button type="button" class="btn channel text dwork">AV</button>
+      <button type="button" data-item="TcOaeIjX3SQ" class="btn channel cnl-namber">0</button>
+      <button type="button" class="btn channel text dwork">OK</button>
+    </div>
+    <div class="block block-vol_ch">
+      <button type="button" class="btn vol_ch text dwork">CH +</button>
+      <button type="button" class="btn vol_ch text dwork">CH -</button>
+      <button type="button" class="btn vol_ch text dwork">VOL +</button>
+      <button type="button" class="btn vol_ch text dwork">VOL -</button>
+    </div>
+    <div class="block block-round">
+      <button type="button" class="btn round backward dwork"></button>
+      <button type="button" class="btn round play" id="play-button"></button>
+      <button type="button" class="btn round forward dwork"></button>
+      <button type="button" class="btn round pause" id="pause-button"></button>
+    </div>
+    <div class="block block-vol_ch">
+      <button type="button" class="btn round vol_ch text mobile">MOB</button>
+      <button type="button" class="btn round vol_ch text dwork">SET</button>
+    </div>
+    <div class="block block-channel">
+      <div type="button" class="btn round btn-big text">
+        <button type="button" class="btn-big-inner text ">MENU</button>
+      </div>
+      <button type="button" class="btn round stop" id="stop"></button>
+    </div>
+  </div>
+</div>
+
+<script>
+$(document).ready(function() {
+	$(".power-off").click(function() {
+		$("iframe").toggleClass('screen-off');
+	});
+// Индикатор активности:
+	var $sashasprava = $('.obazhure');
+	$('button').click(function() {
+		$sashasprava.addClass('bright');
+		setTimeout(function() {
+			$sashasprava.removeClass('bright');
+		}, 200);
+	});
+//   Активный канал на пульте
+  $('.cnl-namber').click(function() {
+    var $this = $(this),
+        $video = $('#video'),
+        link = 'https://www.youtube.com/embed/'+$this.data('item')+'?enablejsapi=1&html5=1?&showinfo=0&controls=0';
+    $('.cnl-namber').removeClass('active-channel');
+    $this.addClass('active-channel');
+    // $this.data('item');
+    $video.attr('src', link);
+  });
+  // Пустые кнопки:
+  $('.dwork').click(function() {
+      var $this = $(this);
+    	$this.addClass('dwork-cons');
+		setTimeout(function() {
+			$this.removeClass('dwork-cons');
+		}, 1000);
+  });
+  // Складывание подножки:
+  $(".mobile").click(function() {
+		$(".tv-step").toggleClass('mob-size');
+    $(".tv-leg").toggleClass('mob-size');
+	});
+
+});
+// ютуб
+// https://developers.google.com/youtube/iframe_api_reference
+// global variable for the player
+var player;
+// this function gets called when API is ready to use
+function onYouTubePlayerAPIReady() {
+  // create the global player from the specific iframe (#video)
+  player = new YT.Player('video', {
+    events: {
+      // call this function when player is ready to use
+      'onReady': onPlayerReady
+    }
+  });
+}
+function onPlayerReady(event) {
+  // bind events
+  var playButton = document.getElementById("play-button");
+  playButton.addEventListener("click", function() {
+    player.playVideo();
+  });
+  var pauseButton = document.getElementById("pause-button");
+  pauseButton.addEventListener("click", function() {
+    player.pauseVideo();
+  });
+  var stopButton = document.getElementById("stop");
+  stopButton.addEventListener("click", function() {
+    player.stopVideo();
+  });
+  var offButton = document.getElementById("power-off");
+    offButton.addEventListener("click", function() {
+    player.stopVideo();
+  });
+ 
+   var muteButton = document.getElementById("mute");
+   muteButton.addEventListener("click", function() {
+       if (player.isMuted()) {
+         player.unMute();console.log('unmuted');
+       } else {
+         player.mute();console.log('muted');
+       }   
+    });
+  
+}
+// Inject YouTube API script
+var tag = document.createElement('script');
+tag.src = "//www.youtube.com/player_api";
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+
+  
+</script>
+</body>
+</html>

@@ -280,9 +280,9 @@ function labelAction(){
 	
 	if(lblBox.innerHTML=="0"){
 		if(lastEvt=="")
-			document.getElementById(lastEvt).click();
-		else
 			play(ultimoCanal);
+		else
+			document.getElementById(lastEvt).click();
 		
 	}else if(lblBox.innerHTML=="0000"){
 		localStorage.clear();

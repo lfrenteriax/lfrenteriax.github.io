@@ -1,6 +1,6 @@
  console.log(mqtt)
   
-  const url = 'wss://broker.emqx.io:8084/mqtt'
+  const urlMqtt = 'wss://broker.emqx.io:8084/mqtt'
 /***
     * Node.js
     * This document explains how to use MQTT over TCP with both mqtt and mqtts protocols.
@@ -18,7 +18,7 @@ const options = {
   username: '',
   password: '',
 }
-const client  = mqtt.connect(url, options)
+const client  = mqtt.connect(urlMqtt, options)
 client.on('connect', function () {
   console.log('Connected')
   // Subscribe to a topic

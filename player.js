@@ -394,6 +394,7 @@ function cargarMenu(){
 }
 //getEvents(eventosStar);
 function playEvent(evt){
+	location.href="?c="+evt.id
 	console.log(evt.id);
 	cnt.innerHTML="";
 	nurl="/jwplayer.html?get="+eventList[evt.id];

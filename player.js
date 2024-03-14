@@ -120,7 +120,6 @@ function play(ch) {
 	if(!isNaN(ch)){
 		localStorage.setItem("ultimoCanal",ch);
 		ultimoCanal=ch;
-			
 		url=myplaylist[ch].file;
 		console.log(url)
 		
@@ -278,7 +277,14 @@ function myKeyDown(e){
 }
 function labelAction(){
 	lblTimer=0;
-	if(lblBox.innerHTML=="0000"){
+	
+	if(lblBox.innerHTML=="0"){
+		if(lastEvt="")
+			document.getElementById(lastEvt).click();
+		else
+			play(ultimoCanal);
+		
+	}else if(lblBox.innerHTML=="0000"){
 		localStorage.clear();
 		location.reload();
 		

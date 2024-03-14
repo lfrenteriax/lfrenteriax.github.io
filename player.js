@@ -120,6 +120,7 @@ function play(ch) {
 	if(!isNaN(ch)){
 		localStorage.setItem("ultimoCanal",ch);
 		ultimoCanal=ch;
+		lastEvt="";
 		url=myplaylist[ch].file;
 		console.log(url)
 		

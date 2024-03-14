@@ -393,8 +393,9 @@ function cargarMenu(){
 	var completelist= document.getElementById("thelist");
 }
 //getEvents(eventosStar);
+var lastEvt="";
 function playEvent(evt){
-	location.href="?c="+evt.id
+	lastEvt=evt.id;
 	console.log(evt.id);
 	cnt.innerHTML="";
 	nurl="/jwplayer.html?get="+eventList[evt.id];

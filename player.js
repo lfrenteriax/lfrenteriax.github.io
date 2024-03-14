@@ -279,7 +279,7 @@ function labelAction(){
 	lblTimer=0;
 	
 	if(lblBox.innerHTML=="0"){
-		if(lastEvt="")
+		if(lastEvt=="")
 			document.getElementById(lastEvt).click();
 		else
 			play(ultimoCanal);

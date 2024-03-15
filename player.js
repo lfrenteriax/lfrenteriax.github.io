@@ -330,7 +330,11 @@ function cargarStar(data){
 						urlToP=urlToP.split("?get=")[1]
 					eventList["ev"+ii]=urlToP;
 					a.onclick = function() { playEvent(this); };
-					a.innerHTML=ii+". "+arr[ii-1].league+" | "+arr[ii-1].title+" |LIVE ";
+					a.innerHTML=ii+". "+arr[ii-1].league+" | "+arr[ii-1].title+" |";
+					liveImg=document.createElement("img");
+					liveImg.src="LIVE.gif"";
+					a.appendChild(liveImg);	
+					
 					//span.innerHTML="LIVE";
 				   // 	span.classList.add("live");
 				}else{

@@ -256,7 +256,9 @@ https://edge7-ccast-sl.cvattv.com.ar/live/c4eds/RPC_C4/SA_Live_dash_enc/RPC_C4.m
 #EXTINF:0,DAZN F1
 https://live.ll.ww.aiv-cdn.net/OTTB/dub-nitro/live/clients/dash/enc/cqbcvgkb83/out/v1/4dbe05ecfb1540448d82d68eeebfbb1c/cenc.mpd?key2=bd622b0e610295de3b0bccb850ccaaaa&key=1061be12d303247426ec25e8369b2647
 #EXTINF:0,SKYSPORT SERIE A
-https://linear302-it-dash1-prd-ll.cdn13.skycdp.com/016a/31209/FHD/skysportseriea/master.mpd&key=0036e5d0e88dfb087f1791da6150ced9&key2=0036e5d0e88dfb087f1791da6150ced9
+https://linear302-it-dash1-prd-ll.cdn13.skycdp.com/016a/31209/FHD/skysportseriea/master.mpd?key=0036e5d0e88dfb087f1791da6150ced9&key2=0bc653d830837dceb13bd17169f0f8e2
+#EXTINF:0,Sport tv 3
+https://da-d50d12b5.online.meo.pt/wp/cdn-er-vspp-cvl2.online.meo.pt/shls/LIVE$SPORTTV3_HD/index.m3u8/S!d2EISU9TX0xpdmUSBkPIS1XDVP7...8BFgyf/Level(3000000)
 #EXTINF:0,Channel 1
 https://1057-vos-da-mt.dtvott.com/DASH/manifest.mpd?key=98f18c7632f43bdcb5b1319b3bb56471&key2=e2fb445db072c0783752ac9a3d25c4be
 #EXTINF:0,Channel 2

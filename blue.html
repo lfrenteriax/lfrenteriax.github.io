@@ -829,7 +829,8 @@ else
 }
 
 url += '/manifest.mpd';
-
+console.log(url+"?key="+keyId+"&key2="+key+"\n")
+lstTxt=lstTxt+url+"?key="+keyId+"&key2="+key+"\n";
 var playerInstance = jwplayer("player");
 
 playerInstance.setup({

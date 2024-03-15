@@ -259,6 +259,10 @@ https://live.ll.ww.aiv-cdn.net/OTTB/dub-nitro/live/clients/dash/enc/cqbcvgkb83/o
 https://linear302-it-dash1-prd-ll.cdn13.skycdp.com/016a/31209/FHD/skysportseriea/master.mpd?key=0036e5d0e88dfb087f1791da6150ced9&key2=0bc653d830837dceb13bd17169f0f8e2
 #EXTINF:0,Sport tv 3
 https://da-d50d12b5.online.meo.pt/wp/cdn-er-vspp-cvl2.online.meo.pt/shls/LIVE$SPORTTV3_HD/index.m3u8/S!d2EISU9TX0xpdmUSBkPIS1XDVP7...8BFgyf/Level(3000000)
+#EXTINF:0,Sport tv 2
+https://da-d50d12b5.online.meo.pt/wp/cdn-er-vspp-cvl2.online.meo.pt/shls/LIVE$SPORTTV2_HD/index.m3u8/S!d2EISU9TX0xpdmUSBkPIS1XDVP7...8BFgyf/Level(3000000)
+#EXTINF:0, Canal 5 MX
+https://channel05.akamaized.net/hls/live/2033783/event01/index.m3u8
 #EXTINF:0,Channel 1
 https://1057-vos-da-mt.dtvott.com/DASH/manifest.mpd?key=98f18c7632f43bdcb5b1319b3bb56471&key2=e2fb445db072c0783752ac9a3d25c4be
 #EXTINF:0,Channel 2

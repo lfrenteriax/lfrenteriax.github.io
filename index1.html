@@ -259,7 +259,20 @@ display: none;
 	background: rgba(0, 0, 0, 0.01);
     color: #c9c9c96e;
     height: 30px;
-}		 
+}	
+.chnBtn{
+ 	  background-color: #04AA6D; /* Green background */
+  border: 1px solid green; /* Green border */
+  color: white; /* White text */
+  padding: 10px 24px; /* Some padding */
+  cursor: pointer; /* Pointer/hand icon */
+  width: 10%; /* Set a width if needed */
+  display: block; /* Make the buttons appear below each other */
+ 
+ 
+}
+
+		 
         </style>
 <body  onkeyPress="return myKeyPress(event)"  onkeyDown="return myKeyDown(event)">
 <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>	 
@@ -270,8 +283,8 @@ display: none;
 </div>
 <button  onmouseover="mdBodyFcn()"  id="menuBtn">≡</button>
 <div id="rapidoCnt">
-	<button  onmouseover=""  id="chmas">≡</button>
-	<button  onmouseover=""  id="chmenos">≡</button>
+	<button class="chnBtn" onmouseover=""  id="chmas">Ch+</button>
+	<button class="chnBtn"  onmouseover=""  id="chmenos">Ch-</button>
 </div>
 
 	<h2 id="lblBox"></h2>

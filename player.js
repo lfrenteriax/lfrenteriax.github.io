@@ -332,7 +332,7 @@ function cargarStar(data){
 					a.onclick = function() { playEvent(this); };
 					a.innerHTML=ii+". "+arr[ii-1].league+" | "+arr[ii-1].title+" |";
 					liveImg=document.createElement("img");
-					liveImg.src="LIVE.gif"";
+					liveImg.src="LIVE.gif";
 					a.appendChild(liveImg);	
 					
 					//span.innerHTML="LIVE";

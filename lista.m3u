@@ -263,6 +263,8 @@ https://da-d50d12b5.online.meo.pt/wp/cdn-er-vspp-cvl2.online.meo.pt/shls/LIVE$SP
 https://da-d50d12b5.online.meo.pt/wp/cdn-er-vspp-cvl2.online.meo.pt/shls/LIVE$SPORTTV2_HD/index.m3u8/S!d2EISU9TX0xpdmUSBkPIS1XDVP7...8BFgyf/Level(3000000)
 #EXTINF:0, Canal 5 MX
 https://channel05.akamaized.net/hls/live/2033783/event01/index.m3u8
+#EXTINF:0, ESPN 3
+https://edge6-hr.cvattv.com.ar/live/c3eds/ESPN3/SA_Live_dash_enc/ESPN3.mpd?key=f4c9f97e2a36feab0e5077f2b44cbc4e&key2=1743cd03dfe3736b2c95da91a783af38
 #EXTINF:0,Channel 1
 https://1057-vos-da-mt.dtvott.com/DASH/manifest.mpd?key=98f18c7632f43bdcb5b1319b3bb56471&key2=e2fb445db072c0783752ac9a3d25c4be
 #EXTINF:0,Channel 2

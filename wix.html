@@ -34,6 +34,7 @@ if (getURL == "") {alert('Vuelve a la pÃƒÆ’Ã‚Â¡gina anterior');}
 
 <div id="player"></div>
 <script>
+	var listaTxt="";
 function canales(getURL){
 var playerInstance= jwplayer("player");
 
@@ -904,7 +905,8 @@ playerInstance.setup({
     sharing: {}
 });
 
-console.log(atob(getURL)+"\n"+mpd+"&key2="+key+"&key="+keyId)
+console.log(atob(getURL)+"\n"+mpd+"&key2="+key+"&key="+keyId+"\n")
+listaTxt=listaTxt+atob(getURL)+"\n"+mpd+"&key2="+key+"&key="+keyId+"\n";
 	
 if (getURL !== undefined && getURL !== null) {
                         playerInstance.on("error", function () {
@@ -953,7 +955,7 @@ for (i=0;i<chnLst.length;i++){
 	canales(chnLst[i])
 }
 	
-
+console.log(listaTxt)
 
 
 

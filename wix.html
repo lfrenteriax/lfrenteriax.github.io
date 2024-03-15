@@ -15,6 +15,7 @@ html, body {
 <script> jwplayer.key = 'XSuP4qMl+9tK17QNb+4+th2Pm9AWgMO/cYH8CI0HGGr7bdjo';</script>
 
 <script type="text/javascript">
+chnLst=["QTNfQ2luZQ==","Rmxvd19NdXNpY19YUA==","QUVIRA==","SG9sYV9UVg==","QVhOSEQ=","TVRWMDA=","V2FybmVySEQ=","R0VOX1RW","Rm94X1Nwb3J0c19QcmVtaXVuX0hE","VG9kb05vdGljaWFz","VHlDU3BvcnQ","QW1lcmljYTI0","QzVO","TGFfTmFjaW9u","Q3JvbmljYVRW","Q2FuYWxfOF9UdWN1bWFu","UGFyYWd1YXlfVFY=","UGFyYW1vdW50","Q29tZWR5Q2VudHJhbA","Rmxvd19NdXNpY19YUA==","Rmxvd19NdXNpY18x","Rmxvd19NdXNpY18y","Rmxvd19NdXNpY18z","Qm9vbWVyYW5n","RHJlYW13b3Jrcw==","QW5pbWFsUGxhbmV0","SGlzdG9yeUhE","SUQ=","QnJhdm9UVg==","U29ueUhE","VHJ1VFY=","SEJPX1BPUA==","RGlzY292ZXJ5VHVyYm8=","RGlzbmV5SnI=","SW52ZXN0aWdhY2lvbl9QZXJpb2Rpc3RpY2E=","RVNQTjJfQXJn","Q2luZW1heA==","RXZlbnRvc18yX0hE","Q2FuYWxfOF9DQkE","MjZfVFZfSEQ","RGlwdXRhZG9zX1RW","QXJnZW50aW5pc2ltYQ","TWV0cm8","QkJDX1dvcmxkX05ld3M","VGhlYXRlcl9IRA==","R2xpdHo=","UXVpZXJvX0hE","RGlzY292ZXJ5X1dvcmxkX0hE","RXVyb2NoYW5uZWw=","RGlzY292ZXJ5X1NjaWVuY2U=","SU5DQUFfVHY=","VFY1X01vbmRl","TVRWX0hpdHM=","TVRWX0hE","Tmlja19Kcg==","VFZfRXNwYW5h","V09CSQ==","Vm9sdmVy","VGVsZXN1cg==","TGlmZXRpbWU=","QW50ZW5hXzM=","Rm94X05ld3M=","VHZfQ2hpbGU=","TWFzX0NoaWM=","U3R1ZGlvX1VuaXZlcnNhbA==","SVNBVA==","U3VuX0NoYW5uZWw=","UkFJ","VmVudXM=","U2V4dHJlbWU","UGxheWJveQ","VE5UX1Nwb3J0c19IRA","VGVsZWZlSEQ=","Q2FuYWw3","RW5jdWVudHJv","VGVsZW1heA","TmV0X1RW","Q2FuYWxfMTJfQ0JB","RWxfR2FyYWdl","RmlsbV9BcnRz","VW5pdmVyc2FsX0NoYW5uZWxfSEQ=","RXVyb3BhX0V1cm9wYQ","RXVyb25ld3M=","Rm9vZF9OZXR3b3Jr","RV9FbnRlcnRhaW5tZW50X1RlbGV2aXNpb24=","Q00=","UEFLQV9QQUtB","SGlzdG9yeV8y","U3lGeQ==","VEJT","VENN","SEJPXzI=","SEJPX1BsdXM=","SEJPX0ZhbWlseQ==","SEJPX0V4dHJlbWU=","SEJPX011bmRp","SEJPX1NpZ25hdHVyZQ==","Q2FuYWxfUnVyYWw=","VExD","Q2FuYWxfZGVfbGFfY2l1ZGFk","RGlzY292ZXJ5X0tpZHM=","SFRW","TkJBX1RW","QzlOX0M0","RGlzY292ZXJ5SG9tZUhlYWx0aEhE","TmF0R2VvSEQ=","VE5UX0hEX0FyZw==","VE5UU2VyaWVz","Q2FydG9vbk5ldHdvcms=","Tmlja2Vsb2Rlb24=","Q2FuYWxfNV9Sb3Nhcmlv","VEVMRUZVVFVST19DNA==","VGVsZWZlX05ldXF1ZW4=","VGVsZWZlX1NhbHRh","U05UX0M0","UEFSQVZJU0lPTl9DNA==","Tk9USUNJQVNfUFlfQzQ=","Tk9USUNJQVNfUFlfQzQ=","UEFSQVZJU0lPTl9DNA==","TEFfVEVMRV9DNA==","U1VSX1RWX0M0","Q2FuYWwxMlVSVQ==","RGlzY292ZXJ5SG9tZUhlYWx0aEhE","Q2FuYWw0X1VSVQ==","SEJPSEQ=","Q2FuYWwxMF9VUlU=","UlBDX0M0"]	
 function getParameterByName(name) {
 	name = name.replace(/[\[]/, "\[").replace(/[\]]/, "\]");
 	var regex = new RegExp("[\?&]" + name + "=([^&#]*)"),
@@ -33,7 +34,7 @@ if (getURL == "") {alert('Vuelve a la pÃƒÆ’Ã‚Â¡gina anterior');}
 
 <div id="player"></div>
 <script>
-
+function canales(){
 var playerInstance= jwplayer("player");
 
 if (getURL == "QTNfQ2luZQ==" || getURL == "Rmxvd19NdXNpY19YUA==" || getURL == "QUVIRA==" || getURL == "SG9sYV9UVg==" || getURL == "QVhOSEQ=" || getURL == "TVRWMDA=" || getURL == "V2FybmVySEQ=" || getURL == "R0VOX1RW" || getURL == "Rm94X1Nwb3J0c19QcmVtaXVuX0hE" || getURL == "VG9kb05vdGljaWFz" || getURL == "VHlDU3BvcnQ" || getURL == "QW1lcmljYTI0" || getURL == "QzVO" || getURL == "TGFfTmFjaW9u" || getURL == "Q3JvbmljYVRW" || getURL == "Q2FuYWxfOF9UdWN1bWFu" || getURL == "UGFyYWd1YXlfVFY=" || getURL == "UGFyYW1vdW50" || getURL == "Q29tZWR5Q2VudHJhbA" || getURL == "Rmxvd19NdXNpY19YUA==" || getURL == "Rmxvd19NdXNpY18x" || getURL == "Rmxvd19NdXNpY18y" || getURL == "Rmxvd19NdXNpY18z" || getURL == "Qm9vbWVyYW5n" || getURL == "RHJlYW13b3Jrcw==" || getURL == "QW5pbWFsUGxhbmV0" || getURL == "SGlzdG9yeUhE" ||  getURL == "SUQ=" || getURL == "QnJhdm9UVg==" || getURL == "U29ueUhE" || getURL == "VHJ1VFY=" || getURL == "SEJPX1BPUA==" || getURL == "RGlzY292ZXJ5VHVyYm8=" || getURL == "RGlzbmV5SnI=" || getURL == "SW52ZXN0aWdhY2lvbl9QZXJpb2Rpc3RpY2E=")
@@ -868,6 +869,7 @@ if (getURL == "RXZlbnRvczFIRA")
 		cast: {},
 		sharing: {}
 	});
+	
 }
 
 
@@ -902,7 +904,8 @@ playerInstance.setup({
     sharing: {}
 });
 
-
+console.log(mpd+"&key2="+key+"&key="+keyId)
+	
 if (getURL !== undefined && getURL !== null) {
                         playerInstance.on("error", function () {
                                
@@ -944,8 +947,11 @@ jwplayer().on('complete', function(e) {
   languageChangedDuringPlay = false;
 });
 
+}
 
-
+for (i=0;i<chnLst.length;i++){
+	canales(chnLst[i])
+}
 	
 
 

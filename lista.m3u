@@ -265,6 +265,32 @@ https://da-d50d12b5.online.meo.pt/wp/cdn-er-vspp-cvl2.online.meo.pt/shls/LIVE$SP
 https://channel05.akamaized.net/hls/live/2033783/event01/index.m3u8
 #EXTINF:0, ESPN 3
 https://edge6-hr.cvattv.com.ar/live/c3eds/ESPN3/SA_Live_dash_enc/ESPN3.mpd?key=f4c9f97e2a36feab0e5077f2b44cbc4e&key2=1743cd03dfe3736b2c95da91a783af38
+#EXTINF:0, SKY SPORTS IT
+https://linear312-it-dash1-prd-akg0.cdn13.skycdp.com/016a/31912/FHD/skysport256/master.mpd?key=00366f263859fc1cc82d2c4da6a66ef6&key2=754ae922d113c54349002cd9a88694a4
+#EXTINF:0, SKY SPORTS 2 IT
+https://linear311-it-dash1-prd-akg0.cdn13.skycdp.com/016a/32233/FHD/skysport253/master.mpd?key=00365b169a077daac5081277c3fd0c28&key2=f68ab32a552e13509a8ee1c4d96204bc
+#EXTINF:0, SKY CALCIO IT
+https://linear302-it-dash1-prd-ll.cdn13.skycdp.com/016a/31209/FHD/skysportseriea/master.mpd?key=0036e5d0e88dfb087f1791da6150ced9&key2=0bc653d830837dceb13bd17169f0f8e2
+#EXTINF:0, DAZN ELEVEN 2
+https://da-d50d12b5.online.meo.pt/wp/cdn-er-vspp-cvl2.online.meo.pt/shls/LIVE$Eleven_Sports_2_HD/index.m3u8/S!d2EISU9TX0xpdmUSBkPIS1XDVP7...8BFgyf/Level(1200000)
+#EXTINF:0, DAZN ELEVEN 3
+https://da-d50d12b5.online.meo.pt/wp/cdn-er-vspp-cvl2.online.meo.pt/shls/LIVE$Eleven_Sports_3_HD/index.m3u8/S!d2EISU9TX0xpdmUSBkPIS1XDVP7...8BFgyf/Level(1200000)
+#EXTINF:0, TSN 4
+https://live-ctv.video.9c9media.com/f/TSN/TSN4/manifest.mpd?key=f0a2efd11e0643c3a45d6f67d02f1a97&key2=85bf4469003bd28f01ea4fefedd5a431
+#EXTINF:0, DAZN 4
+https://live.ll.ww.aiv-cdn.net/OTTB/dub-nitro/live/clients/dash/enc/wjgklbtvhh/out/v1/659736a1e24c40e4865a80ffd75e7de7/cenc.mpd?key=43d1c3b25207ff38b22ccfe17d302367&key2=7b1f85f6e81059473b114c16a25c829a
+#EXTINF:0, SPORT PREMIUM 2
+https://ch11-hls-live.akamaized.net/out/u/433127.mpd?key=d12e4c9dc52f4cbab7ac9b2278317e47&key2=a7987e5b6ec42db68a25486e108ca9f2
+#EXTINF:0, SPORT PREMIUM 1
+https://linear001-ie-dash1-prd-ak.cdn.skycdp.com/016a/Content/DASH_003_720_30/Live/channel(premiersports1)/manifest_720.mpd?key=00052a8b8b89655fe5c72f61970fc45b&key2=0aa687336a8329962a9affd5af46300c
+#EXTINF:0, LA LIGA TV
+https://ottb.live.cf.ww.aiv-cdn.net/dub-nitro/live/clients/dash/enc/tu06vubgf9/out/v1/7668f47d28e345979c072e361f3d3ce3/cenc.mpd?key=6d08b265a6639e32da7c880d5491e3d2&key2=0c92556ca14b95f367993710e7cfbc94
+#EXTINF:0, TNT SPORTS 4
+https://ottb.live.cf.ww.aiv-cdn.net/lhr-nitro/live/clients/dash/enc/i2pcjr4pe5/out/v1/912e9db56d75403b8a9ac0a719110f36/cenc.mpd?key=e31a5a81caff5d07ea2411a571fc2e59&key2=96c5ef69479732ae734f962748c19729
+#EXTINF:0, SPORTS TV 1
+https://da-d50d12b5.online.meo.pt/wp/cdn-er-vspp-cvl2.online.meo.pt/shls/LIVE$SPORTTV1_HD/index.m3u8/S!d2EISU9TX0xpdmUSBkPIS1XDVP7...8BFgyf/Level(3000000)
+#EXTINF:0, SPORTS TV 6
+https://da-d50d12b5.online.meo.pt/wp/cdn-er-vspp-cvl2.online.meo.pt/shls/LIVE$SPORTTV6_HD/index.m3u8/S!d2EJVFZPU19MaXZlEgJU.v...wEWBJ8_/Level(5242880)
 #EXTINF:0,Channel 1
 https://1057-vos-da-mt.dtvott.com/DASH/manifest.mpd?key=98f18c7632f43bdcb5b1319b3bb56471&key2=e2fb445db072c0783752ac9a3d25c4be
 #EXTINF:0,Channel 2

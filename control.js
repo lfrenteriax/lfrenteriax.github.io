@@ -22,7 +22,7 @@ const client  = mqtt.connect(urlMqtt, options)
 client.on('connect', function () {
   console.log('Connected')
   // Subscribe to a topic
-  client.subscribe('/', function (err) {
+  client.subscribe('/myRemote1234', function (err) {
     if (!err) {
       // Publish a message to a topic
       client.publish('test', 'Hello mqtt')

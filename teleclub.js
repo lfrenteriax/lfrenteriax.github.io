@@ -1,4 +1,4 @@
-function activarTele(){
+async function activarTele(){
   const url = 'https://corsproxy.io/?url=https://tv.teleclub.xyz/activar';
   
   const data = "submit=ACTIVAR%252BAHORA%252521";

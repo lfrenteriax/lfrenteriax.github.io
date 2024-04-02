@@ -134,7 +134,9 @@ function myKeyDown(e){
         sharing: {}
     });
 
-    
+   playerInstance.on('pause', (event) => {
+            alert('Why did my user pause their video instead of watching it?');
+        }); 
 </script>
 </body>
 </html>

@@ -165,6 +165,8 @@ background: rgba(0, 0, 0, 0.0);
 <body>
 	 
 <script src="parser.min.js"></script>
+<button  onclick="gargar()"  id="menuBtn">CARGAR</button>
+<input type="text" id="lblbox" name="fname">
 <div id="cnt">
 <iframe id="frame"  src="https://www.youtube.com/embed/NsO5oFUZnHc?si=St9sSOI9IdePYfwt" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 </div>
@@ -237,6 +239,9 @@ window.addEventListener('message', function(event) {
 	    
 	    
   });
+	function cargar(){
+		getCanales(document.getElementById(lblbox).value);
+	}
 </script>
 </body>
 </html>

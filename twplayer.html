@@ -120,11 +120,12 @@ var options = {
   var player = new Twitch.Player("SamplePlayerDivID", options);
   player.setVolume(1);
 
-	player.on('PLAYING', (event) => {
-         //   alert('Why did my user pause their video instead of watching it?');
-	   console.log(event);
+	 
+	player.addEventListener("PLAYING", function (e) {
+ 
+  	console.log(e);
 	   window.parent.postMessage(["play",1], "*");
-        }); 
+});
 </script>
 </body>
 </html>

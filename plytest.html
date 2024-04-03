@@ -172,11 +172,11 @@ background: rgba(0, 0, 0, 0.0);
 
 
 <script>
-	var myplaylist="";
+var playlist="";
 var i=0;
 var cnt=document.getElementById("cnt");
 function play (ch) {
-  url=myplaylist[ch].file;
+  url=playlist[ch].file;
 	console.log(url)
 		
 	
@@ -206,7 +206,7 @@ function play (ch) {
 }
 function parse () {
    
-   myplaylist = M3U.parse(this.response);
+   playlist = M3U.parse(this.response);
     play(i)          
 };  
 
@@ -217,7 +217,21 @@ function parse () {
   xhr.onload = parse;
   xhr.send();
 }
-  
+window.addEventListener('message', function(event) {
+    console.log("Message received from the child: " + event.data); // Message received from child
+    if(event.data[0]=="play"){
+	    
+	if (event.data[1]==0){
+		
+	myplaylist[i].
+		
+	}
+	i=i+1;
+	    
+    }
+	    
+	    
+  });
 </script>
 </body>
 </html>

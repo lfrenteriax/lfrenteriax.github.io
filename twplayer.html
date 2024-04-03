@@ -124,6 +124,11 @@ var options = {
         console.log('started');
 		window.parent.postMessage(["play",1], "*");
       });
+player.addEventListener(Twitch.Player.OFFLINE, () => {
+        console.log('not started');
+		window.parent.postMessage(["play",0], "*");
+      });
+
 	
 </script>
 </body>

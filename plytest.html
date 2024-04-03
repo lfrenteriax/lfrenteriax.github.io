@@ -53,6 +53,13 @@ function play (ch) {
 			}else{
 				
 					window.open(url);
+				 	i=i+1;
+					if(i<myPlaylist.length)    
+						play(i);
+					else{
+						console.log("fin")
+					        alert("FIN")
+					}
 				
 			}
 		} catch (error) {

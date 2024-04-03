@@ -120,13 +120,11 @@ var options = {
   var player = new Twitch.Player("SamplePlayerDivID", options);
   player.setVolume(1);
 
-	player.addEventListener("PLAYING", twPlay, false); 
-	function twPlay() {
- 
-  	console.log("playins");
-	   window.parent.postMessage(["play",1], "*");
-	}
-
+	player.addEventListener(Twitch.Player.PLAYING, () => {
+        console.log('started');
+		window.parent.postMessage(["play",1], "*");
+      });
+	
 </script>
 </body>
 </html>

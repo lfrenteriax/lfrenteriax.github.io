@@ -117,7 +117,7 @@ function myKeyDown(e){
 }
     
     var playerInstance = jwplayer("player");
-    
+    var myVar;
     playerInstance.setup({
 
         playlist: [{
@@ -133,22 +133,32 @@ function myKeyDown(e){
         cast: {},
         sharing: {}
     });
-
+ myVar= setTimeout(myFunction, 5000);
    playerInstance.on('error', (event) => {
          //   alert('Why did my user pause their video instead of watching it?');
 	   console.log(event);
 	   window.parent.postMessage(["play",0], "*");
+	   clearTimeout(myVar);
         }); 
   playerInstance.on('play', (event) => {
          //   alert('Why did my user pause their video instead of watching it?');
 	   console.log(event);
 	   window.parent.postMessage(["play",1], "*");
+	  clearTimeout(myVar);
         }); 
 playerInstance.on('load', (event) => {
          //   alert('Why did my user pause their video instead of watching it?');
 	   console.log(event);
+		clearTimeout(myVar);
 	   window.parent.postMessage(["play",1], "*");
+	
         });
+function myFunction() {
+  	console.log("Time out");
+	window.parent.postMessage(["play",0], "*");
+}
+	
+
 </script>
 </body>
 </html>

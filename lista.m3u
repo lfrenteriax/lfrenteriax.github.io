@@ -212,7 +212,7 @@ https://vid2.ecuamedia.net/educatv/live/playlist.m3u8
 #EXTINF:-1 tvg-id="ElSolNetworkTV.ec",El Sol Network TV (1080p)
 https://server40.servistreaming.com:3174/live/elsolnetworklive.m3u8
 #EXTINF:-1 tvg-id="ElSolTV.ec",El Sol Radio y Televisión (404p) [Not 24/7]
-http://streaming5.globalhostla.com/rtplive/elsolrad/playlist.m3u8
+https://streaming5.globalhostla.com/rtplive/elsolrad/playlist.m3u8
 #EXTINF:-1 tvg-id="FMMundo.ec",FM Mundo (1080p)
 https://video2.makrodigital.com/fmmundo/fmmundo/playlist.m3u8
 #EXTINF:-1 tvg-id="HechosEcuador.ec",Hechos Ecuador (480p) [Not 24/7]

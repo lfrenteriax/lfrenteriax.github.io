@@ -227,7 +227,11 @@ window.addEventListener('message', function(event) {
 		
 	}
 	i=i+1;
-	    
+	if(i<myPlaylist.length)    
+		play(i);
+	else:
+		console.log("fin")
+	        alert("FIN")
     }
 	    
 	    

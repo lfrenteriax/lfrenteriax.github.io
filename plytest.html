@@ -11,16 +11,21 @@ body {
   font-family: Arial;
   font-size: 17px;
 }
+		 
         </style>
 <body>
 	 
 <script src="parser.min.js"></script>
 <button  onclick="gargar()"  id="menuBtn">CARGAR</button>
 <input type="text" id="lblBox" name="fname">
-<div id="cnt">
+
 <iframe id="frame"  src="https://www.youtube.com/embed/NsO5oFUZnHc?si=St9sSOI9IdePYfwt" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<div id="cnt">
+	
 </div>
- 
+<div id="debug">
+	
+</div>
 
 
 <script>
@@ -37,10 +42,10 @@ function play (ch) {
 			 if(url.search("https")==0){
 			      if(url.search("twitch")>0){
 					nurl="/twplayer.html?get="+url.split("twitch.tv/")[1];
-			      		cnt.innerHTML='<iframe src="'+nurl+'"' + 'title="description"> </iframe> ';
+			      		cnt.innerHTML='<iframe class="plyIf" src="'+nurl+'"' + 'title="description"> </iframe> ';
 				}else{
 			      		nurl="/jwplayer.html?get="+url;
-			      		cnt.innerHTML='<iframe src="'+nurl+'"' + 'title="description"> </iframe> ';
+			      		cnt.innerHTML='<iframe class="plyIf" src="'+nurl+'"' + 'title="description"> </iframe> ';
 			      }
 		     
 			}else{

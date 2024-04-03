@@ -172,11 +172,11 @@ background: rgba(0, 0, 0, 0.0);
 
 
 <script>
-var playlist="";
+var myPlaylist="";
 var i=0;
 var cnt=document.getElementById("cnt");
 function play (ch) {
-  url=playlist[ch].file;
+  url=myPlaylist[ch].file;
 	console.log(url)
 		
 	
@@ -206,7 +206,7 @@ function play (ch) {
 }
 function parse () {
    
-   playlist = M3U.parse(this.response);
+   myPlaylist = M3U.parse(this.response);
     play(i)          
 };  
 
@@ -223,7 +223,7 @@ window.addEventListener('message', function(event) {
 	    
 	if (event.data[1]==0){
 		
-	playlist[i].estado="off";
+	myPlaylist[i].estado="off";
 		
 	}
 	i=i+1;

@@ -88,7 +88,7 @@ window.addEventListener('message', function(event) {
     if(event.data[0]=="play"){
 	    
 	if (event.data[1]==1){
-		newPlaylist.pop(myPlaylist[i])
+		newPlaylist.push(myPlaylist[i])
 		h=document.createElement("h3");
 		h.innerHTML=myPlaylist[i].title;
 		debug.appendChild(h);

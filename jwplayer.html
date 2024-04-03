@@ -144,6 +144,11 @@ function myKeyDown(e){
 	   console.log(event);
 	   window.parent.postMessage(["play",1], "*");
         }); 
+playerInstance.on('load', (event) => {
+         //   alert('Why did my user pause their video instead of watching it?');
+	   console.log(event);
+	   window.parent.postMessage(["play",1], "*");
+        });
 </script>
 </body>
 </html>

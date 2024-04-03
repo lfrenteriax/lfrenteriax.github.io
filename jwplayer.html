@@ -133,7 +133,7 @@ function myKeyDown(e){
         cast: {},
         sharing: {}
     });
- myVar= setTimeout(myFunction, 10000);
+
    playerInstance.on('error', (event) => {
          //   alert('Why did my user pause their video instead of watching it?');
 	   console.log(event);
@@ -157,7 +157,7 @@ function myFunction() {
   	console.log("Time out");
 	window.parent.postMessage(["play",0], "*");
 }
-	
+	 myVar= setTimeout(myFunction, 10000);
 
 </script>
 </body>

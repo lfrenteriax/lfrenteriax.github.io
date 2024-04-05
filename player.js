@@ -61,7 +61,7 @@ function GetIndex(sender)
 {
     var aElements = sender.parentNode.parentNode.getElementsByTagName("a");
     var aElementsLength = aElements.length;
-    mdBodyFcn();
+    btn();
     var index;
     for (var i = 0; i < aElementsLength; i++)
     {

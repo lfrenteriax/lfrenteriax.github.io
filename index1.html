@@ -390,17 +390,14 @@ var btn = document.getElementById("menuBtn");
 var span = document.getElementsByClassName("close")[0];
 
 // When the user clicks the button, open the modal 
-btn.onclick = function() {
+function btn()  {
   modal.style.display = "block";
   modal1.style.display = "block";
   
   mdTimer=0;
 }
-btn.focus();
-function setFocus(){ 
-	btn.focus()
-}
-btn.onblur=setFocus;
+
+
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {
   modal.style.display = "none";

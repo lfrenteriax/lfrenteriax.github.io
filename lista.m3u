@@ -1,10 +1,10 @@
 #EXTM3U
 #EXTINF:0,USANETWORK
-//fsly.stream.peacocktv.com/Content/CMAF_OL1-CTR-4s/Live/channel(usa-east)/master.mpd?key2=de534ef8914bfe62ba3cdd6bdb9e1c04&key=882c9f5613b43b47adc70aa968a308ce
+https://fsly.stream.peacocktv.com/Content/CMAF_OL1-CTR-4s/Live/channel(usa-east)/master.mpd?key2=de534ef8914bfe62ba3cdd6bdb9e1c04&key=882c9f5613b43b47adc70aa968a308ce
 #EXTINF:0,SSC1
 https://ssc1-ak.akamaized.net/out/v1/c696e4819b55414388a1a487e8a45ca1/index.mpd?key2=550727de4c96ef1ecff874905493580f&key=d84c325f36814f39bbe59080272b10c3
 #EXTINF:0,SSC2
-//ssc-2-on-prem-ak.akamaized.net/out/v1/d9a2acf5f809461ca47714440fcbc0f4/index.mpd?key2=ab87f6ae46b2dc187bd94cbb48cfe074&key=b8763ccad3d146c2b15f8a77a4d6d733
+https://ssc-2-on-prem-ak.akamaized.net/out/v1/d9a2acf5f809461ca47714440fcbc0f4/index.mpd?key2=ab87f6ae46b2dc187bd94cbb48cfe074&key=b8763ccad3d146c2b15f8a77a4d6d733
 #EXTINF:0,SSC3
 https://ssc3-ak.akamaized.net/out/v1/42e86125555242aaa2a12056832e7814/index.mpd?key2=5e1503f3398b34f5099933fedab847ef&key=7de5dd08ad8041d586c2f16ccc9490a1
 #EXTINF:0,SSC4

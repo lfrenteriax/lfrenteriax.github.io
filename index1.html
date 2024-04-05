@@ -438,10 +438,17 @@ var lblBox = document.getElementById('lblBox');
 var menuTitle= document.getElementById('menuTitle');
 
 showTime();
-
+var elem = document.documentElement;
 function  menuFunction (obj) {
     console.log(obj.innerHTML);
     menuTitle.innerHTML=obj.innerHTML;
+    if (elem.requestFullscreen) {
+    elem.requestFullscreen();
+  } else if (elem.webkitRequestFullscreen) { /* Safari */
+    elem.webkitRequestFullscreen();
+  } else if (elem.msRequestFullscreen) { /* IE11 */
+    elem.msRequestFullscreen();
+  }
     if(obj.innerHTML=="Canales")
 	    cargarCanales("");
     if(obj.innerHTML=="Eventos")

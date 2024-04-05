@@ -421,7 +421,7 @@ function recargarCanales(){
 }
 function cargarOpciones(){
 	listaCnt.innerHTML=opciones;
-	
+	openFullscreen() 
 }
 
 var elem = document.documentElement;

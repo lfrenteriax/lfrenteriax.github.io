@@ -213,6 +213,7 @@ function getEvents(event){
 http.open("GET", event.url)
 //http.onload = () => loadEvents(http.responseText,event);
 http.onload =  loadEvents;	
+http.event=event;
 http.send()
 
 

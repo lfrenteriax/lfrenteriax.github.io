@@ -43,16 +43,22 @@ var right = document.getElementById("MyClockDisplay");
 var idx;
 
 left.addEventListener("mouseenter", function(){
-  idx = setInterval(() => nav.scrollTop -= 1, 10);
+  idx = setInterval(scllM , 10);
 });
 
+function scllM(){
+	nav.scrollTop =nav.scrollTop- 1;
+}
 left.addEventListener("mouseleave", function(){
   clearInterval(idx);
 });
 
 right.addEventListener("mouseenter", function(){
-  idx = setInterval(() => nav.scrollTop += 1, 10);
+  idx = setInterval(scllP, 10);
 });
+function scllP(){
+	nav.scrollTop =nav.scrollTop+1;
+}
 
 right.addEventListener("mouseleave", function(){
   clearInterval(idx);

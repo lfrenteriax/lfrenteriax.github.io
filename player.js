@@ -223,7 +223,8 @@ var html;
 var parser = new DOMParser();
 var parsed;
 function loadEvents() { 
-  event.cargar(this.response);
+ // event.cargar(this.response);
+	this.cargar(this.response);
  /* html = response;
  parser = new DOMParser();
 parsed = parser.parseFromString(html, "text/html");

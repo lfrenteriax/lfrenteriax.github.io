@@ -460,6 +460,13 @@ function  menuFunction (obj) {
     if(obj.innerHTML=="Opciones")
 	    cargarOpciones();
 }
+
+
+
+window.onerror = function myErrorHandler(errorMsg, url, lineNumber) {
+    alert("Error occured: " + errorMsg);//or any message
+    return false;
+}
 </script>
 <script src="horario.js"></script>
 	<script src="player.js"></script>

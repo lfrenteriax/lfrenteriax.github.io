@@ -233,7 +233,7 @@ function kpAction(ASCIICode){
                 console.log(ASCIICode);
 		    } else{
 		   lblBox.innerHTML=lblBox.innerHTML+String.fromCharCode(ASCIICode);   
-		    auxlblBox.value="";
+		 //   auxlblBox.value="";
 		   lblTimer=0;
 	   }
 }

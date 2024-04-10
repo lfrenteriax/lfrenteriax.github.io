@@ -204,16 +204,18 @@ function getEvents(event){
  const http = new XMLHttpRequest()
 
 http.open("GET", event.url)
+//http.onload = () => loadEvents(http.responseText,event);
+http.onload =  loadEvents;	
 http.send()
 
-http.onload = () => loadEvents(http.responseText,event);
+
 }
 
 var html;
 var parser = new DOMParser();
 var parsed;
-function loadEvents(response,event) { 
-  event.cargar(response);
+function loadEvents() { 
+  event.cargar(this.response);
  /* html = response;
  parser = new DOMParser();
 parsed = parser.parseFromString(html, "text/html");

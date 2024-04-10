@@ -162,15 +162,22 @@ function play(ch) {
 }
 function getParameter (key)  {
   
-    // Address of the current window
-    address = window.location.search
+  try {
+  address = window.location.search
   
     // Returns a URLSearchParams object instance
     parameterList = new URLSearchParams(address)
   
     // Returning the respected value associated
     // with the provided key
-    return parameterList.get(key)
+	  return parameterList.get(key)
+}
+catch(err) {
+  
+}
+	// Address of the current window
+    
+    return null
 }
   
 function mouseEv(evt) {

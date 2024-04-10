@@ -160,7 +160,7 @@ function play(ch) {
 		
 	}
 }
-getParameter = (key) => {
+function getParameter (key)  {
   
     // Address of the current window
     address = window.location.search

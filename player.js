@@ -37,7 +37,7 @@ listaCnt.innerHTML="";
 
 }
 
-let nav = document.getElementById("modal-body");
+//let nav = document.getElementById("modal-body");
 let left = document.getElementById("menuTitle");
 let right = document.getElementById("MyClockDisplay");
 let idx;

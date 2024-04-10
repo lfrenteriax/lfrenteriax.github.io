@@ -38,9 +38,9 @@ listaCnt.innerHTML="";
 }
 
 //let nav = document.getElementById("modal-body");
-let left = document.getElementById("menuTitle");
-let right = document.getElementById("MyClockDisplay");
-let idx;
+var left = document.getElementById("menuTitle");
+var right = document.getElementById("MyClockDisplay");
+var idx;
 
 left.addEventListener("mouseenter", function(){
   idx = setInterval(() => nav.scrollTop -= 1, 10);

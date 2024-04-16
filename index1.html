@@ -301,10 +301,10 @@ display: none;
  
   display: none;
 }
-    
+    .nocursor { cursor:none; }
 		 
         </style>
-<body  onkeyPress="return myKeyPress(event)"  onkeyDown="return myKeyDown(event)">
+<body  class="nocursor" onkeyPress="return myKeyPress(event)"  onkeyDown="return myKeyDown(event)">
 <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>	 
 
 	<script src="parser.min.js"></script>

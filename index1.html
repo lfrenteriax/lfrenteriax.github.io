@@ -387,7 +387,7 @@ var modal1 = document.getElementById("myModal1");
 
 
 // Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
+var spanC = document.getElementsByClassName("close")[0];
 
 // When the user clicks the button, open the modal 
 function btn()  {
@@ -399,7 +399,7 @@ function btn()  {
 
 
 // When the user clicks on <span> (x), close the modal
-span.onclick = function() {
+spanC.onclick = function() {
   modal.style.display = "none";
   modal1.style.display = "none";
   
@@ -421,7 +421,7 @@ function accion(){
         mdTimer=0;
     }
     if(mdTimer>5)
-        span.click()
+        spanC.click()
 if(lblBox.innerHTML!=""){
 	lblTimer++;
  	if (lblTimer==5){

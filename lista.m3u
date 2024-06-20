@@ -1,4 +1,6 @@
 #EXTM3U
+#EXTINF:0,COPA AMERICA
+https://4.tiofutbol.com/dsports/tracks-v1a1/mono.m3u8?remote=45.225.44.53&token=110c445001198ed62e4b2aad7709fe890879fce0-62f8e50140c4c4689e9a9befbd82cc03-1718936291-1718925491
 #EXTINF:0,pasionestv
 https://1182-vos.dtvott.com/DASH/manifest.mpd?key=a560cb85219d33e98c7ff23899af5b8a&key2=5c73e8bb0c9f9f918648e877778acce9
 #EXTINF:0,eltrece2

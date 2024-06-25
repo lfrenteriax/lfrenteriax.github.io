@@ -1,6 +1,8 @@
 #EXTM3U
 #EXTINF:0,COPA AMERICA
 https://8541752.pricesaskeloadsc.com/eventos7/tracks-v1a1/mono.m3u8?token=c878f4a2e97091873a1413630ae4e6c823e70eb3-04-1718937382-1718926582
+#EXTINF:0,COPA AMERICA
+https://1.tiofutbol.com/lb/dsports/index.m3u8?token=27c667ac5b4194b5b6afbc2e4e17a339f186eed9-9afc9c73c7268186e474799cc5d7aeec-1719291880-1719281080&remote=157.100.141.9
 https://1182-vos.dtvott.com/DASH/manifest.mpd?key=a560cb85219d33e98c7ff23899af5b8a&key2=5c73e8bb0c9f9f918648e877778acce9
 #EXTINF:0,eltrece2
 https://1095-abc.dtvott.com/dash_live_1095/manifest.mpd?key=27965a5e47515c52af970def8230142c&key2=fbe3bc448126a05697b4750ab0d294bb

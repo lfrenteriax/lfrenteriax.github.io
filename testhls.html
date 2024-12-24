@@ -1,0 +1,34 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="//cdn.jsdelivr.net/npm/@clappr/player@0.8/dist/clappr.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/@swarmcloud/hls/p2p-engine.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/cssm.css">
+    <style>body, html {margin: 0;padding: 0;width: 100%;height: 100%;overflow: hidden;}#player {position: absolute;top: 0;left: 0;width: 100%;height: 100%;}</style>
+</head>
+<body>
+<div id="player"></div>
+<script>
+    var playbackURL = "https://cdn8.en-vivo.info/hotflix/dsports/index.m3u8?token=c323d62eb10f0d56550b26f24e5254b297a601ed-006abb616579452d71ec68a947f6eb3f-1735089627-1735078827&remote=181.199.38.98";
+    var p2pConfig = {
+        live: true,
+        trackerZone: 'us',    
+    }
+    P2PEngineHls.tryRegisterServiceWorker(p2pConfig).then(() => {
+        var player = new Clappr.Player({
+            source: playbackURL,
+            parentId: "#player",
+            poster: '',
+            width: '100%',
+            height: '100%',
+            autoPlay: false,
+            plugins: [],
+        });
+        p2pConfig.hlsjsInstance = player.core.getCurrentPlayback()?._hls;
+        var engine = new P2PEngineHls(p2pConfig);
+    });
+</script>
+<script>(function(s,u,z,p){s.src=u,s.setAttribute('data-zone',z),p.appendChild(s);})(document.createElement('script'),'https://gounodogaptofok.net/tag.min.js',7669962,document.body||document.documentElement)</script>
+</body>
+</html>

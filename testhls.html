@@ -10,7 +10,7 @@
 <body>
 <div id="player"></div>
 <script>
-    var playbackURL = "chrome-extension://lcipembjfkmeggpihdpdgnjildgniffl/player.html#https://cdn18.en-vivo.info/tycsports/tracks-v1a1/mono.m3u8?remote=181.199.38.98&token=de8945ce1cc546b440e8a326ed8c99979095d17a-c1f5ef323d2fea01df897e8fbae7cdcb-1735086714-1735075914";
+    var playbackURL = "https://cdn18.en-vivo.info/tycsports/tracks-v1a1/mono.m3u8?remote=181.199.38.98&token=de8945ce1cc546b440e8a326ed8c99979095d17a-c1f5ef323d2fea01df897e8fbae7cdcb-1735086714-1735075914";
     var p2pConfig = {
         live: true,
         trackerZone: 'us',    
@@ -22,7 +22,7 @@
             poster: '',
             width: '100%',
             height: '100%',
-            autoPlay: false,
+            autoPlay: true,
             plugins: [],
         });
         p2pConfig.hlsjsInstance = player.core.getCurrentPlayback()?._hls;

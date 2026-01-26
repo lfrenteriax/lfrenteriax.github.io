@@ -4,12 +4,12 @@ const ctx = canvas.getContext("2d");
 const resultado = document.getElementById("resultado");
 
 let model;
-let ultimoEstado = "";
+let ultimoEstado = ""; // Para no repetir sonido
 
 const sonidoRojo = new Audio("alerta.mp3");
 sonidoRojo.preload = "auto";
 
-// Cámara
+// Iniciar cámara
 navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } })
   .then(stream => {
     video.srcObject = stream;
@@ -18,6 +18,7 @@ navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } })
       canvas.width = video.videoWidth;
       canvas.height = video.videoHeight;
 
+      // Cargar modelo
       model = await cocoSsd.load();
       resultado.innerText = "Detectando...";
       detectar();
@@ -50,15 +51,17 @@ async function detectar() {
     ctx.lineWidth = 3;
     ctx.strokeRect(x, y, w, h);
 
+    // Detectar color dentro del bbox
     const estado = detectarColorPeatonal(x, y, w, h);
     resultado.innerText = `Peatón: ${estado}`;
 
-    if (estado.includes("NO CRUZAR") && ultimoEstado !== "ROJO") {
+    // 🔴 Solo reproducir sonido cuando es rojo y antes no estaba rojo
+    if (estado === "🔴 NO CRUZAR" && ultimoEstado !== "ROJO") {
       sonidoRojo.play();
       ultimoEstado = "ROJO";
     }
 
-    if (estado.includes("PUEDE CRUZAR")) {
+    if (estado === "🟢 PUEDE CRUZAR") {
       ultimoEstado = "VERDE";
     }
   });
@@ -66,6 +69,7 @@ async function detectar() {
   requestAnimationFrame(detectar);
 }
 
+// Función para detectar color rojo/verde dentro del bbox
 function detectarColorPeatonal(x, y, w, h) {
   const data = ctx.getImageData(x, y, w, h).data;
   let rojo = 0, verde = 0;

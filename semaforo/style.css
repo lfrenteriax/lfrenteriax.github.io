@@ -3,31 +3,29 @@ body {
   padding: 0;
   text-align: center;
   font-family: Arial, sans-serif;
-  background: #111;
-  color: white;
 }
 
-h2 {
-  margin-top: 10px;
+#video-container {
+  position: relative;
+  display: inline-block;
+  width: 90%;          /* ajusta el tamaño total del cuadro */
+  max-width: 400px;    /* máximo ancho en móvil */
 }
 
-video, canvas {
-  width: 90%;
-  max-width: 400px;
-  margin-top: 10px;
-  border-radius: 10px;
+#video, #canvas {
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
-button {
-  margin-top: 10px;
-  padding: 10px 15px;
-  font-size: 16px;
-  border-radius: 8px;
-  border: none;
-  cursor: pointer;
+#canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none; /* para que toques no interfieran */
 }
 
 #resultado {
-  margin-top: 15px;
-  font-size: 22px;
+  margin-top: 10px;
+  font-size: 1.2em;
 }

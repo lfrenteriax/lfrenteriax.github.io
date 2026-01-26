@@ -4,41 +4,24 @@
   <meta charset="UTF-8">
   <title>Detector de Semáforo Peatonal</title>
 
-  <!-- IMPORTANTE para móviles -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 
-  <!-- PWA -->
-  <link rel="manifest" href="manifest.json">
-
-  <!-- Estilos -->
   <link rel="stylesheet" href="style.css">
 
-  <!-- TensorFlow -->
   <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
   <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd"></script>
 </head>
-
 <body>
 
   <h2>🚦 Semáforo Peatonal</h2>
 
-  <!-- Video de la cámara oculto -->
-  <video
-    id="video"
-    autoplay
-    playsinline
-    muted
-    style="display:none">
-  </video>
+  <div id="video-container">
+    <video id="video" autoplay playsinline muted></video>
+    <canvas id="canvas"></canvas>
+  </div>
 
-  <!-- Canvas donde se dibuja el video y las detecciones -->
-  <canvas id="canvas"></canvas>
-
-  <!-- Resultado -->
   <div id="resultado">Iniciando cámara...</div>
 
-  <!-- Lógica -->
   <script src="app.js"></script>
-
 </body>
 </html>

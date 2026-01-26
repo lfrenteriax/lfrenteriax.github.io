@@ -4,19 +4,25 @@ const ctx = canvas.getContext("2d");
 const resultado = document.getElementById("resultado");
 
 let model;
+let ultimoEstado = "";
 
-// Iniciar cámara trasera
-navigator.mediaDevices.getUserMedia({
-  video: { facingMode: "environment" }
-}).then(stream => {
-  video.srcObject = stream;
-});
+const sonidoRojo = new Audio("alerta.mp3");
+sonidoRojo.preload = "auto";
 
-// Cargar modelo COCO-SSD
-cocoSsd.load().then(m => {
-  model = m;
-  detectar();
-});
+// Cámara
+navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } })
+  .then(stream => {
+    video.srcObject = stream;
+    video.onloadedmetadata = async () => {
+      // Ajustar canvas al tamaño real del video
+      canvas.width = video.videoWidth;
+      canvas.height = video.videoHeight;
+
+      model = await cocoSsd.load();
+      resultado.innerText = "Detectando...";
+      detectar();
+    };
+  });
 
 async function detectar() {
   if (!model || video.videoWidth === 0) {
@@ -24,39 +30,17 @@ async function detectar() {
     return;
   }
 
-  const vw = video.videoWidth;
-  const vh = video.videoHeight;
-
-  const vertical = window.innerHeight > window.innerWidth;
-
-  if (vertical) {
-    canvas.width = vh;
-    canvas.height = vw;
-  } else {
-    canvas.width = vw;
-    canvas.height = vh;
-  }
-
-  ctx.save();
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-  if (vertical) {
-    // Rotar video 90° para Android
-    ctx.translate(canvas.width / 2, canvas.height / 2);
-    ctx.rotate(90 * Math.PI / 180);
-    ctx.drawImage(video, -vw / 2, -vh / 2, vw, vh);
-  } else {
-    ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-  }
+  // Dibujar video en canvas como fondo
+  ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
 
-  ctx.restore();
-
-  // Detectar semáforos sobre el canvas ya orientado
   const predictions = await model.detect(canvas);
   const semaforos = predictions.filter(p => p.class === "traffic light");
 
   if (semaforos.length === 0) {
-    resultado.innerText = "No se detecta semáforo peatonal";
+    resultado.innerText = "No se detecta semáforo";
+    ultimoEstado = "";
   }
 
   semaforos.forEach(s => {
@@ -68,16 +52,23 @@ async function detectar() {
 
     const estado = detectarColorPeatonal(x, y, w, h);
     resultado.innerText = `Peatón: ${estado}`;
+
+    if (estado.includes("NO CRUZAR") && ultimoEstado !== "ROJO") {
+      sonidoRojo.play();
+      ultimoEstado = "ROJO";
+    }
+
+    if (estado.includes("PUEDE CRUZAR")) {
+      ultimoEstado = "VERDE";
+    }
   });
 
   requestAnimationFrame(detectar);
 }
 
-// Detectar color del semáforo peatonal (rojo / verde)
 function detectarColorPeatonal(x, y, w, h) {
   const data = ctx.getImageData(x, y, w, h).data;
-  let rojo = 0;
-  let verde = 0;
+  let rojo = 0, verde = 0;
 
   for (let i = 0; i < data.length; i += 4) {
     const r = data[i];

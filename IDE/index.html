@@ -14987,6 +14987,64 @@ async function compilarYSubirSeleccionadoDesdeClick() {
     );
 }
 
+
+/* =========================================================
+   MQTT WEB SOCKET AUTOMÁTICO
+   HTTPS  -> WSS :8884
+   HTTP   -> WS  :8000
+   ========================================================= */
+
+function obtenerBrokerMQTTWeb() {
+    const paginaSegura =
+        window.location.protocol === "https:";
+
+    if (paginaSegura) {
+        return "wss://broker.hivemq.com:8884/mqtt";
+    }
+
+    return "ws://broker.hivemq.com:8000/mqtt";
+}
+
+function normalizarBrokerMQTTWeb(url) {
+    const paginaSegura =
+        window.location.protocol === "https:";
+
+    let broker =
+        String(url || "").trim();
+
+    if (!broker) {
+        return obtenerBrokerMQTTWeb();
+    }
+
+    /*
+     * Una página HTTPS no puede depender de ws://.
+     * Si hay una configuración antigua guardada con WS,
+     * la actualizamos automáticamente a WSS.
+     */
+    if (
+        paginaSegura &&
+        broker.startsWith("ws://")
+    ) {
+        return "wss://broker.hivemq.com:8884/mqtt";
+    }
+
+    /*
+     * Si estamos en HTTP/local y la configuración es uno
+     * de nuestros endpoints HiveMQ conocidos, usamos WS.
+     */
+    if (
+        !paginaSegura &&
+        (
+            broker.includes("broker.hivemq.com:8884") ||
+            broker === "wss://broker.hivemq.com/mqtt"
+        )
+    ) {
+        return "ws://broker.hivemq.com:8000/mqtt";
+    }
+
+    return broker;
+}
+
 let mqttClient = null;
 let mqttClientId = "web-" + Math.random().toString(16).slice(2) + "-" + Date.now();
 let mqttPending = new Map();
@@ -15200,7 +15258,10 @@ function estadoMQTT(conectado, texto) {
 }
 
 function abrirConfiguracionMQTT() {
-    document.getElementById("mqttBroker").value = localStorage.getItem("mqttBroker") || "ws://broker.hivemq.com:8000/mqtt";
+    document.getElementById("mqttBroker").value =
+        normalizarBrokerMQTTWeb(
+            localStorage.getItem("mqttBroker")
+        );
     document.getElementById("mqttUser").value = localStorage.getItem("mqttUser") || "";
     let canalGuardado = localStorage.getItem("mqttChannel");
     if (!canalGuardado) {
@@ -15217,7 +15278,7 @@ function cerrarConfiguracionMQTT() {
 }
 
 function guardarYConectarMQTT() {
-    const broker = document.getElementById("mqttBroker").value.trim() || "ws://broker.hivemq.com:8000/mqtt";
+    const broker = document.getElementById("mqttBroker").value.trim() || obtenerBrokerMQTTWeb();
     const user = document.getElementById("mqttUser").value.trim();
     const password = document.getElementById("mqttPassword").value;
     const channel = document.getElementById("mqttChannel").value.trim() || "arduino-blockly";
@@ -15232,8 +15293,16 @@ function guardarYConectarMQTT() {
 
 function conectarMQTT() {
     const broker =
-        localStorage.getItem("mqttBroker") ||
-        "ws://broker.hivemq.com:8000/mqtt";
+        normalizarBrokerMQTTWeb(
+            localStorage.getItem(
+                "mqttBroker"
+            )
+        );
+
+    localStorage.setItem(
+        "mqttBroker",
+        broker
+    );
     const user = localStorage.getItem("mqttUser") || "";
     const password = sessionStorage.getItem("mqttPassword") || "";
     const channel = "arduino-blockly";
@@ -15485,7 +15554,7 @@ window.addEventListener("load", () => {
     if (!localStorage.getItem("mqttBroker")) {
         localStorage.setItem(
             "mqttBroker",
-            "ws://broker.hivemq.com:8000/mqtt"
+            obtenerBrokerMQTTWeb()
         );
     }
 
@@ -15499,7 +15568,7 @@ window.addEventListener("load", () => {
     // MQTT es la fuente predeterminada.
     localStorage.setItem(
         "mqttBroker",
-        "ws://broker.hivemq.com:8000/mqtt"
+        obtenerBrokerMQTTWeb()
     );
 
     localStorage.setItem(
@@ -15574,6 +15643,31 @@ if (
         }
     );
 }
+
+
+window.addEventListener(
+    "load",
+    () => {
+        const brokerCorrecto =
+            normalizarBrokerMQTTWeb(
+                localStorage.getItem(
+                    "mqttBroker"
+                )
+            );
+
+        localStorage.setItem(
+            "mqttBroker",
+            brokerCorrecto
+        );
+
+        console.log(
+            "MQTT WebSocket:",
+            brokerCorrecto,
+            "| página:",
+            window.location.protocol
+        );
+    }
+);
 
 </script>
 

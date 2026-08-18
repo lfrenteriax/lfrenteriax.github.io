@@ -5836,6 +5836,382 @@ img[data-tutorial-image="kitLeotino"] {
     pointer-events: none;
 }
 
+
+/* Formas decorativas y obstáculo empujable */
+.track-object.shape-line {
+    height: 3px;
+    background: #2563eb;
+    border-radius: 999px;
+}
+.track-object.shape-rect {
+    background: transparent;
+    border: 3px solid #2563eb;
+    box-sizing: border-box;
+}
+.track-object.shape-circle {
+    background: transparent;
+    border: 3px solid #2563eb;
+    border-radius: 50%;
+    box-sizing: border-box;
+}
+.track-push-control {
+    display: none;
+    position: absolute;
+    left: 50%;
+    bottom: -30px;
+    transform: translateX(-50%);
+    padding: 3px 6px;
+    border-radius: 6px;
+    background: #0f172a;
+    color: #fff;
+    font-size: 8px;
+    white-space: nowrap;
+    z-index: 32;
+    cursor: pointer;
+}
+.track-object.selected .track-push-control {
+    display: block;
+}
+.track-object.obstacle.pushable {
+    outline: 2px dashed #22c55e;
+}
+
+
+/* =========================================================
+   OBSTÁCULO: CONTROLES SOLO AL PASAR EL CURSOR
+   ========================================================= */
+
+/* La X y el selector Empujable permanecen ocultos normalmente. */
+.track-object.obstacle .track-object-delete,
+.track-object.obstacle .track-push-control {
+    display: none !important;
+}
+
+/* Aparecen únicamente mientras el cursor está sobre el obstáculo. */
+.track-object.obstacle:hover .track-object-delete {
+    display: block !important;
+}
+
+.track-object.obstacle:hover .track-push-control {
+    display: block !important;
+}
+
+/* Obstáculo fijo */
+.track-object.obstacle:not(.pushable) {
+    background: #64748b !important;
+    border-color: #334155 !important;
+}
+
+/* Obstáculo empujable: cambia claramente de color. */
+.track-object.obstacle.pushable {
+    background: #22c55e !important;
+    border-color: #15803d !important;
+    outline: 2px dashed #16a34a !important;
+}
+
+/* Mantener visibles los controles mientras el cursor pasa
+   desde el obstáculo hacia el selector o la X. */
+.track-object.obstacle .track-push-control:hover,
+.track-object.obstacle .track-object-delete:hover {
+    display: block !important;
+}
+
+
+/* =========================================================
+   FORMAS DE PISTA — TODAS NEGRAS
+   ========================================================= */
+.track-object.shape-line {
+    height: 4px !important;
+    background: #000 !important;
+    border: 0 !important;
+    border-radius: 999px;
+}
+
+.track-object.shape-rect {
+    background: transparent !important;
+    border: 3px solid #000 !important;
+    box-sizing: border-box;
+}
+
+.track-object.shape-circle {
+    background: transparent !important;
+    border: 3px solid #000 !important;
+    border-radius: 50%;
+    box-sizing: border-box;
+}
+
+.track-object.shape-rect.filled,
+.track-object.shape-circle.filled {
+    background: #000 !important;
+}
+
+.track-fill-control {
+    display: none;
+    position: absolute;
+    left: 50%;
+    top: -30px;
+    transform: translateX(-50%);
+    padding: 3px 6px;
+    border-radius: 6px;
+    background: #0f172a;
+    color: #fff;
+    font-size: 8px;
+    white-space: nowrap;
+    z-index: 34;
+    cursor: pointer;
+}
+
+.track-object.shape-rect:hover .track-fill-control,
+.track-object.shape-circle:hover .track-fill-control,
+.track-object.shape-rect.selected .track-fill-control,
+.track-object.shape-circle.selected .track-fill-control {
+    display: block;
+}
+
+/* Los controles de dimensiones se muestran al seleccionar o pasar el cursor. */
+.track-object.shape-line:hover .track-length-controls,
+.track-object.shape-rect:hover .track-length-controls,
+.track-object.shape-circle:hover .track-length-controls {
+    display: flex;
+}
+
+
+/* Línea agregada: permite mover, cambiar largo y girar */
+.track-object.shape-line .track-rotate-handle {
+    display: block;
+}
+.track-object.shape-line:hover .track-rotate-handle,
+.track-object.shape-line.selected .track-rotate-handle {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+
+/* =========================================================
+   EDICIÓN DE PISTA — CONTROLES SOLO AL SELECCIONAR
+   Escala: usa exactamente LEOTINO_CM_POR_UNIDAD, la misma
+   conversión utilizada por el sensor ultrasónico.
+   ========================================================= */
+
+/* Ocultar siempre cuando el objeto NO está seleccionado. */
+.track-object:not(.selected) .track-object-delete,
+.track-object:not(.selected) .track-length-controls,
+.track-object:not(.selected) .track-fill-control,
+.track-object:not(.selected) .track-push-control,
+.track-object:not(.selected) .track-rotate-handle,
+.track-object:not(.selected) .track-rotate-stem,
+.track-object:not(.selected) .track-dimension-badge {
+    display: none !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+}
+
+/* La selección es la única que muestra las opciones. */
+.track-object.selected .track-object-delete {
+    display: block !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+}
+
+.track-object.selected .track-length-controls {
+    display: flex !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+}
+
+.track-object.selected .track-fill-control {
+    display: block !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+}
+
+.track-object.selected .track-push-control {
+    display: block !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+}
+
+/* Solo los objetos que realmente tienen giro muestran el asa. */
+.track-object.selected.wall .track-rotate-handle,
+.track-object.selected.shape-line .track-rotate-handle {
+    display: block !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+}
+
+.track-object.selected.wall .track-rotate-stem,
+.track-object.selected.shape-line .track-rotate-stem {
+    display: block !important;
+    opacity: 1 !important;
+}
+
+/* Hover ya NO revela ningún control. */
+.track-object:hover:not(.selected) .track-object-delete,
+.track-object:hover:not(.selected) .track-length-controls,
+.track-object:hover:not(.selected) .track-fill-control,
+.track-object:hover:not(.selected) .track-push-control,
+.track-object:hover:not(.selected) .track-rotate-handle,
+.track-object:hover:not(.selected) .track-rotate-stem,
+.track-object:hover:not(.selected) .track-dimension-badge {
+    display: none !important;
+}
+
+/* Etiqueta de dimensiones físicas. */
+.track-dimension-badge {
+    display: none;
+    position: absolute;
+    left: 50%;
+    top: calc(100% + 34px);
+    transform: translateX(-50%);
+    padding: 4px 7px;
+    border: 1px solid #64748b;
+    border-radius: 6px;
+    background: #fff;
+    color: #0f172a;
+    font-size: 9px;
+    font-weight: 800;
+    line-height: 1.2;
+    white-space: nowrap;
+    z-index: 40;
+    box-shadow: 0 2px 7px rgba(15,23,42,.18);
+}
+
+.track-object.selected .track-dimension-badge {
+    display: block !important;
+    opacity: 1 !important;
+    pointer-events: none !important;
+}
+
+/* Obstáculo: anular reglas antiguas que mostraban controles con hover. */
+.track-object.obstacle:hover .track-object-delete,
+.track-object.obstacle:hover .track-push-control {
+    display: none !important;
+}
+
+.track-object.obstacle.selected .track-object-delete,
+.track-object.obstacle.selected .track-push-control {
+    display: block !important;
+}
+
+/* Figuras: anular reglas antiguas de hover. */
+.track-object.shape-line:hover .track-length-controls,
+.track-object.shape-rect:hover .track-length-controls,
+.track-object.shape-circle:hover .track-length-controls,
+.track-object.shape-rect:hover .track-fill-control,
+.track-object.shape-circle:hover .track-fill-control,
+.track-object.shape-line:hover .track-rotate-handle {
+    display: none !important;
+}
+
+.track-object.shape-line.selected .track-length-controls,
+.track-object.shape-rect.selected .track-length-controls,
+.track-object.shape-circle.selected .track-length-controls {
+    display: flex !important;
+}
+
+.track-object.shape-rect.selected .track-fill-control,
+.track-object.shape-circle.selected .track-fill-control {
+    display: block !important;
+}
+
+.track-object.shape-line.selected .track-rotate-handle {
+    display: block !important;
+}
+
+
+/* El punto naranja representa EXACTAMENTE el punto usado por calcularIRLeotino(). */
+.leotino-ir-dot {
+    width: 10px !important;
+    height: 10px !important;
+    border: 2px solid #fff !important;
+    box-sizing: border-box !important;
+}
+
+
+
+/* =========================================================
+   OBSTÁCULO — SELECTOR EMPUJABLE SOBRE LOS CONTROLES
+   ========================================================= */
+.track-object.obstacle .track-push-control {
+    left: 50% !important;
+    top: -48px !important;
+    bottom: auto !important;
+    transform: translateX(-50%) !important;
+    z-index: 40 !important;
+}
+
+/* Mantiene los controles de dimensiones debajo, sin superposición. */
+.track-object.obstacle .track-size-controls,
+.track-object.obstacle .track-length-controls {
+    z-index: 35 !important;
+}
+
+/* La X queda independiente en la esquina. */
+.track-object.obstacle .track-object-delete {
+    z-index: 42 !important;
+}
+
+
+
+/* =========================================================
+   PAREDES EXTERNAS DE LA ARENA
+   ========================================================= */
+.leotino-track-stage.external-walls-hidden {
+    border-color: transparent !important;
+    box-shadow: none !important;
+}
+
+#leotinoExternalWallsBtn.active {
+    background: #7c3aed !important;
+    color: #fff !important;
+}
+
+
+
+/* =========================================================
+   JERARQUÍA VISUAL DE LA PISTA
+   Los obstáculos siempre quedan por encima de las marcas del piso,
+   sin importar el orden en que se agregaron.
+   ========================================================= */
+
+/* Dibujos libres del piso */
+.leotino-drawn-lines {
+    z-index: 2 !important;
+}
+
+/* Líneas, cuadros y círculos del piso */
+.track-object.shape-line,
+.track-object.shape-rect,
+.track-object.shape-circle,
+.track-object.black-line {
+    z-index: 3 !important;
+}
+
+/* Paredes físicas */
+.track-object.wall {
+    z-index: 8 !important;
+}
+
+/* Obstáculos físicos: siempre por encima de todo lo dibujado en el piso */
+.track-object.obstacle {
+    z-index: 12 !important;
+}
+
+/* El robot permanece por encima de los objetos de pista */
+.leotino-track-robot {
+    z-index: 20 !important;
+}
+
+/* Controles de edición del objeto seleccionado deben seguir visibles */
+.track-object.selected .track-object-delete,
+.track-object.selected .track-length-controls,
+.track-object.selected .track-fill-control,
+.track-object.selected .track-push-control,
+.track-object.selected .track-rotate-handle,
+.track-object.selected .track-dimension-badge {
+    z-index: 30 !important;
+}
+
 </style>
 
 </head>
@@ -8203,24 +8579,25 @@ Blockly.Blocks["leotino_girar_tiempo"] = {
             )
             .appendField("velocidad");
 
+        this.appendValueInput("TIME")
+            .setCheck("Number")
+            .appendField("durante");
+
         this.appendDummyInput()
-            .appendField("durante")
             .appendField(
-                new Blockly.FieldNumber(
-                    1,
-                    0,
-                    3600,
-                    0.1
-                ),
-                "TIME"
-            )
-            .appendField("s");
+                new Blockly.FieldDropdown([
+                    ["segundos", "S"],
+                    ["milisegundos", "MS"],
+                    ["microsegundos", "US"]
+                ]),
+                "TIME_UNIT"
+            );
 
         this.setPreviousStatement(true);
         this.setNextStatement(true);
         this.setColour("#7C3AED");
         this.setTooltip(
-            "Gira durante el tiempo indicado con un bloque Número; puedes elegir segundos, milisegundos o microsegundos. Luego se detiene."
+            "Gira durante el tiempo indicado. El tiempo se coloca con un bloque Número y se puede elegir segundos, milisegundos o microsegundos."
         );
     }
 };
@@ -12338,7 +12715,9 @@ let leotinoWorld = {
     lastTs: 0,
     collision: false,
     drawnLines: [],
-    drawLineMode: false
+    drawLineMode: false,
+    drawShapeMode: null,
+    externalWallsVisible: true
 };
 
 let leotinoSelection = {
@@ -12346,30 +12725,102 @@ let leotinoSelection = {
     id: null
 };
 
-function seleccionarElementoLeotino(kind, id) {
+function limpiarSeleccionLeotino() {
+    leotinoSelection = {
+        kind: null,
+        id: null
+    };
+
+    document
+        .querySelectorAll(".track-object.selected")
+        .forEach(
+            el =>
+                el.classList.remove(
+                    "selected"
+                )
+        );
+
+    document
+        .querySelectorAll(
+            ".leotino-drawn-lines polyline.selected"
+        )
+        .forEach(
+            el =>
+                el.classList.remove(
+                    "selected"
+                )
+        );
+}
+
+
+function seleccionarElementoLeotino(
+    kind,
+    id,
+    toggle = true
+) {
+    const yaSeleccionado =
+        leotinoSelection.kind === kind &&
+        leotinoSelection.id === id;
+
+    if (
+        toggle &&
+        yaSeleccionado
+    ) {
+        limpiarSeleccionLeotino();
+        return;
+    }
+
     leotinoSelection.kind = kind;
     leotinoSelection.id = id;
 
     document
         .querySelectorAll(".track-object.selected")
-        .forEach(el => el.classList.remove("selected"));
+        .forEach(
+            el =>
+                el.classList.remove(
+                    "selected"
+                )
+        );
 
     document
-        .querySelectorAll(".leotino-drawn-lines polyline.selected")
-        .forEach(el => el.classList.remove("selected"));
+        .querySelectorAll(
+            ".leotino-drawn-lines polyline.selected"
+        )
+        .forEach(
+            el =>
+                el.classList.remove(
+                    "selected"
+                )
+        );
 
     if (kind === "object") {
-        const el = document.querySelector(
-            '.track-object[data-object-id="' + id + '"]'
-        );
-        if (el) el.classList.add("selected");
+        const el =
+            document.querySelector(
+                '.track-object[data-object-id="' +
+                id +
+                '"]'
+            );
+
+        if (el) {
+            el.classList.add(
+                "selected"
+            );
+        }
     }
 
     if (kind === "drawn-line") {
-        const el = document.querySelector(
-            '.leotino-drawn-lines polyline[data-line-id="' + id + '"]'
-        );
-        if (el) el.classList.add("selected");
+        const el =
+            document.querySelector(
+                '.leotino-drawn-lines polyline[data-line-id="' +
+                id +
+                '"]'
+            );
+
+        if (el) {
+            el.classList.add(
+                "selected"
+            );
+        }
     }
 }
 
@@ -12409,50 +12860,92 @@ function eliminarSeleccionLeotino() {
     actualizarSensoresLeotino();
 }
 
-function cambiarLargoObjetoLeotino(id, delta) {
+function cambiarDimensionObjetoLeotino(
+    id,
+    dimension,
+    delta
+) {
     const obj =
         leotinoWorld.objects.find(
             o => o.id === id
         );
 
-    if (
-        !obj ||
-        (
-            obj.type !== "wall" &&
-            obj.type !== "black-line"
-        )
-    ) {
-        return;
-    }
+    if (!obj) return;
 
     detenerSimulacionPorEdicionLeotino(
-        "Largo modificado"
+        "Dimensión modificada"
     );
 
-    const base =
-        obj.type === "wall"
-            ? 22
-            : 28;
-
-    const actual =
-        Number(obj.length) || base;
-
-    obj.length =
+    const limits = (value) =>
         Math.max(
-            8,
+            4,
             Math.min(
                 80,
-                actual + delta
+                value
             )
         );
+
+    if (
+        obj.type === "wall" ||
+        obj.type === "shape-line"
+    ) {
+        obj.length =
+            limits(
+                (Number(obj.length) ||
+                    (
+                        obj.type === "wall"
+                            ? 22
+                            : 24
+                    )
+                ) + delta
+            );
+    }
+
+    if (
+        obj.type === "shape-rect" ||
+        obj.type === "obstacle"
+    ) {
+        if (dimension === "width") {
+            obj.width =
+                limits(
+                    (Number(obj.width) || 18) +
+                    delta
+                );
+        }
+
+        if (dimension === "height") {
+            obj.height =
+                limits(
+                    (Number(obj.height) || 12) +
+                    delta
+                );
+        }
+    }
+
+    if (obj.type === "shape-circle") {
+        obj.size =
+            limits(
+                (Number(obj.size) || 14) +
+                delta
+            );
+    }
 
     guardarMundoLeotino();
     renderObjetosPistaLeotino();
     seleccionarElementoLeotino(
         "object",
-        id
+        id,
+        false
     );
     actualizarSensoresLeotino();
+}
+
+function cambiarLargoObjetoLeotino(id, delta) {
+    cambiarDimensionObjetoLeotino(
+        id,
+        "length",
+        delta
+    );
 }
 
 
@@ -12483,6 +12976,10 @@ function cargarMundoLeotino() {
         if (saved && Array.isArray(saved.objects)) {
             leotinoWorld.objects = saved.objects.map(obj => ({
                 ...obj,
+                type:
+                    obj.type === "black-line"
+                        ? "shape-line"
+                        : obj.type,
                 rotation: Number(obj.rotation) || 0,
                 length:
                     Number(obj.length) ||
@@ -12542,6 +13039,35 @@ function dimensionesObjetoLeotino(obj) {
         };
     }
 
+    if (obj.type === "shape-line") {
+        return {
+            w: Number(obj.length) || 24,
+            h: 2
+        };
+    }
+
+    if (obj.type === "shape-rect") {
+        return {
+            w: Number(obj.width) || 18,
+            h: Number(obj.height) || 12
+        };
+    }
+
+    if (obj.type === "shape-circle") {
+        const size = Number(obj.size) || 14;
+        return {
+            w: size,
+            h: size
+        };
+    }
+
+    if (obj.type === "obstacle") {
+        return {
+            w: Number(obj.width) || 9,
+            h: Number(obj.height) || 11
+        };
+    }
+
     return {
         w: 9,
         h: 11
@@ -12559,7 +13085,7 @@ function puntoDentroRectLeotino(px, py, obj, margen = 0) {
     const ly = -dx * Math.sin(rotation) + dy * Math.cos(rotation);
 
     // Obstáculo circular aproximado por elipse.
-    if (obj.type === "obstacle") {
+    if (obj.type === "obstacle" || obj.type === "shape-circle") {
         const rx = d.w/2 + margen;
         const ry = d.h/2 + margen;
         return (lx*lx)/(rx*rx) + (ly*ly)/(ry*ry) <= 1;
@@ -12577,11 +13103,150 @@ function puntosContornoRobotLeotino(x,y,heading){
     const a=heading*Math.PI/180, s=Math.sin(a), c=Math.cos(a);
     return pts.map(([lx,ly])=>[x+lx*c+ly*s, y-lx*s+ly*c]);
 }
+
+function objetoBloqueaRobotLeotino(obj) {
+    return (
+        obj &&
+        (
+            obj.type === "wall" ||
+            obj.type === "obstacle"
+        )
+    );
+}
+
+function robotTocaObjetoLeotino(x,y,heading,obj) {
+    const puntos =
+        puntosContornoRobotLeotino(
+            x,
+            y,
+            heading
+        );
+
+    if (
+        puntos.some(
+            ([px,py]) =>
+                puntoDentroRectLeotino(
+                    px,
+                    py,
+                    obj,
+                    0.15
+                )
+        )
+    ) {
+        return true;
+    }
+
+    const d =
+        dimensionesObjetoLeotino(obj);
+
+    const dx = obj.x - x;
+    const dy = obj.y - y;
+    const a = heading * Math.PI / 180;
+
+    const lx =
+        dx * Math.cos(a) -
+        dy * Math.sin(a);
+
+    const ly =
+        dx * Math.sin(a) +
+        dy * Math.cos(a);
+
+    return (
+        Math.abs(lx) <=
+            3.55 + d.w / 2 &&
+        Math.abs(ly) <=
+            4.65 + d.h / 2
+    );
+}
+
+function intentarEmpujarObstaculosLeotino(
+    x,
+    y,
+    heading,
+    dxRobot,
+    dyRobot
+) {
+    const tocados =
+        leotinoWorld.objects.filter(
+            obj =>
+                obj.type === "obstacle" &&
+                obj.pushable === true &&
+                robotTocaObjetoLeotino(
+                    x,
+                    y,
+                    heading,
+                    obj
+                )
+        );
+
+    if (!tocados.length) {
+        return true;
+    }
+
+    for (const obj of tocados) {
+        const nx = obj.x + dxRobot;
+        const ny = obj.y + dyRobot;
+
+        const d =
+            dimensionesObjetoLeotino(obj);
+
+        if (
+            nx - d.w/2 <= 0.5 ||
+            nx + d.w/2 >= 99.5 ||
+            ny - d.h/2 <= 0.5 ||
+            ny + d.h/2 >= 99.5
+        ) {
+            return false;
+        }
+
+        const bloqueado =
+            leotinoWorld.objects.some(
+                other =>
+                    other.id !== obj.id &&
+                    objetoBloqueaRobotLeotino(other) &&
+                    puntoDentroRectLeotino(
+                        nx,
+                        ny,
+                        other,
+                        Math.max(d.w,d.h)/2
+                    )
+            );
+
+        if (bloqueado) {
+            return false;
+        }
+
+        obj.x = nx;
+        obj.y = ny;
+    }
+
+    guardarMundoLeotino();
+    renderObjetosPistaLeotino();
+    return true;
+}
+
 function colisionLeotino(x,y,heading=leotinoWorld.heading){
     const puntos=puntosContornoRobotLeotino(x,y,heading);
-    if(puntos.some(([px,py])=>px<=0.4||px>=99.6||py<=0.4||py>=99.6)) return true;
+    if(
+        leotinoWorld.externalWallsVisible !== false &&
+        puntos.some(
+            ([px,py]) =>
+                px <= 0.4 ||
+                px >= 99.6 ||
+                py <= 0.4 ||
+                py >= 99.6
+        )
+    ) {
+        return true;
+    }
     return leotinoWorld.objects.some(obj=>{
-        if(obj.type==="black-line") return false;
+        if(
+            obj.type==="black-line" ||
+            obj.type==="shape-line" ||
+            obj.type==="shape-rect" ||
+            obj.type==="shape-circle" ||
+            (obj.type==="obstacle" && obj.pushable===true)
+        ) return false;
         if(puntos.some(([px,py])=>puntoDentroRectLeotino(px,py,obj,0.15))) return true;
         const d=dimensionesObjetoLeotino(obj);
         const dx=obj.x-x, dy=obj.y-y, a=heading*Math.PI/180;
@@ -12596,7 +13261,9 @@ function agregarObjetoLeotino(type) {
     const defaults = {
         obstacle: {x:62,y:42},
         wall: {x:72,y:25},
-        "black-line": {x:48,y:60}
+        "shape-line": {x:50,y:48},
+        "shape-rect": {x:58,y:52},
+        "shape-circle": {x:42,y:52}
     };
     const p = defaults[type] || {x:50,y:50};
     leotinoWorld.objects.push({
@@ -12605,12 +13272,41 @@ function agregarObjetoLeotino(type) {
         x:p.x + (Math.random()*5-2.5),
         y:p.y + (Math.random()*5-2.5),
         rotation: 0,
+        pushable:
+            type === "obstacle"
+                ? false
+                : undefined,
         length:
             type === "wall"
                 ? 22
                 : type === "black-line"
                     ? 28
-                    : undefined
+                    : type === "shape-line"
+                        ? 24
+                        : undefined,
+        width:
+            type === "shape-rect"
+                ? 18
+                : type === "obstacle"
+                    ? 9
+                    : undefined,
+        height:
+            type === "shape-rect"
+                ? 12
+                : type === "obstacle"
+                    ? 11
+                    : undefined,
+        size:
+            type === "shape-circle"
+                ? 14
+                : undefined,
+        filled:
+            (
+                type === "shape-rect" ||
+                type === "shape-circle"
+            )
+                ? false
+                : undefined
     });
     guardarMundoLeotino();
     renderObjetosPistaLeotino();
@@ -12638,6 +13334,170 @@ function borrarObjetoLeotino(id) {
     actualizarSensoresLeotino();
 }
 
+
+
+function relacionAspectoPistaLeotino() {
+    const stage =
+        document.getElementById(
+            "leotinoTrackStage"
+        );
+
+    if (
+        stage &&
+        stage.clientWidth > 0 &&
+        stage.clientHeight > 0
+    ) {
+        return (
+            stage.clientWidth /
+            stage.clientHeight
+        );
+    }
+
+    /*
+     * Relación de respaldo usada también por la geometría
+     * del ultrasónico cuando el stage aún no está montado.
+     */
+    return 10 / 7;
+}
+
+
+function unidadesHorizontalesACmLeotino(valor) {
+    return (
+        Number(valor || 0) *
+        relacionAspectoPistaLeotino() *
+        LEOTINO_CM_POR_UNIDAD
+    );
+}
+
+
+function unidadesVerticalesACmLeotino(valor) {
+    return (
+        Number(valor || 0) *
+        LEOTINO_CM_POR_UNIDAD
+    );
+}
+
+
+function formatearCmLeotino(valor) {
+    return (
+        Math.round(
+            Number(valor || 0) *
+            10
+        ) /
+        10
+    ).toString();
+}
+
+
+function textoDimensionesObjetoLeotino(obj) {
+    const d =
+        dimensionesObjetoLeotino(
+            obj
+        );
+
+    /*
+     * IMPORTANTE:
+     * El ultrasónico mide distancia física usando una pista
+     * rectangular. Por eso:
+     *
+     *  - 1 unidad vertical = LEOTINO_CM_POR_UNIDAD cm
+     *  - 1 unidad horizontal = aspecto * LEOTINO_CM_POR_UNIDAD cm
+     *
+     * Estas conversiones son las mismas que se usan implícitamente
+     * en distanciaRayoLeotino(), donde X se divide por aspect.
+     */
+
+    if (
+        obj.type === "wall" ||
+        obj.type === "shape-line"
+    ) {
+        const largoCm =
+            unidadesHorizontalesACmLeotino(
+                d.w
+            );
+
+        return (
+            "Largo: " +
+            formatearCmLeotino(
+                largoCm
+            ) +
+            " cm"
+        );
+    }
+
+    if (
+        obj.type === "shape-rect" ||
+        obj.type === "obstacle"
+    ) {
+        const anchoCm =
+            unidadesHorizontalesACmLeotino(
+                d.w
+            );
+
+        const altoCm =
+            unidadesVerticalesACmLeotino(
+                d.h
+            );
+
+        return (
+            "Ancho: " +
+            formatearCmLeotino(
+                anchoCm
+            ) +
+            " cm · Alto: " +
+            formatearCmLeotino(
+                altoCm
+            ) +
+            " cm"
+        );
+    }
+
+    if (obj.type === "shape-circle") {
+        /*
+         * El círculo CSS tiene aspect-ratio:1/1.
+         * Su diámetro visible en píxeles viene de size% del
+         * ANCHO de la pista. Por tanto, físicamente:
+         *
+         * diámetro = size * (ancho/alto) * escala_cm.
+         */
+        const diametroCm =
+            unidadesHorizontalesACmLeotino(
+                Number(obj.size) ||
+                d.w
+            );
+
+        return (
+            "Diámetro: " +
+            formatearCmLeotino(
+                diametroCm
+            ) +
+            " cm"
+        );
+    }
+
+    const anchoCm =
+        unidadesHorizontalesACmLeotino(
+            d.w
+        );
+
+    const altoCm =
+        unidadesVerticalesACmLeotino(
+            d.h
+        );
+
+    return (
+        "Ancho: " +
+        formatearCmLeotino(
+            anchoCm
+        ) +
+        " cm · Alto: " +
+        formatearCmLeotino(
+            altoCm
+        ) +
+        " cm"
+    );
+}
+
 function renderObjetosPistaLeotino() {
     const stage = document.getElementById("leotinoTrackStage");
     if (!stage) return;
@@ -12646,30 +13506,82 @@ function renderObjetosPistaLeotino() {
 
     leotinoWorld.objects.forEach(obj => {
         const el = document.createElement("div");
-        el.className = "track-object " + obj.type;
+        el.className =
+            "track-object " +
+            obj.type +
+            (
+                obj.type === "obstacle" &&
+                obj.pushable
+                    ? " pushable"
+                    : ""
+            ) +
+            (
+                (
+                    obj.type === "shape-rect" ||
+                    obj.type === "shape-circle"
+                ) &&
+                obj.filled
+                    ? " filled"
+                    : ""
+            );
         el.dataset.objectId = obj.id;
         el.style.left = obj.x + "%";
         el.style.top = obj.y + "%";
 
         if (
             obj.type === "wall" ||
-            obj.type === "black-line"
+            obj.type === "black-line" ||
+            obj.type === "shape-line" ||
+            obj.type === "shape-line"
         ) {
             el.style.width =
                 (Number(obj.length) ||
                     (
                         obj.type === "wall"
                             ? 22
-                            : 28
+                            : obj.type === "black-line"
+                                ? 28
+                                : 24
                     )
                 ) + "%";
         }
 
+        if (obj.type === "shape-rect") {
+            el.style.width =
+                (Number(obj.width) || 18) + "%";
+            el.style.height =
+                (Number(obj.height) || 12) + "%";
+        }
+
+        if (obj.type === "obstacle") {
+            el.style.width =
+                (Number(obj.width) || 9) + "%";
+            el.style.height =
+                (Number(obj.height) || 11) + "%";
+        }
+
+        if (obj.type === "shape-circle") {
+            el.style.width =
+                (Number(obj.size) || 14) + "%";
+            el.style.aspectRatio = "1 / 1";
+        }
+
         el.style.transform =
             "translate(-50%, -50%) rotate(" + (Number(obj.rotation)||0) + "deg)";
-        el.title = obj.type === "wall" ? "Pared · arrastra / gira / cambia largo" :
-                   obj.type === "black-line" ? "Línea negra · arrastra / gira / cambia largo" :
-                   "Obstáculo · arrastra";
+        el.title =
+            obj.type === "wall"
+                ? "Pared · arrastra / gira / cambia largo"
+                : obj.type === "shape-line"
+                        ? "Línea · arrastra / gira / cambia largo"
+                        : obj.type === "shape-rect"
+                            ? "Cuadro · arrastra"
+                            : obj.type === "shape-circle"
+                                ? "Círculo · arrastra"
+                                : (
+                                    obj.pushable
+                                        ? "Obstáculo empujable · selecciona para editar"
+                                        : "Obstáculo fijo · selecciona para editar"
+                                  );
 
         const deleteButton =
             document.createElement("button");
@@ -12695,7 +13607,8 @@ function renderObjetosPistaLeotino() {
                 ev.stopPropagation();
                 seleccionarElementoLeotino(
                     "object",
-                    obj.id
+                    obj.id,
+                    false
                 );
                 eliminarSeleccionLeotino();
             }
@@ -12703,9 +13616,27 @@ function renderObjetosPistaLeotino() {
 
         el.appendChild(deleteButton);
 
+        const dimensionBadge =
+            document.createElement("div");
+
+        dimensionBadge.className =
+            "track-dimension-badge";
+
+        dimensionBadge.textContent =
+            textoDimensionesObjetoLeotino(
+                obj
+            );
+
+        el.appendChild(
+            dimensionBadge
+        );
+
         if (
             obj.type === "wall" ||
-            obj.type === "black-line"
+            obj.type === "shape-line" ||
+            obj.type === "shape-rect" ||
+            obj.type === "shape-circle" ||
+            obj.type === "obstacle"
         ) {
             const lengthControls =
                 document.createElement("div");
@@ -12713,10 +13644,28 @@ function renderObjetosPistaLeotino() {
             lengthControls.className =
                 "track-length-controls";
 
-            lengthControls.innerHTML =
-                '<button type="button" data-length="-4">−</button>' +
-                '<span>Largo</span>' +
-                '<button type="button" data-length="4">+</button>';
+            if (
+                obj.type === "shape-rect" ||
+                obj.type === "obstacle"
+            ) {
+                lengthControls.innerHTML =
+                    '<span>Ancho</span>' +
+                    '<button type="button" data-dim="width" data-length="-4">−</button>' +
+                    '<button type="button" data-dim="width" data-length="4">+</button>' +
+                    '<span>Alto</span>' +
+                    '<button type="button" data-dim="height" data-length="-4">−</button>' +
+                    '<button type="button" data-dim="height" data-length="4">+</button>';
+            } else if (obj.type === "shape-circle") {
+                lengthControls.innerHTML =
+                    '<span>Tamaño</span>' +
+                    '<button type="button" data-dim="size" data-length="-4">−</button>' +
+                    '<button type="button" data-dim="size" data-length="4">+</button>';
+            } else {
+                lengthControls.innerHTML =
+                    '<button type="button" data-dim="length" data-length="-4">−</button>' +
+                    '<span>Largo</span>' +
+                    '<button type="button" data-dim="length" data-length="4">+</button>';
+            }
 
             lengthControls
                 .querySelectorAll("button")
@@ -12735,8 +13684,9 @@ function renderObjetosPistaLeotino() {
                             ev.preventDefault();
                             ev.stopPropagation();
 
-                            cambiarLargoObjetoLeotino(
+                            cambiarDimensionObjetoLeotino(
                                 obj.id,
+                                btn.dataset.dim || "length",
                                 Number(
                                     btn.dataset.length
                                 ) || 0
@@ -12750,8 +13700,93 @@ function renderObjetosPistaLeotino() {
             );
         }
 
+        if (
+            obj.type === "shape-rect" ||
+            obj.type === "shape-circle"
+        ) {
+            const fillControl =
+                document.createElement("label");
+
+            fillControl.className =
+                "track-fill-control";
+
+            fillControl.innerHTML =
+                '<input type="checkbox" ' +
+                (obj.filled ? 'checked ' : '') +
+                '> Fondo negro';
+
+            const fillCheckbox =
+                fillControl.querySelector(
+                    "input"
+                );
+
+            fillCheckbox.addEventListener(
+                "pointerdown",
+                ev => ev.stopPropagation()
+            );
+
+            fillCheckbox.addEventListener(
+                "change",
+                ev => {
+                    ev.stopPropagation();
+                    obj.filled =
+                        fillCheckbox.checked;
+                    guardarMundoLeotino();
+                    renderObjetosPistaLeotino();
+                    seleccionarElementoLeotino(
+                        "object",
+                        obj.id,
+                        false
+                    );
+                }
+            );
+
+            el.appendChild(fillControl);
+        }
+
+        if (obj.type === "obstacle") {
+            const pushControl =
+                document.createElement("label");
+
+            pushControl.className =
+                "track-push-control";
+
+            pushControl.innerHTML =
+                '<input type="checkbox" ' +
+                (obj.pushable ? 'checked ' : '') +
+                '> Empujable';
+
+            const checkbox =
+                pushControl.querySelector(
+                    "input"
+                );
+
+            checkbox.addEventListener(
+                "pointerdown",
+                ev => ev.stopPropagation()
+            );
+
+            checkbox.addEventListener(
+                "change",
+                ev => {
+                    ev.stopPropagation();
+                    obj.pushable =
+                        checkbox.checked;
+                    guardarMundoLeotino();
+                    renderObjetosPistaLeotino();
+                    seleccionarElementoLeotino(
+                        "object",
+                        obj.id,
+                        false
+                    );
+                }
+            );
+
+            el.appendChild(pushControl);
+        }
+
         // Pared y línea negra son rotables.
-        if (obj.type === "wall" || obj.type === "black-line") {
+        if (obj.type === "wall" || obj.type === "black-line" || obj.type === "shape-line") {
             const stem = document.createElement("div");
             stem.className = "track-rotate-stem";
             el.appendChild(stem);
@@ -12806,7 +13841,8 @@ function renderObjetosPistaLeotino() {
             () => {
                 seleccionarElementoLeotino(
                     "object",
-                    obj.id
+                    obj.id,
+                    false
                 );
                 eliminarSeleccionLeotino();
             }
@@ -12816,7 +13852,9 @@ function renderObjetosPistaLeotino() {
             if (
                 ev.target.classList.contains("track-rotate-handle") ||
                 ev.target.closest(".track-object-delete") ||
-                ev.target.closest(".track-length-controls")
+                ev.target.closest(".track-length-controls") ||
+                ev.target.closest(".track-push-control") ||
+                ev.target.closest(".track-fill-control")
             ) {
                 return;
             }
@@ -12824,10 +13862,24 @@ function renderObjetosPistaLeotino() {
             detenerSimulacionPorEdicionLeotino("Elemento movido");
             ev.preventDefault();
 
+            const estabaSeleccionado =
+                leotinoSelection.kind === "object" &&
+                leotinoSelection.id === obj.id;
+
             seleccionarElementoLeotino(
                 "object",
-                obj.id
+                obj.id,
+                true
             );
+
+            /*
+             * Si el objeto ya estaba seleccionado,
+             * este clic únicamente quita la selección.
+             * No empieza a arrastrarlo.
+             */
+            if (estabaSeleccionado) {
+                return;
+            }
 
             el.setPointerCapture(ev.pointerId);
             el.classList.add("dragging");
@@ -12989,11 +14041,22 @@ function distanciaRayoLeotino(angleDeg, maxWorld = 100) {
             y <= 0 ||
             y >= 100
         ) {
-            return d;
+            if (
+                leotinoWorld.externalWallsVisible !== false
+            ) {
+                return d;
+            }
+
+            /*
+             * Bordes externos ocultos:
+             * el sensor no considera el límite de la arena
+             * como una pared. Continúa sin registrar impacto.
+             */
+            continue;
         }
 
         const hit =
-            leotinoWorld.objects.some(
+            leotinoWorld.objects.filter(obj => objetoDetectablePorUltrasonidoLeotino(obj)).some(
                 obj => {
                     if (
                         obj.type ===
@@ -13041,6 +14104,28 @@ function perfilUltrasonidoLeotino() {
     };
 }
 
+
+function objetoDetectablePorUltrasonidoLeotino(obj) {
+    /*
+     * El ultrasónico detecta únicamente objetos físicos
+     * elevados respecto al piso.
+     *
+     * NO detecta marcas negras del piso:
+     * - shape-line
+     * - shape-rect
+     * - shape-circle
+     * - líneas dibujadas
+     */
+    return (
+        obj &&
+        (
+            obj.type === "wall" ||
+            obj.type === "obstacle"
+        )
+    );
+}
+
+
 function calcularDistanciaUltrasonidoLeotino() {
     const perfil = perfilUltrasonidoLeotino();
 
@@ -13060,14 +14145,23 @@ function calcularDistanciaUltrasonidoLeotino() {
 }
 
 function posicionIRLeotino() {
-    // Sensor IR: centro delantero, físicamente debajo del servo
-    // que sostiene el ultrasonido. El offset rota con todo el robot.
+    /*
+     * POSICIÓN REAL DEL SENSOR IR INFERIOR
+     *
+     * El punto de lectura NO es el centro del robot.
+     * Está en la parte frontal inferior del chasis.
+     *
+     * El contorno del robot usa aproximadamente 4.65 unidades
+     * desde el centro hasta el frente. Colocamos el sensor casi
+     * en ese borde para que la línea se detecte únicamente cuando
+     * el sensor físico pasa por encima de ella.
+     */
     const ang =
         leotinoWorld.heading *
         Math.PI /
         180;
 
-    const offsetFrontal = 3.55;
+    const offsetFrontal = 4.35;
 
     return {
         x:
@@ -13081,30 +14175,379 @@ function posicionIRLeotino() {
     };
 }
 
-function calcularIRLeotino() {
-    const p = posicionIRLeotino();
 
-    const detectaObjeto =
-        leotinoWorld.objects.some(obj => {
+function puntoCercaSegmentosLeotino(
+    px,
+    py,
+    segmentos,
+    margen = 0.9
+) {
+    return segmentos.some(([a,b]) =>
+        distanciaPuntoSegmentoLeotino(
+            px,
+            py,
+            a.x,
+            a.y,
+            b.x,
+            b.y
+        ) <= margen
+    );
+}
+
+
+function segmentosCirculoLeotino(
+    obj,
+    incluirRelleno = false
+) {
+    /*
+     * MISMO MÉTODO QUE LA LÍNEA DIBUJADA.
+     *
+     * La diferencia importante es que el círculo CSS se dibuja
+     * con aspect-ratio: 1 / 1 en PÍXELES.
+     *
+     * La pista no es cuadrada, por lo tanto:
+     *   1% horizontal != 1% vertical en píxeles.
+     *
+     * Para que la geometría de detección coincida EXACTAMENTE
+     * con el círculo que vemos en pantalla, convertimos el radio
+     * vertical usando la relación real ancho/alto del stage.
+     */
+    const stage =
+        document.getElementById(
+            "leotinoTrackStage"
+        );
+
+    const aspect =
+        relacionAspectoPistaLeotino();
+
+    const size =
+        Number(obj.size) || 14;
+
+    /*
+     * Ancho CSS = size % del ancho de la pista.
+     * Como el elemento tiene aspect-ratio 1:1,
+     * su alto en píxeles es igual a ese ancho.
+     *
+     * Convertido nuevamente a % vertical:
+     * altoWorld = size * (stageWidth/stageHeight)
+     */
+    const radioX =
+        Math.max(
+            0.1,
+            size / 2
+        );
+
+    const radioY =
+        Math.max(
+            0.1,
+            (
+                size *
+                aspect
+            ) / 2
+        );
+
+    const cx =
+        Number(obj.x) || 0;
+
+    const cy =
+        Number(obj.y) || 0;
+
+    const segmentos = [];
+
+    /*
+     * Contorno con bastantes segmentos para que el resultado
+     * sea prácticamente idéntico a una línea dibujada curva.
+     */
+    const pasos = 120;
+
+    let anterior = null;
+
+    for (
+        let i = 0;
+        i <= pasos;
+        i++
+    ) {
+        const angulo =
+            (
+                i /
+                pasos
+            ) *
+            Math.PI *
+            2;
+
+        const punto = {
+            x:
+                cx +
+                Math.cos(
+                    angulo
+                ) *
+                radioX,
+
+            y:
+                cy +
+                Math.sin(
+                    angulo
+                ) *
+                radioY
+        };
+
+        if (anterior) {
+            segmentos.push([
+                anterior,
+                punto
+            ]);
+        }
+
+        anterior = punto;
+    }
+
+    /*
+     * Si tiene fondo negro, rellenamos el círculo con líneas
+     * horizontales. Cada una se detecta con
+     * distanciaPuntoSegmentoLeotino(), EXACTAMENTE igual que
+     * Dibujar libre.
+     */
+    if (incluirRelleno) {
+        const separacion =
+            0.35;
+
+        for (
+            let localY =
+                -radioY;
+
+            localY <=
+                radioY;
+
+            localY +=
+                separacion
+        ) {
+            const proporcion =
+                1 -
+                (
+                    localY *
+                    localY
+                ) /
+                (
+                    radioY *
+                    radioY
+                );
+
             if (
-                obj.type !==
-                "black-line"
+                proporcion <
+                0
             ) {
-                return false;
+                continue;
             }
 
-            return puntoDentroRectLeotino(
-                p.x,
-                p.y,
-                obj,
-                0.8
-            );
+            const mitad =
+                radioX *
+                Math.sqrt(
+                    proporcion
+                );
+
+            segmentos.push([
+                {
+                    x:
+                        cx -
+                        mitad,
+
+                    y:
+                        cy +
+                        localY
+                },
+                {
+                    x:
+                        cx +
+                        mitad,
+
+                    y:
+                        cy +
+                        localY
+                }
+            ]);
+        }
+    }
+
+    return segmentos;
+}
+
+function puntoSobreNegroObjetoLeotino(
+    px,
+    py,
+    obj
+) {
+    if (!obj) {
+        return false;
+    }
+
+    /*
+     * LÍNEA AGREGADA:
+     * mismo cálculo que Dibujar libre:
+     * distancia del sensor a un segmento.
+     */
+    if (
+        obj.type === "shape-line" ||
+        obj.type === "black-line"
+    ) {
+        const d =
+            dimensionesObjetoLeotino(obj);
+
+        const rot =
+            (Number(obj.rotation) || 0) *
+            Math.PI /
+            180;
+
+        const mitad =
+            d.w / 2;
+
+        const dx =
+            Math.cos(rot) *
+            mitad;
+
+        const dy =
+            Math.sin(rot) *
+            mitad;
+
+        return puntoCercaSegmentosLeotino(
+            px,
+            py,
+            [[
+                {
+                    x: obj.x - dx,
+                    y: obj.y - dy
+                },
+                {
+                    x: obj.x + dx,
+                    y: obj.y + dy
+                }
+            ]],
+            0.9
+        );
+    }
+
+    /*
+     * CUADRO:
+     * el borde negro también se convierte en segmentos.
+     * Si tiene fondo negro, todo su interior cuenta.
+     */
+    if (obj.type === "shape-rect") {
+        const d =
+            dimensionesObjetoLeotino(obj);
+
+        const rot =
+            (Number(obj.rotation) || 0) *
+            Math.PI /
+            180;
+
+        const cos = Math.cos(rot);
+        const sin = Math.sin(rot);
+
+        const hw = d.w / 2;
+        const hh = d.h / 2;
+
+        const transformar = (x,y) => ({
+            x:
+                obj.x +
+                x * cos -
+                y * sin,
+            y:
+                obj.y +
+                x * sin +
+                y * cos
         });
 
-    if (detectaObjeto) {
+        const p1 = transformar(-hw,-hh);
+        const p2 = transformar(hw,-hh);
+        const p3 = transformar(hw,hh);
+        const p4 = transformar(-hw,hh);
+
+        if (
+            puntoCercaSegmentosLeotino(
+                px,
+                py,
+                [
+                    [p1,p2],
+                    [p2,p3],
+                    [p3,p4],
+                    [p4,p1]
+                ],
+                0.9
+            )
+        ) {
+            return true;
+        }
+
+        const relleno =
+            obj.filled === true ||
+            obj.filled === "true" ||
+            obj.filled === 1 ||
+            obj.filled === "1";
+
+        return (
+            relleno &&
+            puntoDentroRectLeotino(
+                px,
+                py,
+                obj,
+                0
+            )
+        );
+    }
+
+    /*
+     * CÍRCULO:
+     * borde y relleno usan segmentos.
+     * NO se usa la ecuación de círculo para decidir la
+     * detección del IR.
+     */
+    if (obj.type === "shape-circle") {
+        const relleno =
+            obj.filled === true ||
+            obj.filled === "true" ||
+            obj.filled === 1 ||
+            obj.filled === "1";
+
+        return puntoCercaSegmentosLeotino(
+            px,
+            py,
+            segmentosCirculoLeotino(
+                obj,
+                relleno
+            ),
+            0.9
+        );
+    }
+
+    return false;
+}
+
+
+function calcularIRLeotino() {
+    const p =
+        posicionIRLeotino();
+
+    /*
+     * Detectar cualquier borde o fondo negro perteneciente
+     * a los objetos gráficos de la pista.
+     */
+    const detectaNegroObjeto =
+        leotinoWorld.objects.some(
+            obj =>
+                puntoSobreNegroObjetoLeotino(
+                    p.x,
+                    p.y,
+                    obj
+                )
+        );
+
+    if (detectaNegroObjeto) {
         return true;
     }
 
+    /*
+     * También conserva la detección de las líneas dibujadas
+     * manualmente con Dibujar libre.
+     */
     return puntoSobreLineaDibujadaLeotino(
         p.x,
         p.y,
@@ -13371,7 +14814,27 @@ function animarMundoLeotino(ts){
             const nx=leotinoWorld.x+Math.sin(a)*moveStep;
             const ny=leotinoWorld.y-Math.cos(a)*moveStep;
 
-            if(colisionLeotino(nx,ny,h)){choque=true;break;}
+            const dxRobot =
+                nx - leotinoWorld.x;
+            const dyRobot =
+                ny - leotinoWorld.y;
+
+            const pudoEmpujar =
+                intentarEmpujarObstaculosLeotino(
+                    nx,
+                    ny,
+                    h,
+                    dxRobot,
+                    dyRobot
+                );
+
+            if(
+                !pudoEmpujar ||
+                colisionLeotino(nx,ny,h)
+            ){
+                choque=true;
+                break;
+            }
 
             leotinoWorld.heading=h;
             leotinoWorld.x=nx;
@@ -13510,7 +14973,8 @@ function renderLineasDibujadasLeotino() {
 
                     seleccionarElementoLeotino(
                         "drawn-line",
-                        linea.id
+                        linea.id,
+                        true
                     );
                 }
             );
@@ -13523,7 +14987,8 @@ function renderLineasDibujadasLeotino() {
 
                     seleccionarElementoLeotino(
                         "drawn-line",
-                        linea.id
+                        linea.id,
+                        false
                     );
 
                     eliminarSeleccionLeotino();
@@ -13568,6 +15033,53 @@ function activarDibujoLineaLeotino() {
     }
 }
 
+
+function actualizarParedesExternasLeotino() {
+    const stage =
+        document.getElementById(
+            "leotinoTrackStage"
+        );
+
+    const btn =
+        document.getElementById(
+            "leotinoExternalWallsBtn"
+        );
+
+    const visibles =
+        leotinoWorld.externalWallsVisible !== false;
+
+    if (stage) {
+        stage.classList.toggle(
+            "external-walls-hidden",
+            !visibles
+        );
+    }
+
+    if (btn) {
+        btn.classList.toggle(
+            "active",
+            !visibles
+        );
+
+        btn.textContent =
+            visibles
+                ? "▣ Ocultar bordes"
+                : "□ Mostrar bordes";
+    }
+}
+
+
+function alternarParedesExternasLeotino() {
+    leotinoWorld.externalWallsVisible =
+        !(
+            leotinoWorld.externalWallsVisible !== false
+        );
+
+    actualizarParedesExternasLeotino();
+    guardarMundoLeotino();
+    actualizarSensoresLeotino();
+}
+
 function crearPistaLeotino() {
     const panel = document.createElement("section");
     panel.className = "leotino-track-panel";
@@ -13581,8 +15093,11 @@ function crearPistaLeotino() {
         <button type="button" id="leotinoSimStop" class="sim-control-btn sim-stop" data-sim="stop">⏹ Detener</button>
         <button type="button" data-add="obstacle">● Obstáculo</button>
         <button type="button" data-add="wall">▰ Pared</button>
-        <button type="button" data-add="black-line">━ Línea negra</button>
-        <button type="button" id="leotinoDrawLineBtn" data-action="draw-line">✎ Dibujar línea</button>
+        <button type="button" id="leotinoDrawLineBtn" data-action="draw-line">✎ Dibujar libre</button>
+        <button type="button" data-add="shape-line">／ Línea</button>
+        <button type="button" data-add="shape-rect">□ Cuadro</button>
+        <button type="button" data-add="shape-circle">○ Círculo</button>
+        <button type="button" id="leotinoExternalWallsBtn" data-action="external-walls">▣ Ocultar bordes</button>
         <button type="button" id="leotinoDeleteSelected" data-action="delete-selected">🗑 Eliminar</button>
         <button type="button" data-action="reset">↺ Robot</button>
         <button type="button" data-action="clear">Limpiar</button>
@@ -13618,6 +15133,12 @@ function crearPistaLeotino() {
             eliminarSeleccionLeotino
         );
 
+    toolbar.querySelector('[data-action="external-walls"]')
+        .addEventListener(
+            "click",
+            alternarParedesExternasLeotino
+        );
+
     const drawBtn =
         toolbar.querySelector(
             '[data-action="draw-line"]'
@@ -13633,6 +15154,50 @@ function crearPistaLeotino() {
     const stage = document.createElement("div");
     stage.className = "leotino-track-stage";
     stage.id = "leotinoTrackStage";
+
+    if (
+        leotinoWorld.externalWallsVisible === false
+    ) {
+        stage.classList.add(
+            "external-walls-hidden"
+        );
+    }
+
+    setTimeout(
+        actualizarParedesExternasLeotino,
+        0
+    );
+
+    stage.addEventListener(
+        "pointerdown",
+        ev => {
+            /*
+             * Si se hace clic en una zona vacía de la pista,
+             * quitar la selección actual.
+             */
+            if (
+                leotinoWorld.drawLineMode
+            ) {
+                return;
+            }
+
+            const sobreObjeto =
+                ev.target &&
+                (
+                    ev.target.closest(".track-object") ||
+                    ev.target.closest(
+                        ".leotino-drawn-lines polyline"
+                    ) ||
+                    ev.target.closest(
+                        ".leotino-track-robot"
+                    )
+                );
+
+            if (!sobreObjeto) {
+                limpiarSeleccionLeotino();
+            }
+        }
+    );
 
     const drawnLines =
         document.createElementNS(
@@ -15502,15 +17067,76 @@ function iniciarSimulacion() {
     }
 
 
-    // setup() se ejecuta una sola vez antes del loop().
-    // Esto es esencial para Servo RC y órdenes colocadas en SETUP.
-    if (simulacion.loopIndex === 0) {
-        ejecutarSetupSimulacion();
-    }
+    /*
+     * Invalidar cualquier cadena asíncrona anterior.
+     */
+    leotinoAsyncToken++;
+    simulacion.leotinoAsyncBusy = false;
 
     iniciarAnimacionServosRC();
 
-    ejecutarPasoSimulacion();
+    /*
+     * Configuración inicial:
+     * en Leotino también se ejecuta secuencialmente para que
+     * los bloques "durante" funcionen incluso dentro de SETUP.
+     */
+    if (
+        simulacion.loopIndex === 0 &&
+        dispositivoActual === "leotino"
+    ) {
+        const setup =
+            obtenerSetup();
+
+        const primero =
+            setup
+                ? obtenerPrimerBloque(
+                    setup
+                  )
+                : null;
+
+        const token =
+            leotinoAsyncToken;
+
+        if (primero) {
+            simulacion.leotinoAsyncBusy =
+                true;
+
+            ejecutarCadenaLeotinoAsync(
+                primero,
+                token,
+                1000
+            )
+            .then(
+                () => {
+                    simulacion.leotinoAsyncBusy =
+                        false;
+
+                    if (
+                        token === leotinoAsyncToken &&
+                        simulacion.activa
+                    ) {
+                        ejecutarPasoSimulacion();
+                    }
+                }
+            );
+        } else {
+            ejecutarPasoSimulacion();
+        }
+    }
+    else {
+        /*
+         * Arduino conserva el comportamiento original.
+         * Si Leotino reanuda una simulación, continúa el loop.
+         */
+        if (
+            simulacion.loopIndex === 0 &&
+            dispositivoActual !== "leotino"
+        ) {
+            ejecutarSetupSimulacion();
+        }
+
+        ejecutarPasoSimulacion();
+    }
 
 
     if (dispositivoActual === "leotino") {
@@ -15531,6 +17157,9 @@ function iniciarSimulacion() {
    ========================================================= */
 
 function pausarSimulacion() {
+
+    leotinoAsyncToken++;
+    simulacion.leotinoAsyncBusy = false;
 
     if (
         !simulacion.activa
@@ -15587,6 +17216,9 @@ function pausarSimulacion() {
    ========================================================= */
 
 function detenerSimulacion() {
+    leotinoAsyncToken++;
+    simulacion.leotinoAsyncBusy = false;
+
     if (typeof establecerMotoresLeotino === "function" && dispositivoActual === "leotino") {
         establecerMotoresLeotino(0,0,"Detenido");
     }
@@ -15720,7 +17352,22 @@ function obtenerBloquesLoop() {
 function evaluarBloqueSimulado(block) {
     if (!block) return 0;
 
+    simulacion.variableState =
+        simulacion.variableState || {};
+
     switch (block.type) {
+        case "variables_get": {
+            const id =
+                block.getFieldValue("VAR");
+
+            return Object.prototype.hasOwnProperty.call(
+                simulacion.variableState,
+                id
+            )
+                ? simulacion.variableState[id]
+                : 0;
+        }
+
         case "math_number":
             return Number(block.getFieldValue("NUM")) || 0;
 
@@ -16065,6 +17712,623 @@ function actualizarMotorLeotinoDesdeServoRC(id, direction, speed) {
 }
 
 
+
+/* =========================================================
+   EJECUTOR ASÍNCRONO LEOTINO
+   Respeta "durante" dentro de cualquier estructura de control.
+   ========================================================= */
+
+let leotinoAsyncToken = 0;
+
+
+function esMovimientoDuranteLeotino(block) {
+    return !!(
+        block &&
+        (
+            block.type === "leotino_avanzar_tiempo" ||
+            block.type === "leotino_retroceder_tiempo" ||
+            block.type === "leotino_girar_tiempo" ||
+            block.type === "leotino_motor_individual_tiempo"
+        )
+    );
+}
+
+
+function esperarLeotinoAsync(ms, token) {
+    return new Promise(
+        resolve => {
+            if (
+                token !== leotinoAsyncToken ||
+                !simulacion.activa
+            ) {
+                resolve(false);
+                return;
+            }
+
+            const tiempo =
+                Math.max(
+                    0,
+                    Number(ms) || 0
+                );
+
+            simulacion.timer =
+                setTimeout(
+                    () => {
+                        simulacion.timer =
+                            null;
+
+                        resolve(
+                            token ===
+                                leotinoAsyncToken &&
+                            simulacion.activa
+                        );
+                    },
+                    tiempo
+                );
+        }
+    );
+}
+
+
+function detenerMovimientoDuranteLeotino(block) {
+    if (!block) return;
+
+    if (
+        block.type ===
+        "leotino_motor_individual_tiempo"
+    ) {
+        const motor =
+            block.getFieldValue(
+                "MOTOR"
+            );
+
+        if (motor === "LEFT") {
+            leotinoWorld.leftMotor = 0;
+        } else {
+            leotinoWorld.rightMotor = 0;
+        }
+
+        const leftInline =
+            document.getElementById(
+                "motorLeftInline"
+            );
+
+        const rightInline =
+            document.getElementById(
+                "motorRightInline"
+            );
+
+        if (leftInline) {
+            leftInline.textContent =
+                Math.round(
+                    leotinoWorld.leftMotor
+                ) + "%";
+        }
+
+        if (rightInline) {
+            rightInline.textContent =
+                Math.round(
+                    leotinoWorld.rightMotor
+                ) + "%";
+        }
+
+        return;
+    }
+
+    establecerMotoresLeotino(
+        0,
+        0,
+        "Detenido"
+    );
+}
+
+
+async function ejecutarBloqueLeotinoAsync(
+    block,
+    token
+) {
+    if (
+        !block ||
+        token !== leotinoAsyncToken ||
+        !simulacion.activa
+    ) {
+        return null;
+    }
+
+    /* ---------------- SI / SINO ---------------- */
+    if (block.type === "controls_if") {
+        let ejecutado = false;
+        let indice = 0;
+
+        while (
+            block.getInput(
+                "IF" + indice
+            )
+        ) {
+            const condicion =
+                Boolean(
+                    evaluarEntradaSimulacion(
+                        block,
+                        "IF" + indice,
+                        false
+                    )
+                );
+
+            if (condicion) {
+                const primero =
+                    block.getInputTargetBlock(
+                        "DO" + indice
+                    );
+
+                if (primero) {
+                    const flujo =
+                        await ejecutarCadenaLeotinoAsync(
+                            primero,
+                            token
+                        );
+
+                    if (flujo) {
+                        return flujo;
+                    }
+                }
+
+                ejecutado = true;
+                break;
+            }
+
+            indice++;
+        }
+
+        if (
+            !ejecutado &&
+            block.getInput("ELSE")
+        ) {
+            const primero =
+                block.getInputTargetBlock(
+                    "ELSE"
+                );
+
+            if (primero) {
+                const flujo =
+                    await ejecutarCadenaLeotinoAsync(
+                        primero,
+                        token
+                    );
+
+                if (flujo) {
+                    return flujo;
+                }
+            }
+        }
+
+        return null;
+    }
+
+    /* ---------------- REPETIR N VECES ---------------- */
+    if (
+        block.type ===
+        "controls_repeat_ext"
+    ) {
+        const veces =
+            Math.max(
+                0,
+                Math.min(
+                    1000,
+                    Math.floor(
+                        evaluarEntradaNumericaSimulacion(
+                            block,
+                            "TIMES",
+                            0
+                        )
+                    )
+                )
+            );
+
+        const inicio =
+            block.getInputTargetBlock(
+                "DO"
+            );
+
+        for (
+            let i = 0;
+            i < veces;
+            i++
+        ) {
+            if (
+                token !== leotinoAsyncToken ||
+                !simulacion.activa
+            ) {
+                return null;
+            }
+
+            const flujo =
+                await ejecutarCadenaLeotinoAsync(
+                    inicio,
+                    token
+                );
+
+            if (flujo === "break") {
+                break;
+            }
+
+            if (flujo === "continue") {
+                continue;
+            }
+        }
+
+        return null;
+    }
+
+    /* ---------------- MIENTRAS / HASTA ---------------- */
+    if (
+        block.type ===
+        "controls_whileUntil"
+    ) {
+        const modo =
+            block.getFieldValue(
+                "MODE"
+            );
+
+        const inicio =
+            block.getInputTargetBlock(
+                "DO"
+            );
+
+        let guard = 0;
+
+        while (
+            guard < 1000 &&
+            token === leotinoAsyncToken &&
+            simulacion.activa
+        ) {
+            let condicion =
+                Boolean(
+                    evaluarEntradaSimulacion(
+                        block,
+                        "BOOL",
+                        false
+                    )
+                );
+
+            if (modo === "UNTIL") {
+                condicion =
+                    !condicion;
+            }
+
+            if (!condicion) {
+                break;
+            }
+
+            const flujo =
+                await ejecutarCadenaLeotinoAsync(
+                    inicio,
+                    token
+                );
+
+            if (flujo === "break") {
+                break;
+            }
+
+            guard++;
+
+            if (flujo === "continue") {
+                continue;
+            }
+        }
+
+        return null;
+    }
+
+    /* ---------------- CONTAR CON VARIABLE ---------------- */
+    if (
+        block.type ===
+        "controls_for"
+    ) {
+        simulacion.variableState =
+            simulacion.variableState || {};
+
+        const variable =
+            block.getFieldValue(
+                "VAR"
+            );
+
+        const desde =
+            Number(
+                evaluarEntradaSimulacion(
+                    block,
+                    "FROM",
+                    0
+                )
+            ) || 0;
+
+        const hasta =
+            Number(
+                evaluarEntradaSimulacion(
+                    block,
+                    "TO",
+                    0
+                )
+            ) || 0;
+
+        let paso =
+            Math.abs(
+                Number(
+                    evaluarEntradaSimulacion(
+                        block,
+                        "BY",
+                        1
+                    )
+                ) || 1
+            );
+
+        if (paso === 0) {
+            paso = 1;
+        }
+
+        const inicio =
+            block.getInputTargetBlock(
+                "DO"
+            );
+
+        const ascendente =
+            desde <= hasta;
+
+        let valor = desde;
+        let guard = 0;
+
+        while (
+            guard < 1000 &&
+            (
+                ascendente
+                    ? valor <= hasta
+                    : valor >= hasta
+            ) &&
+            token === leotinoAsyncToken &&
+            simulacion.activa
+        ) {
+            simulacion.variableState[
+                variable
+            ] = valor;
+
+            const flujo =
+                await ejecutarCadenaLeotinoAsync(
+                    inicio,
+                    token
+                );
+
+            if (flujo === "break") {
+                break;
+            }
+
+            valor +=
+                ascendente
+                    ? paso
+                    : -paso;
+
+            guard++;
+
+            if (flujo === "continue") {
+                continue;
+            }
+        }
+
+        return null;
+    }
+
+    /* ---------------- PARA CADA ---------------- */
+    if (
+        block.type ===
+        "controls_forEach"
+    ) {
+        simulacion.variableState =
+            simulacion.variableState || {};
+
+        const variable =
+            block.getFieldValue(
+                "VAR"
+            );
+
+        const lista =
+            evaluarEntradaSimulacion(
+                block,
+                "LIST",
+                []
+            );
+
+        const valores =
+            Array.isArray(lista)
+                ? lista
+                : [];
+
+        const inicio =
+            block.getInputTargetBlock(
+                "DO"
+            );
+
+        for (
+            const valor of valores
+        ) {
+            if (
+                token !== leotinoAsyncToken ||
+                !simulacion.activa
+            ) {
+                return null;
+            }
+
+            simulacion.variableState[
+                variable
+            ] = valor;
+
+            const flujo =
+                await ejecutarCadenaLeotinoAsync(
+                    inicio,
+                    token
+                );
+
+            if (flujo === "break") {
+                break;
+            }
+
+            if (flujo === "continue") {
+                continue;
+            }
+        }
+
+        return null;
+    }
+
+    /* ---------------- SALIR / CONTINUAR ---------------- */
+    if (
+        block.type ===
+        "controls_flow_statements"
+    ) {
+        return (
+            block.getFieldValue(
+                "FLOW"
+            ) === "BREAK"
+                ? "break"
+                : "continue"
+        );
+    }
+
+    /* ---------------- VARIABLES ---------------- */
+    if (
+        block.type ===
+        "variables_set"
+    ) {
+        simulacion.variableState =
+            simulacion.variableState || {};
+
+        const variable =
+            block.getFieldValue(
+                "VAR"
+            );
+
+        simulacion.variableState[
+            variable
+        ] =
+            evaluarEntradaSimulacion(
+                block,
+                "VALUE",
+                0
+            );
+
+        return null;
+    }
+
+    /* ---------------- MOVIMIENTOS DURANTE ---------------- */
+    if (
+        esMovimientoDuranteLeotino(
+            block
+        )
+    ) {
+        /*
+         * ejecutarBloqueSimulacion inicia el movimiento.
+         * Luego este intérprete ESPERA el tiempo real antes
+         * de permitir que la cadena continúe.
+         */
+        ejecutarBloqueSimulacion(
+            block,
+            true
+        );
+
+        const ms =
+            milisegundosMovimientoLeotino(
+                block
+            );
+
+        const continuar =
+            await esperarLeotinoAsync(
+                ms,
+                token
+            );
+
+        if (!continuar) {
+            return null;
+        }
+
+        detenerMovimientoDuranteLeotino(
+            block
+        );
+
+        /*
+         * Pequeño margen visual antes del bloque siguiente.
+         */
+        await esperarLeotinoAsync(
+            15,
+            token
+        );
+
+        return null;
+    }
+
+    /* ---------------- ESPERAR ---------------- */
+    if (
+        block.type ===
+        "arduino_delay"
+    ) {
+        const ms =
+            obtenerRetardoSimulacion(
+                block
+            );
+
+        await esperarLeotinoAsync(
+            ms,
+            token
+        );
+
+        return null;
+    }
+
+    /* ---------------- BLOQUE NORMAL ---------------- */
+    ejecutarBloqueSimulacion(
+        block,
+        true
+    );
+
+    return null;
+}
+
+
+async function ejecutarCadenaLeotinoAsync(
+    primero,
+    token,
+    limite = 1000
+) {
+    let actual = primero;
+    let pasos = 0;
+
+    while (
+        actual &&
+        pasos < limite &&
+        token === leotinoAsyncToken &&
+        simulacion.activa
+    ) {
+        const flujo =
+            await ejecutarBloqueLeotinoAsync(
+                actual,
+                token
+            );
+
+        if (
+            flujo === "break" ||
+            flujo === "continue"
+        ) {
+            return flujo;
+        }
+
+        actual =
+            actual.nextConnection
+                ? actual.nextConnection.targetBlock()
+                : null;
+
+        pasos++;
+    }
+
+    return null;
+}
+
+
 function ejecutarCadenaTemporizadaLeotino(primero) {
     if (!primero) return;
 
@@ -16125,34 +18389,98 @@ function ejecutarCadenaTemporizadaLeotino(primero) {
     siguiente();
 }
 
-function milisegundosMovimientoLeotino(block) {
-    if (!block) return 1000;
+function valorTiempoMovimientoLeotino(block) {
+    if (!block) {
+        return 1;
+    }
 
-    const valor =
-        Math.max(
-            0,
-            evaluarEntradaNumericaSimulacion(
-                block,
-                "TIME",
-                1
+    const conectado =
+        block.getInputTargetBlock(
+            "TIME"
+        );
+
+    if (!conectado) {
+        return 1;
+    }
+
+    /*
+     * Caso principal: bloque Número.
+     * Se lee directamente para evitar que el simulador
+     * ignore el valor del shadow o del bloque conectado.
+     */
+    if (
+        conectado.type ===
+        "math_number"
+    ) {
+        const numero =
+            Number(
+                conectado.getFieldValue(
+                    "NUM"
+                )
+            );
+
+        return Number.isFinite(numero)
+            ? Math.max(0, numero)
+            : 1;
+    }
+
+    /*
+     * Compatibilidad con otras expresiones numéricas.
+     */
+    const evaluado =
+        Number(
+            evaluarBloqueSimulado(
+                conectado
             )
         );
 
+    return Number.isFinite(evaluado)
+        ? Math.max(0, evaluado)
+        : 1;
+}
+
+
+function milisegundosMovimientoLeotino(block) {
+    const valor =
+        valorTiempoMovimientoLeotino(
+            block
+        );
+
     const unidad =
+        block &&
         block.getFieldValue(
             "TIME_UNIT"
-        ) || "S";
+        )
+            ? block.getFieldValue(
+                "TIME_UNIT"
+              )
+            : "S";
 
     if (unidad === "US") {
-        return valor / 1000;
+        /*
+         * El navegador usa milisegundos.
+         * Los microsegundos se convierten a ms.
+         */
+        return Math.max(
+            0,
+            valor / 1000
+        );
     }
 
     if (unidad === "MS") {
-        return valor;
+        return Math.max(
+            0,
+            valor
+        );
     }
 
-    return valor * 1000;
+    return Math.max(
+        0,
+        valor * 1000
+    );
 }
+
+let temporizadorMovimientoLeotino = null;
 
 function programarDetencionMovimientoLeotino(block) {
     const ms =
@@ -16160,21 +18488,30 @@ function programarDetencionMovimientoLeotino(block) {
             block
         );
 
-    setTimeout(
-        () => {
-            if (
-                simulacion.activa ||
-                simulacion.pausada
-            ) {
+    if (
+        temporizadorMovimientoLeotino
+    ) {
+        clearTimeout(
+            temporizadorMovimientoLeotino
+        );
+    }
+
+    temporizadorMovimientoLeotino =
+        setTimeout(
+            () => {
                 establecerMotoresLeotino(
                     0,
                     0,
                     "Detenido"
                 );
-            }
-        },
-        ms
-    );
+
+                temporizadorMovimientoLeotino =
+                    null;
+            },
+            ms
+        );
+
+    return ms;
 }
 
 
@@ -16383,11 +18720,14 @@ function ejecutarBloqueSimulacion(block, interno = false) {
 
         case "leotino_motor_individual_tiempo": {
             const motor =
-                block.getFieldValue("MOTOR");
+                block.getFieldValue(
+                    "MOTOR"
+                );
 
             const dir =
-                block.getFieldValue("DIR") ||
-                "CW";
+                block.getFieldValue(
+                    "DIR"
+                ) || "CW";
 
             const speed =
                 Math.max(
@@ -16440,42 +18780,50 @@ function ejecutarBloqueSimulacion(block, interno = false) {
             }
 
             const tiempoMs =
-                milisegundosMovimientoLeotino(block);
+                milisegundosMovimientoLeotino(
+                    block
+                );
 
-            setTimeout(
-                () => {
-                    if (motor === "LEFT") {
-                        leotinoWorld.leftMotor = 0;
-                    } else {
-                        leotinoWorld.rightMotor = 0;
-                    }
+            if (
+                temporizadorMovimientoLeotino
+            ) {
+                clearTimeout(
+                    temporizadorMovimientoLeotino
+                );
+            }
 
-                    const li =
-                        document.getElementById(
-                            "motorLeftInline"
-                        );
+            temporizadorMovimientoLeotino =
+                setTimeout(
+                    () => {
+                        if (
+                            motor === "LEFT"
+                        ) {
+                            leotinoWorld.leftMotor =
+                                0;
+                        } else {
+                            leotinoWorld.rightMotor =
+                                0;
+                        }
 
-                    const ri =
-                        document.getElementById(
-                            "motorRightInline"
-                        );
+                        if (leftInline) {
+                            leftInline.textContent =
+                                Math.round(
+                                    leotinoWorld.leftMotor
+                                ) + "%";
+                        }
 
-                    if (li) {
-                        li.textContent =
-                            Math.round(
-                                leotinoWorld.leftMotor
-                            ) + "%";
-                    }
+                        if (rightInline) {
+                            rightInline.textContent =
+                                Math.round(
+                                    leotinoWorld.rightMotor
+                                ) + "%";
+                        }
 
-                    if (ri) {
-                        ri.textContent =
-                            Math.round(
-                                leotinoWorld.rightMotor
-                            ) + "%";
-                    }
-                },
-                tiempoMs
-            );
+                        temporizadorMovimientoLeotino =
+                            null;
+                    },
+                    tiempoMs
+                );
 
             break;
         }
@@ -16824,7 +19172,7 @@ function ejecutarBloqueSimulacion(block, interno = false) {
     }
 }
 
-function ejecutarPasoSimulacion() {
+function ejecutarPasoSimulacionSincrona() {
     if (!simulacion.activa) return;
 
     const bloques = obtenerBloquesLoop();
@@ -16858,6 +19206,98 @@ function ejecutarPasoSimulacion() {
     );
 }
 
+function ejecutarPasoSimulacion() {
+    if (
+        dispositivoActual !==
+        "leotino"
+    ) {
+        ejecutarPasoSimulacionSincrona();
+        return;
+    }
+
+    if (
+        !simulacion.activa ||
+        simulacion.leotinoAsyncBusy
+    ) {
+        return;
+    }
+
+    const bloques =
+        obtenerBloquesLoop();
+
+    if (!bloques.length) {
+        simulacion.timer =
+            setTimeout(
+                ejecutarPasoSimulacion,
+                500
+            );
+        return;
+    }
+
+    const bloque =
+        bloques[
+            simulacion.loopIndex %
+            bloques.length
+        ];
+
+    const token =
+        leotinoAsyncToken;
+
+    simulacion.leotinoAsyncBusy =
+        true;
+
+    Promise.resolve(
+        ejecutarBloqueLeotinoAsync(
+            bloque,
+            token
+        )
+    )
+    .then(
+        () => {
+            simulacion.leotinoAsyncBusy =
+                false;
+
+            if (
+                token !== leotinoAsyncToken ||
+                !simulacion.activa
+            ) {
+                return;
+            }
+
+            simulacion.loopIndex++;
+
+            simulacion.timer =
+                setTimeout(
+                    ejecutarPasoSimulacion,
+                    20
+                );
+        }
+    )
+    .catch(
+        error => {
+            simulacion.leotinoAsyncBusy =
+                false;
+
+            console.error(
+                "Error en simulación Leotino:",
+                error
+            );
+
+            simulacion.activa =
+                false;
+
+            simulacion.pausada =
+                true;
+
+            establecerMotoresLeotino(
+                0,
+                0,
+                "Error"
+            );
+        }
+    );
+}
+
 
 /* =========================================================
    RETARDO
@@ -16873,7 +19313,7 @@ function obtenerRetardoSimulacion(bloque) {
             "leotino_avanzar_tiempo",
             "leotino_retroceder_tiempo",
             "leotino_girar_tiempo",
-            "leotino_motor_individual_tiempo",
+            "leotino_motor_individual_tiempo"
         ]);
 
     if (
@@ -16881,12 +19321,22 @@ function obtenerRetardoSimulacion(bloque) {
             bloque.type
         )
     ) {
+        /*
+         * El siguiente bloque se ejecuta después de que
+         * termine exactamente el tiempo seleccionado.
+         */
         return (
-            milisegundosMovimientoLeotino(bloque)
-        ) + 20;
+            milisegundosMovimientoLeotino(
+                bloque
+            ) +
+            30
+        );
     }
 
-    if (bloque.type !== "arduino_delay") {
+    if (
+        bloque.type !==
+        "arduino_delay"
+    ) {
         return 250;
     }
 
@@ -16901,11 +19351,11 @@ function obtenerRetardoSimulacion(bloque) {
         );
 
     const unidad =
-        bloque.getFieldValue("UNIT") ||
-        "S";
+        bloque.getFieldValue(
+            "UNIT"
+        ) || "S";
 
     if (unidad === "US") {
-        // setTimeout trabaja en ms. Se aproxima microsegundos / 1000.
         return Math.max(
             0,
             valor / 1000
@@ -16969,7 +19419,7 @@ function obtenerNumeroEntrada(
 /* =========================================================
    GUARDADO AUTOMATICO LOCAL
    ========================================================= */
-const AUTOSAVE_KEY = "arduinoBlockly.autosave.v1";
+const AUTOSAVE_KEY = "robotiaECBlocklyIDE.autosave.v1";
 function autosaveKeyActual(){ return AUTOSAVE_KEY + "." + dispositivoActual; }
 
 function guardarProyectoAutomatico() {
@@ -17127,7 +19577,7 @@ function descargarINO() {
 
 
     link.download =
-        "ArduinoBlockly.ino";
+        "ROBOTIA_EC_Blockly_IDE.ino";
 
 
     document.body.appendChild(
@@ -17198,7 +19648,7 @@ function guardarProyecto() {
 
 
     link.download =
-        "ArduinoBlockly.xml";
+        "ROBOTIA_EC_Blockly_IDE.xml";
 
 
     document.body.appendChild(
@@ -19049,12 +21499,12 @@ const BLOCK_HELP_INFO = {
     },
     leotino_distancia: {
         title: "Distancia frontal",
-        text: "Lee la distancia detectada por el sensor ultrasónico frontal.",
+        text: "Lee la distancia a paredes y obstáculos físicos. Las líneas, cuadros y círculos negros del piso no son detectados por el ultrasónico.",
         example: "Ejemplo: comparar distancia < 20 para decidir si el robot debe girar."
     },
     leotino_ir: {
         title: "Sensor IR",
-        text: "Lee el sensor infrarrojo utilizado para reconocer línea u obstáculo.",
+        text: "Lee el sensor infrarrojo inferior. Detecta las marcas negras del piso: líneas, bordes de cuadros y círculos, y sus fondos cuando están rellenos de negro.",
         example: "Ejemplo: si el sensor detecta la línea negra, cambiar el movimiento del robot."
     },
     leotino_cabeza: {
@@ -19814,6 +22264,92 @@ document.addEventListener(
         eliminarSeleccionLeotino();
     }
 );
+
+
+function diagnosticoIRLeotino() {
+    const p =
+        posicionIRLeotino();
+
+    const circulos =
+        leotinoWorld.objects
+            .filter(
+                obj =>
+                    obj.type ===
+                    "shape-circle"
+            )
+            .map(
+                obj => ({
+                    id:
+                        obj.id,
+
+                    sensor:
+                        {
+                            x:
+                                Number(
+                                    p.x.toFixed(
+                                        2
+                                    )
+                                ),
+                            y:
+                                Number(
+                                    p.y.toFixed(
+                                        2
+                                    )
+                                )
+                        },
+
+                    centro:
+                        {
+                            x:
+                                obj.x,
+                            y:
+                                obj.y
+                        },
+
+                    size:
+                        obj.size,
+
+                    filled:
+                        obj.filled,
+
+                    detecta:
+                        puntoSobreNegroObjetoLeotino(
+                            p.x,
+                            p.y,
+                            obj
+                        )
+                })
+            );
+
+    console.table(
+        circulos
+    );
+
+    return circulos;
+}
+
+
+window.addEventListener(
+    "resize",
+    () => {
+        if (
+            dispositivoActual === "leotino"
+        ) {
+            renderObjetosPistaLeotino();
+            actualizarSensoresLeotino();
+        }
+    }
+);
+
+
+/* =========================================================
+   IDENTIDAD DE LA APLICACIÓN
+   ========================================================= */
+const ROBOTIA_APP_NAME =
+    "ROBOTIA.EC Blockly IDE";
+
+document.title =
+    ROBOTIA_APP_NAME;
 
 </script>
 

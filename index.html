@@ -9239,7 +9239,7 @@ Arduino["leotino_ir"] = () =>
     [
         "(digitalRead(" +
         LEOTINO_PINS.IR +
-        ") == LOW)",
+        ") == HIGH)",
         Arduino.ORDER_RELATIONAL
     ];
 
@@ -11515,61 +11515,67 @@ function generarDeclaracionesServos() {
    ========================================================= */
 
 function generarDeclaracionClaseUltrasonido() {
+
     return (
+
         "class Ultrasonido {\n" +
+
         "private:\n" +
+
         "  uint8_t trig;\n" +
-        "  uint8_t echo;\n" +
-        "  float ultimaDistanciaValida;\n\n" +
-        "  float medirUnaVez() {\n" +
-        "    digitalWrite(trig, LOW);\n" +
-        "    delayMicroseconds(3);\n" +
-        "    digitalWrite(trig, HIGH);\n" +
-        "    delayMicroseconds(10);\n" +
-        "    digitalWrite(trig, LOW);\n" +
-        "    unsigned long duracion = pulseIn(echo, HIGH, 30000UL);\n" +
-        "    if (duracion == 0) return -1.0f;\n" +
-        "    float cm = duracion * 0.0343f / 2.0f;\n" +
-        "    if (cm < 2.0f || cm > 250.0f) return -1.0f;\n" +
-        "    return cm;\n" +
-        "  }\n\n" +
-        "public:\n" +
+        "  uint8_t echo;\n\n" +
+
+        "public:\n\n" +
+
         "  Ultrasonido(uint8_t pinTrig, uint8_t pinEcho) {\n" +
+
         "    trig = pinTrig;\n" +
         "    echo = pinEcho;\n" +
-        "    ultimaDistanciaValida = 250.0f;\n" +
+
         "  }\n\n" +
+
         "  void iniciar() {\n" +
+
         "    pinMode(trig, OUTPUT);\n" +
         "    pinMode(echo, INPUT);\n" +
         "    digitalWrite(trig, LOW);\n" +
-        "    delay(50);\n" +
+
         "  }\n\n" +
-        "  float distancia() {\n" +
-        "    float lecturas[3];\n" +
-        "    uint8_t validas = 0;\n" +
-        "    for (uint8_t i=0; i<3; i++) {\n" +
-        "      float cm = medirUnaVez();\n" +
-        "      if (cm > 0.0f) lecturas[validas++] = cm;\n" +
-        "      delay(12);\n" +
-        "    }\n" +
-        "    if (validas == 0) return ultimaDistanciaValida;\n" +
-        "    if (validas == 1) {\n" +
-        "      ultimaDistanciaValida = lecturas[0];\n" +
-        "      return ultimaDistanciaValida;\n" +
-        "    }\n" +
-        "    if (validas == 2) {\n" +
-        "      ultimaDistanciaValida = (lecturas[0]+lecturas[1])/2.0f;\n" +
-        "      return ultimaDistanciaValida;\n" +
-        "    }\n" +
-        "    if (lecturas[0] > lecturas[1]) { float t=lecturas[0]; lecturas[0]=lecturas[1]; lecturas[1]=t; }\n" +
-        "    if (lecturas[1] > lecturas[2]) { float t=lecturas[1]; lecturas[1]=lecturas[2]; lecturas[2]=t; }\n" +
-        "    if (lecturas[0] > lecturas[1]) { float t=lecturas[0]; lecturas[0]=lecturas[1]; lecturas[1]=t; }\n" +
-        "    ultimaDistanciaValida = lecturas[1];\n" +
-        "    return ultimaDistanciaValida;\n" +
+
+        "  float distancia() {\n\n" +
+
+        "    digitalWrite(trig, LOW);\n" +
+        "    delayMicroseconds(3);\n\n" +
+
+        "    digitalWrite(trig, HIGH);\n" +
+        "    delayMicroseconds(10);\n\n" +
+
+        "    digitalWrite(trig, LOW);\n\n" +
+
+        "    unsigned long duracion = pulseIn(echo, HIGH, 30000UL);\n\n" +
+
+        "    if (duracion == 0) {\n" +
+        "      return 250.0;\n" +
+        "    }\n\n" +
+
+        "    float distanciaCm = duracion * 0.0343f / 2.0f;\n\n" +
+
+        "    if (distanciaCm < 2.0f) {\n" +
+        "      return 2.0f;\n" +
+        "    }\n\n" +
+
+        "    if (distanciaCm > 250.0f) {\n" +
+        "      return 250.0f;\n" +
+        "    }\n\n" +
+
+        "    return distanciaCm;\n" +
+
         "  }\n" +
+
         "};\n\n"
+
     );
+
 }
 
 
@@ -13324,131 +13330,32 @@ function intentarEmpujarObstaculosLeotino(
         return true;
     }
 
-    /*
-     * Posición del robot ANTES de este pequeño paso.
-     */
-    const robotAnteriorX =
-        x - dxRobot;
-
-    const robotAnteriorY =
-        y - dyRobot;
-
-    const magnitudMovimiento =
-        Math.hypot(
-            dxRobot,
-            dyRobot
-        );
-
-    let movioAlgunObstaculo =
-        false;
-
     for (const obj of tocados) {
+        const nx = obj.x + dxRobot;
+        const ny = obj.y + dyRobot;
 
-        /*
-         * Un objeto solo debe ser empujado si está DELANTE
-         * del sentido real de desplazamiento del robot.
-         *
-         * Antes, cualquier obstáculo que tocara el contorno
-         * recibía dxRobot/dyRobot, incluso si estaba detrás.
-         * Eso hacía que la parte trasera "arrastrara" objetos
-         * mientras el robot avanzaba.
-         */
+        const d =
+            dimensionesObjetoLeotino(obj);
+
         if (
-            magnitudMovimiento >
-            0.00001
-        ) {
-            const haciaObjetoX =
-                obj.x -
-                robotAnteriorX;
-
-            const haciaObjetoY =
-                obj.y -
-                robotAnteriorY;
-
-            const producto =
-                haciaObjetoX *
-                    dxRobot +
-                haciaObjetoY *
-                    dyRobot;
-
-            /*
-             * producto <= 0:
-             * el obstáculo está detrás o lateralmente respecto
-             * al movimiento. El robot se está alejando de él,
-             * por lo tanto NO debe moverlo.
-             */
-            if (
-                producto <=
-                0.00001
-            ) {
-                continue;
-            }
-        }
-        else {
-            /*
-             * Sin traslación (por ejemplo giro sobre su eje),
-             * no arrastrar el obstáculo con el centro del robot.
-             */
-            continue;
-        }
-
-        const nx =
-            obj.x +
-            dxRobot;
-
-        const ny =
-            obj.y +
-            dyRobot;
-
-        const dimensiones =
-            dimensionesObjetoLeotino(
-                obj
-            );
-
-        /*
-         * Límites externos solo bloquean si están activos.
-         */
-        if (
-            leotinoWorld.externalWallsVisible !==
-                false &&
-            (
-                nx -
-                    dimensiones.w / 2 <=
-                    0.5 ||
-                nx +
-                    dimensiones.w / 2 >=
-                    99.5 ||
-                ny -
-                    dimensiones.h / 2 <=
-                    0.5 ||
-                ny +
-                    dimensiones.h / 2 >=
-                    99.5
-            )
+            nx - d.w/2 <= 0.5 ||
+            nx + d.w/2 >= 99.5 ||
+            ny - d.h/2 <= 0.5 ||
+            ny + d.h/2 >= 99.5
         ) {
             return false;
         }
 
-        /*
-         * El obstáculo empujado no puede atravesar
-         * paredes u otros obstáculos físicos.
-         */
         const bloqueado =
             leotinoWorld.objects.some(
                 other =>
-                    other.id !==
-                        obj.id &&
-                    objetoBloqueaRobotLeotino(
-                        other
-                    ) &&
+                    other.id !== obj.id &&
+                    objetoBloqueaRobotLeotino(other) &&
                     puntoDentroRectLeotino(
                         nx,
                         ny,
                         other,
-                        Math.max(
-                            dimensiones.w,
-                            dimensiones.h
-                        ) / 2
+                        Math.max(d.w,d.h)/2
                     )
             );
 
@@ -13456,21 +13363,12 @@ function intentarEmpujarObstaculosLeotino(
             return false;
         }
 
-        obj.x =
-            nx;
-
-        obj.y =
-            ny;
-
-        movioAlgunObstaculo =
-            true;
+        obj.x = nx;
+        obj.y = ny;
     }
 
-    if (movioAlgunObstaculo) {
-        guardarMundoLeotino();
-        renderObjetosPistaLeotino();
-    }
-
+    guardarMundoLeotino();
+    renderObjetosPistaLeotino();
     return true;
 }
 

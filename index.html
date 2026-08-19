@@ -11523,7 +11523,8 @@ function generarDeclaracionClaseUltrasonido() {
         "private:\n" +
 
         "  uint8_t trig;\n" +
-        "  uint8_t echo;\n\n" +
+        "  uint8_t echo;\n" +
+        "  float ultimaValida;\n\n" +
 
         "public:\n\n" +
 
@@ -11531,6 +11532,7 @@ function generarDeclaracionClaseUltrasonido() {
 
         "    trig = pinTrig;\n" +
         "    echo = pinEcho;\n" +
+        "    ultimaValida = -1.0f;\n" +
 
         "  }\n\n" +
 
@@ -11539,6 +11541,7 @@ function generarDeclaracionClaseUltrasonido() {
         "    pinMode(trig, OUTPUT);\n" +
         "    pinMode(echo, INPUT);\n" +
         "    digitalWrite(trig, LOW);\n" +
+        "    delay(60);\n" +
 
         "  }\n\n" +
 
@@ -11555,7 +11558,8 @@ function generarDeclaracionClaseUltrasonido() {
         "    unsigned long duracion = pulseIn(echo, HIGH, 30000UL);\n\n" +
 
         "    if (duracion == 0) {\n" +
-        "      return 250.0;\n" +
+        "      if (ultimaValida > 0.0f) return ultimaValida;\n" +
+        "      return 250.0f;\n" +
         "    }\n\n" +
 
         "    float distanciaCm = duracion * 0.0343f / 2.0f;\n\n" +
@@ -11568,6 +11572,8 @@ function generarDeclaracionClaseUltrasonido() {
         "      return 250.0f;\n" +
         "    }\n\n" +
 
+        "    ultimaValida = distanciaCm;\n" +
+        "    delay(60);\n" +
         "    return distanciaCm;\n" +
 
         "  }\n" +

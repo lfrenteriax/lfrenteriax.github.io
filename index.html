@@ -6212,6 +6212,110 @@ img[data-tutorial-image="kitLeotino"] {
     z-index: 30 !important;
 }
 
+
+
+/* ===== Selector de puertos ROBOTIA.EC ===== */
+.robotia-port-modal{
+ position:fixed; inset:0; z-index:100000; display:none;
+ align-items:center; justify-content:center; background:rgba(0,0,0,.48);
+ padding:18px;
+}
+.robotia-port-modal.open{display:flex}
+.robotia-port-card{
+ width:min(520px,96vw); max-height:82vh; overflow:auto;
+ background:#fff; border-radius:18px; padding:20px;
+ box-shadow:0 20px 60px rgba(0,0,0,.3);
+}
+.robotia-port-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px}
+.robotia-port-head h3{margin:0;font-size:20px}
+.robotia-port-close{border:0;background:#eee;border-radius:50%;width:34px;height:34px;font-size:20px;cursor:pointer}
+.robotia-port-list{display:grid;gap:9px;margin:14px 0}
+.robotia-port-item{
+ width:100%; text-align:left; padding:12px 14px; border:1px solid #d8d8df;
+ border-radius:12px; background:#fafafa; cursor:pointer;
+}
+.robotia-port-item:hover{background:#f0f0f7}
+.robotia-port-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.robotia-port-actions button{padding:9px 12px;border-radius:10px;cursor:pointer}
+.robotia-port-note{font-size:13px;line-height:1.4;opacity:.78}
+
+
+/* ===== Monitoreo Serial físico ===== */
+.robotia-physical-serial-modal{
+ position:fixed;inset:0;z-index:100100;display:none;align-items:center;justify-content:center;
+ background:rgba(0,0,0,.52);padding:18px
+}
+.robotia-physical-serial-modal.open{display:flex}
+.robotia-physical-serial-card{
+ width:min(760px,96vw);height:min(560px,88vh);background:#0f172a;color:#e2e8f0;
+ border:1px solid #475569;border-radius:16px;box-shadow:0 22px 70px rgba(0,0,0,.45);
+ padding:14px;display:flex;flex-direction:column;gap:10px
+}
+.robotia-physical-serial-head{display:flex;align-items:center;justify-content:space-between}
+.robotia-physical-serial-head h3{margin:0;font-size:18px}
+.robotia-physical-serial-close{width:34px;height:34px;border:0;border-radius:50%;cursor:pointer;font-size:20px}
+.robotia-physical-serial-controls{display:flex;gap:8px;flex-wrap:wrap}
+.robotia-physical-serial-controls button,.robotia-physical-serial-controls select{
+ padding:8px 10px;border-radius:8px
+}
+.robotia-physical-serial-status{font-size:12px;color:#94a3b8}
+.robotia-physical-serial-output{
+ flex:1;min-height:0;margin:0;padding:12px;overflow:auto;background:#020617;color:#e2e8f0;
+ border:1px solid #334155;border-radius:10px;white-space:pre-wrap;word-break:break-word
+}
+
+
+
+/* =========================================================
+   ROBOTIA.EC — LISTA DIRECTA DE PUERTOS
+   ========================================================= */
+.robotia-port-list {
+    display: grid !important;
+    gap: 8px !important;
+    margin: 12px 0 !important;
+}
+
+.robotia-port-item {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 3px !important;
+    width: 100% !important;
+    padding: 11px 13px !important;
+    border: 1px solid #cbd5e1 !important;
+    border-radius: 10px !important;
+    background: #f8fafc !important;
+    color: #0f172a !important;
+    cursor: pointer !important;
+    text-align: left !important;
+}
+
+.robotia-port-item:hover {
+    border-color: #2563eb !important;
+    background: #eff6ff !important;
+}
+
+.robotia-port-item strong {
+    font-size: 13px !important;
+}
+
+.robotia-port-item span {
+    font-size: 10px !important;
+    color: #64748b !important;
+}
+
+#robotiaPortRefresh {
+    width: 100% !important;
+}
+/* ROBOTIA.EC — selector simple de puerto */
+.robotia-port-actions {
+    display: block !important;
+}
+
+#robotiaPortRefresh {
+    width: 100% !important;
+}
+
 </style>
 
 </head>
@@ -6285,6 +6389,7 @@ img[data-tutorial-image="kitLeotino"] {
             disabled>
             ⬆ Compilar y subir
         </button>
+<button type="button" id="robotiaPhysicalSerialBtn">Monitoreo Serial</button>
 
         <div class="compile-source-switch" title="Activar compilación local">
             <label class="mini-switch">
@@ -11410,55 +11515,61 @@ function generarDeclaracionesServos() {
    ========================================================= */
 
 function generarDeclaracionClaseUltrasonido() {
-
     return (
-
         "class Ultrasonido {\n" +
-
         "private:\n" +
-
-        "  int trig;\n" +
-        "  int echo;\n\n" +
-
-        "public:\n\n" +
-
-        "  Ultrasonido(int t, int e) {\n" +
-
-        "    trig = t;\n" +
-        "    echo = e;\n" +
-
-        "  }\n\n" +
-
-        "  void iniciar() {\n" +
-
-        "    pinMode(trig, OUTPUT);\n" +
-        "    pinMode(echo, INPUT);\n" +
-
-        "  }\n\n" +
-
-        "  long distancia() {\n\n" +
-
+        "  uint8_t trig;\n" +
+        "  uint8_t echo;\n" +
+        "  float ultimaDistanciaValida;\n\n" +
+        "  float medirUnaVez() {\n" +
         "    digitalWrite(trig, LOW);\n" +
-        "    delayMicroseconds(2);\n\n" +
-
+        "    delayMicroseconds(3);\n" +
         "    digitalWrite(trig, HIGH);\n" +
         "    delayMicroseconds(10);\n" +
-        "    digitalWrite(trig, LOW);\n\n" +
-
-        "    long duracion = pulseIn(echo, HIGH, 30000);\n\n" +
-
-        "    if (duracion == 0) {\n" +
-        "      return 0;\n" +
-        "    }\n\n" +
-
-        "    return duracion / 58;\n" +
-
+        "    digitalWrite(trig, LOW);\n" +
+        "    unsigned long duracion = pulseIn(echo, HIGH, 30000UL);\n" +
+        "    if (duracion == 0) return -1.0f;\n" +
+        "    float cm = duracion * 0.0343f / 2.0f;\n" +
+        "    if (cm < 2.0f || cm > 250.0f) return -1.0f;\n" +
+        "    return cm;\n" +
+        "  }\n\n" +
+        "public:\n" +
+        "  Ultrasonido(uint8_t pinTrig, uint8_t pinEcho) {\n" +
+        "    trig = pinTrig;\n" +
+        "    echo = pinEcho;\n" +
+        "    ultimaDistanciaValida = 250.0f;\n" +
+        "  }\n\n" +
+        "  void iniciar() {\n" +
+        "    pinMode(trig, OUTPUT);\n" +
+        "    pinMode(echo, INPUT);\n" +
+        "    digitalWrite(trig, LOW);\n" +
+        "    delay(50);\n" +
+        "  }\n\n" +
+        "  float distancia() {\n" +
+        "    float lecturas[3];\n" +
+        "    uint8_t validas = 0;\n" +
+        "    for (uint8_t i=0; i<3; i++) {\n" +
+        "      float cm = medirUnaVez();\n" +
+        "      if (cm > 0.0f) lecturas[validas++] = cm;\n" +
+        "      delay(12);\n" +
+        "    }\n" +
+        "    if (validas == 0) return ultimaDistanciaValida;\n" +
+        "    if (validas == 1) {\n" +
+        "      ultimaDistanciaValida = lecturas[0];\n" +
+        "      return ultimaDistanciaValida;\n" +
+        "    }\n" +
+        "    if (validas == 2) {\n" +
+        "      ultimaDistanciaValida = (lecturas[0]+lecturas[1])/2.0f;\n" +
+        "      return ultimaDistanciaValida;\n" +
+        "    }\n" +
+        "    if (lecturas[0] > lecturas[1]) { float t=lecturas[0]; lecturas[0]=lecturas[1]; lecturas[1]=t; }\n" +
+        "    if (lecturas[1] > lecturas[2]) { float t=lecturas[1]; lecturas[1]=lecturas[2]; lecturas[2]=t; }\n" +
+        "    if (lecturas[0] > lecturas[1]) { float t=lecturas[0]; lecturas[0]=lecturas[1]; lecturas[1]=t; }\n" +
+        "    ultimaDistanciaValida = lecturas[1];\n" +
+        "    return ultimaDistanciaValida;\n" +
         "  }\n" +
-
         "};\n\n"
-
     );
-
 }
 
 
@@ -11477,6 +11588,10 @@ function generarDeclaracionesUltrasonido() {
         generarDeclaracionClaseUltrasonido();
 
 
+    const idsGenerados =
+        new Set();
+
+
     sensores.forEach(sensor => {
 
         const id =
@@ -11493,6 +11608,17 @@ function generarDeclaracionesUltrasonido() {
             sensor.getFieldValue(
                 "ECHO"
             );
+
+
+        if (
+            !id ||
+            idsGenerados.has(id)
+        ) {
+            return;
+        }
+
+
+        idsGenerados.add(id);
 
 
         codigo +=
@@ -11570,6 +11696,10 @@ function generarSetupDispositivos() {
         });
 
 
+    const ultrasonidosIniciados =
+        new Set();
+
+
     obtenerUltrasonidos()
         .forEach(sensor => {
 
@@ -11577,6 +11707,17 @@ function generarSetupDispositivos() {
                 sensor.getFieldValue(
                     "ID"
                 );
+
+
+            if (
+                !id ||
+                ultrasonidosIniciados.has(id)
+            ) {
+                return;
+            }
+
+
+            ultrasonidosIniciados.add(id);
 
 
             codigo +=
@@ -13183,32 +13324,131 @@ function intentarEmpujarObstaculosLeotino(
         return true;
     }
 
+    /*
+     * Posición del robot ANTES de este pequeño paso.
+     */
+    const robotAnteriorX =
+        x - dxRobot;
+
+    const robotAnteriorY =
+        y - dyRobot;
+
+    const magnitudMovimiento =
+        Math.hypot(
+            dxRobot,
+            dyRobot
+        );
+
+    let movioAlgunObstaculo =
+        false;
+
     for (const obj of tocados) {
-        const nx = obj.x + dxRobot;
-        const ny = obj.y + dyRobot;
 
-        const d =
-            dimensionesObjetoLeotino(obj);
-
+        /*
+         * Un objeto solo debe ser empujado si está DELANTE
+         * del sentido real de desplazamiento del robot.
+         *
+         * Antes, cualquier obstáculo que tocara el contorno
+         * recibía dxRobot/dyRobot, incluso si estaba detrás.
+         * Eso hacía que la parte trasera "arrastrara" objetos
+         * mientras el robot avanzaba.
+         */
         if (
-            nx - d.w/2 <= 0.5 ||
-            nx + d.w/2 >= 99.5 ||
-            ny - d.h/2 <= 0.5 ||
-            ny + d.h/2 >= 99.5
+            magnitudMovimiento >
+            0.00001
+        ) {
+            const haciaObjetoX =
+                obj.x -
+                robotAnteriorX;
+
+            const haciaObjetoY =
+                obj.y -
+                robotAnteriorY;
+
+            const producto =
+                haciaObjetoX *
+                    dxRobot +
+                haciaObjetoY *
+                    dyRobot;
+
+            /*
+             * producto <= 0:
+             * el obstáculo está detrás o lateralmente respecto
+             * al movimiento. El robot se está alejando de él,
+             * por lo tanto NO debe moverlo.
+             */
+            if (
+                producto <=
+                0.00001
+            ) {
+                continue;
+            }
+        }
+        else {
+            /*
+             * Sin traslación (por ejemplo giro sobre su eje),
+             * no arrastrar el obstáculo con el centro del robot.
+             */
+            continue;
+        }
+
+        const nx =
+            obj.x +
+            dxRobot;
+
+        const ny =
+            obj.y +
+            dyRobot;
+
+        const dimensiones =
+            dimensionesObjetoLeotino(
+                obj
+            );
+
+        /*
+         * Límites externos solo bloquean si están activos.
+         */
+        if (
+            leotinoWorld.externalWallsVisible !==
+                false &&
+            (
+                nx -
+                    dimensiones.w / 2 <=
+                    0.5 ||
+                nx +
+                    dimensiones.w / 2 >=
+                    99.5 ||
+                ny -
+                    dimensiones.h / 2 <=
+                    0.5 ||
+                ny +
+                    dimensiones.h / 2 >=
+                    99.5
+            )
         ) {
             return false;
         }
 
+        /*
+         * El obstáculo empujado no puede atravesar
+         * paredes u otros obstáculos físicos.
+         */
         const bloqueado =
             leotinoWorld.objects.some(
                 other =>
-                    other.id !== obj.id &&
-                    objetoBloqueaRobotLeotino(other) &&
+                    other.id !==
+                        obj.id &&
+                    objetoBloqueaRobotLeotino(
+                        other
+                    ) &&
                     puntoDentroRectLeotino(
                         nx,
                         ny,
                         other,
-                        Math.max(d.w,d.h)/2
+                        Math.max(
+                            dimensiones.w,
+                            dimensiones.h
+                        ) / 2
                     )
             );
 
@@ -13216,12 +13456,21 @@ function intentarEmpujarObstaculosLeotino(
             return false;
         }
 
-        obj.x = nx;
-        obj.y = ny;
+        obj.x =
+            nx;
+
+        obj.y =
+            ny;
+
+        movioAlgunObstaculo =
+            true;
     }
 
-    guardarMundoLeotino();
-    renderObjetosPistaLeotino();
+    if (movioAlgunObstaculo) {
+        guardarMundoLeotino();
+        renderObjetosPistaLeotino();
+    }
+
     return true;
 }
 
@@ -15769,7 +16018,7 @@ function renderEntornoLeotino(scene) {
     const serial = document.createElement("div");
     serial.className = "serial-monitor";
     serial.id = "serialMonitor";
-    serial.textContent = simulacion.serialText || "Monitor Serial";
+    serial.textContent = simulacion.serialText || "Sim Monitor";
 
     serialWrap.appendChild(serialHeader);
     serialWrap.appendChild(serial);
@@ -16222,7 +16471,7 @@ function actualizarSimulador() {
 
 
     serial.textContent =
-        "Monitor Serial";
+        "Sim Monitor";
 
 
     scene.appendChild(
@@ -16564,7 +16813,7 @@ function escribirSerial(
     }
     const monitor = document.getElementById("serialMonitor");
     if (monitor) {
-        monitor.textContent = simulacion.serialText || "Monitor Serial";
+        monitor.textContent = simulacion.serialText || "Sim Monitor";
         monitor.scrollTop = monitor.scrollHeight;
     }
 }
@@ -16761,7 +17010,7 @@ function reorganizarLayoutSimulador() {
             );
 
         serialTitle.textContent =
-            "Monitor Serial";
+            "Sim Monitor";
 
         const serialToggle =
             document.createElement(
@@ -17697,10 +17946,11 @@ function actualizarMotorLeotinoDesdeServoRC(id, direction, speed) {
     }
 
     if (pin === "5") {
-        leotinoWorld.leftMotor = signed;
-    } else if (pin === "6") {
-        // Servo derecho está montado invertido respecto al izquierdo.
+        // Motor derecho del robot.
         leotinoWorld.rightMotor = -signed;
+    } else if (pin === "6") {
+        // Motor izquierdo del robot.
+        leotinoWorld.leftMotor = signed;
     }
 
     const mot = document.getElementById("leotinoMotorsLive");
@@ -18752,7 +19002,7 @@ function ejecutarBloqueSimulacion(block, interno = false) {
                     signedSpeed;
             } else {
                 leotinoWorld.rightMotor =
-                    signedSpeed;
+                    -signedSpeed;
             }
 
             const leftInline =
@@ -18859,7 +19109,7 @@ function ejecutarBloqueSimulacion(block, interno = false) {
                     signedSpeed;
             } else {
                 leotinoWorld.rightMotor =
-                    signedSpeed;
+                    -signedSpeed;
             }
 
             const leftInline =
@@ -20173,6 +20423,19 @@ async function compilarLocal(subir = false, puertoAutorizado = null) {
         }
 
     } catch (e) {
+        /*
+         * El error de apertura del puerto NO debe consumirse aquí.
+         * Debe llegar al flujo de Compilar y subir para que se pueda
+         * escoger otro puerto.
+         */
+        if (
+            e &&
+            e.name === "RobotiaPortOpenError"
+        ) {
+            throw e;
+        }
+
+
         const mensaje =
             e &&
             e.name === "AbortError"
@@ -20398,6 +20661,174 @@ async function compilarSeleccionado(
     );
 }
 
+
+function descripcionPuertoRobotia(port, index) {
+    let info = {};
+    try { info = port.getInfo ? port.getInfo() : {}; } catch (_) {}
+
+    const vid = info.usbVendorId != null
+        ? "VID " + info.usbVendorId.toString(16).toUpperCase().padStart(4,"0")
+        : "";
+    const pid = info.usbProductId != null
+        ? "PID " + info.usbProductId.toString(16).toUpperCase().padStart(4,"0")
+        : "";
+
+    const ids = [vid,pid].filter(Boolean).join(" · ");
+    return "Puerto USB " + (index + 1) + (ids ? " — " + ids : "");
+}
+
+async function seleccionarPuertoRobotia() {
+    if (!("serial" in navigator)) {
+        throw new Error(
+            "Este navegador no admite Web Serial. Usa Chrome o Edge de escritorio por HTTPS o localhost."
+        );
+    }
+
+    const modal =
+        document.getElementById(
+            "robotiaPortModal"
+        );
+
+    const msg =
+        document.getElementById(
+            "robotiaPortMessage"
+        );
+
+    const close =
+        document.getElementById(
+            "robotiaPortClose"
+        );
+
+    const refresh =
+        document.getElementById(
+            "robotiaPortRefresh"
+        );
+
+    return await new Promise(
+        resolve => {
+            let terminado =
+                false;
+
+            const finalizar =
+                port => {
+                    if (terminado) {
+                        return;
+                    }
+
+                    terminado =
+                        true;
+
+                    modal.classList.remove(
+                        "open"
+                    );
+
+                    modal.setAttribute(
+                        "aria-hidden",
+                        "true"
+                    );
+
+                    resolve(
+                        port || null
+                    );
+                };
+
+
+            close.onclick =
+                () => {
+                    finalizar(
+                        null
+                    );
+                };
+
+
+            modal.onclick =
+                event => {
+                    if (
+                        event.target ===
+                        modal
+                    ) {
+                        finalizar(
+                            null
+                        );
+                    }
+                };
+
+
+            refresh.onclick =
+                async () => {
+                    refresh.disabled =
+                        true;
+
+                    refresh.textContent =
+                        "↻ Buscando...";
+
+                    msg.textContent =
+                        "Chrome está mostrando los puertos disponibles...";
+
+                    try {
+                        /*
+                         * Chrome muestra su selector nativo.
+                         * El puerto elegido por el usuario se usa
+                         * inmediatamente en ROBOTIA.EC.
+                         */
+                        const port =
+                            await navigator.serial.requestPort();
+
+                        if (!port) {
+                            msg.textContent =
+                                "No se seleccionó ningún puerto.";
+
+                            return;
+                        }
+
+                        puertoSerialPreferido =
+                            port;
+
+                        msg.textContent =
+                            "Puerto seleccionado.";
+
+                        finalizar(
+                            port
+                        );
+
+                    } catch (e) {
+                        if (
+                            e &&
+                            e.name ===
+                            "NotFoundError"
+                        ) {
+                            msg.textContent =
+                                "No se seleccionó ningún puerto.";
+                        } else {
+                            msg.textContent =
+                                e.message ||
+                                String(e);
+                        }
+
+                    } finally {
+                        if (!terminado) {
+                            refresh.disabled =
+                                false;
+
+                            refresh.textContent =
+                                "↻ Actualizar puertos";
+                        }
+                    }
+                };
+
+
+            modal.classList.add(
+                "open"
+            );
+
+            modal.setAttribute(
+                "aria-hidden",
+                "false"
+            );
+        }
+    );
+}
+
 async function compilarYSubirSeleccionadoDesdeClick() {
     limpiarConsolaCompilacion();
 
@@ -20409,55 +20840,83 @@ async function compilarYSubirSeleccionadoDesdeClick() {
         return;
     }
 
-    let port = null;
+    /*
+     * Si Monitoreo Serial está usando el puerto,
+     * cerrarlo y liberar el mismo puerto antes de cargar.
+     */
+    await liberarPuertoSerialRobotia(
+        "upload"
+    );
 
-    try {
-        const existente =
-            await obtenerPuertoSerialGuardado();
+    let port =
+        await obtenerPuertoCompartidoRobotia(
+            false
+        );
 
-        if (existente) {
-            port = existente;
+    if (!port) {
+        logCompilacion(
+            "No se encontró el puerto guardado. Selecciona uno."
+        );
 
-            logCompilacion(
-                "Puerto Arduino reutilizado."
-            );
-        } else {
-            port =
-                await navigator.serial.requestPort();
+        port =
+            await pedirNuevoPuertoRobotia();
 
-            puertoSerialPreferido =
-                port;
-
-            logCompilacion(
-                "Puerto Arduino seleccionado."
-            );
-        }
-    } catch (e) {
-        if (
-            e &&
-            e.name === "NotFoundError"
-        ) {
+        if (!port) {
             logCompilacion(
                 "No se seleccionó ningún puerto.",
                 "error"
             );
-
             return;
         }
-
+    } else {
         logCompilacion(
-            e.message ||
-            String(e),
-            "error"
+            "Usando el mismo puerto guardado."
         );
-
-        return;
     }
 
-    await compilarSeleccionado(
-        true,
-        port
-    );
+    /*
+     * Si el puerto no abre o ya no existe,
+     * pedir otro hasta cargar correctamente o cancelar.
+     */
+    while (port) {
+        try {
+            await compilarSeleccionado(
+                true,
+                port
+            );
+
+            return;
+
+        } catch (e) {
+            if (
+                !e ||
+                e.name !==
+                "RobotiaPortOpenError"
+            ) {
+                throw e;
+            }
+
+            logCompilacion(
+                "⚠ No se pudo abrir el puerto guardado.",
+                "error"
+            );
+
+            logCompilacion(
+                "Selecciona otro puerto USB."
+            );
+
+            port =
+                await pedirNuevoPuertoRobotia();
+
+            if (!port) {
+                logCompilacion(
+                    "Carga cancelada.",
+                    "error"
+                );
+                return;
+            }
+        }
+    }
 }
 
 
@@ -20529,6 +20988,88 @@ let puertoSerialPreferido = null;
 /* =========================================================
    WEB SERIAL - REUTILIZAR PUERTO AUTORIZADO
    ========================================================= */
+
+
+/* =========================================================
+   PUERTO SERIAL ÚNICO COMPARTIDO
+   Compilar/Subir y Monitoreo Serial usan el mismo puerto.
+   ========================================================= */
+
+let robotiaSerialUsoActual =
+    null;
+
+
+async function liberarPuertoSerialRobotia(
+    paraUso = null
+) {
+    /*
+     * Si el Monitoreo Serial tiene abierto el puerto,
+     * liberarlo antes de compilar/subir.
+     */
+    if (
+        paraUso !== "monitor" &&
+        typeof robotiaPhysicalSerialPort !== "undefined" &&
+        robotiaPhysicalSerialPort
+    ) {
+        try {
+            await cerrarPuertoMonitoreoSerialRobotia();
+        } catch (_) {}
+    }
+
+    robotiaSerialUsoActual =
+        paraUso;
+}
+
+
+async function obtenerPuertoCompartidoRobotia(
+    mostrarSelectorSiFalla = true
+) {
+    let port = null;
+
+    try {
+        port =
+            await obtenerPuertoSerialGuardado();
+    } catch (_) {
+        port = null;
+    }
+
+    if (
+        !port &&
+        mostrarSelectorSiFalla
+    ) {
+        port =
+            await seleccionarPuertoRobotia();
+    }
+
+    if (port) {
+        puertoSerialPreferido =
+            port;
+    }
+
+    return port;
+}
+
+
+async function pedirNuevoPuertoRobotia() {
+    /*
+     * No abrimos el chooser nativo aquí.
+     * Mostramos nuevamente la ventana propia de ROBOTIA.EC
+     * con la lista actualizada de puertos autorizados.
+     */
+    puertoSerialPreferido =
+        null;
+
+    const port =
+        await seleccionarPuertoRobotia();
+
+    if (port) {
+        puertoSerialPreferido =
+            port;
+    }
+
+    return port;
+}
+
 
 async function obtenerPuertoSerialGuardado() {
     if (!("serial" in navigator)) {
@@ -20898,6 +21439,14 @@ async function compilarMQTT(subir = false, puertoAutorizado = null) {
             );
         }
     } catch (e) {
+        if (
+            e &&
+            e.name === "RobotiaPortOpenError"
+        ) {
+            throw e;
+        }
+
+
         logCompilacion(e.message || String(e), "error");
         console.error(e);
     }
@@ -20937,20 +21486,62 @@ function hexToBytes(hexText) {
 async function subirHexArduinoUno(hexText, puertoAutorizado = null) {
     if (!("serial" in navigator)) throw new Error("Este navegador no admite Web Serial. Usa Chrome/Edge de escritorio por HTTPS o localhost.");
 
+    /*
+     * Compilar/Subir y Monitoreo Serial no pueden tener
+     * abierto el mismo puerto simultáneamente.
+     * Si el monitor lo está usando, se libera primero.
+     */
+    await liberarPuertoSerialRobotia(
+        "upload"
+    );
+
     const port =
         puertoAutorizado ||
-        await navigator.serial.requestPort();
+        await obtenerPuertoCompartidoRobotia(
+            true
+        );
+
+    if (!port) {
+        throw new Error(
+            "No se seleccionó ningún puerto USB."
+        );
+    }
 
     puertoSerialPreferido =
         port;
 
-    await port.open({
-        baudRate: 115200,
-        dataBits: 8,
-        stopBits: 1,
-        parity: "none",
-        flowControl: "none"
-    });
+    robotiaSerialUsoActual =
+        "upload";
+
+    try {
+        await port.open({
+            baudRate: 115200,
+            dataBits: 8,
+            stopBits: 1,
+            parity: "none",
+            flowControl: "none"
+        });
+    } catch (errorApertura) {
+        /*
+         * Marcar expresamente el error de apertura para que el flujo
+         * superior pueda avisar y ofrecer seleccionar otro puerto.
+         */
+        const error =
+            new Error(
+                "No se pudo abrir el puerto seleccionado. Puede estar desconectado, ocupado por otro programa o haber cambiado de puerto USB."
+            );
+
+        error.name =
+            "RobotiaPortOpenError";
+
+        error.originalError =
+            errorApertura;
+
+        error.port =
+            port;
+
+        throw error;
+    }
 
     try {
         // Reset del Uno para entrar al bootloader Optiboot.
@@ -21020,6 +21611,9 @@ async function subirHexArduinoUno(hexText, puertoAutorizado = null) {
         try {
             await port.close();
         } catch (_) {}
+
+        robotiaSerialUsoActual =
+            null;
     }
 }
 
@@ -22351,6 +22945,548 @@ const ROBOTIA_APP_NAME =
 document.title =
     ROBOTIA_APP_NAME;
 
+
+/*
+ * Si el dispositivo USB se desconecta, olvidar únicamente la referencia
+ * viva. El permiso del navegador permanece y podrá recuperarse con
+ * navigator.serial.getPorts() cuando vuelva a conectarse.
+ */
+if ("serial" in navigator) {
+    navigator.serial.addEventListener(
+        "disconnect",
+        event => {
+            if (
+                puertoSerialPreferido &&
+                event.target === puertoSerialPreferido
+            ) {
+                puertoSerialPreferido = null;
+            }
+        }
+    );
+}
+
+
+/* =========================================================
+   MONITOREO SERIAL — PUERTO FÍSICO
+   El monitor del simulador se denomina "Sim Monitor".
+   ========================================================= */
+
+let robotiaPhysicalSerialPort = null;
+let robotiaPhysicalSerialReader = null;
+let robotiaPhysicalSerialReading = false;
+let robotiaPhysicalSerialClosing = false;
+let robotiaPhysicalSerialConnecting = false;
+
+
+async function abrirMonitoreoSerialRobotia() {
+    const modal =
+        document.getElementById(
+            "robotiaPhysicalSerialModal"
+        );
+
+    if (!modal) {
+        return;
+    }
+
+    modal.classList.add(
+        "open"
+    );
+
+    modal.setAttribute(
+        "aria-hidden",
+        "false"
+    );
+
+    /*
+     * Al abrir Monitoreo Serial, intentar conectar
+     * automáticamente usando el mismo puerto preferido
+     * de Compilar/Subir.
+     */
+    if (
+        !robotiaPhysicalSerialPort &&
+        !robotiaPhysicalSerialReading
+    ) {
+        const status =
+            document.getElementById(
+                "robotiaPhysicalSerialStatus"
+            );
+
+        if (status) {
+            status.textContent =
+                "Conectando automáticamente...";
+        }
+
+        try {
+            await conectarMonitoreoSerialRobotia();
+        } catch (e) {
+            if (status) {
+                status.textContent =
+                    "No se pudo conectar automáticamente.";
+            }
+
+            console.warn(
+                "Monitoreo Serial:",
+                e
+            );
+        }
+    }
+}
+
+
+function ocultarVentanaMonitoreoSerialRobotia() {
+    /*
+     * Cerrar visualmente INMEDIATAMENTE.
+     * No esperar a que termine reader.cancel() o port.close().
+     */
+    const modal =
+        document.getElementById(
+            "robotiaPhysicalSerialModal"
+        );
+
+    if (modal) {
+        modal.classList.remove("open");
+        modal.setAttribute(
+            "aria-hidden",
+            "true"
+        );
+    }
+}
+
+
+async function cerrarPuertoMonitoreoSerialRobotia() {
+    if (robotiaPhysicalSerialClosing) {
+        return;
+    }
+
+    robotiaPhysicalSerialClosing = true;
+    robotiaPhysicalSerialReading = false;
+    robotiaPhysicalSerialConnecting = false;
+
+    const status =
+        document.getElementById(
+            "robotiaPhysicalSerialStatus"
+        );
+
+    const connect =
+        document.getElementById(
+            "robotiaPhysicalSerialConnect"
+        );
+
+    const disconnect =
+        document.getElementById(
+            "robotiaPhysicalSerialDisconnect"
+        );
+
+    /*
+     * Cancelar el reader libera cualquier read() pendiente.
+     */
+    if (robotiaPhysicalSerialReader) {
+        try {
+            await robotiaPhysicalSerialReader.cancel();
+        } catch (_) {}
+
+        try {
+            robotiaPhysicalSerialReader.releaseLock();
+        } catch (_) {}
+
+        robotiaPhysicalSerialReader = null;
+    }
+
+    /*
+     * Cerrar el puerto físico.
+     */
+    if (robotiaPhysicalSerialPort) {
+        try {
+            await robotiaPhysicalSerialPort.close();
+        } catch (_) {}
+
+        robotiaPhysicalSerialPort = null;
+    }
+
+    if (status) {
+        status.textContent =
+            "Dispositivo físico desconectado";
+    }
+
+    if (connect) {
+        connect.disabled = false;
+    }
+
+    if (disconnect) {
+        disconnect.disabled = true;
+    }
+
+    robotiaPhysicalSerialClosing = false;
+
+    /*
+     * Se libera físicamente el puerto, pero se conserva
+     * puertoSerialPreferido para que Compilar/Subir lo reutilice.
+     */
+    robotiaSerialUsoActual =
+        null;
+}
+
+
+async function cerrarMonitoreoSerialRobotia() {
+    /*
+     * La X siempre cierra la ventana primero.
+     */
+    ocultarVentanaMonitoreoSerialRobotia();
+
+    /*
+     * Luego libera el puerto sin bloquear el cierre visual.
+     */
+    try {
+        await cerrarPuertoMonitoreoSerialRobotia();
+    } catch (e) {
+        console.warn(
+            "No se pudo cerrar completamente el puerto serial:",
+            e
+        );
+    }
+}
+
+
+async function conectarMonitoreoSerialRobotia() {
+    if (robotiaPhysicalSerialConnecting) {
+        robotiaPhysicalSerialConnecting = false;
+        return;
+    }
+
+    robotiaPhysicalSerialConnecting = true;
+
+
+    const status =
+        document.getElementById(
+            "robotiaPhysicalSerialStatus"
+        );
+
+    const output =
+        document.getElementById(
+            "robotiaPhysicalSerialOutput"
+        );
+
+    const baud =
+        Number(
+            document.getElementById(
+                "robotiaPhysicalBaud"
+            )?.value
+        ) || 9600;
+
+    if (!("serial" in navigator)) {
+        if (status) {
+            status.textContent =
+                "Web Serial no está disponible. Usa Chrome o Edge de escritorio.";
+        }
+
+        robotiaPhysicalSerialConnecting = false;
+
+        return;
+    }
+
+    /*
+     * El monitor usa EL MISMO puerto preferido de Compilar/Subir.
+     */
+    await liberarPuertoSerialRobotia(
+        "monitor"
+    );
+
+    let port =
+        await obtenerPuertoCompartidoRobotia(
+            false
+        );
+
+    if (!port) {
+        if (status) {
+            status.textContent =
+                "No se encontró el puerto guardado. Selecciona uno.";
+        }
+
+        port =
+            await pedirNuevoPuertoRobotia();
+
+        if (!port) {
+            if (status) {
+                status.textContent =
+                    "No se seleccionó ningún puerto.";
+            }
+
+            robotiaPhysicalSerialConnecting = false;
+
+            return;
+        }
+    }
+
+    /*
+     * Si el mismo puerto no abre, solicitar uno nuevo.
+     */
+    while (port) {
+        try {
+            await port.open({
+                baudRate:
+                    baud
+            });
+
+            break;
+
+        } catch (e) {
+            if (status) {
+                status.textContent =
+                    "No se pudo abrir el puerto guardado. Selecciona otro.";
+            }
+
+            port =
+                await pedirNuevoPuertoRobotia();
+
+            if (!port) {
+                if (status) {
+                    status.textContent =
+                        "Conexión cancelada.";
+                }
+
+                robotiaPhysicalSerialConnecting = false;
+
+                return;
+            }
+        }
+    }
+
+    robotiaPhysicalSerialPort =
+        port;
+
+    puertoSerialPreferido =
+        port;
+
+    robotiaSerialUsoActual =
+        "monitor";
+
+    robotiaPhysicalSerialReading =
+        true;
+
+    robotiaPhysicalSerialConnecting =
+        false;
+
+    robotiaPhysicalSerialClosing =
+        false;
+
+    const connect =
+        document.getElementById(
+            "robotiaPhysicalSerialConnect"
+        );
+
+    const disconnect =
+        document.getElementById(
+            "robotiaPhysicalSerialDisconnect"
+        );
+
+    if (connect) {
+        connect.disabled =
+            true;
+    }
+
+    if (disconnect) {
+        disconnect.disabled =
+            false;
+    }
+
+    if (status) {
+        status.textContent =
+            "Conectado al puerto compartido · " +
+            baud +
+            " baudios";
+    }
+
+    const decoder =
+        new TextDecoder();
+
+    try {
+        robotiaPhysicalSerialReader =
+            port.readable.getReader();
+
+        while (
+            robotiaPhysicalSerialReading &&
+            robotiaPhysicalSerialReader
+        ) {
+            const {
+                value,
+                done
+            } =
+                await robotiaPhysicalSerialReader.read();
+
+            if (done) {
+                break;
+            }
+
+            if (
+                value &&
+                output
+            ) {
+                output.textContent +=
+                    decoder.decode(
+                        value,
+                        {
+                            stream:
+                                true
+                        }
+                    );
+
+                output.scrollTop =
+                    output.scrollHeight;
+            }
+        }
+
+    } catch (e) {
+        if (
+            robotiaPhysicalSerialReading &&
+            status
+        ) {
+            status.textContent =
+                "Se perdió la conexión con el dispositivo físico.";
+        }
+
+    } finally {
+        if (
+            robotiaPhysicalSerialReader
+        ) {
+            try {
+                robotiaPhysicalSerialReader.releaseLock();
+            } catch (_) {}
+
+            robotiaPhysicalSerialReader =
+                null;
+        }
+    }
+}
+
+
+/*
+ * Registrar eventos cuando el DOM ya existe.
+ */
+function configurarMonitoreoSerialRobotia() {
+    const openBtn =
+        document.getElementById(
+            "robotiaPhysicalSerialBtn"
+        );
+
+    const closeBtn =
+        document.getElementById(
+            "robotiaPhysicalSerialClose"
+        );
+
+    const modal =
+        document.getElementById(
+            "robotiaPhysicalSerialModal"
+        );
+
+    const connectBtn =
+        document.getElementById(
+            "robotiaPhysicalSerialConnect"
+        );
+
+    const disconnectBtn =
+        document.getElementById(
+            "robotiaPhysicalSerialDisconnect"
+        );
+
+    const clearBtn =
+        document.getElementById(
+            "robotiaPhysicalSerialClear"
+        );
+
+    if (openBtn) {
+        openBtn.onclick =
+            abrirMonitoreoSerialRobotia;
+    }
+
+    if (closeBtn) {
+        closeBtn.onclick =
+            () => {
+                cerrarMonitoreoSerialRobotia();
+            };
+    }
+
+    /*
+     * También cerrar al hacer clic fuera de la tarjeta.
+     */
+    if (modal) {
+        modal.addEventListener(
+            "pointerdown",
+            ev => {
+                if (
+                    ev.target === modal
+                ) {
+                    cerrarMonitoreoSerialRobotia();
+                }
+            }
+        );
+    }
+
+    if (connectBtn) {
+        connectBtn.onclick =
+            conectarMonitoreoSerialRobotia;
+    }
+
+    if (disconnectBtn) {
+        disconnectBtn.onclick =
+            cerrarPuertoMonitoreoSerialRobotia;
+    }
+
+    if (clearBtn) {
+        clearBtn.onclick =
+            () => {
+                const output =
+                    document.getElementById(
+                        "robotiaPhysicalSerialOutput"
+                    );
+
+                if (output) {
+                    output.textContent = "";
+                }
+            };
+    }
+}
+
+
+if (
+    document.readyState ===
+    "loading"
+) {
+    document.addEventListener(
+        "DOMContentLoaded",
+        configurarMonitoreoSerialRobotia,
+        {
+            once: true
+        }
+    );
+} else {
+    configurarMonitoreoSerialRobotia();
+}
+
+
+
+document.addEventListener(
+    "keydown",
+    ev => {
+        if (
+            ev.key === "Escape"
+        ) {
+            const modal =
+                document.getElementById(
+                    "robotiaPhysicalSerialModal"
+                );
+
+            if (
+                modal &&
+                modal.classList.contains(
+                    "open"
+                )
+            ) {
+                cerrarMonitoreoSerialRobotia();
+            }
+        }
+    }
+);
+
 </script>
 
 
@@ -22404,6 +23540,63 @@ document.title =
              class="block-help-modal-example"></div>
     </div>
 
+</div>
+
+
+
+
+
+<div id="robotiaPortModal" class="robotia-port-modal" aria-hidden="true">
+ <div class="robotia-port-card">
+  <div class="robotia-port-head">
+   <h3>Seleccionar puerto</h3>
+   <button type="button" class="robotia-port-close" id="robotiaPortClose">×</button>
+  </div>
+
+  <div id="robotiaPortMessage" class="robotia-port-note">
+    Pulsa “Actualizar puertos” para que Chrome muestre los puertos disponibles.
+  </div>
+
+  <div class="robotia-port-actions">
+   <button type="button" id="robotiaPortRefresh">↻ Actualizar puertos</button>
+  </div>
+
+  <p class="robotia-port-note">
+   El puerto que selecciones en la ventana de Chrome se utilizará inmediatamente
+   y quedará guardado para Compilar/Subir y Monitoreo Serial.
+  </p>
+ </div>
+</div>
+
+
+<!-- =======================================================
+     MONITOREO SERIAL — DISPOSITIVO FÍSICO
+     ======================================================= -->
+<div id="robotiaPhysicalSerialModal" class="robotia-physical-serial-modal" aria-hidden="true">
+  <div class="robotia-physical-serial-card">
+    <div class="robotia-physical-serial-head">
+      <h3>Monitoreo Serial</h3>
+      <button type="button" id="robotiaPhysicalSerialClose" class="robotia-physical-serial-close">×</button>
+    </div>
+
+    <div class="robotia-physical-serial-controls">
+      <select id="robotiaPhysicalBaud" title="Velocidad">
+        <option value="9600" selected>9600 baudios</option>
+        <option value="19200">19200 baudios</option>
+        <option value="38400">38400 baudios</option>
+        <option value="57600">57600 baudios</option>
+        <option value="115200">115200 baudios</option>
+      </select>
+      <button type="button" id="robotiaPhysicalSerialConnect">Conectar</button>
+      <button type="button" id="robotiaPhysicalSerialDisconnect" disabled>Desconectar</button>
+      <button type="button" id="robotiaPhysicalSerialClear">Limpiar</button>
+    </div>
+
+    <div id="robotiaPhysicalSerialStatus" class="robotia-physical-serial-status">
+      Dispositivo físico desconectado
+    </div>
+    <pre id="robotiaPhysicalSerialOutput" class="robotia-physical-serial-output"></pre>
+  </div>
 </div>
 
 </body>

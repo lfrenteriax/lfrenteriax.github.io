@@ -982,6 +982,145 @@ button:active {
 
 
 /* =========================================================
+   SENSOR IR - SIMULADOR
+   ========================================================= */
+
+.ir-sensor-visual {
+    width: 72px;
+    height: 46px;
+    margin: 5px auto;
+    position: relative;
+}
+
+.ir-sensor-board {
+    position: absolute;
+    left: 8px;
+    top: 7px;
+    width: 56px;
+    height: 31px;
+    border-radius: 5px;
+    background: #7c2d12;
+    border: 2px solid #fdba74;
+}
+
+.ir-sensor-eye {
+    position: absolute;
+    top: 12px;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: #111827;
+    border: 2px solid #cbd5e1;
+}
+
+.ir-sensor-eye.left { left: 18px; }
+.ir-sensor-eye.right { right: 18px; }
+
+.ir-sensor-led {
+    position: absolute;
+    right: 12px;
+    top: 9px;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #475569;
+}
+
+.sim-ir-device.detecting .ir-sensor-led {
+    background: #facc15;
+    box-shadow: 0 0 8px #facc15;
+}
+
+.ir-sensor-value {
+    text-align: center;
+    font-size: 11px;
+    font-weight: 800;
+    color: #fbbf24;
+    margin: 2px 0 5px;
+}
+
+.ir-sensor-toggle {
+    width: 100%;
+    min-height: 28px;
+    margin-top: 5px;
+    padding: 4px 6px;
+    font-size: 9px;
+    background: #334155;
+}
+
+.sim-ir-device.detecting {
+    box-shadow: 0 0 0 1px #f59e0b, 0 0 15px rgba(245,158,11,.38);
+}
+
+
+/* =========================================================
+   MOTOR DC - SIMULADOR
+   ========================================================= */
+
+.dc-motor-visual {
+    width: 64px;
+    height: 52px;
+    margin: 5px auto;
+    position: relative;
+}
+
+.dc-motor-body {
+    position: absolute;
+    left: 8px;
+    top: 8px;
+    width: 43px;
+    height: 34px;
+    border-radius: 7px;
+    background: #64748b;
+    border: 2px solid #cbd5e1;
+}
+
+.dc-motor-shaft {
+    position: absolute;
+    right: 0;
+    top: 22px;
+    width: 17px;
+    height: 7px;
+    border-radius: 0 4px 4px 0;
+    background: #e2e8f0;
+    transform-origin: left center;
+}
+
+.dc-motor-rotor {
+    position: absolute;
+    left: 19px;
+    top: 15px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 3px solid #f8fafc;
+}
+
+.dc-motor-rotor::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: -2px;
+    width: 3px;
+    height: 9px;
+    transform: translateX(-50%);
+    border-radius: 3px;
+    background: #f8fafc;
+}
+
+.dc-motor-speed {
+    text-align: center;
+    color: #c4b5fd;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.sim-device.dc-motor-running {
+    box-shadow: 0 0 0 1px #8b5cf6, 0 0 16px rgba(139,92,246,.40);
+}
+
+
+/* =========================================================
    ULTRASONIDO
    ========================================================= */
 
@@ -1038,6 +1177,68 @@ button:active {
     font-weight: bold;
 
     text-align: center;
+}
+
+
+/* =========================================================
+   BUZZER - SIMULADOR ARDUINO
+   ========================================================= */
+
+.buzzer-visual {
+    width: 58px;
+    height: 58px;
+    margin: 7px auto;
+    border-radius: 50%;
+    background: #111827;
+    border: 4px solid #64748b;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.buzzer-visual::before {
+    content: "";
+    position: absolute;
+    width: 17px;
+    height: 17px;
+    border-radius: 50%;
+    background: #020617;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.buzzer-visual.sounding {
+    border-color: #f59e0b;
+    box-shadow:
+        0 0 0 3px rgba(245,158,11,.20),
+        0 0 18px rgba(245,158,11,.85);
+    animation: robotiaBuzzerPulse .20s ease-in-out infinite alternate;
+}
+
+.buzzer-wave {
+    text-align: center;
+    height: 15px;
+    font-size: 15px;
+    line-height: 15px;
+    color: #fbbf24;
+    opacity: 0;
+}
+
+.sim-device.buzzer-running .buzzer-wave {
+    opacity: 1;
+}
+
+.buzzer-frequency {
+    text-align: center;
+    color: #fbbf24;
+    font-size: 10px;
+    font-weight: bold;
+    min-height: 14px;
+}
+
+@keyframes robotiaBuzzerPulse {
+    from { transform: scale(.96); }
+    to   { transform: scale(1.04); }
 }
 
 
@@ -7266,6 +7467,65 @@ img[data-tutorial-image="kitLeotino"] {
 
     </category>
 
+    <category
+        name="Sensor IR"
+        colour="#F59E0B">
+
+        <block type="ir_sensor_config"></block>
+        <block type="ir_sensor_read"></block>
+
+    </category>
+
+
+
+    <category
+        name="Motor DC"
+        colour="#8B5CF6">
+
+        <block type="dc_motor_config"></block>
+
+        <block type="dc_motor_control">
+            <value name="SPEED">
+                <shadow type="math_number">
+                    <field name="NUM">0</field>
+                </shadow>
+            </value>
+        </block>
+
+    </category>
+
+
+    <category
+        name="Buzzer"
+        colour="#D97706">
+
+        <block type="arduino_buzzer_config"></block>
+
+        <block type="arduino_buzzer_tone">
+            <value name="FREQ">
+                <shadow type="math_number">
+                    <field name="NUM">1000</field>
+                </shadow>
+            </value>
+        </block>
+
+        <block type="arduino_buzzer_tone_time">
+            <value name="FREQ">
+                <shadow type="math_number">
+                    <field name="NUM">1000</field>
+                </shadow>
+            </value>
+            <value name="TIME">
+                <shadow type="math_number">
+                    <field name="NUM">1</field>
+                </shadow>
+            </value>
+        </block>
+
+        <block type="arduino_buzzer_stop"></block>
+
+    </category>
+
 
     <category
         name="Analógico"
@@ -7938,7 +8198,11 @@ let simulacion = {
 
     distanceState: {},
 
+    irState: {},
+
     rcServoState: {},
+
+    dcMotorState: {},
 
     rcTimer: null,
 
@@ -8078,6 +8342,40 @@ function obtenerPinesOcupados(excluir) {
 
             if (
                 block.type ===
+                "dc_motor_config"
+            ) {
+
+                ["IN1", "IN2", "PWM"].forEach(nombre => {
+                    const pin =
+                        parseInt(
+                            block.getFieldValue(nombre)
+                        );
+
+                    if (!isNaN(pin)) {
+                        usados.add(pin);
+                    }
+                });
+
+            }
+
+            if (
+                block.type ===
+                "ir_sensor_config"
+            ) {
+                const pin =
+                    parseInt(
+                        block.getFieldValue("PIN")
+                    );
+
+                if (!isNaN(pin)) {
+                    usados.add(pin);
+                }
+            }
+
+
+
+            if (
+                block.type ===
                 "arduino_pin_mode"
             ) {
 
@@ -8143,6 +8441,22 @@ function obtenerPinesOcupados(excluir) {
 
             }
 
+
+            if (
+                block.type === "arduino_buzzer_config"
+            ) {
+
+                const pin =
+                    parseInt(
+                        block.getFieldValue("PIN")
+                    );
+
+                if (!isNaN(pin)) {
+                    usados.add(pin);
+                }
+
+            }
+
         });
 
 
@@ -8175,6 +8489,22 @@ function buscarPinLibre(
 
     return inicio;
 
+}
+
+
+function buscarPinPwmLibre(excluir) {
+    const usados =
+        obtenerPinesOcupados(
+            excluir
+        );
+
+    const pwm =
+        [3, 5, 6, 9, 10, 11];
+
+    return (
+        pwm.find(pin => !usados.has(pin)) ||
+        pwm[0]
+    );
 }
 
 
@@ -8250,6 +8580,70 @@ function corregirPinesDuplicados() {
         usados.add(pin);
     });
 
+    // Motores DC: PWM debe ser PWM y los tres pines deben quedar libres.
+    bloques.forEach(block => {
+        if (
+            block.type !==
+            "dc_motor_config"
+        ) {
+            return;
+        }
+
+        const pwm =
+            elegirLibre(
+                pwmPermitidos,
+                block.getFieldValue("PWM")
+            );
+
+        block.setFieldValue(
+            pwm,
+            "PWM"
+        );
+        usados.add(pwm);
+
+        const in1 =
+            elegirLibre(
+                digitalesPermitidos,
+                block.getFieldValue("IN1")
+            );
+
+        block.setFieldValue(
+            in1,
+            "IN1"
+        );
+        usados.add(in1);
+
+        const in2 =
+            elegirLibre(
+                digitalesPermitidos,
+                block.getFieldValue("IN2")
+            );
+
+        block.setFieldValue(
+            in2,
+            "IN2"
+        );
+        usados.add(in2);
+    });
+
+
+    // Sensores IR: cada sensor usa un pin digital libre.
+    bloques.forEach(block => {
+        if (block.type !== "ir_sensor_config") {
+            return;
+        }
+
+        const pin =
+            elegirLibre(
+                digitalesPermitidos,
+                block.getFieldValue("PIN")
+            );
+
+        block.setFieldValue(pin, "PIN");
+        usados.add(pin);
+    });
+
+
     // Después ultrasonidos:
     // TRIG y ECHO tampoco pueden repetir pines de servos,
     // ni repetirse entre sí o con otro ultrasonido.
@@ -8317,6 +8711,59 @@ function obtenerUltrasonidos() {
     return obtenerBloquesTipo(
         "ultrasonic_config"
     );
+
+}
+
+
+function obtenerMotoresDC() {
+
+    return obtenerBloquesTipo(
+        "dc_motor_config"
+    );
+
+}
+
+function obtenerSensoresIR() {
+    return obtenerBloquesTipo(
+        "ir_sensor_config"
+    );
+}
+
+
+
+function obtenerBuzzersConfigurados() {
+
+    return obtenerBloquesTipo(
+        "arduino_buzzer_config"
+    );
+
+}
+
+
+function opcionesBuzzer() {
+
+    const bloques =
+        obtenerBuzzersConfigurados();
+
+    if (!bloques.length) {
+
+        return [
+            ["Sin Buzzer", ""]
+        ];
+
+    }
+
+    return bloques.map(b => {
+
+        const id =
+            b.getFieldValue("ID");
+
+        return [
+            id,
+            id
+        ];
+
+    });
 
 }
 
@@ -8409,6 +8856,52 @@ function opcionesUltrasonico() {
 }
 
 
+function opcionesMotorDC() {
+
+    const bloques =
+        obtenerMotoresDC();
+
+    if (!bloques.length) {
+
+        return [
+            ["Sin Motor DC", ""]
+        ];
+
+    }
+
+    return bloques.map(b => {
+
+        const id =
+            b.getFieldValue("ID");
+
+        return [
+            id,
+            id
+        ];
+
+    });
+
+}
+
+function opcionesSensorIR() {
+    const bloques =
+        obtenerSensoresIR();
+
+    if (!bloques.length) {
+        return [
+            ["Sin Sensor IR", ""]
+        ];
+    }
+
+    return bloques.map(b => {
+        const id =
+            b.getFieldValue("ID");
+        return [id, id];
+    });
+}
+
+
+
 /* =========================================================
    SELECTORES
    ========================================================= */
@@ -8466,6 +8959,41 @@ function actualizarTodosLosSelectores() {
 
                     nombre = "SENSOR";
                     opciones = opcionesUltrasonico();
+
+                }
+
+
+                if (
+                    block.type ===
+                    "dc_motor_control"
+                ) {
+
+                    nombre = "MOTOR";
+                    opciones = opcionesMotorDC();
+
+                }
+
+                if (
+                    block.type ===
+                    "ir_sensor_read"
+                ) {
+                    nombre = "SENSOR";
+                    opciones = opcionesSensorIR();
+                }
+
+
+
+                if (
+                    block.type ===
+                    "arduino_buzzer_tone" ||
+                    block.type ===
+                    "arduino_buzzer_tone_time" ||
+                    block.type ===
+                    "arduino_buzzer_stop"
+                ) {
+
+                    nombre = "BUZZER";
+                    opciones = opcionesBuzzer();
 
                 }
 
@@ -9562,6 +10090,472 @@ function(block) {
 
 
 /* =========================================================
+   BUZZER ARDUINO
+   ========================================================= */
+
+const ROBOTIA_BUZZER_NOTAS = [
+    ["Do", "262"],
+    ["Re", "294"],
+    ["Mi", "330"],
+    ["Fa", "349"],
+    ["Sol", "392"],
+    ["La", "440"],
+    ["Si", "494"],
+    ["Frecuencia", "CUSTOM"]
+];
+
+
+Blockly.Blocks["arduino_buzzer_config"] = {
+    init: function() {
+
+        const id =
+            siguienteNumero(
+                "arduino_buzzer_config",
+                "Buzzer"
+            );
+
+        const pin =
+            buscarPinLibre(
+                this,
+                2
+            );
+
+        this.appendDummyInput()
+            .appendField(
+                "🔊 Configurar Buzzer"
+            )
+            .appendField(
+                id,
+                "ID"
+            )
+            .appendField(
+                "pin"
+            )
+            .appendField(
+                campoPinDigitalUno(),
+                "PIN"
+            );
+
+        this.setFieldValue(
+            String(pin),
+            "PIN"
+        );
+
+        this.setPreviousStatement(
+            true,
+            null
+        );
+
+        this.setNextStatement(
+            true,
+            null
+        );
+
+        this.setColour(
+            "#D97706"
+        );
+
+        this.setTooltip(
+            "Crea un buzzer y permite elegir el pin digital. Los siguientes se crean automáticamente como Buzzer1, Buzzer2, Buzzer3..."
+        );
+    }
+};
+
+
+Arduino["arduino_buzzer_config"] =
+function(block) {
+    return "";
+};
+
+
+function actualizarEntradaFrecuenciaBuzzer(block) {
+
+    const input =
+        block.getInput(
+            "FREQ"
+        );
+
+    if (!input) {
+        return;
+    }
+
+    const personalizada =
+        block.getFieldValue(
+            "NOTE"
+        ) === "CUSTOM";
+
+    if (input.setVisible) {
+        input.setVisible(
+            personalizada
+        );
+    }
+
+    if (
+        block.rendered &&
+        block.render
+    ) {
+        block.render();
+    }
+}
+
+
+Blockly.Blocks["arduino_buzzer_tone"] = {
+    init: function() {
+
+        const bloque =
+            this;
+
+        this.appendDummyInput()
+            .appendField(
+                "🔊 Buzzer"
+            )
+            .appendField(
+                new Blockly.FieldDropdown(
+                    opcionesBuzzer
+                ),
+                "BUZZER"
+            )
+            .appendField(
+                "tono"
+            )
+            .appendField(
+                new Blockly.FieldDropdown(
+                    ROBOTIA_BUZZER_NOTAS,
+                    function() {
+                        setTimeout(
+                            () =>
+                                actualizarEntradaFrecuenciaBuzzer(
+                                    bloque
+                                ),
+                            0
+                        );
+                    }
+                ),
+                "NOTE"
+            );
+
+        this.appendValueInput(
+            "FREQ"
+        )
+        .setCheck(
+            "Number"
+        )
+        .appendField(
+            "Hz"
+        );
+
+        this.setPreviousStatement(
+            true,
+            null
+        );
+
+        this.setNextStatement(
+            true,
+            null
+        );
+
+        this.setColour(
+            "#D97706"
+        );
+
+        setTimeout(
+            () =>
+                actualizarEntradaFrecuenciaBuzzer(
+                    this
+                ),
+            0
+        );
+    }
+};
+
+
+Arduino["arduino_buzzer_tone"] =
+function(block) {
+
+    const buzzer =
+        block.getFieldValue(
+            "BUZZER"
+        );
+
+    const config =
+        obtenerBuzzersConfigurados()
+            .find(
+                b =>
+                    b.getFieldValue(
+                        "ID"
+                    ) === buzzer
+            );
+
+    if (!config) {
+        return "";
+    }
+
+    const pin =
+        config.getFieldValue(
+            "PIN"
+        );
+
+    const note =
+        block.getFieldValue(
+            "NOTE"
+        );
+
+    let freq;
+
+    if (note === "CUSTOM") {
+        freq =
+            Arduino.valueToCode(
+                block,
+                "FREQ",
+                Arduino.ORDER_ATOMIC
+            ) || "1000";
+    }
+    else {
+        freq =
+            note || "262";
+    }
+
+    return (
+        "tone(" +
+        pin +
+        ", constrain((long)(" +
+        freq +
+        "), 31, 20000));\n"
+    );
+};
+
+
+Blockly.Blocks["arduino_buzzer_tone_time"] = {
+    init: function() {
+
+        const bloque =
+            this;
+
+        this.appendDummyInput()
+            .appendField(
+                "🔊 Buzzer"
+            )
+            .appendField(
+                new Blockly.FieldDropdown(
+                    opcionesBuzzer
+                ),
+                "BUZZER"
+            )
+            .appendField(
+                "tono"
+            )
+            .appendField(
+                new Blockly.FieldDropdown(
+                    ROBOTIA_BUZZER_NOTAS,
+                    function() {
+                        setTimeout(
+                            () =>
+                                actualizarEntradaFrecuenciaBuzzer(
+                                    bloque
+                                ),
+                            0
+                        );
+                    }
+                ),
+                "NOTE"
+            );
+
+        this.appendValueInput(
+            "FREQ"
+        )
+        .setCheck(
+            "Number"
+        )
+        .appendField(
+            "Hz"
+        );
+
+        this.appendValueInput(
+            "TIME"
+        )
+        .setCheck(
+            "Number"
+        )
+        .appendField(
+            "durante"
+        );
+
+        this.appendDummyInput()
+            .appendField(
+                new Blockly.FieldDropdown([
+                    ["segundos", "S"],
+                    ["milisegundos", "MS"]
+                ]),
+                "UNIT"
+            );
+
+        this.setPreviousStatement(
+            true,
+            null
+        );
+
+        this.setNextStatement(
+            true,
+            null
+        );
+
+        this.setColour(
+            "#D97706"
+        );
+
+        setTimeout(
+            () =>
+                actualizarEntradaFrecuenciaBuzzer(
+                    this
+                ),
+            0
+        );
+    }
+};
+
+
+Arduino["arduino_buzzer_tone_time"] =
+function(block) {
+
+    const buzzer =
+        block.getFieldValue(
+            "BUZZER"
+        );
+
+    const config =
+        obtenerBuzzersConfigurados()
+            .find(
+                b =>
+                    b.getFieldValue(
+                        "ID"
+                    ) === buzzer
+            );
+
+    if (!config) {
+        return "";
+    }
+
+    const pin =
+        config.getFieldValue(
+            "PIN"
+        );
+
+    const note =
+        block.getFieldValue(
+            "NOTE"
+        );
+
+    let freq;
+
+    if (note === "CUSTOM") {
+        freq =
+            Arduino.valueToCode(
+                block,
+                "FREQ",
+                Arduino.ORDER_ATOMIC
+            ) || "1000";
+    }
+    else {
+        freq =
+            note || "262";
+    }
+
+    const time =
+        Arduino.valueToCode(
+            block,
+            "TIME",
+            Arduino.ORDER_ATOMIC
+        ) || "1";
+
+    const unit =
+        block.getFieldValue(
+            "UNIT"
+        );
+
+    const ms =
+        unit === "MS"
+            ? "(" + time + ")"
+            : "((" + time + ") * 1000UL)";
+
+    return (
+        "tone(" +
+        pin +
+        ", constrain((long)(" +
+        freq +
+        "), 31, 20000));\n" +
+        "delay(" +
+        ms +
+        ");\n" +
+        "noTone(" +
+        pin +
+        ");\n"
+    );
+};
+
+
+Blockly.Blocks["arduino_buzzer_stop"] = {
+    init: function() {
+
+        this.appendDummyInput()
+            .appendField(
+                "🔇 Apagar Buzzer"
+            )
+            .appendField(
+                new Blockly.FieldDropdown(
+                    opcionesBuzzer
+                ),
+                "BUZZER"
+            );
+
+        this.setPreviousStatement(
+            true,
+            null
+        );
+
+        this.setNextStatement(
+            true,
+            null
+        );
+
+        this.setColour(
+            "#D97706"
+        );
+    }
+};
+
+
+Arduino["arduino_buzzer_stop"] =
+function(block) {
+
+    const buzzer =
+        block.getFieldValue(
+            "BUZZER"
+        );
+
+    const config =
+        obtenerBuzzersConfigurados()
+            .find(
+                b =>
+                    b.getFieldValue(
+                        "ID"
+                    ) === buzzer
+            );
+
+    if (!config) {
+        return "";
+    }
+
+    return (
+        "noTone(" +
+        config.getFieldValue(
+            "PIN"
+        ) +
+        ");\n"
+    );
+};
+
+
+/* =========================================================
    DIGITAL READ
    ========================================================= */
 
@@ -10002,6 +10996,312 @@ function(block) {
         ".write(90);\n"
     );
 
+};
+
+
+/* =========================================================
+   SENSOR IR DE OBSTÁCULOS / LÍNEA
+   Igual a Leotino: detección física activa LOW.
+   Salida lógica: 1 = detecta, 0 = no detecta.
+   ========================================================= */
+
+Blockly.Blocks["ir_sensor_config"] = {
+    init: function() {
+        const id =
+            siguienteNumero(
+                "ir_sensor_config",
+                "IR"
+            );
+
+        const pin =
+            buscarPinLibre(
+                this,
+                2
+            );
+
+        this.appendDummyInput()
+            .appendField("👁 Configurar Sensor IR")
+            .appendField(id, "ID")
+            .appendField("PIN")
+            .appendField(
+                campoPinDigitalUno(),
+                "PIN"
+            )
+            .appendField("modo")
+            .appendField(
+                new Blockly.FieldDropdown([
+                    ["Obstáculo", "OBSTACLE"],
+                    ["Línea negra / fondo", "LINE"]
+                ]),
+                "MODE"
+            );
+
+        this.setFieldValue(
+            String(pin),
+            "PIN"
+        );
+
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour("#F59E0B");
+        this.setTooltip(
+            "Configura el comportamiento físico del sensor. Obstáculo: el hardware entrega 1 al detectar. Línea negra/fondo: el hardware entrega 0 al detectar. El bloque de lectura transforma ambos casos en VERDADERO cuando detecta."
+        );
+    }
+};
+
+Arduino["ir_sensor_config"] =
+function() {
+    return "";
+};
+
+
+Blockly.Blocks["ir_sensor_read"] = {
+    init: function() {
+        this.appendDummyInput()
+            .appendField("👁 ¿Sensor IR")
+            .appendField(
+                new Blockly.FieldDropdown(
+                    opcionesSensorIR
+                ),
+                "SENSOR"
+            )
+            .appendField("detecta?");
+
+        this.setOutput(true, "Boolean");
+        this.setColour("#F59E0B");
+        this.setTooltip(
+            "Devuelve VERDADERO cuando el sensor detecta según el modo configurado y FALSO cuando no detecta. El software adapta automáticamente la lógica eléctrica."
+        );
+    }
+};
+
+Arduino["ir_sensor_read"] =
+function(block) {
+    const id =
+        block.getFieldValue("SENSOR");
+
+    if (!id) {
+        return ["0", Arduino.ORDER_ATOMIC];
+    }
+
+    const config =
+        obtenerSensoresIR().find(
+            b => b.getFieldValue("ID") === id
+        );
+
+    if (!config) {
+        return ["0", Arduino.ORDER_ATOMIC];
+    }
+
+    const pin =
+        config.getFieldValue("PIN");
+
+    const mode =
+        config.getFieldValue("MODE") ||
+        "OBSTACLE";
+
+    if (mode === "LINE") {
+        // Línea negra / fondo:
+        // El sensor físico entrega LOW cuando detecta.
+        // Para el programa eso se convierte en VERDADERO.
+        return [
+            "(digitalRead(" + pin + ") == LOW)",
+            Arduino.ORDER_ATOMIC
+        ];
+    }
+
+    // Obstáculo:
+    // El sensor físico entrega HIGH cuando detecta.
+    // Para el programa eso se convierte en VERDADERO.
+    return [
+        "(digitalRead(" + pin + ") == HIGH)",
+        Arduino.ORDER_ATOMIC
+    ];
+};
+
+
+/* =========================================================
+   MOTOR DC
+   IN1 + IN2 = sentido | PWM = velocidad 0..100
+   ========================================================= */
+
+Blockly.Blocks["dc_motor_config"] = {
+
+    init: function() {
+
+        const id =
+            siguienteNumero(
+                "dc_motor_config",
+                "MotorDC"
+            );
+
+        let in1 =
+            buscarPinLibre(
+                this,
+                2
+            );
+
+        const ocupados =
+            obtenerPinesOcupados(
+                this
+            );
+
+        ocupados.add(in1);
+
+        let in2 =
+            buscarPinLibre(
+                this,
+                in1 + 1
+            );
+
+        while (
+            in2 === in1 ||
+            ocupados.has(in2)
+        ) {
+            in2++;
+            if (in2 > 13) {
+                in2 = 2;
+            }
+        }
+
+        ocupados.add(in2);
+
+        const pwmDisponibles =
+            [3, 5, 6, 9, 10, 11];
+
+        let pwm =
+            pwmDisponibles.find(
+                p =>
+                    p !== in1 &&
+                    p !== in2 &&
+                    !ocupados.has(p)
+            );
+
+        if (typeof pwm !== "number") {
+            pwm =
+                buscarPinPwmLibre(
+                    this
+                );
+        }
+
+        this.appendDummyInput()
+            .appendField("⚙️ Configurar Motor DC")
+            .appendField(id, "ID")
+            .appendField("IN1")
+            .appendField(campoPinDigitalUno(), "IN1")
+            .appendField("IN2")
+            .appendField(campoPinDigitalUno(), "IN2")
+            .appendField("PWM")
+            .appendField(campoPinPwmUno(), "PWM");
+
+        this.setFieldValue(String(in1), "IN1");
+        this.setFieldValue(String(in2), "IN2");
+        this.setFieldValue(String(pwm), "PWM");
+
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour("#8B5CF6");
+        this.setTooltip(
+            "Configura un motor DC mediante un puente H: IN1 e IN2 controlan el sentido y PWM controla la velocidad."
+        );
+    }
+};
+
+
+Arduino["dc_motor_config"] =
+function(block) {
+    return "";
+};
+
+
+Blockly.Blocks["dc_motor_control"] = {
+
+    init: function() {
+
+        this.appendDummyInput()
+            .appendField("⚙ Motor DC")
+            .appendField(
+                new Blockly.FieldDropdown(
+                    opcionesMotorDC
+                ),
+                "MOTOR"
+            )
+            .appendField(
+                new Blockly.FieldDropdown([
+                    ["Reloj", "CLOCKWISE"],
+                    ["Contrarreloj", "COUNTERCLOCKWISE"]
+                ]),
+                "DIRECTION"
+            );
+
+        this.appendValueInput("SPEED")
+            .setCheck("Number")
+            .appendField("velocidad 0-100");
+
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour("#8B5CF6");
+        this.setTooltip(
+            "Selecciona un motor DC creado, el sentido de giro y una velocidad numérica de 0 a 100."
+        );
+    }
+};
+
+
+Arduino["dc_motor_control"] =
+function(block) {
+
+    const motor =
+        block.getFieldValue("MOTOR");
+
+    const direction =
+        block.getFieldValue("DIRECTION");
+
+    const speed =
+        Arduino.valueToCode(
+            block,
+            "SPEED",
+            Arduino.ORDER_ATOMIC
+        ) || "0";
+
+    if (!motor) {
+        return "";
+    }
+
+    const config =
+        obtenerMotoresDC().find(
+            b =>
+                b.getFieldValue("ID") ===
+                motor
+        );
+
+    if (!config) {
+        return "";
+    }
+
+    const in1 = config.getFieldValue("IN1");
+    const in2 = config.getFieldValue("IN2");
+    const pwm = config.getFieldValue("PWM");
+
+    const potencia =
+        "map(constrain(" +
+        speed +
+        ", 0, 100), 0, 100, 0, 255)";
+
+    if (direction === "COUNTERCLOCKWISE") {
+        return (
+            "digitalWrite(" + in1 + ", LOW);\n" +
+            "digitalWrite(" + in2 + ", HIGH);\n" +
+            "analogWrite(" + pwm + ", " + potencia + ");\n"
+        );
+    }
+
+    return (
+        "digitalWrite(" + in1 + ", HIGH);\n" +
+        "digitalWrite(" + in2 + ", LOW);\n" +
+        "analogWrite(" + pwm + ", " + potencia + ");\n"
+    );
 };
 
 
@@ -11708,6 +13008,34 @@ function generarSetupDispositivos() {
         });
 
 
+    obtenerSensoresIR()
+        .forEach(sensor => {
+            const pin =
+                sensor.getFieldValue("PIN");
+
+            codigo +=
+                "pinMode(" + pin + ", INPUT);\n";
+        });
+
+
+    obtenerMotoresDC()
+        .forEach(motor => {
+
+            const in1 = motor.getFieldValue("IN1");
+            const in2 = motor.getFieldValue("IN2");
+            const pwm = motor.getFieldValue("PWM");
+
+            codigo +=
+                "pinMode(" + in1 + ", OUTPUT);\n" +
+                "pinMode(" + in2 + ", OUTPUT);\n" +
+                "pinMode(" + pwm + ", OUTPUT);\n" +
+                "digitalWrite(" + in1 + ", LOW);\n" +
+                "digitalWrite(" + in2 + ", LOW);\n" +
+                "analogWrite(" + pwm + ", 0);\n";
+
+        });
+
+
     const ultrasonidosIniciados =
         new Set();
 
@@ -12493,6 +13821,32 @@ function obtenerPinesSimulador() {
 
             if (
                 block.type ===
+                "dc_motor_config"
+            ) {
+
+                const in1 = block.getFieldValue("IN1");
+                const in2 = block.getFieldValue("IN2");
+                const pwm = block.getFieldValue("PWM");
+
+                pines[in1] = "dc-motor-dir";
+                pines[in2] = "dc-motor-dir";
+                pines[pwm] = "pwm";
+            }
+
+            if (
+                block.type ===
+                "ir_sensor_config"
+            ) {
+                const pin =
+                    block.getFieldValue("PIN");
+
+                pines[pin] = "input";
+            }
+
+
+
+            if (
+                block.type ===
                 "arduino_analog_read"
             ) {
 
@@ -12501,6 +13855,19 @@ function obtenerPinesSimulador() {
 
                 pines[pin] =
                     "analog-input";
+
+            }
+
+
+            if (
+                block.type === "arduino_buzzer_config"
+            ) {
+
+                const pin =
+                    block.getFieldValue("PIN");
+
+                pines[pin] =
+                    "buzzer";
 
             }
 
@@ -12643,11 +14010,139 @@ function obtenerTextoPin(tipo) {
         case "ultrasonic-echo":
             return "ECHO";
 
+        case "buzzer":
+            return "BUZZER";
+
         default:
             return "";
 
     }
 
+}
+
+
+/* =========================================================
+   BUZZER EXTERNO ARDUINO
+   ========================================================= */
+
+function obtenerBuzzersArduino() {
+    return obtenerBuzzersConfigurados();
+}
+
+
+function crearBuzzerSimulador(block) {
+
+    const pin =
+        block.getFieldValue(
+            "PIN"
+        );
+
+    const id =
+        block.getFieldValue(
+            "ID"
+        );
+
+    const device =
+        document.createElement(
+            "div"
+        );
+
+    device.className =
+        "sim-device sim-buzzer-device";
+
+    device.dataset.buzzerPin =
+        String(pin);
+
+    device.dataset.buzzerId =
+        id;
+
+    device.dataset.device =
+        id;
+
+    device.innerHTML =
+        '<div class="device-title">' +
+            id +
+        '</div>' +
+        '<div class="buzzer-visual"></div>' +
+        '<div class="buzzer-wave">)))</div>' +
+        '<div class="buzzer-frequency">Apagado</div>' +
+        '<div class="device-info">Pin D' +
+            pin +
+        '</div>';
+
+    return device;
+}
+
+
+function actualizarBuzzerVisual(
+    pin,
+    activo,
+    frecuencia = 0,
+    buzzerId = null
+) {
+
+    let devices = [];
+
+    if (buzzerId) {
+        const exacto =
+            document.querySelector(
+                '.sim-buzzer-device[data-buzzer-id="' +
+                buzzerId +
+                '"]'
+            );
+
+        if (exacto) {
+            devices = [exacto];
+        }
+    }
+
+    if (!devices.length) {
+        devices =
+            Array.from(
+                document.querySelectorAll(
+                    '.sim-buzzer-device[data-buzzer-pin="' +
+                    String(pin) +
+                    '"]'
+                )
+            );
+    }
+
+    devices.forEach(
+        device => {
+
+            device.classList.toggle(
+                "buzzer-running",
+                !!activo
+            );
+
+            const visual =
+                device.querySelector(
+                    ".buzzer-visual"
+                );
+
+            const freq =
+                device.querySelector(
+                    ".buzzer-frequency"
+                );
+
+            if (visual) {
+                visual.classList.toggle(
+                    "sounding",
+                    !!activo
+                );
+            }
+
+            if (freq) {
+                freq.textContent =
+                    activo
+                        ? Math.round(
+                            Number(frecuencia) ||
+                            1000
+                          ) + " Hz"
+                        : "Apagado";
+            }
+        }
+    );
 }
 
 
@@ -12681,6 +14176,284 @@ function crearServoSimulador(
         '<div class="device-info">Pin ' + pin + '</div>';
     return device;
 }
+
+/* =========================================================
+   CREAR SENSOR IR EXTERNO
+   ========================================================= */
+
+function crearSensorIRSimulador(sensor) {
+    const id =
+        sensor.getFieldValue("ID");
+
+    const pin =
+        sensor.getFieldValue("PIN");
+
+    const mode =
+        sensor.getFieldValue("MODE") ||
+        "OBSTACLE";
+
+    const detecta =
+        !!simulacion.irState[id];
+
+    const valorLogico =
+        mode === "LINE"
+            ? (detecta ? 0 : 1)
+            : (detecta ? 1 : 0);
+
+    const device =
+        document.createElement("div");
+
+    device.className =
+        "sim-device sim-ir-device";
+
+    device.dataset.device = id;
+    device.dataset.irSensor = id;
+
+    device.innerHTML =
+        '<div class="device-title">Sensor IR · ' + id + '</div>' +
+        '<div class="ir-sensor-visual">' +
+            '<div class="ir-sensor-board"></div>' +
+            '<div class="ir-sensor-eye left"></div>' +
+            '<div class="ir-sensor-eye right"></div>' +
+            '<div class="ir-sensor-led"></div>' +
+        '</div>' +
+        '<div class="ir-sensor-value" id="ir-value-' + id + '">' +
+            (detecta ? "VERDADERO · DETECTA" : "FALSO · NO DETECTA") +
+        '</div>' +
+        '<button type="button" class="ir-sensor-toggle">' +
+            (detecta ? "Cambiar a NO detecta" : "Cambiar a DETECTA") +
+        '</button>' +
+        '<div class="device-info">Pin D' + pin + ' · ' +
+            (mode === "LINE" ? "Línea negra / fondo" : "Obstáculo") +
+        '</div>';
+
+    const boton =
+        device.querySelector(".ir-sensor-toggle");
+
+    if (boton) {
+        boton.addEventListener("click", function() {
+            simulacion.irState[id] =
+                !simulacion.irState[id];
+
+            actualizarSensorIRVisual(id);
+        });
+    }
+
+    setTimeout(
+        () => actualizarSensorIRVisual(id),
+        0
+    );
+
+    return device;
+}
+
+
+function actualizarSensorIRVisual(id) {
+    const sensor =
+        obtenerSensoresIR().find(
+            b => b.getFieldValue("ID") === id
+        );
+
+    if (!sensor) return;
+
+    const pin =
+        String(sensor.getFieldValue("PIN"));
+
+    const mode =
+        sensor.getFieldValue("MODE") ||
+        "OBSTACLE";
+
+    const detecta =
+        !!simulacion.irState[id];
+
+    const valorLogico =
+        mode === "LINE"
+            ? (detecta ? 0 : 1)
+            : (detecta ? 1 : 0);
+
+    const device =
+        document.querySelector(
+            '.sim-ir-device[data-ir-sensor="' + id + '"]'
+        );
+
+    if (device) {
+        device.classList.toggle(
+            "detecting",
+            detecta
+        );
+
+        const valor =
+            device.querySelector(
+                "#ir-value-" + id
+            );
+
+        if (valor) {
+            valor.textContent =
+                detecta
+                    ? "VERDADERO · DETECTA"
+                    : "FALSO · NO DETECTA";
+        }
+
+        const boton =
+            device.querySelector(
+                ".ir-sensor-toggle"
+            );
+
+        if (boton) {
+            boton.textContent =
+                detecta
+                    ? "Cambiar a NO detecta"
+                    : "Cambiar a DETECTA";
+        }
+    }
+
+    // Estado físico simulado según el modo elegido.
+    // Obstáculo: detección directa HIGH.
+    // Línea/fondo: detección invertida LOW.
+    const nivelFisico =
+        mode === "LINE"
+            ? (detecta ? "LOW" : "HIGH")
+            : (detecta ? "HIGH" : "LOW");
+
+    simulacion.pinState[pin] = {
+        value: nivelFisico
+    };
+
+    actualizarPinVisual(
+        pin,
+        true,
+        "input",
+        nivelFisico === "HIGH" ? 1 : 0
+    );
+}
+
+
+/* =========================================================
+   CREAR MOTOR DC EXTERNO
+   ========================================================= */
+
+function crearMotorDCSimulador(motor) {
+    const id = motor.getFieldValue("ID");
+    const in1 = motor.getFieldValue("IN1");
+    const in2 = motor.getFieldValue("IN2");
+    const pwm = motor.getFieldValue("PWM");
+
+    const device =
+        document.createElement("div");
+
+    device.className =
+        "sim-device sim-dc-motor-device";
+
+    device.dataset.device = id;
+    device.dataset.dcMotor = id;
+
+    device.innerHTML =
+        '<div class="device-title">Motor DC · ' + id + '</div>' +
+        '<div class="dc-motor-visual">' +
+            '<div class="dc-motor-body"></div>' +
+            '<div class="dc-motor-rotor" id="dc-rotor-' + id + '"></div>' +
+            '<div class="dc-motor-shaft"></div>' +
+        '</div>' +
+        '<div class="dc-motor-speed" id="dc-speed-' + id + '">0% · PARADO</div>' +
+        '<div class="device-info">IN1 ' + in1 +
+            ' · IN2 ' + in2 +
+            ' · PWM ' + pwm +
+        '</div>';
+
+    return device;
+}
+
+
+function actualizarMotorDCVisual(id) {
+    const estado =
+        simulacion.dcMotorState &&
+        simulacion.dcMotorState[id];
+
+    const device =
+        document.querySelector(
+            '.sim-device[data-dc-motor="' + id + '"]'
+        );
+
+    if (!estado || !device) {
+        return;
+    }
+
+    const speed =
+        Math.max(
+            0,
+            Math.min(
+                100,
+                Number(estado.speed) || 0
+            )
+        );
+
+    const direction =
+        estado.direction || "STOP";
+
+    const girando =
+        speed > 0 &&
+        direction !== "STOP";
+
+    device.classList.toggle(
+        "dc-motor-running",
+        girando
+    );
+
+    const rotor =
+        document.getElementById(
+            "dc-rotor-" + id
+        );
+
+    if (rotor) {
+        rotor.style.transform =
+            "rotate(" +
+            (Number(estado.rotation) || 0) +
+            "deg)";
+    }
+
+    const label =
+        document.getElementById(
+            "dc-speed-" + id
+        );
+
+    if (label) {
+        label.textContent =
+            Math.round(speed) +
+            "% · " +
+            (
+                direction === "CLOCKWISE"
+                    ? "RELOJ"
+                    : direction === "COUNTERCLOCKWISE"
+                        ? "CONTRARRELOJ"
+                        : "PARADO"
+            );
+    }
+
+    const config =
+        obtenerMotoresDC().find(
+            b => b.getFieldValue("ID") === id
+        );
+
+    if (config) {
+        actualizarPinVisual(
+            config.getFieldValue("IN1"),
+            girando,
+            "digital"
+        );
+        actualizarPinVisual(
+            config.getFieldValue("IN2"),
+            girando,
+            "digital"
+        );
+        actualizarPinVisual(
+            config.getFieldValue("PWM"),
+            girando,
+            "pwm",
+            Math.round(speed * 2.55)
+        );
+    }
+}
+
 
 /* =========================================================
    CREAR ULTRASONIDO EXTERNO
@@ -16314,6 +18087,28 @@ function actualizarSimulador() {
         });
 
 
+    obtenerMotoresDC()
+        .forEach(motor => {
+
+            externos.appendChild(
+                crearMotorDCSimulador(
+                    motor
+                )
+            );
+
+        });
+
+    obtenerSensoresIR()
+        .forEach(sensor => {
+            externos.appendChild(
+                crearSensorIRSimulador(
+                    sensor
+                )
+            );
+        });
+
+
+
     obtenerUltrasonidos()
         .forEach(sensor => {
 
@@ -16330,6 +18125,16 @@ function actualizarSimulador() {
         .forEach(pin => {
             externos.appendChild(
                 crearAnalogicoSimulador(pin)
+            );
+        });
+
+
+    obtenerBuzzersArduino()
+        .forEach(block => {
+            externos.appendChild(
+                crearBuzzerSimulador(
+                    block
+                )
             );
         });
 
@@ -16390,6 +18195,7 @@ function actualizarSimulador() {
 
     restaurarEstadoSimulador();
     iniciarAnimacionServosRC();
+    iniciarAnimacionMotoresDC();
     refrescarVisualArduinoUno();
 
     Object.keys(
@@ -16456,6 +18262,15 @@ function restaurarEstadoSimulador() {
     Object.keys(simulacion.rcServoState).forEach(id => {
         actualizarServoRCTexto(id);
         actualizarServoRCVisual(id);
+    });
+
+
+    Object.keys(simulacion.dcMotorState || {}).forEach(id => {
+        actualizarMotorDCVisual(id);
+    });
+
+    Object.keys(simulacion.irState || {}).forEach(id => {
+        actualizarSensorIRVisual(id);
     });
 
     const monitor = document.getElementById("serialMonitor");
@@ -16732,6 +18547,7 @@ function prepararEstadoSimulacion() {
 
     const analogAnterior = Object.assign({}, simulacion.analogState);
     const distanciaAnterior = Object.assign({}, simulacion.distanceState);
+    const irAnterior = Object.assign({}, simulacion.irState || {});
 
     simulacion.analogState = {};
 
@@ -16739,7 +18555,11 @@ function prepararEstadoSimulacion() {
 
     simulacion.distanceState = {};
 
+    simulacion.irState = {};
+
     simulacion.rcServoState = {};
+
+    simulacion.dcMotorState = {};
 
     simulacion.serial = [];
     simulacion.serialBuffer = "";
@@ -16773,6 +18593,19 @@ function prepararEstadoSimulacion() {
         });
 
 
+    obtenerMotoresDC()
+        .forEach(motor => {
+
+            const id = motor.getFieldValue("ID");
+            simulacion.dcMotorState[id] = {
+                speed: 0,
+                direction: "STOP",
+                rotation: 0
+            };
+
+        });
+
+
     obtenerUltrasonidos()
         .forEach(sensor => {
 
@@ -16783,6 +18616,18 @@ function prepararEstadoSimulacion() {
                     : 100;
 
         });
+
+    obtenerSensoresIR()
+        .forEach(sensor => {
+            const id =
+                sensor.getFieldValue("ID");
+
+            simulacion.irState[id] =
+                typeof irAnterior[id] === "boolean"
+                    ? irAnterior[id]
+                    : false;
+        });
+
 
     obtenerPinesAnalogicosUsados().forEach(pin => {
         simulacion.analogState[pin] =
@@ -17186,6 +19031,12 @@ function actualizarBotonesSimulacionUno() {
 }
 
 function iniciarSimulacion() {
+    /*
+     * Desbloquea Web Audio desde el clic del usuario.
+     * Chrome no permite sonido automático antes de una interacción.
+     */
+    prepararAudioBuzzerSimulador();
+
 
     if (
         simulacion.activa
@@ -17369,6 +19220,8 @@ function pausarSimulacion() {
    ========================================================= */
 
 function detenerSimulacion() {
+    detenerBuzzerSimulado();
+
     leotinoAsyncToken++;
     simulacion.leotinoAsyncBusy = false;
 
@@ -17634,6 +19487,41 @@ function evaluarBloqueSimulado(block) {
             return distancia;
         }
 
+        case "ir_sensor_read": {
+            const id =
+                block.getFieldValue("SENSOR");
+
+            if (!id) {
+                return 0;
+            }
+
+            const sensor =
+                obtenerSensoresIR().find(
+                    b =>
+                        b.getFieldValue("ID") ===
+                        id
+                );
+
+            if (!sensor) {
+                return 0;
+            }
+
+            const mode =
+                sensor.getFieldValue("MODE") ||
+                "OBSTACLE";
+
+            const detecta =
+                !!simulacion.irState[id];
+
+            actualizarSensorIRVisual(id);
+
+            // El nivel eléctrico depende del modo,
+            // pero para Blockly la semántica siempre es:
+            // VERDADERO = detecta
+            // FALSO = no detecta.
+            return detecta;
+        }
+
         case "math_arithmetic": {
             const a = Number(evaluarBloqueSimulado(block.getInputTargetBlock("A"))) || 0;
             const b = Number(evaluarBloqueSimulado(block.getInputTargetBlock("B"))) || 0;
@@ -17831,6 +19719,69 @@ function actualizarServoRCVisual(id) {
             velocidad
         );
     }
+}
+
+
+let dcMotorAnimationFrame = null;
+let dcMotorAnimationLast = 0;
+
+function iniciarAnimacionMotoresDC() {
+    if (dcMotorAnimationFrame) {
+        cancelAnimationFrame(dcMotorAnimationFrame);
+    }
+
+    dcMotorAnimationLast = performance.now();
+
+    const tick = function(now) {
+        const dt =
+            Math.min(
+                50,
+                Math.max(
+                    0,
+                    now - dcMotorAnimationLast
+                )
+            );
+
+        dcMotorAnimationLast = now;
+
+        Object.keys(
+            simulacion.dcMotorState || {}
+        ).forEach(id => {
+            const estado =
+                simulacion.dcMotorState[id];
+
+            const speed =
+                Math.max(
+                    0,
+                    Math.min(
+                        100,
+                        Number(estado.speed) || 0
+                    )
+                );
+
+            if (
+                speed > 0 &&
+                estado.direction !== "STOP"
+            ) {
+                const signo =
+                    estado.direction === "COUNTERCLOCKWISE"
+                        ? -1
+                        : 1;
+
+                estado.rotation =
+                    (Number(estado.rotation) || 0) +
+                    signo * speed * dt * 0.018;
+            }
+
+            actualizarMotorDCVisual(id);
+        });
+
+        dcMotorAnimationFrame =
+            requestAnimationFrame(tick);
+    };
+
+    dcMotorAnimationFrame =
+        requestAnimationFrame(tick);
 }
 
 
@@ -18669,6 +20620,204 @@ function programarDetencionMovimientoLeotino(block) {
 }
 
 
+let robotiaBuzzerAudioContext = null;
+let robotiaBuzzerOscillator = null;
+let robotiaBuzzerGain = null;
+let robotiaBuzzerTimer = null;
+
+let robotiaBuzzerPinActivo = null;
+let robotiaBuzzerBlockActivo = null;
+let robotiaBuzzerBloqueadoHasta = 0;
+
+async function prepararAudioBuzzerSimulador() {
+    const AudioCtx =
+        window.AudioContext ||
+        window.webkitAudioContext;
+
+    if (!AudioCtx) {
+        return false;
+    }
+
+    if (!robotiaBuzzerAudioContext) {
+        robotiaBuzzerAudioContext =
+            new AudioCtx();
+    }
+
+    try {
+        if (
+            robotiaBuzzerAudioContext.state ===
+            "suspended"
+        ) {
+            await robotiaBuzzerAudioContext.resume();
+        }
+    } catch (_) {}
+
+    return (
+        robotiaBuzzerAudioContext.state ===
+        "running"
+    );
+}
+
+
+function detenerBuzzerSimulado() {
+    if (robotiaBuzzerTimer) {
+        clearTimeout(robotiaBuzzerTimer);
+        robotiaBuzzerTimer = null;
+    }
+
+    if (robotiaBuzzerOscillator) {
+        try {
+            robotiaBuzzerOscillator.stop();
+        } catch (_) {}
+
+        try {
+            robotiaBuzzerOscillator.disconnect();
+        } catch (_) {}
+
+        robotiaBuzzerOscillator = null;
+    }
+
+    if (robotiaBuzzerGain) {
+        try {
+            robotiaBuzzerGain.disconnect();
+        } catch (_) {}
+        robotiaBuzzerGain = null;
+    }
+    if (robotiaBuzzerPinActivo !== null) {
+        actualizarBuzzerVisual(
+            robotiaBuzzerPinActivo,
+            false,
+            0,
+            robotiaBuzzerBlockActivo
+        );
+    }
+
+    robotiaBuzzerPinActivo = null;
+    robotiaBuzzerBlockActivo = null;
+
+    robotiaBuzzerBloqueadoHasta = 0;
+}
+
+function sonarBuzzerSimulado(pin, frecuencia, duracionMs = null, blockId = null) {
+    const ahora =
+        performance.now();
+
+    /*
+     * Evita que el LOOP vuelva a disparar una nota temporizada
+     * antes de que termine su duración.
+     */
+    if (
+        duracionMs !== null &&
+        ahora <
+            robotiaBuzzerBloqueadoHasta
+    ) {
+        return;
+    }
+
+    detenerBuzzerSimulado();
+
+    prepararAudioBuzzerSimulador();
+
+    if (
+        duracionMs !== null
+    ) {
+        robotiaBuzzerBloqueadoHasta =
+            ahora +
+            Math.max(
+                0,
+                Number(duracionMs) || 0
+            );
+    }
+
+    const AudioCtx =
+        window.AudioContext ||
+        window.webkitAudioContext;
+
+    if (!AudioCtx) {
+        return;
+    }
+
+    if (!robotiaBuzzerAudioContext) {
+        robotiaBuzzerAudioContext =
+            new AudioCtx();
+    }
+
+    if (
+        robotiaBuzzerAudioContext.state ===
+        "suspended"
+    ) {
+        robotiaBuzzerAudioContext.resume();
+    }
+
+    const freq =
+        Math.max(
+            31,
+            Math.min(
+                20000,
+                Number(frecuencia) || 1000
+            )
+        );
+
+    robotiaBuzzerPinActivo =
+        String(pin);
+
+    robotiaBuzzerBlockActivo =
+        blockId;
+
+    actualizarBuzzerVisual(
+        robotiaBuzzerPinActivo,
+        true,
+        freq,
+        robotiaBuzzerBlockActivo
+    );
+
+    const osc =
+        robotiaBuzzerAudioContext.createOscillator();
+
+    const gain =
+        robotiaBuzzerAudioContext.createGain();
+
+    osc.type = "square";
+    osc.frequency.value = freq;
+    gain.gain.value = 0.16;
+
+    osc.connect(gain);
+    gain.connect(robotiaBuzzerAudioContext.destination);
+    osc.start();
+
+    robotiaBuzzerOscillator = osc;
+    robotiaBuzzerGain = gain;
+
+    if (
+        duracionMs !== null &&
+        Number.isFinite(duracionMs)
+    ) {
+        robotiaBuzzerTimer =
+            setTimeout(
+                detenerBuzzerSimulado,
+                Math.max(0, duracionMs)
+            );
+    }
+}
+
+
+function obtenerConfigBuzzerSeleccionado(block) {
+
+    const id =
+        block.getFieldValue(
+            "BUZZER"
+        );
+
+    return obtenerBuzzersConfigurados()
+        .find(
+            b =>
+                b.getFieldValue(
+                    "ID"
+                ) === id
+        ) || null;
+}
+
+
 function ejecutarBloqueSimulacion(block, interno = false) {
     if (!block) return;
 
@@ -19161,6 +21310,96 @@ function ejecutarBloqueSimulacion(block, interno = false) {
             break;
         }
 
+        case "arduino_buzzer_tone": {
+
+            const config =
+                obtenerConfigBuzzerSeleccionado(
+                    block
+                );
+
+            if (!config) {
+                break;
+            }
+
+            const note =
+                block.getFieldValue(
+                    "NOTE"
+                );
+
+            const freq =
+                note === "CUSTOM"
+                    ? evaluarEntradaNumericaSimulacion(
+                        block,
+                        "FREQ",
+                        1000
+                      )
+                    : Number(
+                        note || 262
+                      );
+
+            sonarBuzzerSimulado(
+                config.getFieldValue("PIN"),
+                freq,
+                null,
+                config.getFieldValue("ID")
+            );
+
+            break;
+        }
+
+        case "arduino_buzzer_tone_time": {
+
+            const config =
+                obtenerConfigBuzzerSeleccionado(
+                    block
+                );
+
+            if (!config) {
+                break;
+            }
+
+            const note =
+                block.getFieldValue(
+                    "NOTE"
+                );
+
+            const freq =
+                note === "CUSTOM"
+                    ? evaluarEntradaNumericaSimulacion(
+                        block,
+                        "FREQ",
+                        1000
+                      )
+                    : Number(
+                        note || 262
+                      );
+
+            sonarBuzzerSimulado(
+                config.getFieldValue("PIN"),
+                freq,
+                null,
+                config.getFieldValue("ID")
+            );
+
+            break;
+        }
+
+        case "arduino_buzzer_stop": {
+            detenerBuzzerSimulado();
+            break;
+        }
+
+
+        case "arduino_delay": {
+            /*
+             * No programamos aquí un setTimeout independiente.
+             * El scheduler de Arduino respeta el delay y,
+             * si hay un buzzer sonando, lo apaga justo antes
+             * de ejecutar el siguiente bloque.
+             */
+            break;
+        }
+
         case "arduino_analog_write": {
             const pin = String(block.getFieldValue("PIN"));
             const value = Math.max(0, Math.min(255,
@@ -19222,6 +21461,51 @@ function ejecutarBloqueSimulacion(block, interno = false) {
                 }
 
                 actualizarServoRCVisual(servo);
+            }
+            break;
+        }
+
+
+        case "ir_sensor_config":
+            break;
+
+        case "dc_motor_config":
+            break;
+
+        case "dc_motor_control": {
+            const motor = block.getFieldValue("MOTOR");
+            const direction = block.getFieldValue("DIRECTION");
+            const speed =
+                Math.max(
+                    0,
+                    Math.min(
+                        100,
+                        evaluarEntradaNumericaSimulacion(
+                            block,
+                            "SPEED",
+                            0
+                        )
+                    )
+                );
+
+            if (motor) {
+                if (!simulacion.dcMotorState) {
+                    simulacion.dcMotorState = {};
+                }
+
+                if (!simulacion.dcMotorState[motor]) {
+                    simulacion.dcMotorState[motor] = {
+                        speed: 0,
+                        direction: "STOP",
+                        rotation: 0
+                    };
+                }
+
+                simulacion.dcMotorState[motor].speed = speed;
+                simulacion.dcMotorState[motor].direction =
+                    speed <= 0 ? "STOP" : direction;
+
+                actualizarMotorDCVisual(motor);
             }
             break;
         }
@@ -19327,37 +21611,109 @@ function ejecutarBloqueSimulacion(block, interno = false) {
 }
 
 function ejecutarPasoSimulacionSincrona() {
-    if (!simulacion.activa) return;
+    if (!simulacion.activa) {
+        return;
+    }
 
-    const bloques = obtenerBloquesLoop();
+    const bloques =
+        obtenerBloquesLoop();
 
     if (!bloques.length) {
-        simulacion.timer = setTimeout(ejecutarPasoSimulacion, 500);
+        simulacion.timer =
+            setTimeout(
+                ejecutarPasoSimulacion,
+                500
+            );
+
         return;
     }
 
-    const bloque = bloques[simulacion.loopIndex % bloques.length];
+    const bloque =
+        bloques[
+            simulacion.loopIndex %
+            bloques.length
+        ];
 
     try {
-        ejecutarBloqueSimulacion(bloque);
-    } catch (error) {
-        console.error("Error en simulación:", error);
+        ejecutarBloqueSimulacion(
+            bloque
+        );
+    }
+    catch (error) {
+        console.error(
+            "Error en simulación:",
+            error
+        );
+
         simulacion.activa = false;
         simulacion.pausada = true;
-        if (simulacion.timer) clearTimeout(simulacion.timer);
+
+        if (simulacion.timer) {
+            clearTimeout(
+                simulacion.timer
+            );
+        }
+
         simulacion.timer = null;
+
         detenerAnimacionServosRC();
-        const estado = document.getElementById("simState");
-        if (estado) estado.textContent = "Error";
+
+        const estado =
+            document.getElementById(
+                "simState"
+            );
+
+        if (estado) {
+            estado.textContent =
+                "Error";
+        }
+
         return;
     }
+
+    const retardo =
+        obtenerRetardoSimulacion(
+            bloque
+        );
 
     simulacion.loopIndex++;
 
-    simulacion.timer = setTimeout(
-        ejecutarPasoSimulacion,
-        obtenerRetardoSimulacion(bloque)
-    );
+    simulacion.timer =
+        setTimeout(
+            () => {
+                /*
+                 * Buzzer durante:
+                 * detener EXACTAMENTE antes de continuar
+                 * con la siguiente instrucción.
+                 */
+                if (
+                    bloque.type ===
+                    "arduino_buzzer_tone_time"
+                ) {
+                    detenerBuzzerSimulado();
+                }
+
+                /*
+                 * Tono continuo + Esperar:
+                 * el bloque Esperar define cuánto permanece
+                 * audible la nota. Al terminar el delay se
+                 * ejecuta noTone equivalente en el simulador.
+                 */
+                if (
+                    bloque.type ===
+                    "arduino_delay" &&
+                    (
+                        robotiaBuzzerOscillator ||
+                        robotiaBuzzerPinActivo !== null
+                    )
+                ) {
+                    detenerBuzzerSimulado();
+                }
+
+                ejecutarPasoSimulacion();
+            },
+            retardo
+        );
 }
 
 function ejecutarPasoSimulacion() {
@@ -19486,6 +21842,35 @@ function obtenerRetardoSimulacion(bloque) {
             30
         );
     }
+
+    if (
+        bloque.type ===
+        "arduino_buzzer_tone_time"
+    ) {
+        const tiempo =
+            Math.max(
+                0,
+                evaluarEntradaNumericaSimulacion(
+                    bloque,
+                    "TIME",
+                    1
+                )
+            );
+
+        const unidad =
+            bloque.getFieldValue(
+                "UNIT"
+            ) || "S";
+
+        if (unidad === "MS") {
+            return tiempo + 20;
+        }
+
+        return (
+            tiempo * 1000
+        ) + 20;
+    }
+
 
     if (
         bloque.type !==
@@ -21910,6 +24295,28 @@ const BLOCK_HELP_INFO = {
         text: "Controla el giro y la velocidad de un servo de rotación continua.",
         example: "Ejemplo: mover un motor al 50% y después llevarlo a 0 para detenerlo."
     },
+    ir_sensor_config: {
+        title: "Configurar Sensor IR",
+        description: "Crea sensores IR independientes IR1, IR2, IR3... Cada uno permite seleccionar Obstáculo o Línea negra/fondo y asignar un pin digital.",
+        example: "IR1 en D4, modo Obstáculo; IR2 en D7, modo Línea negra/fondo."
+    },
+    ir_sensor_read: {
+        title: "Leer Sensor IR",
+        description: "Selecciona cualquier sensor creado. El bloque devuelve VERDADERO cuando hay detección y FALSO cuando no. Internamente adapta la señal física según el modo Obstáculo o Línea negra/fondo.",
+        example: "Ejemplo: SI ¿IR1 detecta? ENTONCES detener motor."
+    },
+
+    dc_motor_config: {
+        title: "Configurar Motor DC",
+        description: "Crea un motor DC con IN1, IN2 y PWM.",
+        example: "Ejemplo: configurar MotorDC1 una sola vez en Configuración inicial."
+    },
+    dc_motor_control: {
+        title: "Mover Motor DC",
+        description: "Selecciona un motor creado, el sentido y una velocidad numérica de 0 a 100.",
+        example: "Ejemplo: MotorDC1 · Reloj · velocidad 70."
+    },
+
     ultrasonic_config: {
         title: "Configurar sensor ultrasónico",
         text: "Define los pines TRIG y ECHO utilizados por el sensor de distancia.",

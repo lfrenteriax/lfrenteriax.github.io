@@ -6546,6 +6546,7 @@ img[data-tutorial-image="kitLeotino"] {
 
         <select id="deviceSelector" class="device-select" onchange="cambiarDispositivo(this.value)" title="Seleccionar dispositivo">
             <option value="uno">Arduino Uno</option>
+            <option value="duemilanove">Arduino Duemilanove (ATmega328P)</option>
             <option value="leotino">Leotino</option>
         </select>
 
@@ -7955,7 +7956,11 @@ function actualizarSelectorDispositivo() {
 }
 
 function cambiarDispositivo(tipo) {
-    if (tipo !== "uno" && tipo !== "leotino") return;
+    if (
+        tipo !== "uno" &&
+        tipo !== "duemilanove" &&
+        tipo !== "leotino"
+    ) return;
     if (tipo === dispositivoActual) return;
 
     guardarProyectoAutomatico();
@@ -22587,6 +22592,9 @@ async function compilarLocal(subir = false, puertoAutorizado = null) {
         const code =
             obtenerCodigoArduinoActual();
 
+        const placa =
+            obtenerConfiguracionPlacaRobotia();
+
         if (
             !code ||
             !code.trim()
@@ -22626,7 +22634,7 @@ async function compilarLocal(subir = false, puertoAutorizado = null) {
                     body:
                         JSON.stringify({
                             fqbn:
-                                "arduino:avr:uno",
+                                placa.fqbn,
 
                             sketchName:
                                 "ArduinoBlockly",
@@ -22702,7 +22710,11 @@ async function compilarLocal(subir = false, puertoAutorizado = null) {
 
         if (subir) {
             logCompilacion(
-                "Solicitando acceso al Arduino Uno por USB..."
+                "Solicitando acceso a " +
+                placa.nombre +
+                " por USB · bootloader " +
+                placa.uploadBaud +
+                " baud..."
             );
 
             await subirHexArduinoUno(
@@ -23670,6 +23682,30 @@ async function asegurarMQTT() {
     await conectarMQTT();
 }
 
+function obtenerConfiguracionPlacaRobotia() {
+    if (dispositivoActual === "duemilanove") {
+        return {
+            id: "duemilanove",
+            nombre: "Arduino Duemilanove",
+            procesador: "ATmega328P",
+            fqbn: "arduino:avr:diecimila:cpu=atmega328",
+            uploadBaud: 57600,
+            resetWaitMs: 650
+        };
+    }
+
+    // Arduino Uno y Leotino mantienen la configuración actual de Uno.
+    return {
+        id: dispositivoActual === "leotino" ? "leotino" : "uno",
+        nombre: dispositivoActual === "leotino" ? "Leotino" : "Arduino Uno",
+        procesador: "ATmega328P",
+        fqbn: "arduino:avr:uno",
+        uploadBaud: 115200,
+        resetWaitMs: 450
+    };
+}
+
+
 function obtenerCodigoArduinoActual() {
     generarCodigo();
     return document.getElementById("code").textContent;
@@ -23684,8 +23720,13 @@ async function compilarMQTT(subir = false, puertoAutorizado = null) {
         const channel = "arduino-blockly";
         const requestId = "job-" + Date.now() + "-" + Math.random().toString(16).slice(2);
         const code = obtenerCodigoArduinoActual();
+        const placa = obtenerConfiguracionPlacaRobotia();
 
-        logCompilacion("Enviando programa al compilador...");
+        logCompilacion(
+            "Enviando programa al compilador para " +
+            placa.nombre +
+            "..."
+        );
 
         const respuestaPromise = new Promise((resolve, reject) => {
             const timeout = setTimeout(() => {
@@ -23698,13 +23739,17 @@ async function compilarMQTT(subir = false, puertoAutorizado = null) {
         const payload = JSON.stringify({
             requestId,
             clientId: mqttClientId,
-            fqbn: "arduino:avr:uno",
+            fqbn: placa.fqbn,
             sketchName: "ArduinoBlockly",
             code
         });
 
         mqttClient.publish(channel + "/compile/request", payload, {qos: 1});
-        logCompilacion("Compilando para Arduino Uno...");
+        logCompilacion(
+            "Compilando para " +
+            placa.nombre +
+            "..."
+        );
 
         const result = await respuestaPromise;
 
@@ -23721,7 +23766,13 @@ async function compilarMQTT(subir = false, puertoAutorizado = null) {
         if (!ultimoHexCompilado) throw new Error("El compilador no devolvió el archivo HEX.");
 
         if (subir) {
-            logCompilacion("Solicitando acceso al Arduino Uno por USB...");
+            logCompilacion(
+                "Solicitando acceso a " +
+                placa.nombre +
+                " por USB · bootloader " +
+                placa.uploadBaud +
+                " baud..."
+            );
             await subirHexArduinoUno(
                 ultimoHexCompilado,
                 puertoAutorizado
@@ -23775,6 +23826,9 @@ function hexToBytes(hexText) {
 async function subirHexArduinoUno(hexText, puertoAutorizado = null) {
     if (!("serial" in navigator)) throw new Error("Este navegador no admite Web Serial. Usa Chrome/Edge de escritorio por HTTPS o localhost.");
 
+    const placa =
+        obtenerConfiguracionPlacaRobotia();
+
     /*
      * Compilar/Subir y Monitoreo Serial no pueden tener
      * abierto el mismo puerto simultáneamente.
@@ -23804,7 +23858,7 @@ async function subirHexArduinoUno(hexText, puertoAutorizado = null) {
 
     try {
         await port.open({
-            baudRate: 115200,
+            baudRate: placa.uploadBaud,
             dataBits: 8,
             stopBits: 1,
             parity: "none",
@@ -23833,13 +23887,20 @@ async function subirHexArduinoUno(hexText, puertoAutorizado = null) {
     }
 
     try {
-        // Reset del Uno para entrar al bootloader Optiboot.
+        // Reset por DTR/RTS para entrar al bootloader de la placa seleccionada.
         try {
             await port.setSignals({dataTerminalReady:false, requestToSend:false});
             await new Promise(r => setTimeout(r, 80));
             await port.setSignals({dataTerminalReady:true, requestToSend:false});
         } catch (_) {}
-        await new Promise(r => setTimeout(r, 450));
+
+        await new Promise(
+            r =>
+                setTimeout(
+                    r,
+                    placa.resetWaitMs
+                )
+        );
 
         const writer = port.writable.getWriter();
         const reader = port.readable.getReader();
@@ -23872,7 +23933,15 @@ async function subirHexArduinoUno(hexText, puertoAutorizado = null) {
             try { await command([0x30,0x20]); synced = true; }
             catch (_) { await new Promise(r=>setTimeout(r,100)); }
         }
-        if (!synced) throw new Error("No se pudo sincronizar con el bootloader del Arduino Uno.");
+        if (!synced) {
+            throw new Error(
+                "No se pudo sincronizar con el bootloader de " +
+                placa.nombre +
+                " a " +
+                placa.uploadBaud +
+                " baud."
+            );
+        }
 
         const firmware = hexToBytes(hexText);
         const pageSize = 128;
@@ -23892,7 +23961,14 @@ async function subirHexArduinoUno(hexText, puertoAutorizado = null) {
 
         // Salir del modo programación.
         try { await command([0x51,0x20]); } catch (_) {}
-        logCompilacion("✓ Programa cargado en Arduino Uno", "ok");
+        logCompilacion(
+            "✓ Programa cargado en " +
+            placa.nombre +
+            " · " +
+            placa.uploadBaud +
+            " baud",
+            "ok"
+        );
 
         reader.releaseLock();
         writer.releaseLock();

@@ -6548,7 +6548,7 @@ img[data-tutorial-image="kitLeotino"] {
             <option value="uno">Arduino Uno</option>
             <option value="duemilanove">Arduino Duemilanove (ATmega328P)</option>
             <option value="leotino">Leotino</option>
-            <option value="pachobot">Pachobot (Duemilanove)</option>
+            <option value="panchobot">Panchobot</option>
         </select>
 
         <button
@@ -7858,27 +7858,27 @@ img[data-tutorial-image="kitLeotino"] {
     </category>
 </xml>
 
-<xml id="toolboxPachobot" style="display:none">
+<xml id="toolboxpanchobot" style="display:none">
     <category name="Movimiento" colour="#EF4444">
-        <block type="pachobot_avanzar">
+        <block type="panchobot_avanzar">
             <value name="SPEED"><shadow type="math_number"><field name="NUM">70</field></shadow></value>
         </block>
-        <block type="pachobot_retroceder">
+        <block type="panchobot_retroceder">
             <value name="SPEED"><shadow type="math_number"><field name="NUM">70</field></shadow></value>
         </block>
-        <block type="pachobot_girar">
+        <block type="panchobot_girar">
             <value name="SPEED"><shadow type="math_number"><field name="NUM">60</field></shadow></value>
         </block>
-        <block type="pachobot_motor">
+        <block type="panchobot_motor">
             <value name="SPEED"><shadow type="math_number"><field name="NUM">70</field></shadow></value>
         </block>
-        <block type="pachobot_detener"></block>
+        <block type="panchobot_detener"></block>
     </category>
 
     <category name="Sensores IR" colour="#F59E0B">
-        <block type="pachobot_ir_izquierdo"></block>
-        <block type="pachobot_ir_centro"></block>
-        <block type="pachobot_ir_derecho"></block>
+        <block type="panchobot_ir_izquierdo"></block>
+        <block type="panchobot_ir_centro"></block>
+        <block type="panchobot_ir_derecho"></block>
     </category>
 
     <category name="Control" colour="#10B981">
@@ -7908,7 +7908,7 @@ img[data-tutorial-image="kitLeotino"] {
 
     <category name="Escribir" colour="#F59E0B">
         <block type="arduino_serial_println">
-            <value name="TEXT"><shadow type="text"><field name="TEXT">Hola Pachobot</field></shadow></value>
+            <value name="TEXT"><shadow type="text"><field name="TEXT">Hola panchobot</field></shadow></value>
         </block>
     </category>
 </xml>
@@ -8017,7 +8017,7 @@ function cambiarDispositivo(tipo) {
         tipo !== "uno" &&
         tipo !== "duemilanove" &&
         tipo !== "leotino" &&
-        tipo !== "pachobot"
+        tipo !== "panchobot"
     ) return;
     if (tipo === dispositivoActual) return;
 
@@ -8031,15 +8031,15 @@ function cambiarDispositivo(tipo) {
     );
 
     document.body.classList.toggle(
-        "pachobot-device-active",
-        tipo === "pachobot"
+        "panchobot-device-active",
+        tipo === "panchobot"
     );
 
     const toolboxId =
         tipo === "leotino"
             ? "toolboxLeotino"
-            : tipo === "pachobot"
-                ? "toolboxPachobot"
+            : tipo === "panchobot"
+                ? "toolboxpanchobot"
                 : "toolbox";
 
     workspace.updateToolbox(
@@ -8049,8 +8049,8 @@ function cambiarDispositivo(tipo) {
     if (!cargarProyectoAutomatico()) {
         if (tipo === "leotino") {
             crearEstructuraLeotino();
-        } else if (tipo === "pachobot") {
-            crearEstructuraPachobot();
+        } else if (tipo === "panchobot") {
+            crearEstructurapanchobot();
         } else {
             crearEstructuraArduino();
         }
@@ -8251,7 +8251,7 @@ function crearEstructuraLeotino() {
     actualizarSimulador();
 }
 
-function crearEstructuraPachobot() {
+function crearEstructurapanchobot() {
     detenerSimulacion();
     workspace.clear();
 
@@ -8281,36 +8281,36 @@ function crearEstructuraPachobot() {
         return b;
     }
 
-    // Hardware fijo Pachobot.
+    // Hardware fijo panchobot.
     const motorDer = cfg("dc_motor_config", {
         ID: "MotorDerecho",
-        IN1: PACHOBOT_PINS.MOTOR_RIGHT_IN1,
-        IN2: PACHOBOT_PINS.MOTOR_RIGHT_IN2,
-        PWM: PACHOBOT_PINS.MOTOR_RIGHT_PWM
+        IN1: panchoBOT_PINS.MOTOR_RIGHT_IN1,
+        IN2: panchoBOT_PINS.MOTOR_RIGHT_IN2,
+        PWM: panchoBOT_PINS.MOTOR_RIGHT_PWM
     });
 
     const motorIzq = cfg("dc_motor_config", {
         ID: "MotorIzquierdo",
-        IN1: PACHOBOT_PINS.MOTOR_LEFT_IN1,
-        IN2: PACHOBOT_PINS.MOTOR_LEFT_IN2,
-        PWM: PACHOBOT_PINS.MOTOR_LEFT_PWM
+        IN1: panchoBOT_PINS.MOTOR_LEFT_IN1,
+        IN2: panchoBOT_PINS.MOTOR_LEFT_IN2,
+        PWM: panchoBOT_PINS.MOTOR_LEFT_PWM
     });
 
     const irIzq = cfg("ir_sensor_config", {
         ID: "IRIzquierdo",
-        PIN: PACHOBOT_PINS.IR_LEFT,
+        PIN: panchoBOT_PINS.IR_LEFT,
         MODE: "LINE"
     });
 
     const irCentro = cfg("ir_sensor_config", {
         ID: "IRCentro",
-        PIN: PACHOBOT_PINS.IR_CENTER,
+        PIN: panchoBOT_PINS.IR_CENTER,
         MODE: "LINE"
     });
 
     const irDer = cfg("ir_sensor_config", {
         ID: "IRDerecho",
-        PIN: PACHOBOT_PINS.IR_RIGHT,
+        PIN: panchoBOT_PINS.IR_RIGHT,
         MODE: "LINE"
     });
 
@@ -9255,7 +9255,7 @@ const LEOTINO_PINS = Object.freeze({
     ULTRA_TRIG: "7"
 });
 
-const PACHOBOT_PINS = Object.freeze({
+const panchoBOT_PINS = Object.freeze({
     IR_LEFT: "6",
     IR_CENTER: "10",
     IR_RIGHT: "11",
@@ -9963,11 +9963,11 @@ Arduino["leotino_cabeza"] = b => {
 
 
 /* =========================================================
-   PACHOBOT - BLOQUES
+   panchoBOT - BLOQUES
    Base: Arduino Duemilanove ATmega328P
    ========================================================= */
 
-function bloqueVelocidadPachobot(nombre, texto, color) {
+function bloqueVelocidadpanchobot(nombre, texto, color) {
     Blockly.Blocks[nombre] = {
         init: function() {
             this.appendValueInput("SPEED")
@@ -9981,14 +9981,14 @@ function bloqueVelocidadPachobot(nombre, texto, color) {
     };
 }
 
-bloqueVelocidadPachobot("pachobot_avanzar", "⬆ Pachobot avanzar", "#16A34A");
-bloqueVelocidadPachobot("pachobot_retroceder", "⬇ Pachobot retroceder", "#2563EB");
+bloqueVelocidadpanchobot("panchobot_avanzar", "⬆ panchobot avanzar", "#16A34A");
+bloqueVelocidadpanchobot("panchobot_retroceder", "⬇ panchobot retroceder", "#2563EB");
 
-Blockly.Blocks["pachobot_girar"] = {
+Blockly.Blocks["panchobot_girar"] = {
     init: function() {
         this.appendValueInput("SPEED")
             .setCheck("Number")
-            .appendField("↻ Pachobot girar")
+            .appendField("↻ panchobot girar")
             .appendField(
                 new Blockly.FieldDropdown([
                     ["Derecha", "RIGHT"],
@@ -10003,11 +10003,11 @@ Blockly.Blocks["pachobot_girar"] = {
     }
 };
 
-Blockly.Blocks["pachobot_motor"] = {
+Blockly.Blocks["panchobot_motor"] = {
     init: function() {
         this.appendValueInput("SPEED")
             .setCheck("Number")
-            .appendField("⚙ Pachobot motor")
+            .appendField("⚙ panchobot motor")
             .appendField(
                 new Blockly.FieldDropdown([
                     ["Izquierdo", "LEFT"],
@@ -10029,16 +10029,16 @@ Blockly.Blocks["pachobot_motor"] = {
     }
 };
 
-Blockly.Blocks["pachobot_detener"] = {
+Blockly.Blocks["panchobot_detener"] = {
     init: function() {
-        this.appendDummyInput().appendField("⏹ Pachobot detener");
+        this.appendDummyInput().appendField("⏹ panchobot detener");
         this.setPreviousStatement(true);
         this.setNextStatement(true);
         this.setColour("#DC2626");
     }
 };
 
-function bloqueSensorPachobot(tipo, texto) {
+function bloqueSensorpanchobot(tipo, texto) {
     Blockly.Blocks[tipo] = {
         init: function() {
             this.appendDummyInput().appendField(texto);
@@ -10051,12 +10051,12 @@ function bloqueSensorPachobot(tipo, texto) {
     };
 }
 
-bloqueSensorPachobot("pachobot_ir_izquierdo", "👁 IR izquierdo detecta línea");
-bloqueSensorPachobot("pachobot_ir_centro", "👁 IR centro detecta línea");
-bloqueSensorPachobot("pachobot_ir_derecho", "👁 IR derecho detecta línea");
+bloqueSensorpanchobot("panchobot_ir_izquierdo", "👁 IR izquierdo detecta línea");
+bloqueSensorpanchobot("panchobot_ir_centro", "👁 IR centro detecta línea");
+bloqueSensorpanchobot("panchobot_ir_derecho", "👁 IR derecho detecta línea");
 
 
-function velocidadPachobot(block) {
+function velocidadpanchobot(block) {
     return (
         Arduino.valueToCode(
             block,
@@ -10066,21 +10066,21 @@ function velocidadPachobot(block) {
     );
 }
 
-function pwmPachobot(v) {
+function pwmpanchobot(v) {
     return "map(constrain(" + v + ",0,100),0,100,0,255)";
 }
 
-function motorPachobotCodigo(lado, sentido, velocidad) {
+function motorpanchobotCodigo(lado, sentido, velocidad) {
     const izq = lado === "LEFT";
     const in1 = izq
-        ? PACHOBOT_PINS.MOTOR_LEFT_IN1
-        : PACHOBOT_PINS.MOTOR_RIGHT_IN1;
+        ? panchoBOT_PINS.MOTOR_LEFT_IN1
+        : panchoBOT_PINS.MOTOR_RIGHT_IN1;
     const in2 = izq
-        ? PACHOBOT_PINS.MOTOR_LEFT_IN2
-        : PACHOBOT_PINS.MOTOR_RIGHT_IN2;
+        ? panchoBOT_PINS.MOTOR_LEFT_IN2
+        : panchoBOT_PINS.MOTOR_RIGHT_IN2;
     const pwm = izq
-        ? PACHOBOT_PINS.MOTOR_LEFT_PWM
-        : PACHOBOT_PINS.MOTOR_RIGHT_PWM;
+        ? panchoBOT_PINS.MOTOR_LEFT_PWM
+        : panchoBOT_PINS.MOTOR_RIGHT_PWM;
 
     const a = sentido === "CW" ? "HIGH" : "LOW";
     const b = sentido === "CW" ? "LOW" : "HIGH";
@@ -10088,85 +10088,85 @@ function motorPachobotCodigo(lado, sentido, velocidad) {
     return (
         "digitalWrite(" + in1 + ", " + a + ");\n" +
         "digitalWrite(" + in2 + ", " + b + ");\n" +
-        "analogWrite(" + pwm + ", " + pwmPachobot(velocidad) + ");\n"
+        "analogWrite(" + pwm + ", " + pwmpanchobot(velocidad) + ");\n"
     );
 }
 
-function detenerPachobotCodigo() {
+function detenerpanchobotCodigo() {
     return (
-        "analogWrite(" + PACHOBOT_PINS.MOTOR_LEFT_PWM + ", 0);\n" +
-        "analogWrite(" + PACHOBOT_PINS.MOTOR_RIGHT_PWM + ", 0);\n" +
-        "digitalWrite(" + PACHOBOT_PINS.MOTOR_LEFT_IN1 + ", LOW);\n" +
-        "digitalWrite(" + PACHOBOT_PINS.MOTOR_LEFT_IN2 + ", LOW);\n" +
-        "digitalWrite(" + PACHOBOT_PINS.MOTOR_RIGHT_IN1 + ", LOW);\n" +
-        "digitalWrite(" + PACHOBOT_PINS.MOTOR_RIGHT_IN2 + ", LOW);\n"
+        "analogWrite(" + panchoBOT_PINS.MOTOR_LEFT_PWM + ", 0);\n" +
+        "analogWrite(" + panchoBOT_PINS.MOTOR_RIGHT_PWM + ", 0);\n" +
+        "digitalWrite(" + panchoBOT_PINS.MOTOR_LEFT_IN1 + ", LOW);\n" +
+        "digitalWrite(" + panchoBOT_PINS.MOTOR_LEFT_IN2 + ", LOW);\n" +
+        "digitalWrite(" + panchoBOT_PINS.MOTOR_RIGHT_IN1 + ", LOW);\n" +
+        "digitalWrite(" + panchoBOT_PINS.MOTOR_RIGHT_IN2 + ", LOW);\n"
     );
 }
 
-Arduino["pachobot_avanzar"] = function(block) {
-    const v = velocidadPachobot(block);
+Arduino["panchobot_avanzar"] = function(block) {
+    const v = velocidadpanchobot(block);
     return (
-        motorPachobotCodigo("LEFT", "CW", v) +
-        motorPachobotCodigo("RIGHT", "CW", v)
+        motorpanchobotCodigo("LEFT", "CW", v) +
+        motorpanchobotCodigo("RIGHT", "CW", v)
     );
 };
 
-Arduino["pachobot_retroceder"] = function(block) {
-    const v = velocidadPachobot(block);
+Arduino["panchobot_retroceder"] = function(block) {
+    const v = velocidadpanchobot(block);
     return (
-        motorPachobotCodigo("LEFT", "CCW", v) +
-        motorPachobotCodigo("RIGHT", "CCW", v)
+        motorpanchobotCodigo("LEFT", "CCW", v) +
+        motorpanchobotCodigo("RIGHT", "CCW", v)
     );
 };
 
-Arduino["pachobot_girar"] = function(block) {
-    const v = velocidadPachobot(block);
+Arduino["panchobot_girar"] = function(block) {
+    const v = velocidadpanchobot(block);
     const dir = block.getFieldValue("DIR");
 
     if (dir === "LEFT") {
         return (
-            motorPachobotCodigo("LEFT", "CCW", v) +
-            motorPachobotCodigo("RIGHT", "CW", v)
+            motorpanchobotCodigo("LEFT", "CCW", v) +
+            motorpanchobotCodigo("RIGHT", "CW", v)
         );
     }
 
     return (
-        motorPachobotCodigo("LEFT", "CW", v) +
-        motorPachobotCodigo("RIGHT", "CCW", v)
+        motorpanchobotCodigo("LEFT", "CW", v) +
+        motorpanchobotCodigo("RIGHT", "CCW", v)
     );
 };
 
-Arduino["pachobot_motor"] = function(block) {
-    return motorPachobotCodigo(
+Arduino["panchobot_motor"] = function(block) {
+    return motorpanchobotCodigo(
         block.getFieldValue("MOTOR"),
         block.getFieldValue("DIR"),
-        velocidadPachobot(block)
+        velocidadpanchobot(block)
     );
 };
 
-Arduino["pachobot_detener"] = function() {
-    return detenerPachobotCodigo();
+Arduino["panchobot_detener"] = function() {
+    return detenerpanchobotCodigo();
 };
 
 // Sensores de línea: físicamente LOW = línea detectada.
 // Blockly recibe VERDADERO al detectar.
-Arduino["pachobot_ir_izquierdo"] = function() {
+Arduino["panchobot_ir_izquierdo"] = function() {
     return [
-        "(digitalRead(" + PACHOBOT_PINS.IR_LEFT + ") == LOW)",
+        "(digitalRead(" + panchoBOT_PINS.IR_LEFT + ") == LOW)",
         Arduino.ORDER_RELATIONAL
     ];
 };
 
-Arduino["pachobot_ir_centro"] = function() {
+Arduino["panchobot_ir_centro"] = function() {
     return [
-        "(digitalRead(" + PACHOBOT_PINS.IR_CENTER + ") == LOW)",
+        "(digitalRead(" + panchoBOT_PINS.IR_CENTER + ") == LOW)",
         Arduino.ORDER_RELATIONAL
     ];
 };
 
-Arduino["pachobot_ir_derecho"] = function() {
+Arduino["panchobot_ir_derecho"] = function() {
     return [
-        "(digitalRead(" + PACHOBOT_PINS.IR_RIGHT + ") == LOW)",
+        "(digitalRead(" + panchoBOT_PINS.IR_RIGHT + ") == LOW)",
         Arduino.ORDER_RELATIONAL
     ];
 };
@@ -18434,7 +18434,7 @@ function actualizarSimulador() {
     if (
         dispositivoActual === "uno" ||
         dispositivoActual === "duemilanove" ||
-        dispositivoActual === "pachobot"
+        dispositivoActual === "panchobot"
     ) {
         scene.appendChild(board);
     }
@@ -24078,13 +24078,13 @@ async function asegurarMQTT() {
 function obtenerConfiguracionPlacaRobotia() {
     if (
         dispositivoActual === "duemilanove" ||
-        dispositivoActual === "pachobot"
+        dispositivoActual === "panchobot"
     ) {
         return {
             id: dispositivoActual,
             nombre:
-                dispositivoActual === "pachobot"
-                    ? "Pachobot (Arduino Duemilanove)"
+                dispositivoActual === "panchobot"
+                    ? "panchobot (Arduino Duemilanove)"
                     : "Arduino Duemilanove",
             procesador: "ATmega328P",
             fqbn: "arduino:avr:diecimila:cpu=atmega328",
